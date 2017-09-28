@@ -1,3 +1,5 @@
+@import './less/index.less';
+
 body {
     margin: 0px !important;
 }
@@ -152,9 +154,6 @@ img.viz-thumb-option {
 }
 
 
-div.header {
-  font-weight: bold;
-}
 li.widget:hover {
   z-index: 1000;
 }
@@ -340,13 +339,22 @@ iframe {
 }
 
 // overwrite react-select css
-.Select-multi-value-wrapper .Select-input {
-  display: inline-block;
-  width: 100px;
+.Select--multi {
+  .Select-multi-value-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 3px;
+  }
+
+  .Select-value {
+    line-height: 1.2;
+  }
+
+  .Select-input > input {
+    width: 100px;
+  }
 }
-.Select--multi .Select-value {
-  line-height: 1.2;
-}
+
 .dimmed {
   opacity: 0.5;
 }
@@ -361,4 +369,16 @@ iframe {
 }
 .float-right {
   float: right;
+}
+
+g.annotation-container {
+  line {
+    stroke: @stroke-primary;
+  }
+
+  rect.annotation {
+    stroke: @stroke-primary;
+    fill-opacity: 0.1;
+    stroke-width: 1;
+  }
 }
