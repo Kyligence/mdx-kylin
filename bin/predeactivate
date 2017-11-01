@@ -1,0 +1,5 @@
+#!/bin/bash
+# This hook is sourced before this virtualenv is deactivated.
+
+unset SUPERSET_CONFIG_PATH
+unset PYTHONPATH
