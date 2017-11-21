@@ -2,8 +2,8 @@
 
 HOST=10.1.1.66
 USER=developer
-ONE="superset one bin Makefile"
-DEPS="../sqlalchemy_kylin ../kylinpy"
+ONE="superset one bin Makefile .git"
+DEPS="../kylinpy"
 DST=/opt/webapps/One
 
 ssh $USER@$HOST "mkdir -p $DST"

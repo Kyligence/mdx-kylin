@@ -50,8 +50,8 @@ function python_env {
     pip install -e superset
     pip install mysqlclient ipython ipdb rope jedi flake8 importmagic autopep8 yapf
 
-    if [[ "$(pip list --format=columns | grep -E 'kylinpy|sqlalchemy_kylin')" == "" ]]; then
-        echo 'Error: Please install kylinpy and sqlalchemy_kylin'
+    if [[ "$(pip list --format=columns | grep 'kylinpy')" == "" ]]; then
+        echo 'Error: Please install kylinpy'
         return 127
     fi
 }
