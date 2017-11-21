@@ -4,7 +4,7 @@ ARG DEPS='build-essential libssl-dev libffi-dev python-dev libsasl2-dev libldap2
 
 RUN apt-get update && apt-get -y install ${DEPS}
 RUN pip install --upgrade setuptools pip
-RUN pip install --no-cache-dir superset
+RUN pip install --no-cache-dir superset kylinpy
 
 RUN fabmanager create-admin --app superset --username admin --password admin --firstname admin --lastname admin --email admin@fab.org
 RUN superset db upgrade

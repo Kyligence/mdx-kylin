@@ -3,12 +3,12 @@
 SHELL:=/bin/bash
 
 dev:
-	superset runserver -d
+	@superset runserver -d
 
 build:
 	. ./bin/bootstrap.sh $(shell pwd)
 
-deploy:
+testing:
 # server username: developer
 # debian 9 deploy
 	. ./bin/deploy_testing.sh
