@@ -17,13 +17,31 @@ fi
 export SUPERSET_CONFIG_PATH=$ROOT_DIR/one/config.py
 
 if [[ $(uname) == 'Linux' ]]; then
-    sudo apt -y install supervisor
+    sudo apt -y install supervisor build-essential libssl-dev libsasl2-dev
 fi
+
+function test_env {
+    if [[ "$(pip --version 2> /dev/null)" == "" ]]; then
+        echo 'Error: Please install pip first'
+        return 127
+    fi
+
+    if [[ "$(docker --version 2> /dev/null)" == "" ]]; then
+        echo 'Error: Please install docker first'
+        return 127
+    fi
+}
 
 function db_client {
     if [[ "$(mysql_config --version 2> /dev/null)" == "" ]]; then
         if [[ $(uname) == 'Linux' ]]; then
-            sudo apt -y install default-libmysqlclient-dev
+            if [[ $(uname -a) == *"Debian"* ]]; then
+                sudo apt -y install default-libmysqlclient-dev
+            fi
+
+            if [[ $(uname -a) == *"Ubuntu"* ]]; then
+                sudo apt -y install libmysqlclient-dev
+            fi
         fi
 
         if [[ $(uname) == 'Darwin' ]]; then
@@ -83,6 +101,7 @@ function init {
     superset init
 }
 
+test_env
 db_client
 python_env
 docker_db

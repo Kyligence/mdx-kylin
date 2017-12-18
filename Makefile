@@ -9,7 +9,14 @@ build:
 	. ./bin/bootstrap.sh $(shell pwd)
 
 deploy:
+# server username: developer
+# debian 9 deploy
 	. ./bin/deploy_testing.sh
+
+poc:
+# server username: developer
+# debian 9 deploy
+	. ./bin/deploy_poc.sh
 
 clean:
 	docker stop superset-db
