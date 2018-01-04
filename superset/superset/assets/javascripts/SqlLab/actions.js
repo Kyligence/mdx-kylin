@@ -20,6 +20,7 @@ export const QUERY_EDITOR_SET_SCHEMA = 'QUERY_EDITOR_SET_SCHEMA';
 export const QUERY_EDITOR_SET_TITLE = 'QUERY_EDITOR_SET_TITLE';
 export const QUERY_EDITOR_SET_AUTORUN = 'QUERY_EDITOR_SET_AUTORUN';
 export const QUERY_EDITOR_SET_SQL = 'QUERY_EDITOR_SET_SQL';
+export const QUERY_EDITOR_SET_TEMPLATE_PARAMS = 'QUERY_EDITOR_SET_TEMPLATE_PARAMS';
 export const QUERY_EDITOR_SET_SELECTED_TEXT = 'QUERY_EDITOR_SET_SELECTED_TEXT';
 export const QUERY_EDITOR_PERSIST_HEIGHT = 'QUERY_EDITOR_PERSIST_HEIGHT';
 
@@ -132,6 +133,7 @@ export function runQuery(query) {
       tab: query.tab,
       tmp_table_name: query.tempTableName,
       select_as_cta: query.ctas,
+      templateParams: query.templateParams,
     };
     const sqlJsonUrl = '/superset/sql_json/' + location.search;
     $.ajax({
@@ -153,10 +155,12 @@ export function runQuery(query) {
             msg = err.responseText;
           }
         }
-        if (textStatus === 'error' && errorThrown === '') {
-          msg = t('Could not connect to server');
-        } else if (msg === null) {
-          msg = `[${textStatus}] ${errorThrown}`;
+        if (msg === null) {
+          if (errorThrown) {
+            msg = `[${textStatus}] ${errorThrown}`;
+          } else {
+            msg = t('Unknown error');
+          }
         }
         if (msg.indexOf('CSRF token') > 0) {
           msg = t('Your session timed out, please refresh your page and try again.');
@@ -244,6 +248,10 @@ export function queryEditorSetTitle(queryEditor, title) {
 
 export function queryEditorSetSql(queryEditor, sql) {
   return { type: QUERY_EDITOR_SET_SQL, queryEditor, sql };
+}
+
+export function queryEditorSetTemplateParams(queryEditor, templateParams) {
+  return { type: QUERY_EDITOR_SET_TEMPLATE_PARAMS, queryEditor, templateParams };
 }
 
 export function queryEditorSetSelectedText(queryEditor, sql) {

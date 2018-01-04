@@ -4,14 +4,13 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import json
 import logging
 from logging.handlers import TimedRotatingFileHandler
-
-import json
 import os
 
 from flask import Flask, redirect
-from flask_appbuilder import SQLA, AppBuilder, IndexView
+from flask_appbuilder import AppBuilder, IndexView, SQLA
 from flask_appbuilder.baseviews import expose
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
@@ -22,6 +21,9 @@ from superset import utils, config  # noqa
 
 APP_DIR = os.path.dirname(__file__)
 CONFIG_MODULE = os.environ.get('SUPERSET_CONFIG', 'superset.config')
+
+if not os.path.exists(config.DATA_DIR):
+    os.makedirs(config.DATA_DIR)
 
 with open(APP_DIR + '/static/assets/backendSync.json', 'r') as f:
     frontend_config = json.load(f)
@@ -43,7 +45,7 @@ def parse_manifest_json():
         with open(MANIFEST_FILE, 'r') as f:
             manifest = json.load(f)
     except Exception:
-        print("no manifest file found at " + MANIFEST_FILE)
+        pass
 
 
 def get_manifest_file(filename):
@@ -67,7 +69,7 @@ for bp in conf.get('BLUEPRINTS'):
         print("Registering blueprint: '{}'".format(bp.name))
         app.register_blueprint(bp)
     except Exception as e:
-        print("blueprint registration failed")
+        print('blueprint registration failed')
         logging.exception(e)
 
 if conf.get('SILENCE_FAB'):
@@ -92,7 +94,7 @@ utils.pessimistic_connection_handling(db.engine)
 cache = utils.setup_cache(app, conf.get('CACHE_CONFIG'))
 tables_cache = utils.setup_cache(app, conf.get('TABLE_NAMES_CACHE_CONFIG'))
 
-migrate = Migrate(app, db, directory=APP_DIR + "/migrations")
+migrate = Migrate(app, db, directory=APP_DIR + '/migrations')
 
 # Logging configuration
 logging.basicConfig(format=app.config.get('LOG_FORMAT'))
@@ -150,16 +152,21 @@ appbuilder = AppBuilder(
     db.session,
     base_template='superset/base.html',
     indexview=MyIndexView,
-    security_manager_class=app.config.get("CUSTOM_SECURITY_MANAGER"))
+    security_manager_class=app.config.get('CUSTOM_SECURITY_MANAGER'))
 
 sm = appbuilder.sm
 
-get_session = appbuilder.get_session
-results_backend = app.config.get("RESULTS_BACKEND")
+results_backend = app.config.get('RESULTS_BACKEND')
 
 # Registering sources
-module_datasource_map = app.config.get("DEFAULT_MODULE_DS_MAP")
-module_datasource_map.update(app.config.get("ADDITIONAL_MODULE_DS_MAP"))
+module_datasource_map = app.config.get('DEFAULT_MODULE_DS_MAP')
+module_datasource_map.update(app.config.get('ADDITIONAL_MODULE_DS_MAP'))
 ConnectorRegistry.register_sources(module_datasource_map)
+
+# Hook that provides administrators a handle on the Flask APP
+# after initialization
+flask_app_mutator = app.config.get('FLASK_APP_MUTATOR')
+if flask_app_mutator:
+    flask_app_mutator(app)
 
 from superset import views  # noqa

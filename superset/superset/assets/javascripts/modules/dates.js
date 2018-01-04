@@ -64,13 +64,25 @@ export const tickMultiFormat = d3.time.format.multi([
 ]);
 export const formatDate = function (dttm) {
   const d = UTC(new Date(dttm));
-  // d = new Date(d.getTime() - 1 * 60 * 60 * 1000);
   return tickMultiFormat(d);
 };
-export const fDuration = function (t1, t2, f = 'HH:mm:ss.SS') {
+
+export const formatDateThunk = function (format) {
+  if (!format) {
+    return formatDate;
+  }
+
+  const formatter = d3.time.format(format);
+  return (dttm) => {
+    const d = UTC(new Date(dttm));
+    return formatter(d);
+  };
+};
+
+export const fDuration = function (t1, t2, format = 'HH:mm:ss.SS') {
   const diffSec = t2 - t1;
   const duration = moment(new Date(diffSec));
-  return duration.utc().format(f);
+  return duration.utc().format(format);
 };
 
 export const now = function () {

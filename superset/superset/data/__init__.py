@@ -4,21 +4,22 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import datetime
 import gzip
 import json
 import os
-import textwrap
-import datetime
 import random
+import textwrap
 
 import pandas as pd
-from sqlalchemy import String, DateTime, Date, Float, BigInteger
+from sqlalchemy import BigInteger, Date, DateTime, Float, String, Text
+import geohash
+import polyline
 
 from superset import app, db, utils
+from superset.connectors.connector_registry import ConnectorRegistry
 from superset.models import core as models
 from superset.security import get_or_create_main_db
-
-from superset.connectors.connector_registry import ConnectorRegistry
 
 # Shortcuts
 DB = models.Database
@@ -94,7 +95,7 @@ def load_energy():
             "viz_type": "sankey",
             "where": ""
         }
-        """)
+        """),
     )
     misc_dash_slices.append(slc.slice_name)
     merge_slice(slc)
@@ -120,7 +121,7 @@ def load_energy():
             "viz_type": "directed_force",
             "where": ""
         }
-        """)
+        """),
     )
     misc_dash_slices.append(slc.slice_name)
     merge_slice(slc)
@@ -146,7 +147,7 @@ def load_energy():
             "xscale_interval": "1",
             "yscale_interval": "1"
         }
-        """)
+        """),
     )
     misc_dash_slices.append(slc.slice_name)
     merge_slice(slc)
@@ -688,7 +689,7 @@ def load_birth_names():
     <h1>Birth Names Dashboard</h1>
     <p>
         The source dataset came from
-        <a href="https://github.com/hadley/babynames">[here]</a>
+        <a href="https://github.com/hadley/babynames" target="_blank">[here]</a>
     </p>
     <img src="/static/assets/images/babytux.jpg">
 </div>
@@ -972,7 +973,7 @@ def load_country_map_data():
             '2012': BigInteger,
             '2013': BigInteger,
             '2014': BigInteger,
-            'date': Date()
+            'date': Date(),
         },
         index=False)
     print("Done loading table!")
@@ -1018,6 +1019,9 @@ def load_long_lat_data():
     pdf['date'] = datetime.datetime.now().date()
     pdf['occupancy'] = [random.randint(1, 6) for _ in range(len(pdf))]
     pdf['radius_miles'] = [random.uniform(1, 3) for _ in range(len(pdf))]
+    pdf['geohash'] = pdf[['LAT', 'LON']].apply(
+        lambda x: geohash.encode(*x), axis=1)
+    pdf['delimited'] = pdf['LAT'].map(str).str.cat(pdf['LON'].map(str), sep=',')
     pdf.to_sql(  # pylint: disable=no-member
         'long_lat',
         db.engine,
@@ -1037,6 +1041,8 @@ def load_long_lat_data():
             'date': Date(),
             'occupancy': Float(),
             'radius_miles': Float(),
+            'geohash': String(12),
+            'delimited': String(60),
         },
         index=False)
     print("Done loading table!")
@@ -1227,3 +1233,350 @@ def load_misc_dashboard():
     dash.slices = slices
     db.session.merge(dash)
     db.session.commit()
+
+
+def load_deck_dash():
+    print("Loading deck.gl dashboard")
+    slices = []
+    tbl = db.session.query(TBL).filter_by(table_name='long_lat').first()
+    slice_data = {
+        "spatial": {
+            "type": "latlong",
+            "lonCol": "LON",
+            "latCol": "LAT",
+        },
+        "color_picker": {
+            "r": 205,
+            "g": 0,
+            "b": 3,
+            "a": 0.82,
+        },
+        "datasource": "5__table",
+        "filters": [],
+        "granularity_sqla": "date",
+        "groupby": [],
+        "having": "",
+        "mapbox_style": "mapbox://styles/mapbox/light-v9",
+        "multiplier": 10,
+        "point_radius_fixed": {"type": "metric", "value": "count"},
+        "point_unit": "square_m",
+        "row_limit": 5000,
+        "since": "2014-01-01",
+        "size": "count",
+        "time_grain_sqla": "Time Column",
+        "until": "now",
+        "viewport": {
+            "bearing": -4.952916738791771,
+            "latitude": 37.78926922909199,
+            "longitude": -122.42613341901688,
+            "pitch": 4.750411100577438,
+            "zoom": 12.729132798697304,
+        },
+        "viz_type": "deck_scatter",
+        "where": "",
+    }
+
+    print("Creating Scatterplot slice")
+    slc = Slice(
+        slice_name="Scatterplot",
+        viz_type='deck_scatter',
+        datasource_type='table',
+        datasource_id=tbl.id,
+        params=get_slice_json(slice_data),
+    )
+    merge_slice(slc)
+    slices.append(slc)
+
+    slice_data = {
+        "point_unit": "square_m",
+        "filters": [],
+        "row_limit": 5000,
+        "spatial": {
+            "type": "latlong",
+            "lonCol": "LON",
+            "latCol": "LAT",
+        },
+        "mapbox_style": "mapbox://styles/mapbox/dark-v9",
+        "granularity_sqla": "date",
+        "size": "count",
+        "viz_type": "deck_screengrid",
+        "since": "2014-01-01",
+        "point_radius": "Auto",
+        "until": "now",
+        "color_picker": {
+            "a": 1,
+            "r": 14,
+            "b": 0,
+            "g": 255,
+        },
+        "grid_size": 20,
+        "where": "",
+        "having": "",
+        "viewport": {
+            "zoom": 14.161641703941438,
+            "longitude": -122.41827069521386,
+            "bearing": -4.952916738791771,
+            "latitude": 37.76024135844065,
+            "pitch": 4.750411100577438,
+        },
+        "point_radius_fixed": {"type": "fix", "value": 2000},
+        "datasource": "5__table",
+        "time_grain_sqla": "Time Column",
+        "groupby": [],
+    }
+    print("Creating Screen Grid slice")
+    slc = Slice(
+        slice_name="Screen grid",
+        viz_type='deck_screengrid',
+        datasource_type='table',
+        datasource_id=tbl.id,
+        params=get_slice_json(slice_data),
+    )
+    merge_slice(slc)
+    slices.append(slc)
+
+    slice_data = {
+        "spatial": {
+            "type": "latlong",
+            "lonCol": "LON",
+            "latCol": "LAT",
+        },
+        "filters": [],
+        "row_limit": 5000,
+        "mapbox_style": "mapbox://styles/mapbox/streets-v9",
+        "granularity_sqla": "date",
+        "size": "count",
+        "viz_type": "deck_hex",
+        "since": "2014-01-01",
+        "point_radius_unit": "Pixels",
+        "point_radius": "Auto",
+        "until": "now",
+        "color_picker": {
+            "a": 1,
+            "r": 14,
+            "b": 0,
+            "g": 255,
+        },
+        "grid_size": 40,
+        "extruded": True,
+        "having": "",
+        "viewport": {
+            "latitude": 37.789795085160335,
+            "pitch": 54.08961642447763,
+            "zoom": 13.835465702403654,
+            "longitude": -122.40632230075536,
+            "bearing": -2.3984797349335167,
+        },
+        "where": "",
+        "point_radius_fixed": {"type": "fix", "value": 2000},
+        "datasource": "5__table",
+        "time_grain_sqla": "Time Column",
+        "groupby": [],
+    }
+    print("Creating Hex slice")
+    slc = Slice(
+        slice_name="Hexagons",
+        viz_type='deck_hex',
+        datasource_type='table',
+        datasource_id=tbl.id,
+        params=get_slice_json(slice_data),
+    )
+    merge_slice(slc)
+    slices.append(slc)
+
+    slice_data = {
+        "spatial": {
+            "type": "latlong",
+            "lonCol": "LON",
+            "latCol": "LAT",
+        },
+        "filters": [],
+        "row_limit": 5000,
+        "mapbox_style": "mapbox://styles/mapbox/satellite-streets-v9",
+        "granularity_sqla": "date",
+        "size": "count",
+        "viz_type": "deck_grid",
+        "since": "2014-01-01",
+        "point_radius_unit": "Pixels",
+        "point_radius": "Auto",
+        "until": "now",
+        "color_picker": {
+            "a": 1,
+            "r": 14,
+            "b": 0,
+            "g": 255,
+        },
+        "grid_size": 120,
+        "extruded": True,
+        "having": "",
+        "viewport": {
+            "longitude": -122.42066918995666,
+            "bearing": 155.80099696026355,
+            "zoom": 12.699690845482069,
+            "latitude": 37.7942314882596,
+            "pitch": 53.470800300695146,
+        },
+        "where": "",
+        "point_radius_fixed": {"type": "fix", "value": 2000},
+        "datasource": "5__table",
+        "time_grain_sqla": "Time Column",
+        "groupby": [],
+    }
+    print("Creating Grid slice")
+    slc = Slice(
+        slice_name="Grid",
+        viz_type='deck_grid',
+        datasource_type='table',
+        datasource_id=tbl.id,
+        params=get_slice_json(slice_data),
+    )
+    merge_slice(slc)
+    slices.append(slc)
+
+    print("Creating a dashboard")
+    title = "deck.gl Demo"
+    dash = db.session.query(Dash).filter_by(dashboard_title=title).first()
+
+    if not dash:
+        dash = Dash()
+    js = textwrap.dedent("""\
+    [
+        {
+            "col": 1,
+            "row": 0,
+            "size_x": 6,
+            "size_y": 4,
+            "slice_id": "37"
+        },
+        {
+            "col": 7,
+            "row": 0,
+            "size_x": 6,
+            "size_y": 4,
+            "slice_id": "38"
+        },
+        {
+            "col": 7,
+            "row": 4,
+            "size_x": 6,
+            "size_y": 4,
+            "slice_id": "39"
+        },
+        {
+            "col": 1,
+            "row": 4,
+            "size_x": 6,
+            "size_y": 4,
+            "slice_id": "40"
+        }
+    ]
+    """)
+    l = json.loads(js)
+    for i, pos in enumerate(l):
+        pos['slice_id'] = str(slices[i].id)
+    dash.dashboard_title = title
+    dash.position_json = json.dumps(l, indent=4)
+    dash.slug = "deck"
+    dash.slices = slices
+    db.session.merge(dash)
+    db.session.commit()
+
+
+def load_flights():
+    """Loading random time series data from a zip file in the repo"""
+    with gzip.open(os.path.join(DATA_FOLDER, 'fligth_data.csv.gz')) as f:
+        pdf = pd.read_csv(f, encoding='latin-1')
+
+    # Loading airports info to join and get lat/long
+    with gzip.open(os.path.join(DATA_FOLDER, 'airports.csv.gz')) as f:
+        airports = pd.read_csv(f, encoding='latin-1')
+    airports = airports.set_index('IATA_CODE')
+
+    pdf['ds'] = pdf.YEAR.map(str) + '-0' + pdf.MONTH.map(str) + '-0' + pdf.DAY.map(str)
+    pdf.ds = pd.to_datetime(pdf.ds)
+    del pdf['YEAR']
+    del pdf['MONTH']
+    del pdf['DAY']
+
+    pdf = pdf.join(airports, on='ORIGIN_AIRPORT', rsuffix='_ORIG')
+    pdf = pdf.join(airports, on='DESTINATION_AIRPORT', rsuffix='_DEST')
+    pdf.to_sql(
+        'flights',
+        db.engine,
+        if_exists='replace',
+        chunksize=500,
+        dtype={
+            'ds': DateTime,
+        },
+        index=False)
+    print("Done loading table!")
+
+    print("Creating table [random_time_series] reference")
+    obj = db.session.query(TBL).filter_by(table_name='random_time_series').first()
+    if not obj:
+        obj = TBL(table_name='flights')
+    obj.main_dttm_col = 'ds'
+    obj.database = get_or_create_main_db()
+    db.session.merge(obj)
+    db.session.commit()
+    obj.fetch_metadata()
+
+
+def load_paris_iris_geojson():
+    tbl_name = 'paris_iris_mapping'
+
+    with gzip.open(os.path.join(DATA_FOLDER, 'paris_iris.json.gz')) as f:
+        df = pd.read_json(f)
+        df['features'] = df.features.map(json.dumps)
+
+    df.to_sql(
+        tbl_name,
+        db.engine,
+        if_exists='replace',
+        chunksize=500,
+        dtype={
+            'color': String(255),
+            'name': String(255),
+            'features': Text,
+            'type': Text,
+        },
+        index=False)
+    print("Creating table {} reference".format(tbl_name))
+    tbl = db.session.query(TBL).filter_by(table_name=tbl_name).first()
+    if not tbl:
+        tbl = TBL(table_name=tbl_name)
+    tbl.description = "Map of Paris"
+    tbl.database = get_or_create_main_db()
+    db.session.merge(tbl)
+    db.session.commit()
+    tbl.fetch_metadata()
+
+
+def load_bart_lines():
+    tbl_name = 'bart_lines'
+    with gzip.open(os.path.join(DATA_FOLDER, 'bart-lines.json.gz')) as f:
+        df = pd.read_json(f, encoding='latin-1')
+        df['path_json'] = df.path.map(json.dumps)
+        df['polyline'] = df.path.map(polyline.encode)
+        del df['path']
+    df.to_sql(
+        tbl_name,
+        db.engine,
+        if_exists='replace',
+        chunksize=500,
+        dtype={
+            'color': String(255),
+            'name': String(255),
+            'polyline': Text,
+            'path_json': Text,
+        },
+        index=False)
+    print("Creating table {} reference".format(tbl_name))
+    tbl = db.session.query(TBL).filter_by(table_name=tbl_name).first()
+    if not tbl:
+        tbl = TBL(table_name=tbl_name)
+    tbl.description = "BART lines"
+    tbl.database = get_or_create_main_db()
+    db.session.merge(tbl)
+    db.session.commit()
+    tbl.fetch_metadata()

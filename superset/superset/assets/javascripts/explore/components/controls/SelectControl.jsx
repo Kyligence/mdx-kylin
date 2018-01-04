@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import VirtualizedSelect from 'react-virtualized-select';
 import Select, { Creatable } from 'react-select';
 import ControlHeader from '../ControlHeader';
 import { t } from '../../../locales';
+import VirtualizedRendererWrap from '../../../components/VirtualizedRendererWrap';
+import OnPasteSelect from '../../../components/OnPasteSelect';
 
 const propTypes = {
   choices: PropTypes.array,
@@ -14,12 +17,14 @@ const propTypes = {
   multi: PropTypes.bool,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  onFocus: PropTypes.func,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.array]),
   showHeader: PropTypes.bool,
   optionRenderer: PropTypes.func,
   valueRenderer: PropTypes.func,
   valueKey: PropTypes.string,
   options: PropTypes.array,
+  placeholder: PropTypes.string,
 };
 
 const defaultProps = {
@@ -31,6 +36,7 @@ const defaultProps = {
   label: null,
   multi: false,
   onChange: () => {},
+  onFocus: () => {},
   showHeader: true,
   optionRenderer: opt => opt.label,
   valueRenderer: opt => opt.label,
@@ -100,29 +106,30 @@ export default class SelectControl extends React.PureComponent {
   }
   render() {
     //  Tab, comma or Enter will trigger a new option created for FreeFormSelect
+    const placeholder = this.props.placeholder || t('Select %s', this.state.options.length);
     const selectProps = {
       multi: this.props.multi,
       name: `select-${this.props.name}`,
-      placeholder: t('Select %s', this.state.options.length),
+      placeholder,
       options: this.state.options,
       value: this.props.value,
+      labelKey: 'label',
       valueKey: this.props.valueKey,
       autosize: false,
       clearable: this.props.clearable,
       isLoading: this.props.isLoading,
       onChange: this.onChange,
-      optionRenderer: this.props.optionRenderer,
+      onFocus: this.props.onFocus,
+      optionRenderer: VirtualizedRendererWrap(this.props.optionRenderer),
       valueRenderer: this.props.valueRenderer,
+      selectComponent: this.props.freeForm ? Creatable : Select,
     };
-    //  Tab, comma or Enter will trigger a new option created for FreeFormSelect
-    const selectWrap = this.props.freeForm ?
-      (<Creatable {...selectProps} />) : (<Select {...selectProps} />);
     return (
       <div>
         {this.props.showHeader &&
           <ControlHeader {...this.props} />
         }
-        {selectWrap}
+        <OnPasteSelect {...selectProps} selectWrap={VirtualizedSelect} />
       </div>
     );
   }

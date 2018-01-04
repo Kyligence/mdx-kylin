@@ -1,5 +1,4 @@
 from superset import security, sm
-
 from .base_tests import SupersetTestCase
 
 
@@ -95,7 +94,6 @@ class RolePermissionTests(SupersetTestCase):
         self.assertIn(('can_sync_druid_source', 'Superset'), perm_set)
         self.assertIn(('can_override_role_permissions', 'Superset'), perm_set)
         self.assertIn(('can_approve', 'Superset'), perm_set)
-        self.assertIn(('can_update_role', 'Superset'), perm_set)
 
     def test_is_admin_only(self):
         self.assertFalse(security.is_admin_only(
@@ -169,4 +167,3 @@ class RolePermissionTests(SupersetTestCase):
 
         self.assert_cannot_gamma(granter_set)
         self.assert_cannot_alpha(granter_set)
-

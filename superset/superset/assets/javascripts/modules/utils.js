@@ -4,6 +4,17 @@ import $ from 'jquery';
 
 import { formatDate, UTC } from './dates';
 
+const siFormatter = d3.format('.3s');
+
+export function defaultNumberFormatter(n) {
+  let si = siFormatter(n);
+  // Removing trailing `.00` if any
+  if (si.slice(-1) < 'A') {
+    si = parseFloat(si).toString();
+  }
+  return si;
+}
+
 export function d3FormatPreset(format) {
   // like d3.format, but with support for presets like 'smart_date'
   if (format === 'smart_date') {
@@ -12,7 +23,7 @@ export function d3FormatPreset(format) {
   if (format) {
     return d3.format(format);
   }
-  return d3.format('.3s');
+  return defaultNumberFormatter;
 }
 export const d3TimeFormatPreset = function (format) {
   const effFormat = format || 'smart_date';
@@ -239,4 +250,12 @@ export function tryNumify(s) {
     return s;
   }
   return n;
+}
+
+export function getParam(name) {
+  /* eslint no-useless-escape: 0 */
+  const formattedName = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  const regex = new RegExp('[\\?&]' + formattedName + '=([^&#]*)');
+  const results = regex.exec(location.search);
+  return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 }
