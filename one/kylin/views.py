@@ -5,6 +5,7 @@ from past.builtins import basestring
 from flask import Markup, flash, redirect, Response
 from flask_appbuilder import CompactCRUDMixin, expose
 from flask_appbuilder.models.sqla.interface import SQLAInterface
+from flask_appbuilder.security.decorators import has_access_api
 import sqlalchemy as sa
 
 from flask_babel import lazy_gettext as _
@@ -15,7 +16,7 @@ from superset.utils import has_access
 from superset.connectors.base.views import DatasourceModelView
 from superset.connectors.connector_registry import ConnectorRegistry
 from superset.views.base import (
-    BaseSupersetView,
+    api, BaseSupersetView,
     SupersetModelView, ListWidgetWithCheckboxes, DeleteMixin, DatasourceFilter,
     get_datasource_exist_error_mgs,
 )
@@ -34,10 +35,8 @@ class KylinColumnInlineView(CompactCRUDMixin, SupersetModelView):  # noqa
     edit_title = _('Edit Column')
 
     can_delete = False
-    list_widget = ListWidgetWithCheckboxes
-    list_columns = [
-        'column_name', 'verbose_name', 'type', 'groupby', 'filterable', 'count_distinct',
-        'sum', 'min', 'max', 'is_dttm']
+    # list_widget = ListWidgetWithCheckboxes
+    list_columns = ['column_name', 'verbose_name', 'type']
     label_columns = {
         'column_name': _("Column"),
         'verbose_name': _("Verbose Name"),
@@ -166,6 +165,23 @@ class Kylin(BaseSupersetView):
             project.sync_datasource()
 
         return redirect("/")
+
+    @api
+    @has_access_api
+    @expose("/checkbox/<model_view>/<id_>/<attr>/<value>", methods=['GET'])
+    def checkbox(self, model_view, id_, attr, value):
+        print('hello')
+        # modelview_to_model = {
+        #     'TableColumnInlineView':
+        #         ConnectorRegistry.sources['table'].column_class,
+        # }
+        # model = modelview_to_model[model_view]
+        # obj = db.session.query(model).filter_by(id=id_).first()
+        # if obj:
+        #     setattr(obj, attr, value == 'true')
+        #     db.session.commit()
+        # return json_success("OK")
+
 
 appbuilder.add_view_no_menu(Kylin)
 

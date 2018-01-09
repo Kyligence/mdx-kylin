@@ -11,5 +11,7 @@ RUN superset db upgrade
 RUN superset load_examples
 RUN superset init
 
+# todo: starts with mapbox token
+
 EXPOSE 8099
 CMD ["superset", "runserver", "-p", "8099", "-a", "0.0.0.0"]

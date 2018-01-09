@@ -118,6 +118,18 @@ class KylinProject(Model):
         return url.get_backend_name()
 
     @property
+    def data(self):
+        return
+        # d = super(KylinDatasource, self).data
+        # if self.type == 'table':
+        #     grains = self.database.grains() or []
+        #     if grains:
+        #         grains = [(g.name, g.name) for g in grains]
+        #     d['granularity_sqla'] = utils.choicify(self.dttm_cols)
+        #     d['time_grain_sqla'] = grains
+        # return d
+
+    @property
     def sqlalchemy_uri_decrypted(self):
         # import ipdb; ipdb.set_trace()
         # conn = sqla.engine.url.make_url(self.sqlalchemy_uri)
@@ -214,6 +226,7 @@ class KylinProject(Model):
 
         return [{
             'cube': cube,
+            'measures': self.kylin_client.cube_desc(cube['name']),
             'sql': self.kylin_client.cube_sql(cube['name'])['data']['sql'].replace('DEFAULT.', '')
         } for cube in cubes]
 
@@ -221,14 +234,18 @@ class KylinProject(Model):
         return self.kylin_client.get_cube_columns(cube_name).get('data')
 
     def fetch_cube_metrics(self, cube_name):
-        pass
+        _measure = self.kylin_client.get_cube_measures(cube_name).get('data')
+        return [
+            e for e in _measure if e['function']['expression'] in app.config.get('KAP_SUPPORT_METRICS')
+        ]
 
     def sync_datasource(self):
         datasources = []
         columns = []
         metrics = []
+        all_cubes = self.fetch_cubes()
 
-        for cube in self.fetch_cubes():
+        for cube in all_cubes:
             datasources.append(KylinDatasource(
                 project_id=self.id,
                 datasource_name=cube['cube']['name'],
@@ -246,13 +263,17 @@ class KylinProject(Model):
                     groupby=True
                 ))
 
-            metrics.append(KylinMetric(
-                datasource=ds,
-                metric_name='count',
-                verbose_name='COUNT(*)',
-                metric_type='count',
-                expression="COUNT(*)"
-            ))
+            for metric in self.fetch_cube_metrics(ds.datasource_name):
+                metrics.append(KylinMetric(
+                    datasource=ds,
+                    metric_name=metric['name'],
+                    verbose_name=metric['name'],
+                    metric_type=metric['function']['expression'],
+                    expression="{}({})".format(
+                        metric['function']['expression'],
+                        metric['function']['parameter']['value'].replace('.', '_')
+                    )
+                ))
 
         session = db.session
         for _ in itertools.chain(datasources, columns, metrics):
@@ -365,8 +386,7 @@ class KylinDatasource(Model, BaseDatasource):
 
     # @property
     # def data(self):
-    #     # from pprint import pprint; import ipdb; ipdb.set_trace()
-    #     d = super(SqlaTable, self).data
+    #     d = super(KylinDatasource, self).data
     #     if self.type == 'table':
     #         grains = self.database.grains() or []
     #         if grains:
@@ -379,10 +399,10 @@ class KylinDatasource(Model, BaseDatasource):
     #     columns = self.columns
     #     for col in columns:
     #         if col_name == col.column_name:
+        # Supporting arbitrary SQL statements in place of tables
     #             return col
 
     def get_from_clause(self, template_processor=None, db_engine_spec=None):
-        # Supporting arbitrary SQL statements in place of tables
         if self.sql:
             from_sql = self.sql
             if template_processor:

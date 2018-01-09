@@ -20,6 +20,7 @@ poc:
 
 clean:
 	docker stop superset-db
+	docker rm superset-db
 	rm -rf mysql_data
 
 demo:

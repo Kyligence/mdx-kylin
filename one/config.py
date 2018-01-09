@@ -31,6 +31,8 @@ LANGUAGES = {
     'zh': {'flag': 'cn', 'name': 'Chinese'},
 }
 
+MAPBOX_API_KEY = 'pk.eyJ1IjoieW9uZ2ppZXpoYW8iLCJhIjoiY2pjMXM3ZW1zMGNjMzMzczRxcHQ3bWI0OCJ9.KjGWpO7N37z6f2odGNbP5w'
+
 # Roles that are controlled by the API / Superset and should not be changes
 # by humans.
 # ROBOT_PERMISSION_ROLES = ['Public', 'Gamma', 'Alpha', 'Admin', 'sql_lab']
@@ -48,6 +50,17 @@ KAP_PORT = 7070
 KAP_ADMIN = 'joanna'
 KAP_CREDENTIAL= 'kylin@2017'
 KAP_ENDPOINT = '/kylin/api'
+
+# KAP_HOST = "10.1.2.48"
+# KAP_PORT = 7070
+# KAP_ADMIN = 'ADMIN'
+# KAP_CREDENTIAL= 'kylin@2017'
+# KAP_ENDPOINT = '/kylin/api'
+
+KAP_SUPPORT_METRICS = [
+    'SUM',
+    'COUNT',
+]
 
 # CUSTOM_SECURITY_MANAGER = KylinSecurityManager
 # AUTH_TYPE = AUTH_REMOTE_USER
