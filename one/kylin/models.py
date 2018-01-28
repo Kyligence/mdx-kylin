@@ -35,6 +35,7 @@ from superset.jinja_context import get_template_processor
 from superset.models.helpers import set_perm
 
 from superset import app, db, db_engine_specs, utils, sm
+import six
 
 import kylinpy
 
@@ -432,7 +433,10 @@ class KylinDatasource(Model, BaseDatasource):
             extras=None,
             columns=None,
             form_data=None,
-order_desc=True):
+            order_desc=True,
+            prequeries=None,
+            is_prequery=False,
+        ):
         """Querying any sqla table from this common interface"""
         template_kwargs = {
             'from_dttm': from_dttm,
@@ -627,21 +631,18 @@ order_desc=True):
         return qry.select_from(tbl)
 
     def get_query_str(self, query_obj):
-        # todo
-        # self.columns
-        # from sqlalchemy import create_engine
-        # engine = create_engine(self.database.sqlalchemy_uri_decrypted)
         engine = self.database.get_sqla_engine()
         qry = self.get_sqla_query(**query_obj)
-
-        sql = str(
+        sql = six.text_type(
             qry.compile(
                 engine,
-                compile_kwargs={"literal_binds": True}
-            )
+                compile_kwargs={'literal_binds': True},
+            ),
         )
         logging.info(sql)
         sql = sqlparse.format(sql, reindent=True)
+        if query_obj['is_prequery']:
+            query_obj['prequeries'].append(sql)
         return sql
 
     def query(self, query_obj):
