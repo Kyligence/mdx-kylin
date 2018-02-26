@@ -130,7 +130,7 @@ class Kylin(BaseSupersetView):
     @has_access
     @expose("/refresh_datasources/")
     def refresh_datasources(self):
-        KylinProject = ConnectorRegistry.sources['kylin'].project_class
+        KylinProject = ConnectorRegistry.sources['kylin']
         _client = Kylinpy(
             host=app.config.get('KAP_HOST'),
             port=app.config.get('KAP_PORT'),
@@ -170,7 +170,7 @@ class Kylin(BaseSupersetView):
     @has_access_api
     @expose("/checkbox/<model_view>/<id_>/<attr>/<value>", methods=['GET'])
     def checkbox(self, model_view, id_, attr, value):
-        print('hello')
+        pass
         # modelview_to_model = {
         #     'TableColumnInlineView':
         #         ConnectorRegistry.sources['table'].column_class,

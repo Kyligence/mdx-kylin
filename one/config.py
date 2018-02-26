@@ -47,7 +47,7 @@ MAPBOX_API_KEY = 'pk.eyJ1IjoieW9uZ2ppZXpoYW8iLCJhIjoiY2pjMXM3ZW1zMGNjMzMzczRxcHQ
 #################################################################
 KAP_HOST = "sandbox-dong.chinaeast.cloudapp.chinacloudapi.cn"
 KAP_PORT = 7070
-KAP_ADMIN = 'joanna'
+KAP_ADMIN = 'yongjie'
 KAP_CREDENTIAL= 'kylin@2017'
 KAP_ENDPOINT = '/kylin/api'
 

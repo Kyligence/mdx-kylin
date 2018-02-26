@@ -120,15 +120,10 @@ class KylinProject(Model):
 
     @property
     def data(self):
-        return
-        # d = super(KylinDatasource, self).data
-        # if self.type == 'table':
-        #     grains = self.database.grains() or []
-        #     if grains:
-        #         grains = [(g.name, g.name) for g in grains]
-        #     d['granularity_sqla'] = utils.choicify(self.dttm_cols)
-        #     d['time_grain_sqla'] = grains
-        # return d
+        return {
+            'name': self.project_name,
+            'backend': 'kylin',
+        }
 
     @property
     def sqlalchemy_uri_decrypted(self):
@@ -282,23 +277,6 @@ class KylinProject(Model):
 
         session.commit()
 
-    def get_df(self, sql, schema):
-        sql = sql.strip().strip(';')
-        eng = self.get_sqla_engine(schema=schema)
-        df = pd.read_sql(sql, eng)
-
-        def needs_conversion(df_series):
-            if df_series.empty:
-                return False
-            if isinstance(df_series[0], (list, dict)):
-                return True
-            return False
-
-        for k, v in df.dtypes.iteritems():
-            if v.type == numpy.object_ and needs_conversion(df[k]):
-                df[k] = df[k].apply(utils.json_dumps_w_dates)
-        return df
-
 
 class KylinDatasource(Model, BaseDatasource):
 
@@ -345,30 +323,11 @@ class KylinDatasource(Model, BaseDatasource):
     def connection(self):
         return str(self.database)
 
-    # @property
-    # def table_name(self):
-    #     return self.datasource_name
-
     @property
     def name(self):
         if not self.schema:
             return self.datasource_name
         return "{}.{}".format(self.schema, self.datasource_name)
-
-    # def get_table(self, datasource_name, schema=None):
-    #     extra = self.get_extra()
-    #     meta = MetaData(**extra.get('metadata_params', {}))
-    #     return Table(
-    #         datasource_name, meta,
-    #         schema=schema or None,
-    #         autoload=True,
-    #         autoload_with=self.get_sqla_engine())
-
-    # @property
-    # def table_names(self):
-    #     # pylint: disable=no-member
-    #     return ", ".join(
-    #         {"{}".format(s.datasource.full_name) for s in self.slices})
 
     @property
     def cube(self):
@@ -376,32 +335,9 @@ class KylinDatasource(Model, BaseDatasource):
         return Markup(
             '<a href="{self.explore_url}">{name}</a>'.format(**locals()))
 
-    # @property
-    # def sqla_col(self):
-    #     name = self.column_name
-    #     if not self.expression:
-    #         col = column(self.column_name).label(name)
-    #     else:
-    #         col = literal_column(self.expression).label(name)
-    #     return col
-
-    # @property
-    # def data(self):
-    #     d = super(KylinDatasource, self).data
-    #     if self.type == 'table':
-    #         grains = self.database.grains() or []
-    #         if grains:
-    #             grains = [(g.name, g.name) for g in grains]
-    #         d['granularity_sqla'] = utils.choicify(self.dttm_cols)
-    #         d['time_grain_sqla'] = grains
-    #     return d
-
-    # def get_col(self, col_name):
-    #     columns = self.columns
-    #     for col in columns:
-    #         if col_name == col.column_name:
-        # Supporting arbitrary SQL statements in place of tables
-    #             return col
+    @property
+    def data(self):
+        return super(KylinDatasource, self).data
 
     def get_from_clause(self, template_processor=None, db_engine_spec=None):
         if self.sql:
@@ -459,7 +395,6 @@ class KylinDatasource(Model, BaseDatasource):
         time_groupby_inline = db_engine_spec.time_groupby_inline
 
         cols = {col.column_name: col for col in self.columns}
-        # from pprint import pprint; import ipdb; ipdb.set_trace()
         metrics_dict = {m.metric_name: m for m in self.metrics}
 
         if not granularity and is_timeseries:
@@ -645,6 +580,23 @@ class KylinDatasource(Model, BaseDatasource):
             query_obj['prequeries'].append(sql)
         return sql
 
+    def get_df(self, sql, schema):
+        sql = sql.strip().strip(';')
+        eng = self.database.get_sqla_engine(schema=schema)
+        df = pd.read_sql(sql, eng)
+
+        def needs_conversion(df_series):
+            if df_series.empty:
+                return False
+            if isinstance(df_series[0], (list, dict)):
+                return True
+            return False
+
+        for k, v in df.dtypes.iteritems():
+            if v.type == numpy.object_ and needs_conversion(df[k]):
+                df[k] = df[k].apply(utils.json_dumps_w_dates)
+        return df
+
     def query(self, query_obj):
         qry_start_dttm = datetime.datetime.now()
         sql = self.get_query_str(query_obj)
@@ -652,7 +604,7 @@ class KylinDatasource(Model, BaseDatasource):
         error_message = None
         df = None
         try:
-            df = self.database.get_df(sql, self.schema)
+            df = self.get_df(sql, self.schema)
         except Exception as e:
             status = QueryStatus.FAILED
             logging.exception(e)
@@ -665,137 +617,3 @@ class KylinDatasource(Model, BaseDatasource):
             duration=datetime.datetime.now() - qry_start_dttm,
             query=sql,
             error_message=error_message)
-
-    # def get_sqla_table_object(self):
-    #     return self.database.get_table(self.table_name, schema=self.schema)
-
-    # def fetch_metadata(self):
-    #     """Fetches the metadata for the table and merges it in"""
-    #     try:
-    #         table = self.get_sqla_table_object()
-    #     except Exception:
-    #         raise Exception(_(
-    #             "Table [{}] doesn't seem to exist in the specified database, "
-    #             "couldn't fetch column information").format(self.table_name))
-    #
-    #     M = KylinMetric  # noqa
-    #     metrics = []
-    #     any_date_col = None
-    #     db_dialect = self.database.get_dialect()
-    #     dbcols = (
-    #         db.session.query(KylinColumn)
-    #         .filter(KylinColumn.datasource == self)
-    #         .filter(or_(KylinColumn.column_name == col.name
-    #                     for col in table.columns)))
-    #     dbcols = {dbcol.column_name: dbcol for dbcol in dbcols}
-    #
-    #     for col in table.columns:
-    #         try:
-    #             datatype = col.type.compile(dialect=db_dialect).upper()
-    #         except Exception as e:
-    #             datatype = "UNKNOWN"
-    #             logging.error(
-    #                 "Unrecognized data type in {}.{}".format(table, col.name))
-    #             logging.exception(e)
-    #         dbcol = dbcols.get(col.name, None)
-    #         if not dbcol:
-    #             dbcol = KylinColumn(column_name=col.name, type=datatype)
-    #             dbcol.groupby = dbcol.is_string
-    #             dbcol.filterable = dbcol.is_string
-    #             dbcol.sum = dbcol.is_num
-    #             dbcol.avg = dbcol.is_num
-    #             dbcol.is_dttm = dbcol.is_time
-    #         self.columns.append(dbcol)
-    #         if not any_date_col and dbcol.is_time:
-    #             any_date_col = col.name
-    #
-    #         quoted = str(col.compile(dialect=db_dialect))
-    #         if dbcol.sum:
-    #             metrics.append(M(
-    #                 metric_name='sum__' + dbcol.column_name,
-    #                 verbose_name='sum__' + dbcol.column_name,
-    #                 metric_type='sum',
-    #                 expression="SUM({})".format(quoted)
-    #             ))
-    #         if dbcol.avg:
-    #             metrics.append(M(
-    #                 metric_name='avg__' + dbcol.column_name,
-    #                 verbose_name='avg__' + dbcol.column_name,
-    #                 metric_type='avg',
-    #                 expression="AVG({})".format(quoted)
-    #             ))
-    #         if dbcol.max:
-    #             metrics.append(M(
-    #                 metric_name='max__' + dbcol.column_name,
-    #                 verbose_name='max__' + dbcol.column_name,
-    #                 metric_type='max',
-    #                 expression="MAX({})".format(quoted)
-    #             ))
-    #         if dbcol.min:
-    #             metrics.append(M(
-    #                 metric_name='min__' + dbcol.column_name,
-    #                 verbose_name='min__' + dbcol.column_name,
-    #                 metric_type='min',
-    #                 expression="MIN({})".format(quoted)
-    #             ))
-    #         if dbcol.count_distinct:
-    #             metrics.append(M(
-    #                 metric_name='count_distinct__' + dbcol.column_name,
-    #                 verbose_name='count_distinct__' + dbcol.column_name,
-    #                 metric_type='count_distinct',
-    #                 expression="COUNT(DISTINCT {})".format(quoted)
-    #             ))
-    #         dbcol.type = datatype
-    #
-    #     metrics.append(M(
-    #         metric_name='count',
-    #         verbose_name='COUNT(*)',
-    #         metric_type='count',
-    #         expression="COUNT(*)"
-    #     ))
-    #
-    #     dbmetrics = db.session.query(M).filter(M.table_id == self.id).filter(
-    #         or_(M.metric_name == metric.metric_name for metric in metrics))
-    #     dbmetrics = {metric.metric_name: metric for metric in dbmetrics}
-    #     for metric in metrics:
-    #         metric.table_id = self.id
-    #         if not dbmetrics.get(metric.metric_name, None):
-    #             db.session.add(metric)
-    #     if not self.main_dttm_col:
-    #         self.main_dttm_col = any_date_col
-    #     db.session.merge(self)
-    #     db.session.commit()
-
-    # @classmethod
-    # def import_obj(cls, i_datasource, import_time=None):
-    #     """Imports the datasource from the object to the database.
-    #
-    #      Metrics and columns and datasource will be overrided if exists.
-    #      This function can be used to import/export dashboards between multiple
-    #      superset instances. Audit metadata isn't copies over.
-    #     """
-    #     def lookup_sqlatable(table):
-    #         return db.session.query(KylinDatasource).join(Database).filter(
-    #             KylinDatasource.table_name == table.table_name,
-    #             KylinDatasource.schema == table.schema,
-    #             Database.id == table.database_id,
-    #         ).first()
-    #
-    #     def lookup_database(table):
-    #         return db.session.query(Database).filter_by(
-    #             database_name=table.params_dict['database_name']).one()
-    #     return import_util.import_datasource(
-    #         db.session, i_datasource, lookup_database, lookup_sqlatable,
-    #         import_time)
-    #
-    # @classmethod
-    # def query_datasources_by_name(
-    #         cls, session, database, datasource_name, schema=None):
-    #     query = (
-    #         session.query(cls)
-    #         .filter_by(database_id=database.id)
-    #         .filter_by(table_name=datasource_name)
-    #     )
-    #     if schema:
-    #         query = query.filter_by(schema=schema)
-    #     return query.all()
