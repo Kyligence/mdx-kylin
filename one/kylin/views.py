@@ -21,6 +21,7 @@ from superset.views.base import (
     get_datasource_exist_error_mgs,
 )
 
+from one.kylin.models import KylinProject
 from . import models
 
 from kylinpy import Kylinpy
@@ -55,6 +56,7 @@ class KylinColumnInlineView(CompactCRUDMixin, SupersetModelView):  # noqa
         'type': _('Type'),
     }
 
+
 appbuilder.add_view_no_menu(KylinColumnInlineView)
 
 
@@ -67,6 +69,7 @@ class KylinMetricInlineView(CompactCRUDMixin, SupersetModelView):  # noqa
     edit_title = _('Edit Metric')
 
     add_columns = ['metric_name', 'expression']
+
 
 appbuilder.add_view_no_menu(KylinMetricInlineView)
 
@@ -92,14 +95,15 @@ class KylinProjectModelView(CompactCRUDMixin, SupersetModelView):
     def post_add(self, kylin_instance):
         kylin_instance.sync()
 
-appbuilder.add_view(
-    KylinProjectModelView,
-    "Kylin Project",
-    label=__("Kylin Project"),
-    category="Sources",
-    category_label=__("Sources"),
-    icon='fa-cubes',
-)
+
+# appbuilder.add_view(
+#     KylinProjectModelView,
+#     "Kylin Project",
+#     label=__("Kylin Project"),
+#     category="Sources",
+#     category_label=__("Sources"),
+#     icon='fa-cubes',
+# )
 
 
 class KylinDatasourceModelView(SupersetModelView):  # noqa
@@ -110,12 +114,13 @@ class KylinDatasourceModelView(SupersetModelView):  # noqa
     add_title = _('Add Kylin Cubes')
     edit_title = _('Edit Kylin Cubes')
 
-    list_columns = ['cube']
+    list_columns = ['cube', 'project']
     add_columns = ['datasource_name', 'sql']
     edit_columns = add_columns
     show_columns = add_columns
 
     related_views = [KylinColumnInlineView, KylinMetricInlineView]
+
 
 appbuilder.add_view(
     KylinDatasourceModelView,
@@ -126,11 +131,11 @@ appbuilder.add_view(
     icon='fa-cubes',
 )
 
+
 class Kylin(BaseSupersetView):
     @has_access
     @expose("/refresh_datasources/")
     def refresh_datasources(self):
-        KylinProject = ConnectorRegistry.sources['kylin']
         _client = Kylinpy(
             host=app.config.get('KAP_HOST'),
             port=app.config.get('KAP_PORT'),
@@ -139,28 +144,28 @@ class Kylin(BaseSupersetView):
             version='v2'
         )
 
-        local_db = db.session.query(KylinProject).all()
+        local_projects = db.session.query(KylinProject).all()
         for project in _client.projects()['data']:
-            result = (
+            has_project = (
                 db.session.query(KylinProject)
                 .filter(KylinProject.uuid == project['uuid'])
                 .first()
             )
-            if result:
-                local_db.remove(result)
-                if str(project['last_modified']) != result.last_modified:
-                    result.refresh_kylin_project(project)
+            if has_project:
+                local_projects.remove(has_project)
+                if str(project['last_modified']) != has_project.last_modified:
+                    has_project.refresh_kylin_project(project)
                 else:
                     continue
             else:
                 KylinProject.create_kylin_project(project)
 
-        for inaction_project in local_db:
+        for inaction_project in local_projects:
             inaction_project.inaction()
             # todo disable cube in this project
 
         for project in (
-            db.session.query(KylinProject).filter(KylinProject.active == True)
+            db.session.query(KylinProject).filter(KylinProject.active)
         ):
             project.sync_datasource()
 
@@ -194,6 +199,5 @@ appbuilder.add_link(
     category_label=__("Sources"),
     category_icon='fa-database',
     icon="fa-cog")
-
 
 appbuilder.add_separator("Sources")

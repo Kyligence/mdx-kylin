@@ -1,8 +1,0 @@
-#!/bin/bash
-#!/usr/bin/env VIRTUAL_ENV
-# This hook is sourced after this virtualenv is activated.
-
-ROOT=`cat $VIRTUAL_ENV/.project`
-
-export SUPERSET_CONFIG_PATH=$ROOT/one/config.py
-export PYTHONPATH=$ROOT

@@ -9,7 +9,7 @@ DB_USER=root
 DB_PASSWORD=root
 DB_DATADIR=$ROOT_DIR/mysql_data
 
-if [[ $ROOT_DIR == "" ]]; then
+if [[ $ROOT_DIR == "" ]]; the
     echo "Error: Root dir is empty"
     return 127
 fi
@@ -101,8 +101,8 @@ function init {
     superset init
 }
 
-test_env
-db_client
-python_env
+# test_env
+# db_client
+# python_env
 docker_db
-init
+# init

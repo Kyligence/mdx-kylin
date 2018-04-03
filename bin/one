@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+
+import warnings
+
+import os
+
+ROOT_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..')
+os.environ['SUPERSET_CONFIG_PATH'] = os.path.join(ROOT_PATH, "one/config.py")
+
+from flask.exthook import ExtDeprecationWarning
+warnings.simplefilter('ignore', ExtDeprecationWarning)
+from superset.cli import manager
+
+if __name__ == "__main__":
+    manager.run()

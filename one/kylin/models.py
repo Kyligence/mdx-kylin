@@ -12,12 +12,11 @@ from sqlalchemy import (
     Column, Integer, String, ForeignKey, Text, Boolean,
     DateTime, JSON, TIMESTAMP
 )
-import sqlalchemy as sqla
 import sqlalchemy as sa
 from sqlalchemy import asc, and_, desc, select, or_, MetaData, Table
 from sqlalchemy.sql.expression import TextAsFrom
 from sqlalchemy.orm import backref, relationship
-from sqlalchemy.sql import table, literal_column, text, column
+from sqlalchemy.sql import table, literal_column, text, column, join
 from sqlalchemy.engine.url import make_url
 from sqlalchemy import create_engine
 from sqlalchemy.pool import NullPool
@@ -110,8 +109,8 @@ class KylinProject(Model):
     chunk = Column(Text, nullable=False)
     cache_timeout = 0
 
-    # def __repr__(self):
-    #     return self.verbose_name if self.verbose_name else self.project
+    def __repr__(self):
+        return self.project_name
 
     @property
     def backend(self):
@@ -127,7 +126,6 @@ class KylinProject(Model):
 
     @property
     def sqlalchemy_uri_decrypted(self):
-        # import ipdb; ipdb.set_trace()
         # conn = sqla.engine.url.make_url(self.sqlalchemy_uri)
         # if self.custom_password_store:
         #     conn.password = self.custom_password_store(conn)
@@ -147,18 +145,6 @@ class KylinProject(Model):
 
     extra = {}
 
-    # def get_columns(self, table_name, schema=None):
-    #     return self.inspector.get_columns(table_name, schema)
-
-    # def get_table(self, table_name, schema=None):
-    #     extra = self.get_extra()
-    #     meta = MetaData(**extra.get('metadata_params', {}))
-    #     return Table(
-    #         table_name, meta,
-    #         schema=schema or None,
-    #         autoload=True,
-    #         autoload_with=self.get_sqla_engine())
-
     def get_sqla_engine(self, schema=None, nullpool=False, user_name=None):
         extra = self.get_extra()
         uri = make_url(self.sqlalchemy_uri_decrypted)
@@ -170,18 +156,10 @@ class KylinProject(Model):
         #     uri.username = user_name if user_name else g.user.username
         return create_engine(uri, **params)
 
-    # @property
-    # def inspector(self):
-    #     engine = self.get_sqla_engine()
-    #     return sqla.inspect(engine)
-
     @property
     def db_engine_spec(self):
         return db_engine_specs.engines.get(
             self.backend, db_engine_specs.BaseEngineSpec)
-
-    # def authentication(self):
-    #     self.connection.authentication()
 
     @property
     def kylin_client(self):
