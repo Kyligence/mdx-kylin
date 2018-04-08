@@ -114,10 +114,10 @@ class KylinDatasourceModelView(SupersetModelView):  # noqa
     add_title = _('Add Kylin Cubes')
     edit_title = _('Edit Kylin Cubes')
 
-    list_columns = ['cube', 'project']
-    add_columns = ['datasource_name', 'sql']
-    edit_columns = add_columns
-    show_columns = add_columns
+    list_columns = ['cube', 'project', 'last_modified']
+    add_columns = []
+    edit_columns = []
+    show_columns = []
 
     related_views = [KylinColumnInlineView, KylinMetricInlineView]
 

@@ -19,7 +19,7 @@ import kylinpy
 # --------------------------------------------------
 DEFAULT_MODULE_DS_MAP = OrderedDict([
     ('superset.connectors.sqla.models', ['SqlaTable']),
-    ('superset.connectors.druid.models', ['DruidDatasource']),
+    # ('superset.connectors.druid.models', ['DruidDatasource']),
 ])
 ADDITIONAL_MODULE_DS_MAP = {
     'one.kylin.models': ['KylinDatasource']
@@ -56,6 +56,6 @@ KAP_SUPPORT_METRICS = [
     'COUNT',
 ]
 
-# CUSTOM_SECURITY_MANAGER = KylinSecurityManager
-# AUTH_TYPE = AUTH_REMOTE_USER
-# KAP_PERMISSION_ROLES = ['Query', 'Operation', 'Admin', 'Management']
+CUSTOM_SECURITY_MANAGER = KylinSecurityManager
+AUTH_TYPE = AUTH_REMOTE_USER
+KAP_PERMISSION_ROLES = ['Query', 'Operation', 'Admin', 'Management']

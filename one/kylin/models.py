@@ -65,14 +65,6 @@ class KylinColumn(Model, BaseColumn):
             col = literal_column(self.expression).label(name)
         return col
 
-    # @classmethod
-    # def import_obj(cls, i_column):
-    #     def lookup_obj(lookup_column):
-    #         return db.session.query(KylinColumn).filter(
-    #             KylinColumn.table_id == lookup_column.table_id,
-    #             KylinColumn.column_name == lookup_column.column_name).first()
-    #     return import_util.import_simple_obj(db.session, i_column, lookup_obj)
-
 
 class KylinMetric(Model, BaseMetric):
 
@@ -267,10 +259,6 @@ class KylinDatasource(Model, BaseDatasource):
     project_class = KylinProject
 
     datasource_name = Column(String(255), unique=True)
-    # model_name = Column(String(255), unique=True)
-    # status = Column(String(40), nullable=False)
-    # cube_size = Column(String(40), nullable=False)
-
     uuid = Column(String(40), nullable=False)
     last_modified = Column(TIMESTAMP, nullable=False)
     active = Column(Boolean, default=True)
@@ -316,6 +304,15 @@ class KylinDatasource(Model, BaseDatasource):
     @property
     def data(self):
         return super(KylinDatasource, self).data
+
+    @property
+    def link(self):
+        name = escape(self.name)
+        return Markup(
+            '<a href="{self.explore_url}">{name}</a>'.format(**locals()))
+
+    def values_for_column(self, column_name, limit=10000):
+        pass
 
     def get_from_clause(self, template_processor=None, db_engine_spec=None):
         if self.sql:
