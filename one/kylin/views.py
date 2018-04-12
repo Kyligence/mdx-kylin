@@ -169,7 +169,7 @@ class Kylin(BaseSupersetView):
         ):
             project.sync_datasource()
 
-        return redirect("/")
+        return redirect("/kylindatasourcemodelview/list/")
 
     @api
     @has_access_api

@@ -39,8 +39,8 @@ MAPBOX_API_KEY = 'pk.eyJ1IjoieW9uZ2ppZXpoYW8iLCJhIjoiY2pjMXM3ZW1zMGNjMzMzczRxcHQ
 
 # Integrate external Blueprints to the app by passing them to your
 # configuration. These blueprints will get integrated in the app
-# one = Blueprint('one', __name__, template_folder='templates')
-# BLUEPRINTS = [one]
+one = Blueprint('one', __name__, template_folder='templates')
+BLUEPRINTS = [one]
 
 #################################################################
 # KAP CONFIG
