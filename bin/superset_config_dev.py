@@ -1,8 +1,4 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-
+import os
 from flask import Blueprint
 from flask_appbuilder.security.manager import AUTH_REMOTE_USER
 
@@ -10,16 +6,11 @@ from collections import OrderedDict
 from one.kylin_auth import KylinSecurityManager
 
 # --------------------------------------------------
-# used for debug mode restart
-import kylinpy
-# --------------------------------------------------
-
-# --------------------------------------------------
 # Modules, datasources and middleware to be registered
 # --------------------------------------------------
 DEFAULT_MODULE_DS_MAP = OrderedDict([
     ('superset.connectors.sqla.models', ['SqlaTable']),
-    # ('superset.connectors.druid.models', ['DruidDatasource']),
+    ('superset.connectors.druid.models', ['DruidDatasource']),
 ])
 ADDITIONAL_MODULE_DS_MAP = {
     'one.kylin.models': ['KylinDatasource']
@@ -36,10 +27,9 @@ MAPBOX_API_KEY = 'pk.eyJ1IjoieW9uZ2ppZXpoYW8iLCJhIjoiY2pjMXM3ZW1zMGNjMzMzczRxcHQ
 # Roles that are controlled by the API / Superset and should not be changes
 # by humans.
 # ROBOT_PERMISSION_ROLES = ['Public', 'Gamma', 'Alpha', 'Admin', 'sql_lab']
-
 # Integrate external Blueprints to the app by passing them to your
 # configuration. These blueprints will get integrated in the app
-one = Blueprint('one', __name__, template_folder='templates')
+one = Blueprint('one', __name__, template_folder=os.path.join(os.environ['SUPERSET_HOME'], 'one/templates'))
 BLUEPRINTS = [one]
 
 #################################################################
@@ -56,6 +46,6 @@ KAP_SUPPORT_METRICS = [
     'COUNT',
 ]
 
-CUSTOM_SECURITY_MANAGER = KylinSecurityManager
-AUTH_TYPE = AUTH_REMOTE_USER
-KAP_PERMISSION_ROLES = ['Query', 'Operation', 'Admin', 'Management']
+# CUSTOM_SECURITY_MANAGER = KylinSecurityManager
+# AUTH_TYPE = AUTH_REMOTE_USER
+# KAP_PERMISSION_ROLES = ['Query', 'Operation', 'Admin', 'Management']
