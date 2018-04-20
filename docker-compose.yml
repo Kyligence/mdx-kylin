@@ -1,7 +1,7 @@
 version: '3'
 services:
   superset:
-    image: kyligence/superset
+    image: kyligence/superset-mod
     restart: always
     depends_on:
       - mysql
@@ -15,8 +15,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: superset
-      MYSQL_USER: superset
-      MYSQL_PASSWORD: superset
     volumes:
       - mysql:/var/lib/mysql
 volumes:

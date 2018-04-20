@@ -2,15 +2,18 @@
 
 set -e
 
+echo "Starting build docker image"
+docker build -f Dockerfile -t kyligence/superset-mod:latest .
+
 echo "Starting mysql services..."
 docker-compose up -d mysql
-echo "Sleeping for 30s"
+echo "Waiting for mysql ready, sleep for 30s"
 sleep 30
 
 # Start Superset
 echo "Starting Superset..."
 docker-compose up -d superset
-echo "Sleeping for 30s"
+echo "Waiting for Superset ready, sleep for 30s"
 sleep 30
 
 # Inititalize Demo

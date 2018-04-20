@@ -3,6 +3,7 @@ FROM debian:stretch
 # Configure environment
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
+    SUPERSET_HOME=/usr/local/superset \
     PYTHONPATH=/etc/superset:/usr/local/superset:$PYTHONPATH
 
 # install dependencies
@@ -49,7 +50,7 @@ RUN pip install -e /usr/local/superset/superset
 
 # Configure Filesystem
 VOLUME /etc/superset
-WORKDIR /usr/local/supserset
+WORKDIR /usr/local/superset
 
 # Deploy application
 EXPOSE 8088

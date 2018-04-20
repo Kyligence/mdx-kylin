@@ -1,13 +1,11 @@
+import os.path
 from flask import Blueprint
 from flask_appbuilder.security.manager import AUTH_REMOTE_USER
 
 from collections import OrderedDict
 from one.kylin_auth import KylinSecurityManager
 
-# --------------------------------------------------
-# used for debug mode restart
-# import kylinpy
-# --------------------------------------------------
+ENABLE_TIME_ROTATE = True
 
 # --------------------------------------------------
 # Modules, datasources and middleware to be registered
@@ -19,7 +17,7 @@ DEFAULT_MODULE_DS_MAP = OrderedDict([
 ADDITIONAL_MODULE_DS_MAP = {
     'one.kylin.models': ['KylinDatasource']
 }
-SQLALCHEMY_DATABASE_URI = 'mysql://root:root@127.0.0.1/superset'
+SQLALCHEMY_DATABASE_URI = 'mysql://root:root@mysql/superset'
 
 LANGUAGES = {
     'en': {'flag': 'us', 'name': 'English'},
@@ -34,8 +32,8 @@ MAPBOX_API_KEY = 'pk.eyJ1IjoieW9uZ2ppZXpoYW8iLCJhIjoiY2pjMXM3ZW1zMGNjMzMzczRxcHQ
 
 # Integrate external Blueprints to the app by passing them to your
 # configuration. These blueprints will get integrated in the app
-# one = Blueprint('one', __name__, template_folder='templates')
-# BLUEPRINTS = [one]
+one = Blueprint('one', __name__, template_folder=os.path.join(os.environ['SUPERSET_HOME'], 'one/templates'))
+BLUEPRINTS = [one]
 
 #################################################################
 # KAP CONFIG
@@ -43,7 +41,7 @@ MAPBOX_API_KEY = 'pk.eyJ1IjoieW9uZ2ppZXpoYW8iLCJhIjoiY2pjMXM3ZW1zMGNjMzMzczRxcHQ
 KAP_HOST = "sandbox"
 KAP_PORT = 7070
 KAP_ADMIN = 'ADMIN'
-KAP_CREDENTIAL= 'KYLIN'
+KAP_PASSWORD = 'KYLIN'
 KAP_ENDPOINT = '/kylin/api'
 
 KAP_SUPPORT_METRICS = [
@@ -51,6 +49,6 @@ KAP_SUPPORT_METRICS = [
     'COUNT',
 ]
 
-# CUSTOM_SECURITY_MANAGER = KylinSecurityManager
-# AUTH_TYPE = AUTH_REMOTE_USER
-# KAP_PERMISSION_ROLES = ['Query', 'Operation', 'Admin', 'Management']
+CUSTOM_SECURITY_MANAGER = KylinSecurityManager
+AUTH_TYPE = AUTH_REMOTE_USER
+KAP_PERMISSION_ROLES = ['Query', 'Operation', 'Admin', 'Management']

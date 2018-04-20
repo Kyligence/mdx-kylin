@@ -1,1 +1,1 @@
-/Users/yongjie.zhao/workspace/kyligence/One/one/migrations/f160b4efe664_.py
+../../../../one/migrations/f160b4efe664_.py

@@ -1,4 +1,4 @@
-import os
+import os.path
 from flask import Blueprint
 from flask_appbuilder.security.manager import AUTH_REMOTE_USER
 
@@ -38,7 +38,7 @@ BLUEPRINTS = [one]
 KAP_HOST = "sandbox"
 KAP_PORT = 7070
 KAP_ADMIN = 'ADMIN'
-KAP_CREDENTIAL= 'KYLIN'
+KAP_PASSWORD = 'KYLIN'
 KAP_ENDPOINT = '/kylin/api'
 
 KAP_SUPPORT_METRICS = [

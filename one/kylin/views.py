@@ -140,7 +140,7 @@ class Kylin(BaseSupersetView):
             host=app.config.get('KAP_HOST'),
             port=app.config.get('KAP_PORT'),
             username=app.config.get('KAP_ADMIN'),
-            password=app.config.get('KAP_CREDENTIAL'),
+            password=app.config.get('KAP_PASSWORD'),
             version='v2'
         )
 
