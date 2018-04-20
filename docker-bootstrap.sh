@@ -2,9 +2,6 @@
 
 set -e
 
-echo "Starting build docker image"
-docker build -f Dockerfile -t kyligence/superset-mod:latest .
-
 echo "Starting mysql services..."
 docker-compose up -d mysql
 echo "Waiting for mysql ready, sleep for 30s"
