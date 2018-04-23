@@ -22,6 +22,9 @@ RUN mkdir /etc/superset && \
         openjdk-8-jdk \
         python-dev \
         python-pip && \
+    curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+    apt-get update && \
+    apt-get install -y nodejs && \
     apt-get clean && \
     rm -r /var/lib/apt/lists/* && \
     pip install --no-cache-dir \
@@ -46,7 +49,9 @@ RUN mkdir /etc/superset && \
 COPY bin /usr/local/bin
 COPY superset /usr/local/superset/superset
 COPY one /usr/local/superset/one
-RUN pip install -e /usr/local/superset/superset
+RUN pip install -e /usr/local/superset/superset && \
+    cd /usr/local/superset/superset/superset/assets && \
+    npm install && npm run build && rm -rf node_module
 
 # Configure Filesystem
 VOLUME /etc/superset

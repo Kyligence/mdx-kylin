@@ -433,5 +433,4 @@ try:
         print('Loaded your LOCAL configuration at [{}]'.format(
             superset_config.__file__))
 except ImportError:
-    print('import ERROR')
     pass

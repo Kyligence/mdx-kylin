@@ -8,7 +8,7 @@ services:
     ports:
       - "8088:8088"
     volumes:
-      - bin/superset_config.py:/etc/superset/superset_config.py
+      - ./bin/superset_config.py:/etc/superset/superset_config.py
   mysql:
     image: mysql:5.7
     restart: always
