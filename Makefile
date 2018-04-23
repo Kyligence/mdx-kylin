@@ -15,7 +15,7 @@ initdev: export SUPERSET_HOME=$(shell pwd)
 initdev: export PYTHONPATH=$(shell pwd):PYTHONPATH
 initdev:
 	@echo "Starting mysql services..."
-	@docker run --name superset-db -v `pwd`/mysql_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=superset -d -p 3306:3306 mysql
+	@docker run --name superset-db -v `pwd`/mysql_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=superset -d -p 3306:3306 mysql:5.7
 	@echo "Sleeping for 20s"
 	@sleep 20
 	./bin/superset-init
