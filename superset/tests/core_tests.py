@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Unit tests for Superset"""
 from __future__ import absolute_import
 from __future__ import division
@@ -15,12 +16,12 @@ import random
 import string
 import unittest
 
-from flask import escape
 import pandas as pd
 import psycopg2
+from six import text_type
 import sqlalchemy as sqla
 
-from superset import appbuilder, dataframe, db, jinja_context, sm, sql_lab, utils
+from superset import dataframe, db, jinja_context, security_manager, sql_lab, utils
 from superset.connectors.sqla.models import SqlaTable
 from superset.models import core as models
 from superset.models.sql_lab import Query
@@ -83,31 +84,58 @@ class CoreTests(SupersetTestCase):
             '/superset/slice/{}/?standalone=true'.format(slc.id))
         assert 'List Roles' not in resp
 
-    def test_slice_json_endpoint(self):
+    def test_cache_key(self):
+        self.login(username='admin')
+        slc = self.get_slice('Girls', db.session)
+
+        viz = slc.viz
+        qobj = viz.query_obj()
+        cache_key = viz.cache_key(qobj)
+        self.assertEqual(cache_key, viz.cache_key(qobj))
+
+        qobj['groupby'] = []
+        self.assertNotEqual(cache_key, viz.cache_key(qobj))
+
+    def test_old_slice_json_endpoint(self):
         self.login(username='admin')
         slc = self.get_slice('Girls', db.session)
 
         json_endpoint = (
-            '/superset/explore_json/{}/{}?form_data={}'
-            .format(slc.datasource_type, slc.datasource_id, json.dumps(slc.viz.form_data))
+            '/superset/explore_json/{}/{}/'
+            .format(slc.datasource_type, slc.datasource_id)
         )
-        resp = self.get_resp(json_endpoint)
+        resp = self.get_resp(json_endpoint, {'form_data': json.dumps(slc.viz.form_data)})
         assert '"Jennifer"' in resp
+
+    def test_slice_json_endpoint(self):
+        self.login(username='admin')
+        slc = self.get_slice('Girls', db.session)
+        resp = self.get_resp(slc.explore_json_url)
+        assert '"Jennifer"' in resp
+
+    def test_old_slice_csv_endpoint(self):
+        self.login(username='admin')
+        slc = self.get_slice('Girls', db.session)
+
+        csv_endpoint = (
+            '/superset/explore_json/{}/{}/?csv=true'
+            .format(slc.datasource_type, slc.datasource_id)
+        )
+        resp = self.get_resp(csv_endpoint, {'form_data': json.dumps(slc.viz.form_data)})
+        assert 'Jennifer,' in resp
 
     def test_slice_csv_endpoint(self):
         self.login(username='admin')
         slc = self.get_slice('Girls', db.session)
 
-        csv_endpoint = (
-            '/superset/explore_json/{}/{}?csv=true&form_data={}'
-            .format(slc.datasource_type, slc.datasource_id, json.dumps(slc.viz.form_data))
-        )
-        resp = self.get_resp(csv_endpoint)
+        csv_endpoint = '/superset/explore_json/?csv=true'
+        resp = self.get_resp(
+            csv_endpoint, {'form_data': json.dumps({'slice_id': slc.id})})
         assert 'Jennifer,' in resp
 
     def test_admin_only_permissions(self):
         def assert_admin_permission_in(role_name, assert_func):
-            role = sm.find_role(role_name)
+            role = security_manager.find_role(role_name)
             permissions = [p.permission.name for p in role.permissions]
             assert_func('can_sync_druid_source', permissions)
             assert_func('can_approve', permissions)
@@ -118,7 +146,7 @@ class CoreTests(SupersetTestCase):
 
     def test_admin_only_menu_views(self):
         def assert_admin_view_menus_in(role_name, assert_func):
-            role = sm.find_role(role_name)
+            role = security_manager.find_role(role_name)
             view_menus = [p.view_menu.name for p in role.permissions]
             assert_func('ResetPasswordView', view_menus)
             assert_func('RoleModelView', view_menus)
@@ -126,7 +154,6 @@ class CoreTests(SupersetTestCase):
             assert_func('UserDBModelView', view_menus)
             assert_func('SQL Lab',
                         view_menus)
-            assert_func('AccessRequestsModelView', view_menus)
 
         assert_admin_view_menus_in('Admin', self.assertIn)
         assert_admin_view_menus_in('Alpha', self.assertNotIn)
@@ -143,7 +170,7 @@ class CoreTests(SupersetTestCase):
 
         url = (
             '/superset/explore/table/{}/?slice_name={}&'
-            'action={}&datasource_name=energy_usage&form_data={}')
+            'action={}&datasource_name=energy_usage')
 
         form_data = {
             'viz_type': 'sankey',
@@ -158,8 +185,8 @@ class CoreTests(SupersetTestCase):
                 tbl_id,
                 copy_name,
                 'saveas',
-                json.dumps(form_data),
             ),
+            {'form_data': json.dumps(form_data)},
         )
         slices = db.session.query(models.Slice) \
             .filter_by(slice_name=copy_name).all()
@@ -179,8 +206,8 @@ class CoreTests(SupersetTestCase):
                 tbl_id,
                 new_slice_name,
                 'overwrite',
-                json.dumps(form_data),
             ),
+            {'form_data': json.dumps(form_data)},
         )
         slc = db.session.query(models.Slice).filter_by(id=new_slice_id).first()
         assert slc.slice_name == new_slice_name
@@ -212,8 +239,8 @@ class CoreTests(SupersetTestCase):
         urls = []
         for slc in db.session.query(Slc).all():
             urls += [
-                (slc.slice_name, 'slice_url', slc.slice_url),
-                (slc.slice_name, 'slice_id_url', slc.slice_id_url),
+                (slc.slice_name, 'explore', slc.slice_url),
+                (slc.slice_name, 'explore_json', slc.explore_json_url),
             ]
         for name, method, url in urls:
             logging.info('[{name}]/[{method}]: {url}'.format(**locals()))
@@ -237,14 +264,21 @@ class CoreTests(SupersetTestCase):
         resp = self.client.get(url)
         self.assertEqual(resp.status_code, 200)
 
+    def test_get_user_slices(self):
+        self.login(username='admin')
+        userid = security_manager.find_user('admin').id
+        url = '/sliceaddview/api/read?_flt_0_created_by={}'.format(userid)
+        resp = self.client.get(url)
+        self.assertEqual(resp.status_code, 200)
+
     def test_slices_V2(self):
         # Add explore-v2-beta role to admin user
         # Test all slice urls as user with with explore-v2-beta role
-        sm.add_role('explore-v2-beta')
+        security_manager.add_role('explore-v2-beta')
 
-        appbuilder.sm.add_user(
+        security_manager.add_user(
             'explore_beta', 'explore_beta', ' user', 'explore_beta@airbnb.com',
-            appbuilder.sm.find_role('explore-v2-beta'),
+            security_manager.find_role('explore-v2-beta'),
             password='general')
         self.login(username='explore_beta', password='general')
 
@@ -257,14 +291,6 @@ class CoreTests(SupersetTestCase):
         for name, method, url in urls:
             print('[{name}]/[{method}]: {url}'.format(**locals()))
             response = self.client.get(url)
-
-    def test_dashboard(self):
-        self.login(username='admin')
-        urls = {}
-        for dash in db.session.query(models.Dashboard).all():
-            urls[dash.dashboard_title] = dash.url
-        for title, url in urls.items():
-            assert escape(title) in self.client.get(url).data.decode('utf-8')
 
     def test_doctests(self):
         modules = [utils, models, sql_lab]
@@ -340,7 +366,6 @@ class CoreTests(SupersetTestCase):
         slc = self.get_slice('Girls', db.session)
         data = self.get_json_resp(
             '/superset/warm_up_cache?slice_id={}'.format(slc.id))
-
         assert data == [{'slice_id': slc.id, 'slice_name': slc.slice_name}]
 
         data = self.get_json_resp(
@@ -357,8 +382,8 @@ class CoreTests(SupersetTestCase):
             'energy_usage&datasource_id=1&datasource_type=table&'
             'previous_viz_type=sankey'
         )
-        resp = self.client.post('/r/shortner/', data=data)
-        assert '/r/' in resp.data.decode('utf-8')
+        resp = self.client.post('/r/shortner/', data=dict(data=data))
+        assert '?r=' in resp.data.decode('utf-8')
 
     def test_kv(self):
         self.logout()
@@ -387,167 +412,6 @@ class CoreTests(SupersetTestCase):
         except Exception:
             self.assertRaises(TypeError)
 
-    def test_save_dash(self, username='admin'):
-        self.login(username=username)
-        dash = db.session.query(models.Dashboard).filter_by(
-            slug='births').first()
-        positions = []
-        for i, slc in enumerate(dash.slices):
-            d = {
-                'col': 0,
-                'row': i * 4,
-                'size_x': 4,
-                'size_y': 4,
-                'slice_id': '{}'.format(slc.id)}
-            positions.append(d)
-        data = {
-            'css': '',
-            'expanded_slices': {},
-            'positions': positions,
-            'dashboard_title': dash.dashboard_title,
-        }
-        url = '/superset/save_dash/{}/'.format(dash.id)
-        resp = self.get_resp(url, data=dict(data=json.dumps(data)))
-        self.assertIn('SUCCESS', resp)
-
-    def test_save_dash_with_filter(self, username='admin'):
-        self.login(username=username)
-        dash = db.session.query(models.Dashboard).filter_by(
-            slug='world_health').first()
-        positions = []
-        for i, slc in enumerate(dash.slices):
-            d = {
-                'col': 0,
-                'row': i * 4,
-                'size_x': 4,
-                'size_y': 4,
-                'slice_id': '{}'.format(slc.id)}
-            positions.append(d)
-
-        filters = {str(dash.slices[0].id): {'region': ['North America']}}
-        default_filters = json.dumps(filters)
-        data = {
-            'css': '',
-            'expanded_slices': {},
-            'positions': positions,
-            'dashboard_title': dash.dashboard_title,
-            'default_filters': default_filters,
-        }
-
-        url = '/superset/save_dash/{}/'.format(dash.id)
-        resp = self.get_resp(url, data=dict(data=json.dumps(data)))
-        self.assertIn('SUCCESS', resp)
-
-        updatedDash = db.session.query(models.Dashboard).filter_by(
-            slug='world_health').first()
-        new_url = updatedDash.url
-        self.assertIn('region', new_url)
-
-        resp = self.get_resp(new_url)
-        self.assertIn('North America', resp)
-
-    def test_save_dash_with_dashboard_title(self, username='admin'):
-        self.login(username=username)
-        dash = (
-            db.session.query(models.Dashboard)
-            .filter_by(slug='births')
-            .first()
-        )
-        origin_title = dash.dashboard_title
-        positions = []
-        for i, slc in enumerate(dash.slices):
-            d = {
-                'col': 0,
-                'row': i * 4,
-                'size_x': 4,
-                'size_y': 4,
-                'slice_id': '{}'.format(slc.id)}
-            positions.append(d)
-        data = {
-            'css': '',
-            'expanded_slices': {},
-            'positions': positions,
-            'dashboard_title': 'new title',
-        }
-        url = '/superset/save_dash/{}/'.format(dash.id)
-        self.get_resp(url, data=dict(data=json.dumps(data)))
-        updatedDash = (
-            db.session.query(models.Dashboard)
-            .filter_by(slug='births')
-            .first()
-        )
-        self.assertEqual(updatedDash.dashboard_title, 'new title')
-        # # bring back dashboard original title
-        data['dashboard_title'] = origin_title
-        self.get_resp(url, data=dict(data=json.dumps(data)))
-
-    def test_copy_dash(self, username='admin'):
-        self.login(username=username)
-        dash = db.session.query(models.Dashboard).filter_by(
-            slug='births').first()
-        positions = []
-        for i, slc in enumerate(dash.slices):
-            d = {
-                'col': 0,
-                'row': i * 4,
-                'size_x': 4,
-                'size_y': 4,
-                'slice_id': '{}'.format(slc.id)}
-            positions.append(d)
-        data = {
-            'css': '',
-            'duplicate_slices': False,
-            'expanded_slices': {},
-            'positions': positions,
-            'dashboard_title': 'Copy Of Births',
-        }
-
-        # Save changes to Births dashboard and retrieve updated dash
-        dash_id = dash.id
-        url = '/superset/save_dash/{}/'.format(dash_id)
-        self.client.post(url, data=dict(data=json.dumps(data)))
-        dash = db.session.query(models.Dashboard).filter_by(
-            id=dash_id).first()
-        orig_json_data = dash.data
-
-        # Verify that copy matches original
-        url = '/superset/copy_dash/{}/'.format(dash_id)
-        resp = self.get_json_resp(url, data=dict(data=json.dumps(data)))
-        self.assertEqual(resp['dashboard_title'], 'Copy Of Births')
-        self.assertEqual(resp['position_json'], orig_json_data['position_json'])
-        self.assertEqual(resp['metadata'], orig_json_data['metadata'])
-        self.assertEqual(resp['slices'], orig_json_data['slices'])
-
-    def test_add_slices(self, username='admin'):
-        self.login(username=username)
-        dash = db.session.query(models.Dashboard).filter_by(
-            slug='births').first()
-        new_slice = db.session.query(models.Slice).filter_by(
-            slice_name='Mapbox Long/Lat').first()
-        existing_slice = db.session.query(models.Slice).filter_by(
-            slice_name='Name Cloud').first()
-        data = {
-            'slice_ids': [new_slice.data['slice_id'],
-                          existing_slice.data['slice_id']],
-        }
-        url = '/superset/add_slices/{}/'.format(dash.id)
-        resp = self.client.post(url, data=dict(data=json.dumps(data)))
-        assert 'SLICES ADDED' in resp.data.decode('utf-8')
-
-        dash = db.session.query(models.Dashboard).filter_by(
-            slug='births').first()
-        new_slice = db.session.query(models.Slice).filter_by(
-            slice_name='Mapbox Long/Lat').first()
-        assert new_slice in dash.slices
-        assert len(set(dash.slices)) == len(dash.slices)
-
-        # cleaning up
-        dash = db.session.query(models.Dashboard).filter_by(
-            slug='births').first()
-        dash.slices = [
-            o for o in dash.slices if o.slice_name != 'Mapbox Long/Lat']
-        db.session.commit()
-
     def test_gamma(self):
         self.login(username='gamma')
         assert 'List Charts' in self.get_resp('/slicemodelview/list/')
@@ -570,88 +434,6 @@ class CoreTests(SupersetTestCase):
 
         self.assertEqual(list(expected_data), list(data))
         self.logout()
-
-    def test_public_user_dashboard_access(self):
-        table = (
-            db.session
-            .query(SqlaTable)
-            .filter_by(table_name='birth_names')
-            .one()
-        )
-        # Try access before adding appropriate permissions.
-        self.revoke_public_access_to_table(table)
-        self.logout()
-
-        resp = self.get_resp('/slicemodelview/list/')
-        self.assertNotIn('birth_names</a>', resp)
-
-        resp = self.get_resp('/dashboardmodelview/list/')
-        self.assertNotIn('/superset/dashboard/births/', resp)
-
-        self.grant_public_access_to_table(table)
-
-        # Try access after adding appropriate permissions.
-        self.assertIn('birth_names', self.get_resp('/slicemodelview/list/'))
-
-        resp = self.get_resp('/dashboardmodelview/list/')
-        self.assertIn('/superset/dashboard/births/', resp)
-
-        self.assertIn('Births', self.get_resp('/superset/dashboard/births/'))
-
-        # Confirm that public doesn't have access to other datasets.
-        resp = self.get_resp('/slicemodelview/list/')
-        self.assertNotIn('wb_health_population</a>', resp)
-
-        resp = self.get_resp('/dashboardmodelview/list/')
-        self.assertNotIn('/superset/dashboard/world_health/', resp)
-
-    def test_dashboard_with_created_by_can_be_accessed_by_public_users(self):
-        self.logout()
-        table = (
-            db.session
-            .query(SqlaTable)
-            .filter_by(table_name='birth_names')
-            .one()
-        )
-        self.grant_public_access_to_table(table)
-
-        dash = db.session.query(models.Dashboard).filter_by(
-            slug='births').first()
-        dash.owners = [appbuilder.sm.find_user('admin')]
-        dash.created_by = appbuilder.sm.find_user('admin')
-        db.session.merge(dash)
-        db.session.commit()
-
-        assert 'Births' in self.get_resp('/superset/dashboard/births/')
-
-    def test_only_owners_can_save(self):
-        dash = (
-            db.session
-            .query(models.Dashboard)
-            .filter_by(slug='births')
-            .first()
-        )
-        dash.owners = []
-        db.session.merge(dash)
-        db.session.commit()
-        self.test_save_dash('admin')
-
-        self.logout()
-        self.assertRaises(
-            Exception, self.test_save_dash, 'alpha')
-
-        alpha = appbuilder.sm.find_user('alpha')
-
-        dash = (
-            db.session
-            .query(models.Dashboard)
-            .filter_by(slug='births')
-            .first()
-        )
-        dash.owners = [alpha]
-        db.session.merge(dash)
-        db.session.commit()
-        self.test_save_dash('alpha')
 
     def test_extra_table_metadata(self):
         self.login('admin')
@@ -741,7 +523,7 @@ class CoreTests(SupersetTestCase):
         resp = self.get_json_resp(url)
         self.assertEqual(resp['count'], 1)
 
-        userid = appbuilder.sm.find_user('admin').id
+        userid = security_manager.find_user('admin').id
         resp = self.get_resp('/superset/profile/admin/')
         self.assertIn('"app"', resp)
         data = self.get_json_resp('/superset/recent_activity/{}/'.format(userid))
@@ -762,7 +544,7 @@ class CoreTests(SupersetTestCase):
         # superset/explore case
         slc = db.session.query(models.Slice).filter_by(slice_name='Girls').one()
         qry = db.session.query(models.Log).filter_by(slice_id=slc.id)
-        self.get_resp(slc.slice_url)
+        self.get_resp(slc.slice_url, {'form_data': json.dumps(slc.viz.form_data)})
         self.assertEqual(1, qry.count())
 
     def test_slice_id_is_always_logged_correctly_on_ajax_request(self):
@@ -771,7 +553,7 @@ class CoreTests(SupersetTestCase):
         slc = db.session.query(models.Slice).filter_by(slice_name='Girls').one()
         qry = db.session.query(models.Log).filter_by(slice_id=slc.id)
         slc_url = slc.slice_url.replace('explore', 'explore_json')
-        self.get_json_resp(slc_url)
+        self.get_json_resp(slc_url, {'form_data': json.dumps(slc.viz.form_data)})
         self.assertEqual(1, qry.count())
 
     def test_slice_query_endpoint(self):
@@ -804,20 +586,22 @@ class CoreTests(SupersetTestCase):
         test_file.write('john,1\n')
         test_file.write('paul,2\n')
         test_file.close()
-        main_db_uri = db.session.query(
-            models.Database.sqlalchemy_uri)\
-            .filter_by(database_name='main').all()
+        main_db_uri = (
+            db.session.query(models.Database)
+            .filter_by(database_name='main')
+            .all()
+        )
 
         test_file = open(filename, 'rb')
         form_data = {
             'csv_file': test_file,
             'sep': ',',
             'name': table_name,
-            'con': main_db_uri[0][0],
+            'con': main_db_uri[0].id,
             'if_exists': 'append',
             'index_label': 'test_label',
-            'mangle_dupe_cols': False}
-
+            'mangle_dupe_cols': False,
+        }
         url = '/databaseview/list/'
         add_datasource_page = self.get_resp(url)
         assert 'Upload a CSV' in add_datasource_page
@@ -850,6 +634,65 @@ class CoreTests(SupersetTestCase):
             data[1],
             {'data': pd.Timestamp('2017-11-18 22:06:30.061810+0100', tz=tz)},
         )
+
+    def test_comments_in_sqlatable_query(self):
+        clean_query = "SELECT '/* val 1 */' as c1, '-- val 2' as c2 FROM tbl"
+        commented_query = '/* comment 1 */' + clean_query + '-- comment 2'
+        table = SqlaTable(sql=commented_query)
+        rendered_query = text_type(table.get_from_clause())
+        self.assertEqual(clean_query, rendered_query)
+
+    def test_slice_url_overrides(self):
+        # No override
+        self.login(username='admin')
+        slice_name = 'Girls'
+        slc = self.get_slice(slice_name, db.session)
+        resp = self.get_resp(slc.explore_json_url)
+        assert '"Jennifer"' in resp
+
+        # Overriding groupby
+        url = slc.get_explore_url(
+            base_url='/superset/explore_json',
+            overrides={'groupby': ['state']})
+        resp = self.get_resp(url)
+        assert '"CA"' in resp
+
+    def test_slice_payload_no_data(self):
+        self.login(username='admin')
+        slc = self.get_slice('Girls', db.session)
+
+        url = slc.get_explore_url(
+            base_url='/superset/explore_json',
+            overrides={
+                'filters': [{'col': 'state', 'op': 'in', 'val': ['N/A']}],
+            },
+        )
+
+        data = self.get_json_resp(url)
+        self.assertEqual(data['status'], utils.QueryStatus.SUCCESS)
+        self.assertEqual(data['error'], 'No data')
+
+    def test_slice_payload_invalid_query(self):
+        self.login(username='admin')
+        slc = self.get_slice('Girls', db.session)
+
+        url = slc.get_explore_url(
+            base_url='/superset/explore_json',
+            overrides={'groupby': ['N/A']},
+        )
+
+        data = self.get_json_resp(url)
+        self.assertEqual(data['status'], utils.QueryStatus.FAILED)
+        assert 'KeyError' in data['stacktrace']
+
+    def test_slice_payload_viz_markdown(self):
+        self.login(username='admin')
+        slc = self.get_slice('Title', db.session)
+
+        url = slc.get_explore_url(base_url='/superset/explore_json')
+        data = self.get_json_resp(url)
+        self.assertEqual(data['status'], None)
+        self.assertEqual(data['error'], None)
 
 
 if __name__ == '__main__':

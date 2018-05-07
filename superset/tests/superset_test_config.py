@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # flake8: noqa
 from superset.config import *
 
@@ -22,6 +23,7 @@ PUBLIC_ROLE_LIKE_GAMMA = True
 AUTH_ROLE_PUBLIC = 'Public'
 EMAIL_NOTIFICATIONS = False
 
+CACHE_CONFIG = {'CACHE_TYPE': 'simple'}
 
 class CeleryConfig(object):
     BROKER_URL = 'redis://localhost'

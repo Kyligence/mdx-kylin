@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+# pylint: disable=C,R,W
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+
 from datetime import datetime
 import logging
 
@@ -5,7 +12,6 @@ from flask import escape, Markup
 from flask_appbuilder import Model
 from flask_babel import lazy_gettext as _
 import pandas as pd
-from past.builtins import basestring
 import six
 import sqlalchemy as sa
 from sqlalchemy import (
@@ -18,7 +24,7 @@ from sqlalchemy.sql import column, literal_column, table, text
 from sqlalchemy.sql.expression import TextAsFrom
 import sqlparse
 
-from superset import db, import_util, sm, utils
+from superset import db, import_util, security_manager, utils
 from superset.connectors.base.models import BaseColumn, BaseDatasource, BaseMetric
 from superset.jinja_context import get_template_processor
 from superset.models.annotations import Annotation
@@ -97,6 +103,10 @@ class TableColumn(Model, BaseColumn):
             col = literal_column(self.expression).label(name)
         return col
 
+    @property
+    def datasource(self):
+        return self.table
+
     def get_time_filter(self, start_dttm, end_dttm):
         col = self.sqla_col.label('__time')
         l = []  # noqa: E741
@@ -108,20 +118,23 @@ class TableColumn(Model, BaseColumn):
 
     def get_timestamp_expression(self, time_grain):
         """Getting the time component of the query"""
+        pdf = self.python_date_format
+        is_epoch = pdf in ('epoch_s', 'epoch_ms')
+        if not self.expression and not time_grain and not is_epoch:
+            return column(self.column_name, type_=DateTime).label(DTTM_ALIAS)
+
         expr = self.expression or self.column_name
-        if not self.expression and not time_grain:
-            return column(expr, type_=DateTime).label(DTTM_ALIAS)
+        if is_epoch:
+            # if epoch, translate to DATE using db specific conf
+            db_spec = self.table.database.db_engine_spec
+            if pdf == 'epoch_s':
+                expr = db_spec.epoch_to_dttm().format(col=expr)
+            elif pdf == 'epoch_ms':
+                expr = db_spec.epoch_ms_to_dttm().format(col=expr)
         if time_grain:
-            pdf = self.python_date_format
-            if pdf in ('epoch_s', 'epoch_ms'):
-                # if epoch, translate to DATE using db specific conf
-                db_spec = self.table.database.db_engine_spec
-                if pdf == 'epoch_s':
-                    expr = db_spec.epoch_to_dttm().format(col=expr)
-                elif pdf == 'epoch_ms':
-                    expr = db_spec.epoch_ms_to_dttm().format(col=expr)
-            grain = self.table.database.grains_dict().get(time_grain, '{col}')
-            expr = grain.function.format(col=expr)
+            grain = self.table.database.grains_dict().get(time_grain)
+            if grain:
+                expr = grain.function.format(col=expr)
         return literal_column(expr, type_=DateTime).label(DTTM_ALIAS)
 
     @classmethod
@@ -154,6 +167,42 @@ class TableColumn(Model, BaseColumn):
             s = self.table.database.db_engine_spec.convert_dttm(
                 self.type or '', dttm)
             return s or "'{}'".format(dttm.strftime('%Y-%m-%d %H:%M:%S.%f'))
+
+    def get_metrics(self):
+        metrics = []
+        M = SqlMetric  # noqa
+        quoted = self.column_name
+        if self.sum:
+            metrics.append(M(
+                metric_name='sum__' + self.column_name,
+                metric_type='sum',
+                expression='SUM({})'.format(quoted),
+            ))
+        if self.avg:
+            metrics.append(M(
+                metric_name='avg__' + self.column_name,
+                metric_type='avg',
+                expression='AVG({})'.format(quoted),
+            ))
+        if self.max:
+            metrics.append(M(
+                metric_name='max__' + self.column_name,
+                metric_type='max',
+                expression='MAX({})'.format(quoted),
+            ))
+        if self.min:
+            metrics.append(M(
+                metric_name='min__' + self.column_name,
+                metric_type='min',
+                expression='MIN({})'.format(quoted),
+            ))
+        if self.count_distinct:
+            metrics.append(M(
+                metric_name='count_distinct__' + self.column_name,
+                metric_type='count_distinct',
+                expression='COUNT(DISTINCT {})'.format(quoted),
+            ))
+        return {m.metric_name: m for m in metrics}
 
 
 class SqlMetric(Model, BaseMetric):
@@ -213,7 +262,7 @@ class SqlaTable(Model, BaseDatasource):
     fetch_values_predicate = Column(String(1000))
     user_id = Column(Integer, ForeignKey('ab_user.id'))
     owner = relationship(
-        sm.user_model,
+        security_manager.user_model,
         backref='tables',
         foreign_keys=[user_id])
     database = relationship(
@@ -222,6 +271,7 @@ class SqlaTable(Model, BaseDatasource):
         foreign_keys=[database_id])
     schema = Column(String(255))
     sql = Column(Text)
+    is_sqllab_view = Column(Boolean, default=False)
 
     baselink = 'tablemodelview'
 
@@ -231,6 +281,15 @@ class SqlaTable(Model, BaseDatasource):
         'sql', 'params')
     export_parent = 'database'
     export_children = ['metrics', 'columns']
+
+    sqla_aggregations = {
+        'COUNT_DISTINCT': lambda column_name: sa.func.COUNT(sa.distinct(column_name)),
+        'COUNT': sa.func.COUNT,
+        'SUM': sa.func.SUM,
+        'AVG': sa.func.AVG,
+        'MIN': sa.func.MIN,
+        'MAX': sa.func.MAX,
+    }
 
     def __repr__(self):
         return self.name
@@ -252,7 +311,7 @@ class SqlaTable(Model, BaseDatasource):
     @property
     def schema_perm(self):
         """Returns schema permission if present, database one otherwise."""
-        return utils.get_schema_perm(self.database, self.schema)
+        return security_manager.get_schema_perm(self.database, self.schema)
 
     def get_perm(self):
         return (
@@ -321,7 +380,7 @@ class SqlaTable(Model, BaseDatasource):
         if self.type == 'table':
             grains = self.database.grains() or []
             if grains:
-                grains = [(g.name, g.name) for g in grains]
+                grains = [(g.duration, g.name) for g in grains]
             d['granularity_sqla'] = utils.choicify(self.dttm_cols)
             d['time_grain_sqla'] = grains
         return d
@@ -338,7 +397,7 @@ class SqlaTable(Model, BaseDatasource):
         qry = (
             select([target_col.sqla_col])
             .select_from(self.get_from_clause(tp, db_engine_spec))
-            .distinct(column_name)
+            .distinct()
         )
         if limit:
             qry = qry.limit(limit)
@@ -386,10 +445,23 @@ class SqlaTable(Model, BaseDatasource):
             from_sql = self.sql
             if template_processor:
                 from_sql = template_processor.process_template(from_sql)
-            if db_engine_spec:
-                from_sql = db_engine_spec.escape_sql(from_sql)
+            from_sql = sqlparse.format(from_sql, strip_comments=True)
             return TextAsFrom(sa.text(from_sql), []).alias('expr_qry')
         return self.get_sqla_table()
+
+    def adhoc_metric_to_sa(self, metric):
+        expressionType = metric.get('expressionType')
+        if expressionType == utils.ADHOC_METRIC_EXPRESSION_TYPES['SIMPLE']:
+            sa_column = column(metric.get('column').get('column_name'))
+            sa_metric = self.sqla_aggregations[metric.get('aggregate')](sa_column)
+            sa_metric = sa_metric.label(metric.get('label'))
+            return sa_metric
+        elif expressionType == utils.ADHOC_METRIC_EXPRESSION_TYPES['SQL']:
+            sa_metric = literal_column(metric.get('sqlExpression'))
+            sa_metric = sa_metric.label(metric.get('label'))
+            return sa_metric
+        else:
+            return None
 
     def get_sqla_query(  # sqla
             self,
@@ -406,7 +478,6 @@ class SqlaTable(Model, BaseDatasource):
             orderby=None,
             extras=None,
             columns=None,
-            form_data=None,
             order_desc=True,
             prequeries=None,
             is_prequery=False,
@@ -418,7 +489,9 @@ class SqlaTable(Model, BaseDatasource):
             'metrics': metrics,
             'row_limit': row_limit,
             'to_dttm': to_dttm,
-            'form_data': form_data,
+            'filter': filter,
+            'columns': {col.column_name: col for col in self.columns},
+
         }
         template_processor = self.get_template_processor(**template_kwargs)
         db_engine_spec = self.database.db_engine_spec
@@ -441,10 +514,14 @@ class SqlaTable(Model, BaseDatasource):
                 'and is required by this type of chart'))
         if not groupby and not metrics and not columns:
             raise Exception(_('Empty query?'))
+        metrics_exprs = []
         for m in metrics:
-            if m not in metrics_dict:
+            if utils.is_adhoc_metric(m):
+                metrics_exprs.append(self.adhoc_metric_to_sa(m))
+            elif m in metrics_dict:
+                metrics_exprs.append(metrics_dict.get(m).sqla_col)
+            else:
                 raise Exception(_("Metric '{}' is not valid".format(m)))
-        metrics_exprs = [metrics_dict.get(m).sqla_col for m in metrics]
         if metrics_exprs:
             main_metric_expr = metrics_exprs[0]
         else:
@@ -500,28 +577,21 @@ class SqlaTable(Model, BaseDatasource):
         where_clause_and = []
         having_clause_and = []
         for flt in filter:
-            if not all([flt.get(s) for s in ['col', 'op', 'val']]):
+            if not all([flt.get(s) for s in ['col', 'op']]):
                 continue
             col = flt['col']
             op = flt['op']
-            eq = flt['val']
             col_obj = cols.get(col)
             if col_obj:
+                is_list_target = op in ('in', 'not in')
+                eq = self.filter_values_handler(
+                    flt.get('val'),
+                    target_column_is_numeric=col_obj.is_num,
+                    is_list_target=is_list_target)
                 if op in ('in', 'not in'):
-                    values = []
-                    for v in eq:
-                        # For backwards compatibility and edge cases
-                        # where a column data type might have changed
-                        if isinstance(v, basestring):
-                            v = v.strip("'").strip('"')
-                            if col_obj.is_num:
-                                v = utils.string_to_num(v)
-
-                        # Removing empty strings and non numeric values
-                        # targeting numeric columns
-                        if v is not None:
-                            values.append(v)
-                    cond = col_obj.sqla_col.in_(values)
+                    cond = col_obj.sqla_col.in_(eq)
+                    if '<NULL>' in eq:
+                        cond = or_(cond, col_obj.sqla_col == None)  # noqa
                     if op == 'not in':
                         cond = ~cond
                     where_clause_and.append(cond)
@@ -542,6 +612,10 @@ class SqlaTable(Model, BaseDatasource):
                         where_clause_and.append(col_obj.sqla_col <= eq)
                     elif op == 'LIKE':
                         where_clause_and.append(col_obj.sqla_col.like(eq))
+                    elif op == 'IS NULL':
+                        where_clause_and.append(col_obj.sqla_col == None)  # noqa
+                    elif op == 'IS NOT NULL':
+                        where_clause_and.append(col_obj.sqla_col != None)  # noqa
         if extras:
             where = extras.get('where')
             if where:
@@ -614,7 +688,6 @@ class SqlaTable(Model, BaseDatasource):
                     'orderby': orderby,
                     'extras': extras,
                     'columns': columns,
-                    'form_data': form_data,
                     'order_desc': True,
                 }
                 result = self.query(subquery_obj)
@@ -702,47 +775,12 @@ class SqlaTable(Model, BaseDatasource):
                 dbcol.sum = dbcol.is_num
                 dbcol.avg = dbcol.is_num
                 dbcol.is_dttm = dbcol.is_time
+            else:
+                dbcol.type = datatype
             self.columns.append(dbcol)
             if not any_date_col and dbcol.is_time:
                 any_date_col = col.name
-
-            quoted = col.name
-            if dbcol.sum:
-                metrics.append(M(
-                    metric_name='sum__' + dbcol.column_name,
-                    verbose_name='sum__' + dbcol.column_name,
-                    metric_type='sum',
-                    expression='SUM({})'.format(quoted),
-                ))
-            if dbcol.avg:
-                metrics.append(M(
-                    metric_name='avg__' + dbcol.column_name,
-                    verbose_name='avg__' + dbcol.column_name,
-                    metric_type='avg',
-                    expression='AVG({})'.format(quoted),
-                ))
-            if dbcol.max:
-                metrics.append(M(
-                    metric_name='max__' + dbcol.column_name,
-                    verbose_name='max__' + dbcol.column_name,
-                    metric_type='max',
-                    expression='MAX({})'.format(quoted),
-                ))
-            if dbcol.min:
-                metrics.append(M(
-                    metric_name='min__' + dbcol.column_name,
-                    verbose_name='min__' + dbcol.column_name,
-                    metric_type='min',
-                    expression='MIN({})'.format(quoted),
-                ))
-            if dbcol.count_distinct:
-                metrics.append(M(
-                    metric_name='count_distinct__' + dbcol.column_name,
-                    verbose_name='count_distinct__' + dbcol.column_name,
-                    metric_type='count_distinct',
-                    expression='COUNT(DISTINCT {})'.format(quoted),
-                ))
-            dbcol.type = datatype
+            metrics += dbcol.get_metrics().values()
 
         metrics.append(M(
             metric_name='count',
@@ -750,16 +788,9 @@ class SqlaTable(Model, BaseDatasource):
             metric_type='count',
             expression='COUNT(*)',
         ))
-
-        dbmetrics = db.session.query(M).filter(M.table_id == self.id).filter(
-            or_(M.metric_name == metric.metric_name for metric in metrics))
-        dbmetrics = {metric.metric_name: metric for metric in dbmetrics}
-        for metric in metrics:
-            metric.table_id = self.id
-            if not dbmetrics.get(metric.metric_name, None):
-                db.session.add(metric)
         if not self.main_dttm_col:
             self.main_dttm_col = any_date_col
+        self.add_missing_metrics(metrics)
         db.session.merge(self)
         db.session.commit()
 
@@ -796,6 +827,10 @@ class SqlaTable(Model, BaseDatasource):
         if schema:
             query = query.filter_by(schema=schema)
         return query.all()
+
+    @staticmethod
+    def default_query(qry):
+        return qry.filter_by(is_sqllab_view=False)
 
 
 sa.event.listen(SqlaTable, 'after_insert', set_perm)

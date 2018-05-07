@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+# pylint: disable=C,R,W
 """Contains the logic to create cohesive forms on the explore view"""
 from __future__ import absolute_import
 from __future__ import division
@@ -9,15 +11,47 @@ from flask_appbuilder.forms import DynamicForm
 from flask_babel import lazy_gettext as _
 from flask_wtf.file import FileAllowed, FileField, FileRequired
 from wtforms import (
-    BooleanField, IntegerField, SelectField, StringField)
+    BooleanField, Field, IntegerField, SelectField, StringField)
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.validators import DataRequired, NumberRange, Optional
 
-from superset import app
+from superset import app, db
+from superset.models import core as models
 
 config = app.config
 
 
+class CommaSeparatedListField(Field):
+    widget = BS3TextFieldWidget()
+
+    def _value(self):
+        if self.data:
+            return u', '.join(self.data)
+        else:
+            return u''
+
+    def process_formdata(self, valuelist):
+        if valuelist:
+            self.data = [x.strip() for x in valuelist[0].split(',')]
+        else:
+            self.data = []
+
+
+def filter_not_empty_values(value):
+    """Returns a list of non empty values or None"""
+    if not value:
+        return None
+    data = [x for x in value if x]
+    if not data:
+        return None
+    return data
+
+
 class CsvToDatabaseForm(DynamicForm):
+    # pylint: disable=E0211
+    def all_db_items():
+        return db.session.query(models.Database)
+
     name = StringField(
         _('Table Name'),
         description=_('Name of table to be created from csv data.'),
@@ -28,12 +62,10 @@ class CsvToDatabaseForm(DynamicForm):
         description=_('Select a CSV file to be uploaded to a database.'),
         validators=[
             FileRequired(), FileAllowed(['csv'], _('CSV Files Only!'))])
-
-    con = SelectField(
+    con = QuerySelectField(
         _('Database'),
-        description=_('database in which to add above table.'),
-        validators=[DataRequired()],
-        choices=[])
+        query_factory=all_db_items,
+        get_pk=lambda a: a.id, get_label=lambda a: a.database_name)
     sep = StringField(
         _('Delimiter'),
         description=_('Delimiter used by CSV file (for whitespace use \s+).'),
@@ -49,7 +81,6 @@ class CsvToDatabaseForm(DynamicForm):
             ('fail', _('Fail')), ('replace', _('Replace')),
             ('append', _('Append'))],
         validators=[DataRequired()])
-
     schema = StringField(
         _('Schema'),
         description=_('Specify a schema (if database flavour supports this).'),
@@ -96,9 +127,12 @@ class CsvToDatabaseForm(DynamicForm):
         description=_(
             'Skip blank lines rather than interpreting them '
             'as NaN values.'))
-    parse_dates = BooleanField(
+    parse_dates = CommaSeparatedListField(
         _('Parse Dates'),
-        description=_('Parse date values.'))
+        description=_(
+            'A comma separated list of columns that should be '
+            'parsed as dates.'),
+        filters=[filter_not_empty_values])
     infer_datetime_format = BooleanField(
         _('Infer Datetime Format'),
         description=_(

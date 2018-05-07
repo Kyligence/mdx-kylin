@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+# pylint: disable=C,R,W
 """Utility functions used across Superset"""
 from __future__ import absolute_import
 from __future__ import division
@@ -11,6 +13,7 @@ from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formatdate
+import errno
 import functools
 import json
 import logging
@@ -21,19 +24,15 @@ import sys
 import uuid
 import zlib
 
+import bleach
 import celery
 from dateutil.parser import parse
-from flask import flash, Markup, redirect, render_template, request, url_for
-from flask_appbuilder._compat import as_unicode
-from flask_appbuilder.const import (
-    FLAMSG_ERR_SEC_ACCESS_DENIED,
-    LOGMSG_ERR_SEC_ACCESS_DENIED,
-    PERMISSION_PREFIX,
-)
+from flask import flash, Markup, render_template
 from flask_babel import gettext as __
 from flask_cache import Cache
 import markdown as md
 import numpy
+import pandas as pd
 import parsedatetime
 from past.builtins import basestring
 from pydruid.utils.having import Having
@@ -42,42 +41,20 @@ import sqlalchemy as sa
 from sqlalchemy import event, exc, select
 from sqlalchemy.types import TEXT, TypeDecorator
 
+from superset.exceptions import SupersetException, SupersetTimeoutException
+
+
 logging.getLogger('MARKDOWN').setLevel(logging.INFO)
 
 PY3K = sys.version_info >= (3, 0)
 EPOCH = datetime(1970, 1, 1)
 DTTM_ALIAS = '__timestamp'
+ADHOC_METRIC_EXPRESSION_TYPES = {
+    'SIMPLE': 'SIMPLE',
+    'SQL': 'SQL',
+}
 
-
-class SupersetException(Exception):
-    pass
-
-
-class SupersetTimeoutException(SupersetException):
-    pass
-
-
-class SupersetSecurityException(SupersetException):
-    pass
-
-
-class MetricPermException(SupersetException):
-    pass
-
-
-class NoDataException(SupersetException):
-    pass
-
-
-class SupersetTemplateException(SupersetException):
-    pass
-
-
-def can_access(sm, permission_name, view_name, user):
-    """Protecting from has_access failing from missing perms/view"""
-    if user.is_anonymous():
-        return sm.is_item_public(permission_name, view_name)
-    return sm._has_view_access(user, permission_name, view_name)
+JS_MAX_INTEGER = 9007199254740991   # Largest int Java Script can handle 2^53-1
 
 
 def flasher(msg, severity=None):
@@ -240,6 +217,55 @@ def dttm_from_timtuple(d):
         d.tm_year, d.tm_mon, d.tm_mday, d.tm_hour, d.tm_min, d.tm_sec)
 
 
+def decode_dashboards(o):
+    """
+    Function to be passed into json.loads obj_hook parameter
+    Recreates the dashboard object from a json representation.
+    """
+    import superset.models.core as models
+    from superset.connectors.sqla.models import (
+        SqlaTable, SqlMetric, TableColumn,
+    )
+
+    if '__Dashboard__' in o:
+        d = models.Dashboard()
+        d.__dict__.update(o['__Dashboard__'])
+        return d
+    elif '__Slice__' in o:
+        d = models.Slice()
+        d.__dict__.update(o['__Slice__'])
+        return d
+    elif '__TableColumn__' in o:
+        d = TableColumn()
+        d.__dict__.update(o['__TableColumn__'])
+        return d
+    elif '__SqlaTable__' in o:
+        d = SqlaTable()
+        d.__dict__.update(o['__SqlaTable__'])
+        return d
+    elif '__SqlMetric__' in o:
+        d = SqlMetric()
+        d.__dict__.update(o['__SqlMetric__'])
+        return d
+    elif '__datetime__' in o:
+        return datetime.strptime(o['__datetime__'], '%Y-%m-%dT%H:%M:%S')
+    else:
+        return o
+
+
+class DashboardEncoder(json.JSONEncoder):
+    # pylint: disable=E0202
+    def default(self, o):
+        try:
+            vals = {
+                k: v for k, v in o.__dict__.items() if k != '_sa_instance_state'}
+            return {'__{}__'.format(o.__class__.__name__): vals}
+        except Exception:
+            if type(o) == datetime:
+                return {'__datetime__': o.replace(microsecond=0).isoformat()}
+            return json.JSONEncoder.default(self, o)
+
+
 def parse_human_timedelta(s):
     """
     Returns ``datetime.datetime`` from natural language time deltas
@@ -299,7 +325,7 @@ def base_json_conv(obj):
         return str(obj)
 
 
-def json_iso_dttm_ser(obj):
+def json_iso_dttm_ser(obj, pessimistic=False):
     """
     json serializer that deals with dates
 
@@ -310,16 +336,22 @@ def json_iso_dttm_ser(obj):
     val = base_json_conv(obj)
     if val is not None:
         return val
-    if isinstance(obj, datetime):
-        obj = obj.isoformat()
-    elif isinstance(obj, date):
-        obj = obj.isoformat()
-    elif isinstance(obj, time):
+    if isinstance(obj, (datetime, date, time, pd.Timestamp)):
         obj = obj.isoformat()
     else:
-        raise TypeError(
-            'Unserializable object {} of type {}'.format(obj, type(obj)))
+        if pessimistic:
+            return 'Unserializable [{}]'.format(type(obj))
+        else:
+            raise TypeError(
+                'Unserializable object {} of type {}'.format(obj, type(obj)))
     return obj
+
+
+def pessimistic_json_iso_dttm_ser(obj):
+    """Proxy to call json_iso_dttm_ser in a pessimistic way
+
+    If one of object is not serializable to json, it will still succeed"""
+    return json_iso_dttm_ser(obj, pessimistic=True)
 
 
 def datetime_to_epoch(dttm):
@@ -338,7 +370,7 @@ def json_int_dttm_ser(obj):
     val = base_json_conv(obj)
     if val is not None:
         return val
-    if isinstance(obj, datetime):
+    if isinstance(obj, (datetime, pd.Timestamp)):
         obj = datetime_to_epoch(obj)
     elif isinstance(obj, date):
         obj = (obj - EPOCH.date()).total_seconds() * 1000
@@ -376,11 +408,18 @@ def error_msg_from_exception(e):
 
 
 def markdown(s, markup_wrap=False):
+    safe_markdown_tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'b', 'i',
+                          'strong', 'em', 'tt', 'p', 'br', 'span',
+                          'div', 'blockquote', 'code', 'hr', 'ul', 'ol',
+                          'li', 'dd', 'dt', 'img', 'a']
+    safe_markdown_attrs = {'img': ['src', 'alt', 'title'],
+                           'a': ['href', 'alt', 'title']}
     s = md.markdown(s or '', [
         'markdown.extensions.tables',
         'markdown.extensions.fenced_code',
         'markdown.extensions.codehilite',
     ])
+    s = bleach.clean(s, safe_markdown_tags, safe_markdown_attrs)
     if markup_wrap:
         s = Markup(s)
     return s
@@ -431,11 +470,6 @@ def get_datasource_full_name(database_name, datasource_name, schema=None):
     if not schema:
         return '[{}].[{}]'.format(database_name, datasource_name)
     return '[{}].[{}].[{}]'.format(database_name, schema, datasource_name)
-
-
-def get_schema_perm(database, schema):
-    if schema:
-        return '[{}].[{}]'.format(database, schema)
 
 
 def validate_json(obj):
@@ -621,42 +655,6 @@ def get_email_address_list(address_string):
     return address_string
 
 
-def has_access(f):
-    """
-        Use this decorator to enable granular security permissions to your
-        methods. Permissions will be associated to a role, and roles are
-        associated to users.
-
-        By default the permission's name is the methods name.
-
-        Forked from the flask_appbuilder.security.decorators
-        TODO(bkyryliuk): contribute it back to FAB
-    """
-    if hasattr(f, '_permission_name'):
-        permission_str = f._permission_name
-    else:
-        permission_str = f.__name__
-
-    def wraps(self, *args, **kwargs):
-        permission_str = PERMISSION_PREFIX + f._permission_name
-        if self.appbuilder.sm.has_access(permission_str,
-                                         self.__class__.__name__):
-            return f(self, *args, **kwargs)
-        else:
-            logging.warning(
-                LOGMSG_ERR_SEC_ACCESS_DENIED.format(permission_str,
-                                                    self.__class__.__name__))
-            flash(as_unicode(FLAMSG_ERR_SEC_ACCESS_DENIED), 'danger')
-        # adds next arg to forward to the original path once user is logged in.
-        return redirect(
-            url_for(
-                self.appbuilder.sm.auth_view.__class__.__name__ + '.login',
-                next=request.path))
-
-    f._permission_name = permission_str
-    return functools.update_wrapper(wraps, f)
-
-
 def choicify(values):
     """Takes an iterable and makes an iterable of tuples with it"""
     return [(v, v) for v in values]
@@ -769,6 +767,73 @@ def merge_extra_filters(form_data):
         del form_data['extra_filters']
 
 
+def merge_request_params(form_data, params):
+    url_params = {}
+    for key, value in params.items():
+        if key in ('form_data', 'r'):
+            continue
+        url_params[key] = value
+    form_data['url_params'] = url_params
+
+
 def get_update_perms_flag():
     val = os.environ.get('SUPERSET_UPDATE_PERMS')
     return val.lower() not in ('0', 'false', 'no') if val else True
+
+
+def user_label(user):
+    """Given a user ORM FAB object, returns a label"""
+    if user:
+        if user.first_name and user.last_name:
+            return user.first_name + ' ' + user.last_name
+        else:
+            return user.username
+
+
+def get_or_create_main_db():
+    from superset import conf, db
+    from superset.models import core as models
+
+    logging.info('Creating database reference')
+    dbobj = (
+        db.session.query(models.Database)
+        .filter_by(database_name='main')
+        .first())
+    if not dbobj:
+        dbobj = models.Database(database_name='main')
+    dbobj.set_sqlalchemy_uri(conf.get('SQLALCHEMY_DATABASE_URI'))
+    dbobj.expose_in_sqllab = True
+    dbobj.allow_run_sync = True
+    db.session.add(dbobj)
+    db.session.commit()
+    return dbobj
+
+
+def is_adhoc_metric(metric):
+    return (
+        isinstance(metric, dict) and
+        (
+            (
+                metric['expressionType'] == ADHOC_METRIC_EXPRESSION_TYPES['SIMPLE'] and
+                metric['column'] and
+                metric['aggregate']
+            ) or
+            (
+                metric['expressionType'] == ADHOC_METRIC_EXPRESSION_TYPES['SQL'] and
+                metric['sqlExpression']
+            )
+        ) and
+        metric['label']
+    )
+
+
+def get_metric_names(metrics):
+    return [metric['label'] if is_adhoc_metric(metric) else metric for metric in metrics]
+
+
+def ensure_path_exists(path):
+    try:
+        os.makedirs(path)
+    except OSError as exc:
+        if not (os.path.isdir(path) and exc.errno == errno.EEXIST):
+            raise

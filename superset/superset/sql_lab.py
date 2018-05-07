@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+# pylint: disable=C,R,W
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -10,14 +12,14 @@ from time import sleep
 import uuid
 
 from celery.exceptions import SoftTimeLimitExceeded
+import numpy as np
 import pandas as pd
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import NullPool
 
-from superset import app, dataframe, db, results_backend, utils
+from superset import app, dataframe, db, results_backend, security_manager, utils
 from superset.db_engine_specs import LimitMethod
-from superset.jinja_context import get_template_processor
 from superset.models.sql_lab import Query
 from superset.sql_parse import SupersetQuery
 from superset.utils import get_celery_app, QueryStatus
@@ -85,15 +87,34 @@ def get_session(nullpool):
     return session
 
 
+def convert_results_to_df(cursor_description, data):
+    """Convert raw query results to a DataFrame."""
+    column_names = (
+        [col[0] for col in cursor_description] if cursor_description else [])
+    column_names = dedup(column_names)
+
+    # check whether the result set has any nested dict columns
+    if data:
+        first_row = data[0]
+        has_dict_col = any([isinstance(c, dict) for c in first_row])
+        df_data = list(data) if has_dict_col else np.array(data, dtype=object)
+    else:
+        df_data = []
+
+    cdf = dataframe.SupersetDataFrame(
+        pd.DataFrame(df_data, columns=column_names))
+
+    return cdf
+
+
 @celery_app.task(bind=True, soft_time_limit=SQLLAB_TIMEOUT)
 def get_sql_results(
-        ctask, query_id, return_results=True, store_results=False,
-        user_name=None, template_params=None):
+        ctask, query_id, rendered_query, return_results=True, store_results=False,
+        user_name=None):
     """Executes the sql query returns the results."""
     try:
         return execute_sql(
-            ctask, query_id, return_results, store_results, user_name,
-            template_params)
+            ctask, query_id, rendered_query, return_results, store_results, user_name)
     except Exception as e:
         logging.exception(e)
         stats_logger.incr('error_sqllab_unhandled')
@@ -107,8 +128,8 @@ def get_sql_results(
 
 
 def execute_sql(
-    ctask, query_id, return_results=True, store_results=False, user_name=None,
-    template_params=None,
+    ctask, query_id, rendered_query, return_results=True, store_results=False,
+    user_name=None,
 ):
     """Executes the sql query returns the results."""
     session = get_session(not ctask.request.called_directly)
@@ -140,7 +161,7 @@ def execute_sql(
         return handle_error("Results backend isn't configured.")
 
     # Limit enforced only for retrieving the data, not for the CTA queries.
-    superset_query = SupersetQuery(query.sql)
+    superset_query = SupersetQuery(rendered_query)
     executed_sql = superset_query.stripped()
     if not superset_query.is_select() and not database.allow_dml:
         return handle_error(
@@ -150,7 +171,6 @@ def execute_sql(
             return handle_error(
                 'Only `SELECT` statements can be used with the CREATE TABLE '
                 'feature.')
-            return
         if not query.tmp_table_name:
             start_dttm = datetime.fromtimestamp(query.start_time)
             query.tmp_table_name = 'tmp_{}_table_{}'.format(
@@ -161,16 +181,12 @@ def execute_sql(
             db_engine_spec.limit_method == LimitMethod.WRAP_SQL):
         executed_sql = database.wrap_sql_limit(executed_sql, query.limit)
         query.limit_used = True
-    try:
-        template_processor = get_template_processor(
-            database=database, query=query)
-        tp = template_params or {}
-        executed_sql = template_processor.process_template(
-            executed_sql, **tp)
-    except Exception as e:
-        logging.exception(e)
-        msg = 'Template rendering failed: ' + utils.error_msg_from_exception(e)
-        return handle_error(msg)
+
+    # Hook to allow environment-specific mutation (usually comments) to the SQL
+    SQL_QUERY_MUTATOR = config.get('SQL_QUERY_MUTATOR')
+    if SQL_QUERY_MUTATOR:
+        executed_sql = SQL_QUERY_MUTATOR(
+            executed_sql, user_name, security_manager, database)
 
     query.executed_sql = executed_sql
     query.status = QueryStatus.RUNNING
@@ -224,11 +240,7 @@ def execute_sql(
             },
             default=utils.json_iso_dttm_ser)
 
-    column_names = (
-        [col[0] for col in cursor_description] if cursor_description else [])
-    column_names = dedup(column_names)
-    cdf = dataframe.SupersetDataFrame(
-        pd.DataFrame(list(data), columns=column_names))
+    cdf = convert_results_to_df(cursor_description, data)
 
     query.rows = cdf.size
     query.progress = 100
@@ -255,7 +267,10 @@ def execute_sql(
         key = '{}'.format(uuid.uuid4())
         logging.info('Storing results in results backend, key: {}'.format(key))
         json_payload = json.dumps(payload, default=utils.json_iso_dttm_ser)
-        results_backend.set(key, utils.zlib_compress(json_payload))
+        cache_timeout = database.cache_timeout
+        if cache_timeout is None:
+            cache_timeout = config.get('CACHE_DEFAULT_TIMEOUT', 0)
+        results_backend.set(key, utils.zlib_compress(json_payload), cache_timeout)
         query.results_key = key
         query.end_result_backend_time = utils.now_as_float()
 
