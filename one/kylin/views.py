@@ -11,8 +11,7 @@ import sqlalchemy as sa
 from flask_babel import lazy_gettext as _
 from flask_babel import gettext as __
 
-from superset import appbuilder, app, db, utils, security, sm
-from superset.utils import has_access
+from superset import appbuilder, app, db, utils, security
 from superset.connectors.base.views import DatasourceModelView
 from superset.connectors.connector_registry import ConnectorRegistry
 from superset.views.base import (
@@ -38,6 +37,7 @@ class KylinColumnInlineView(CompactCRUDMixin, SupersetModelView):  # noqa
     can_delete = False
     # list_widget = ListWidgetWithCheckboxes
     list_columns = ['column_name', 'verbose_name', 'type']
+    edit_columns = list_columns
     label_columns = {
         'column_name': _("Column"),
         'verbose_name': _("Verbose Name"),
@@ -69,6 +69,7 @@ class KylinMetricInlineView(CompactCRUDMixin, SupersetModelView):  # noqa
     edit_title = _('Edit Metric')
 
     add_columns = ['metric_name', 'expression']
+    edit_columns = add_columns
 
 
 appbuilder.add_view_no_menu(KylinMetricInlineView)
@@ -133,7 +134,6 @@ appbuilder.add_view(
 
 
 class Kylin(BaseSupersetView):
-    @has_access
     @expose("/refresh_datasources/")
     def refresh_datasources(self):
         _client = Kylinpy(

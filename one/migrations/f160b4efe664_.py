@@ -1,14 +1,14 @@
 """empty message
 
 Revision ID: f160b4efe664
-Revises: 21e88bc06c02
+Revises: 5ccf602336a0
 Create Date: 2018-04-19 18:03:41.029146
 
 """
 
 # revision identifiers, used by Alembic.
 revision = 'f160b4efe664'
-down_revision = '21e88bc06c02'
+down_revision = '5ccf602336a0'
 
 from alembic import op
 import sqlalchemy as sa

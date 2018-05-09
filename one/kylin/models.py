@@ -16,7 +16,7 @@ import sqlalchemy as sa
 from sqlalchemy import asc, and_, desc, select, or_, MetaData, Table
 from sqlalchemy.sql.expression import TextAsFrom
 from sqlalchemy.orm import backref, relationship
-from sqlalchemy.sql import table, literal_column, text, column, join
+from sqlalchemy.sql import table, literal_column, text, column, join, alias
 from sqlalchemy.engine.url import make_url
 from sqlalchemy import create_engine
 from sqlalchemy.pool import NullPool
@@ -25,7 +25,7 @@ from flask import escape, g, Markup
 from flask_appbuilder import Model
 from flask_babel import lazy_gettext as _
 
-from superset import db, utils, import_util, sm
+from superset import db, utils, import_util
 from superset.connectors.base.models import BaseDatasource, BaseColumn, BaseMetric
 from superset.utils import DTTM_ALIAS, QueryStatus
 from superset.models.helpers import QueryResult
@@ -33,7 +33,7 @@ from superset.models.core import Database
 from superset.jinja_context import get_template_processor
 from superset.models.helpers import set_perm
 
-from superset import app, db, db_engine_specs, utils, sm
+from superset import app, db, db_engine_specs, utils
 import six
 
 import kylinpy
@@ -60,7 +60,7 @@ class KylinColumn(Model, BaseColumn):
     def sqla_col(self):
         name = self.column_name
         if not self.expression:
-            col = column(self.column_name).label(name)
+            col = literal_column(self.column_name).label(name)
         else:
             col = literal_column(self.expression).label(name)
         return col
@@ -191,9 +191,9 @@ class KylinProject(Model):
         cubes = [c for c in self.kylin_client.cubes().get('data') if c['status'] == 'READY']
 
         return [{
-            'cube': cube,
+            'cube_desc': cube,
+            'model_desc': self.kylin_client.model_desc(cube['model']),
             'measures': self.kylin_client.cube_desc(cube['name']),
-            'sql': self.kylin_client.cube_sql(cube['name'])['data']['sql'].replace('DEFAULT.', '')
         } for cube in cubes]
 
     def fetch_cube_columns(self, cube_name):
@@ -214,10 +214,12 @@ class KylinProject(Model):
         for cube in all_cubes:
             datasources.append(KylinDatasource(
                 project_id=self.id,
-                datasource_name=cube['cube']['name'],
-                uuid=cube['cube']['uuid'],
-                chunk=json.dumps(cube['cube']),
-                sql=cube['sql'],
+                datasource_name=cube['cube_desc']['name'],
+                uuid=cube['cube_desc']['uuid'],
+                chunk=json.dumps({
+                    'cube_desc': cube['cube_desc'],
+                    'model_desc': cube['model_desc']
+                }),
             ))
 
         for ds in datasources:
@@ -237,7 +239,7 @@ class KylinProject(Model):
                     metric_type=metric['function']['expression'],
                     expression="{}({})".format(
                         metric['function']['expression'],
-                        metric['function']['parameter']['value'].replace('.', '_')
+                        metric['function']['parameter']['value']
                     )
                 ))
 
@@ -315,14 +317,15 @@ class KylinDatasource(Model, BaseDatasource):
         pass
 
     def get_from_clause(self, template_processor=None, db_engine_spec=None):
-        if self.sql:
-            from_sql = self.sql
-            if template_processor:
-                from_sql = template_processor.process_template(from_sql)
-            if db_engine_spec:
-                from_sql = db_engine_spec.escape_sql(from_sql)
-            return TextAsFrom(sa.text(from_sql), []).alias('expr_qry')
-        return self.get_sqla_table()
+        pass
+        # if self.sql:
+        #     from_sql = self.sql
+        #     if template_processor:
+        #         from_sql = template_processor.process_template(from_sql)
+        #     if db_engine_spec:
+        #         from_sql = db_engine_spec.escape_sql(from_sql)
+        #     return TextAsFrom(sa.text(from_sql), []).alias('expr_qry')
+        # return self.get_sqla_table()
 
     def get_template_processor(self, **kwargs):
         return get_template_processor(
@@ -538,7 +541,44 @@ class KylinDatasource(Model, BaseDatasource):
 
             tbl = tbl.join(subq.alias(), and_(*on_clause))
 
-        return qry.select_from(tbl)
+        model_desc = json.loads(self.chunk).get('model_desc')['data']
+        fact_schema, fact_table = model_desc['fact_table'].split('.')
+
+        from_clause = ''
+        for lookup in model_desc.get('lookups'):
+            if from_clause is '':
+                from_clause = join(
+                    table(fact_table),
+                    alias(table(lookup['table'].split('.')[1]), lookup['alias']),
+                    literal_column(lookup['join']['foreign_key'][0]) == literal_column(lookup['join']['primary_key'][0]),
+                    isouter=False
+                )
+            else:
+                from_clause = join(
+                    from_clause,
+                    alias(table(lookup['table'].split('.')[1]), lookup['alias']),
+                    literal_column(lookup['join']['foreign_key'][0]) == literal_column(lookup['join']['primary_key'][0])
+                )
+
+            # for (idx, pk) in enumerate(lookup['join']['primary_key']):
+            #     fk = lookup['join']['foreign_key'][idx]
+            #     from_clause.append(join(
+            #         table(fk.split('.')[0]),
+            #         table(pk.split('.')[0]),
+            #         literal_column(fk) == literal_column(pk)
+            #     ))
+
+        # for _ in from_clause:
+        #     qry = qry.select_from(_)
+
+        return qry.select_from(from_clause)
+
+        #
+        # return qry.select_from(join(
+        #     table("KYLIN_SALES"),
+        #     table("KYLIN_CAL_DT"),
+        #     literal_column("KYLIN_SALES.PART_DT") == literal_column("KYLIN_CAL_DT.CAL_DT")
+        # ))
 
     def get_query_str(self, query_obj):
         engine = self.database.get_sqla_engine()
