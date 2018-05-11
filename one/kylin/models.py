@@ -34,6 +34,7 @@ from superset.jinja_context import get_template_processor
 from superset.models.helpers import set_perm
 
 from superset import app, db, db_engine_specs, utils
+from superset.db_engine_specs import KylinEngineSpec
 import six
 
 import kylinpy
@@ -48,6 +49,14 @@ class KylinColumn(Model, BaseColumn):
         'KylinDatasource',
         backref=backref('columns', cascade='all, delete-orphan'),
         foreign_keys=[datasource_id])
+    is_dttm = Column(Boolean, default=False)
+    expression = Column(Text, default='')
+    python_date_format = Column(String(255))
+    database_expression = Column(String(255))
+
+    export_fields = (
+        'is_dttm'
+    )
 
     def __repr__(self):
         return self.column_name
@@ -64,6 +73,58 @@ class KylinColumn(Model, BaseColumn):
         else:
             col = literal_column(self.expression).label(name)
         return col
+
+    def get_time_filter(self, start_dttm, end_dttm):
+        col = self.sqla_col.label("__time")
+        l = []  # noqa: E741
+        if start_dttm:
+            l.append(col >= text(self.dttm_sql_literal(start_dttm)))
+        if end_dttm:
+            l.append(col <= text(self.dttm_sql_literal(end_dttm)))
+        return and_(*l)
+
+    def get_timestamp_expression(self, time_grain):
+        """Getting the time component of the query"""
+        pdf = self.python_date_format
+        is_epoch = pdf in ('epoch_s', 'epoch_ms')
+        if not self.expression and not time_grain and not is_epoch:
+            return column(self.column_name, type_=DateTime).label(DTTM_ALIAS)
+
+        expr = self.expression or self.column_name
+        if is_epoch:
+            # if epoch, translate to DATE using db specific conf
+            db_spec = self.table.database.db_engine_spec
+            if pdf == 'epoch_s':
+                expr = db_spec.epoch_to_dttm().format(col=expr)
+            elif pdf == 'epoch_ms':
+                expr = db_spec.epoch_ms_to_dttm().format(col=expr)
+        if time_grain:
+            grain = self.table.database.grains_dict().get(time_grain)
+            if grain:
+                expr = grain.function.format(col=expr)
+        return literal_column(expr, type_=DateTime).label(DTTM_ALIAS)
+
+    def dttm_sql_literal(self, dttm):
+        """Convert datetime object to a SQL expression string
+
+        If database_expression is empty, the internal dttm
+        will be parsed as the string with the pattern that
+        the user inputted (python_date_format)
+        If database_expression is not empty, the internal dttm
+        will be parsed as the sql sentence for the database to convert
+        """
+        tf = self.python_date_format
+        if self.database_expression:
+            return self.database_expression.format(dttm.strftime('%Y-%m-%d %H:%M:%S'))
+        elif tf:
+            if tf == 'epoch_s':
+                return str((dttm - datetime(1970, 1, 1)).total_seconds())
+            elif tf == 'epoch_ms':
+                return str((dttm - datetime(1970, 1, 1)).total_seconds() * 1000.0)
+            return "'{}'".format(dttm.strftime(tf))
+        else:
+            s = KylinEngineSpec.convert_dttm(self.type or '', dttm)
+            return s or "'{}'".format(dttm.strftime('%Y-%m-%d %H:%M:%S.%f'))
 
 
 class KylinMetric(Model, BaseMetric):
@@ -305,7 +366,11 @@ class KylinDatasource(Model, BaseDatasource):
 
     @property
     def data(self):
-        return super(KylinDatasource, self).data
+        d = super(KylinDatasource, self).data
+        # d['granularity_sqla'] = utils.choicify(self.dttm_cols)
+        d['granularity_sqla'] = [["KYLIN_CAL_DT.YEAR_BEG_DT", "KYLIN_CAL_DT.YEAR_BEG_DT"]]
+        d['time_grain_sqla'] = [(g.duration, g.name) for g in KylinEngineSpec.time_grains]
+        return d
 
     @property
     def link(self):
@@ -315,17 +380,6 @@ class KylinDatasource(Model, BaseDatasource):
 
     def values_for_column(self, column_name, limit=10000):
         pass
-
-    def get_from_clause(self, template_processor=None, db_engine_spec=None):
-        pass
-        # if self.sql:
-        #     from_sql = self.sql
-        #     if template_processor:
-        #         from_sql = template_processor.process_template(from_sql)
-        #     if db_engine_spec:
-        #         from_sql = db_engine_spec.escape_sql(from_sql)
-        #     return TextAsFrom(sa.text(from_sql), []).alias('expr_qry')
-        # return self.get_sqla_table()
 
     def get_template_processor(self, **kwargs):
         return get_template_processor(
@@ -366,8 +420,8 @@ class KylinDatasource(Model, BaseDatasource):
         orderby = orderby or []
 
         # For backward compatibility
-        if granularity not in self.dttm_cols:
-            granularity = self.main_dttm_col
+        # if granularity not in self.dttm_cols:
+        #     granularity = self.main_dttm_col
 
         # Database spec supports join-free timeslot grouping
         time_groupby_inline = db_engine_spec.time_groupby_inline
@@ -411,28 +465,28 @@ class KylinDatasource(Model, BaseDatasource):
                 select_exprs.append(cols[s].sqla_col)
             metrics_exprs = []
 
-        # if granularity:
-        #     dttm_col = cols[granularity]
-        #     time_grain = extras.get('time_grain_sqla')
-        #     time_filters = []
-        #
-        #     if is_timeseries:
-        #         timestamp = dttm_col.get_timestamp_expression(time_grain)
-        #         select_exprs += [timestamp]
-        #         groupby_exprs += [timestamp]
-        #
-        #     # Use main dttm column to support index with secondary dttm columns
-        #     if db_engine_spec.time_secondary_columns and \
-        #             self.main_dttm_col in self.dttm_cols and \
-        #             self.main_dttm_col != dttm_col.column_name:
-        #         time_filters.append(cols[self.main_dttm_col].
-        #                             get_time_filter(from_dttm, to_dttm))
-        #     time_filters.append(dttm_col.get_time_filter(from_dttm, to_dttm))
+        if granularity:
+            dttm_col = cols[granularity]
+            time_grain = extras.get('time_grain_sqla')
+            time_filters = []
+
+            if is_timeseries:
+                timestamp = dttm_col.get_timestamp_expression(time_grain)
+                select_exprs += [timestamp]
+                groupby_exprs += [timestamp]
+
+            # Use main dttm column to support index with secondary dttm columns
+            # if db_engine_spec.time_secondary_columns and \
+            #         self.main_dttm_col in self.dttm_cols and \
+            #         self.main_dttm_col != dttm_col.column_name:
+            #     time_filters.append(cols[self.main_dttm_col].
+            #                         get_time_filter(from_dttm, to_dttm))
+            time_filters.append(dttm_col.get_time_filter(from_dttm, to_dttm))
 
         select_exprs += metrics_exprs
         qry = sa.select(select_exprs)
 
-        tbl = self.get_from_clause(template_processor, db_engine_spec)
+        # tbl = self.get_from_clause(template_processor, db_engine_spec)
 
         if not columns:
             qry = qry.group_by(*groupby_exprs)
@@ -494,7 +548,9 @@ class KylinDatasource(Model, BaseDatasource):
         # if granularity:
         #     qry = qry.where(and_(*(time_filters + where_clause_and)))
         # else:
-        qry = qry.where(and_(*where_clause_and))
+        qry = qry.where(and_(*(time_filters + where_clause_and)))
+        # qry = qry.where(and_(*where_clause_and))
+        # qry = qry.where(and_(*time_filters))
         qry = qry.having(and_(*having_clause_and))
 
         if not orderby and not columns:
@@ -510,36 +566,36 @@ class KylinDatasource(Model, BaseDatasource):
         if row_limit:
             qry = qry.limit(row_limit)
 
-        if is_timeseries and \
-                timeseries_limit and groupby and not time_groupby_inline:
-            # some sql dialects require for order by expressions
-            # to also be in the select clause -- others, e.g. vertica,
-            # require a unique inner alias
-            inner_main_metric_expr = main_metric_expr.label('mme_inner__')
-            inner_select_exprs += [inner_main_metric_expr]
-            subq = select(inner_select_exprs)
-            subq = subq.select_from(tbl)
-            inner_time_filter = dttm_col.get_time_filter(
-                inner_from_dttm or from_dttm,
-                inner_to_dttm or to_dttm,
-            )
-            subq = subq.where(and_(*(where_clause_and + [inner_time_filter])))
-            subq = subq.group_by(*inner_groupby_exprs)
+        # if is_timeseries and \
+        #         timeseries_limit and groupby and not time_groupby_inline:
+        #     # some sql dialects require for order by expressions
+        #     # to also be in the select clause -- others, e.g. vertica,
+        #     # require a unique inner alias
+        #     inner_main_metric_expr = main_metric_expr.label('mme_inner__')
+        #     inner_select_exprs += [inner_main_metric_expr]
+        #     subq = select(inner_select_exprs)
+        #     subq = subq.select_from(tbl)
+        #     inner_time_filter = dttm_col.get_time_filter(
+        #         inner_from_dttm or from_dttm,
+        #         inner_to_dttm or to_dttm,
+        #     )
+        #     subq = subq.where(and_(*(where_clause_and + [inner_time_filter])))
+        #     subq = subq.group_by(*inner_groupby_exprs)
 
-            ob = inner_main_metric_expr
-            if timeseries_limit_metric:
-                timeseries_limit_metric = metrics_dict.get(timeseries_limit_metric)
-                ob = timeseries_limit_metric.sqla_col
-            direction = desc if order_desc else asc
-            subq = subq.order_by(direction(ob))
-            subq = subq.limit(timeseries_limit)
+        #     ob = inner_main_metric_expr
+        #     if timeseries_limit_metric:
+        #         timeseries_limit_metric = metrics_dict.get(timeseries_limit_metric)
+        #         ob = timeseries_limit_metric.sqla_col
+        #     direction = desc if order_desc else asc
+        #     subq = subq.order_by(direction(ob))
+        #     subq = subq.limit(timeseries_limit)
 
-            on_clause = []
-            for i, gb in enumerate(groupby):
-                on_clause.append(
-                    groupby_exprs[i] == column(gb + '__'))
+        #     on_clause = []
+        #     for i, gb in enumerate(groupby):
+        #         on_clause.append(
+        #             groupby_exprs[i] == column(gb + '__'))
 
-            tbl = tbl.join(subq.alias(), and_(*on_clause))
+        #     tbl = tbl.join(subq.alias(), and_(*on_clause))
 
         model_desc = json.loads(self.chunk).get('model_desc')['data']
         fact_schema, fact_table = model_desc['fact_table'].split('.')

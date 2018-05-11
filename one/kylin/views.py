@@ -19,6 +19,7 @@ from superset.views.base import (
     SupersetModelView, ListWidgetWithCheckboxes, DeleteMixin, DatasourceFilter,
     get_datasource_exist_error_mgs,
 )
+from superset.views.core import json_success
 
 from one.kylin.models import KylinProject
 from . import models
@@ -35,9 +36,21 @@ class KylinColumnInlineView(CompactCRUDMixin, SupersetModelView):  # noqa
     edit_title = _('Edit Column')
 
     can_delete = False
-    # list_widget = ListWidgetWithCheckboxes
-    list_columns = ['column_name', 'verbose_name', 'type']
-    edit_columns = list_columns
+    list_widget = ListWidgetWithCheckboxes
+    # edit_columns = [
+    #     'column_name', 'verbose_name', 'description',
+    #     'type', 'groupby', 'filterable',
+    #     'table', 'count_distinct', 'sum', 'min', 'max', 'expression',
+    #     'is_dttm', 'python_date_format', 'database_expression']
+    edit_columns = [
+        'column_name', 'verbose_name', 'description',
+        'type', 'groupby', 'filterable',
+        'count_distinct', 'sum', 'min', 'max',
+        'is_dttm']
+    add_columns = edit_columns
+    list_columns = [
+        'column_name', 'verbose_name', 'type', 'groupby', 'filterable', 'count_distinct',
+        'sum', 'min', 'max', 'is_dttm']
     label_columns = {
         'column_name': _("Column"),
         'verbose_name': _("Verbose Name"),
@@ -170,23 +183,6 @@ class Kylin(BaseSupersetView):
             project.sync_datasource()
 
         return redirect("/kylindatasourcemodelview/list/")
-
-    @api
-    @has_access_api
-    @expose("/checkbox/<model_view>/<id_>/<attr>/<value>", methods=['GET'])
-    def checkbox(self, model_view, id_, attr, value):
-        pass
-        # modelview_to_model = {
-        #     'TableColumnInlineView':
-        #         ConnectorRegistry.sources['table'].column_class,
-        # }
-        # model = modelview_to_model[model_view]
-        # obj = db.session.query(model).filter_by(id=id_).first()
-        # if obj:
-        #     setattr(obj, attr, value == 'true')
-        #     db.session.commit()
-        # return json_success("OK")
-
 
 appbuilder.add_view_no_menu(Kylin)
 
