@@ -13,7 +13,7 @@ from sqlalchemy import (
     DateTime, JSON, TIMESTAMP
 )
 import sqlalchemy as sa
-from sqlalchemy import asc, and_, desc, select, or_, MetaData, Table
+from sqlalchemy import asc, and_, desc, select, or_, MetaData, Table, exists
 from sqlalchemy.sql.expression import TextAsFrom
 from sqlalchemy.orm import backref, relationship
 from sqlalchemy.sql import table, literal_column, text, column, join, alias
@@ -33,7 +33,7 @@ from superset.models.core import Database
 from superset.jinja_context import get_template_processor
 from superset.models.helpers import set_perm
 
-from superset import app, db, db_engine_specs, utils
+from superset import app, db, utils
 from superset.db_engine_specs import KylinEngineSpec
 import six
 
@@ -123,7 +123,7 @@ class KylinColumn(Model, BaseColumn):
                 return str((dttm - datetime(1970, 1, 1)).total_seconds() * 1000.0)
             return "'{}'".format(dttm.strftime(tf))
         else:
-            s = KylinEngineSpec.convert_dttm(self.type or '', dttm)
+            s = self.datasource.project.db_engine_spec.convert_dttm(self.type or '', dttm)
             return s or "'{}'".format(dttm.strftime('%Y-%m-%d %H:%M:%S.%f'))
 
 
@@ -148,169 +148,6 @@ class KylinMetric(Model, BaseMetric):
         pass
 
 
-class KylinProject(Model):
-
-    __tablename__ = 'kylin_projects'
-    type = "kylin"
-
-    id = Column(Integer, primary_key=True)
-    project_name = Column(String(255), nullable=False)
-    description = Column(String(255), nullable=True)
-    uuid = Column(String(40), nullable=False)
-    active = Column(Boolean, nullable=False, default=True)
-    last_modified = Column(String(20), nullable=False)
-    chunk = Column(Text, nullable=False)
-    cache_timeout = 0
-
-    def __repr__(self):
-        return self.project_name
-
-    @property
-    def backend(self):
-        url = make_url(self.sqlalchemy_uri_decrypted)
-        return url.get_backend_name()
-
-    @property
-    def data(self):
-        return {
-            'name': self.project_name,
-            'backend': 'kylin',
-        }
-
-    @property
-    def sqlalchemy_uri_decrypted(self):
-        # conn = sqla.engine.url.make_url(self.sqlalchemy_uri)
-        # if self.custom_password_store:
-        #     conn.password = self.custom_password_store(conn)
-        # else:
-        #     conn.password = self.password
-        # todo
-        return str(self.kylin_client)
-
-    def get_extra(self):
-        extra = {}
-        if self.extra:
-            try:
-                extra = json.loads(self.extra)
-            except Exception as e:
-                logging.error(e)
-        return extra
-
-    extra = {}
-
-    def get_sqla_engine(self, schema=None, nullpool=False, user_name=None):
-        extra = self.get_extra()
-        uri = make_url(self.sqlalchemy_uri_decrypted)
-        params = extra.get('engine_params', {})
-        if nullpool:
-            params['poolclass'] = NullPool
-        uri = self.db_engine_spec.adjust_database_uri(uri, schema)
-        # if self.impersonate_user:
-        #     uri.username = user_name if user_name else g.user.username
-        return create_engine(uri, **params)
-
-    @property
-    def db_engine_spec(self):
-        return db_engine_specs.engines.get(
-            self.backend, db_engine_specs.BaseEngineSpec)
-
-    @property
-    def kylin_client(self):
-        _client = kylinpy.Kylinpy(
-            host=app.config.get('KAP_HOST'),
-            port=app.config.get('KAP_PORT'),
-            username=app.config.get('KAP_ADMIN'),
-            password=app.config.get('KAP_PASSWORD'),
-            project=self.project_name,
-            version='v2'
-        )
-        return _client
-
-    @classmethod
-    def create_kylin_project(cls, project):
-        session = db.session
-        session.add(KylinProject(
-            project_name=project['name'],
-            description=project['description'],
-            uuid=project['uuid'],
-            active=True,
-            last_modified=project['last_modified'],
-            chunk=json.dumps(project)
-        ))
-        session.commit()
-
-    def refresh_kylin_project(self, project):
-        self.last_modified = project['last_modified']
-        self.chunk = json.dumps(project)
-        db.session.commit()
-
-    def inaction(self):
-        self.active = False
-        db.session.commit()
-
-    def fetch_cubes(self):
-        cubes = [c for c in self.kylin_client.cubes().get('data') if c['status'] == 'READY']
-
-        return [{
-            'cube_desc': cube,
-            'model_desc': self.kylin_client.model_desc(cube['model']),
-            'measures': self.kylin_client.cube_desc(cube['name']),
-        } for cube in cubes]
-
-    def fetch_cube_columns(self, cube_name):
-        return self.kylin_client.get_cube_columns(cube_name).get('data')
-
-    def fetch_cube_metrics(self, cube_name):
-        _measure = self.kylin_client.get_cube_measures(cube_name).get('data')
-        return [
-            e for e in _measure if e['function']['expression'] in app.config.get('KAP_SUPPORT_METRICS')
-        ]
-
-    def sync_datasource(self):
-        datasources = []
-        columns = []
-        metrics = []
-        all_cubes = self.fetch_cubes()
-
-        for cube in all_cubes:
-            datasources.append(KylinDatasource(
-                project_id=self.id,
-                datasource_name=cube['cube_desc']['name'],
-                uuid=cube['cube_desc']['uuid'],
-                chunk=json.dumps({
-                    'cube_desc': cube['cube_desc'],
-                    'model_desc': cube['model_desc']
-                }),
-            ))
-
-        for ds in datasources:
-            for col in self.fetch_cube_columns(ds.datasource_name):
-                columns.append(KylinColumn(
-                    datasource=ds,
-                    column_name=col['column_NAME'],
-                    type=col['datatype'],
-                    groupby=True
-                ))
-
-            for metric in self.fetch_cube_metrics(ds.datasource_name):
-                metrics.append(KylinMetric(
-                    datasource=ds,
-                    metric_name=metric['name'],
-                    verbose_name=metric['name'],
-                    metric_type=metric['function']['expression'],
-                    expression="{}({})".format(
-                        metric['function']['expression'],
-                        metric['function']['parameter']['value']
-                    )
-                ))
-
-        session = db.session
-        for _ in itertools.chain(datasources, columns, metrics):
-            session.add(_)
-
-        session.commit()
-
-
 class KylinDatasource(Model, BaseDatasource):
 
     __tablename__ = 'kylin_datasources'
@@ -319,7 +156,6 @@ class KylinDatasource(Model, BaseDatasource):
     query_language = 'sql'
     column_class = KylinColumn
     metric_class = KylinMetric
-    project_class = KylinProject
 
     datasource_name = Column(String(255), unique=True)
     uuid = Column(String(40), nullable=False)
@@ -332,7 +168,6 @@ class KylinDatasource(Model, BaseDatasource):
         foreign_keys=[project_id]
     )
     chunk = Column(Text)
-    sql = Column(Text)
 
     export_fields = (
         'datasource_name', 'main_dttm_col', 'description', 'default_endpoint',
@@ -350,7 +185,7 @@ class KylinDatasource(Model, BaseDatasource):
 
     @property
     def connection(self):
-        return str(self.database)
+        return str(self.project)
 
     @property
     def name(self):
@@ -383,7 +218,7 @@ class KylinDatasource(Model, BaseDatasource):
 
     def get_template_processor(self, **kwargs):
         return get_template_processor(
-            table=self, database=self.database, **kwargs)
+            table=self, database=self.project, **kwargs)
 
     def get_sqla_query(  # sqla
             self,
@@ -415,16 +250,12 @@ class KylinDatasource(Model, BaseDatasource):
             'form_data': form_data,
         }
         template_processor = self.get_template_processor(**template_kwargs)
-        db_engine_spec = self.database.db_engine_spec
 
         orderby = orderby or []
 
         # For backward compatibility
         # if granularity not in self.dttm_cols:
         #     granularity = self.main_dttm_col
-
-        # Database spec supports join-free timeslot grouping
-        time_groupby_inline = db_engine_spec.time_groupby_inline
 
         cols = {col.column_name: col for col in self.columns}
         metrics_dict = {m.metric_name: m for m in self.metrics}
@@ -486,8 +317,6 @@ class KylinDatasource(Model, BaseDatasource):
         select_exprs += metrics_exprs
         qry = sa.select(select_exprs)
 
-        # tbl = self.get_from_clause(template_processor, db_engine_spec)
-
         if not columns:
             qry = qry.group_by(*groupby_exprs)
 
@@ -545,12 +374,7 @@ class KylinDatasource(Model, BaseDatasource):
             if having:
                 having = template_processor.process_template(having)
                 having_clause_and += [sa.text('({})'.format(having))]
-        # if granularity:
-        #     qry = qry.where(and_(*(time_filters + where_clause_and)))
-        # else:
         qry = qry.where(and_(*(time_filters + where_clause_and)))
-        # qry = qry.where(and_(*where_clause_and))
-        # qry = qry.where(and_(*time_filters))
         qry = qry.having(and_(*having_clause_and))
 
         if not orderby and not columns:
@@ -637,7 +461,7 @@ class KylinDatasource(Model, BaseDatasource):
         # ))
 
     def get_query_str(self, query_obj):
-        engine = self.database.get_sqla_engine()
+        engine = self.project.get_kylin_engine()
         qry = self.get_sqla_query(**query_obj)
         sql = six.text_type(
             qry.compile(
@@ -653,7 +477,7 @@ class KylinDatasource(Model, BaseDatasource):
 
     def get_df(self, sql, schema):
         sql = sql.strip().strip(';')
-        eng = self.database.get_sqla_engine(schema=schema)
+        eng = self.project.get_kylin_engine(schema=schema)
         df = pd.read_sql(sql, eng)
 
         def needs_conversion(df_series):
@@ -680,7 +504,7 @@ class KylinDatasource(Model, BaseDatasource):
             status = QueryStatus.FAILED
             logging.exception(e)
             error_message = (
-                self.database.db_engine_spec.extract_error_message(e))
+                self.project.db_engine_spec.extract_error_message(e))
 
         return QueryResult(
             status=status,
@@ -688,3 +512,164 @@ class KylinDatasource(Model, BaseDatasource):
             duration=datetime.datetime.now() - qry_start_dttm,
             query=sql,
             error_message=error_message)
+
+
+class KylinProject(Model):
+
+    __tablename__ = 'kylin_projects'
+    type = "kylin"
+    datasource_class = KylinDatasource
+
+    id = Column(Integer, primary_key=True)
+    project_name = Column(String(255), nullable=False)
+    description = Column(String(255), nullable=True)
+    uuid = Column(String(40), nullable=False)
+    active = Column(Boolean, nullable=False, default=True)
+    last_modified = Column(String(20), nullable=False)
+    chunk = Column(Text, nullable=False)
+    cache_timeout = 0
+
+    def __repr__(self):
+        return self.project_name
+
+    @property
+    def backend(self):
+        url = make_url(self.sqlalchemy_uri_decrypted)
+        return url.get_backend_name()
+
+    @property
+    def data(self):
+        return {
+            'name': self.project_name,
+            'backend': 'kylin',
+        }
+
+    @property
+    def sqlalchemy_uri_decrypted(self):
+        # conn = sqla.engine.url.make_url(self.sqlalchemy_uri)
+        # if self.custom_password_store:
+        #     conn.password = self.custom_password_store(conn)
+        # else:
+        #     conn.password = self.password
+        # todo
+        return str(self.kylin_client)
+
+    def get_extra(self):
+        extra = {}
+        if self.extra:
+            try:
+                extra = json.loads(self.extra)
+            except Exception as e:
+                logging.error(e)
+        return extra
+
+    extra = {}
+
+    @property
+    def db_engine_spec(self):
+        return KylinEngineSpec
+
+    def get_kylin_engine(self, schema=None, nullpool=True, user_name=None):
+        url = make_url(self.sqlalchemy_uri_decrypted)
+        return create_engine(url)
+
+    @property
+    def kylin_client(self):
+        _client = kylinpy.Kylinpy(
+            host=app.config.get('KAP_HOST'),
+            port=app.config.get('KAP_PORT'),
+            username=app.config.get('KAP_ADMIN'),
+            password=app.config.get('KAP_PASSWORD'),
+            project=self.project_name,
+            version='v2'
+        )
+        return _client
+
+    @classmethod
+    def create_kylin_project(cls, project):
+        session = db.session
+        session.add(KylinProject(
+            project_name=project['name'],
+            description=project['description'],
+            uuid=project['uuid'],
+            active=True,
+            last_modified=project['last_modified'],
+            chunk=json.dumps(project)
+        ))
+        session.commit()
+
+    def refresh_kylin_project(self, project):
+        self.last_modified = project['last_modified']
+        self.chunk = json.dumps(project)
+        db.session.commit()
+
+    def inaction(self):
+        self.active = False
+        db.session.commit()
+
+    def fetch_cubes(self):
+        cubes = [c for c in self.kylin_client.cubes().get('data') if c['status'] == 'READY']
+
+        return [{
+            'cube_desc': cube,
+            'model_desc': self.kylin_client.model_desc(cube['model']),
+            'measures': self.kylin_client.cube_desc(cube['name']),
+        } for cube in cubes]
+
+    def fetch_cube_columns(self, cube_name):
+        return self.kylin_client.get_cube_columns(cube_name).get('data')
+
+    def fetch_cube_metrics(self, cube_name):
+        _measure = self.kylin_client.get_cube_measures(cube_name).get('data')
+        return [
+            e for e in _measure if e['function']['expression'] in app.config.get('KAP_SUPPORT_METRICS')
+        ]
+
+    def sync_datasource(self):
+        datasources = []
+        columns = []
+        metrics = []
+        all_cubes = self.fetch_cubes()
+
+        for cube in all_cubes:
+            if (db.session.query(
+                exists().where(KylinDatasource.uuid == cube['cube_desc']['uuid'])
+            ).scalar()):
+                all_cubes.remove(cube)
+
+        for cube in all_cubes:
+            datasources.append(KylinDatasource(
+                project_id=self.id,
+                datasource_name=cube['cube_desc']['name'],
+                uuid=cube['cube_desc']['uuid'],
+                chunk=json.dumps({
+                    'cube_desc': cube['cube_desc'],
+                    'model_desc': cube['model_desc']
+                }),
+            ))
+
+        for ds in datasources:
+            for col in self.fetch_cube_columns(ds.datasource_name):
+                dbcol = KylinColumn(
+                    datasource=ds,
+                    column_name=col['column_NAME'],
+                    type=col['datatype']
+                )
+                dbcol.groupby = True
+                dbcol.is_dttm = dbcol.is_time
+                columns.append(dbcol)
+
+            for metric in self.fetch_cube_metrics(ds.datasource_name):
+                metrics.append(KylinMetric(
+                    datasource=ds,
+                    metric_name=metric['name'],
+                    verbose_name=metric['name'],
+                    metric_type=metric['function']['expression'],
+                    expression="{}({})".format(
+                        metric['function']['expression'],
+                        metric['function']['parameter']['value']
+                    )
+                ))
+        for _ in itertools.chain(datasources, columns, metrics):
+            db.session.add(_)
+        db.session.commit()

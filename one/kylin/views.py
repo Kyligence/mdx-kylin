@@ -110,16 +110,6 @@ class KylinProjectModelView(CompactCRUDMixin, SupersetModelView):
         kylin_instance.sync()
 
 
-# appbuilder.add_view(
-#     KylinProjectModelView,
-#     "Kylin Project",
-#     label=__("Kylin Project"),
-#     category="Sources",
-#     category_label=__("Sources"),
-#     icon='fa-cubes',
-# )
-
-
 class KylinDatasourceModelView(SupersetModelView):  # noqa
     datamodel = SQLAInterface(models.KylinDatasource)
 
@@ -184,12 +174,13 @@ class Kylin(BaseSupersetView):
 
         return redirect("/kylindatasourcemodelview/list/")
 
+
 appbuilder.add_view_no_menu(Kylin)
 
 
 appbuilder.add_link(
     "Refresh Kylin",
-    label=__("Refresh Kylin"),
+    label=__("Refresh Kylin Cubes"),
     href='/kylin/refresh_datasources/',
     category='Sources',
     category_label=__("Sources"),
