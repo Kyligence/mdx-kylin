@@ -1,13 +1,13 @@
 """empty message
 
-Revision ID: f160b4efe664
+Revision ID: be205187b6ca
 Revises: 5ccf602336a0
-Create Date: 2018-04-19 18:03:41.029146
+Create Date: 2018-05-15 15:12:13.616212
 
 """
 
 # revision identifiers, used by Alembic.
-revision = 'f160b4efe664'
+revision = 'be205187b6ca'
 down_revision = '5ccf602336a0'
 
 from alembic import op
@@ -39,12 +39,12 @@ def upgrade():
     sa.Column('params', sa.String(length=1000), nullable=True),
     sa.Column('perm', sa.String(length=1000), nullable=True),
     sa.Column('datasource_name', sa.String(length=255), nullable=True),
+    sa.Column('main_dttm_col', sa.String(length=250), nullable=True),
     sa.Column('uuid', sa.String(length=40), nullable=False),
     sa.Column('last_modified', sa.TIMESTAMP(), nullable=False),
     sa.Column('active', sa.Boolean(), nullable=True),
     sa.Column('project_id', sa.Integer(), nullable=False),
     sa.Column('chunk', sa.Text(), nullable=True),
-    sa.Column('sql', sa.Text(), nullable=True),
     sa.Column('changed_by_fk', sa.Integer(), nullable=True),
     sa.Column('created_by_fk', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['changed_by_fk'], [u'ab_user.id'], ),
@@ -70,6 +70,10 @@ def upgrade():
     sa.Column('filterable', sa.Boolean(), nullable=True),
     sa.Column('description', sa.Text(), nullable=True),
     sa.Column('datasource_id', sa.Integer(), nullable=True),
+    sa.Column('is_dttm', sa.Boolean(), nullable=True),
+    sa.Column('expression', sa.Text(), nullable=True),
+    sa.Column('python_date_format', sa.String(length=255), nullable=True),
+    sa.Column('database_expression', sa.String(length=255), nullable=True),
     sa.Column('changed_by_fk', sa.Integer(), nullable=True),
     sa.Column('created_by_fk', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['changed_by_fk'], [u'ab_user.id'], ),
