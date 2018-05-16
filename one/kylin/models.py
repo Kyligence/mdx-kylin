@@ -55,15 +55,14 @@ class KylinColumn(Model, BaseColumn):
     database_expression = Column(String(255))
 
     export_fields = (
-        'is_dttm'
+        'table_id', 'column_name', 'verbose_name', 'is_dttm', 'is_active',
+        'type', 'groupby', 'count_distinct', 'sum', 'avg', 'max', 'min',
+        'filterable', 'expression', 'description', 'python_date_format',
+        'database_expression',
     )
 
     def __repr__(self):
         return self.column_name
-
-    @property
-    def expression(self):
-        pass
 
     @property
     def sqla_col(self):
@@ -88,18 +87,20 @@ class KylinColumn(Model, BaseColumn):
         pdf = self.python_date_format
         is_epoch = pdf in ('epoch_s', 'epoch_ms')
         if not self.expression and not time_grain and not is_epoch:
-            return column(self.column_name, type_=DateTime).label(DTTM_ALIAS)
+            return literal_column(self.column_name, type_=DateTime).label(DTTM_ALIAS)
 
         expr = self.expression or self.column_name
         if is_epoch:
             # if epoch, translate to DATE using db specific conf
-            db_spec = self.table.database.db_engine_spec
+            db_spec = self.datasource.database.db_engine_spec
             if pdf == 'epoch_s':
                 expr = db_spec.epoch_to_dttm().format(col=expr)
             elif pdf == 'epoch_ms':
                 expr = db_spec.epoch_ms_to_dttm().format(col=expr)
         if time_grain:
-            grain = self.table.database.grains_dict().get(time_grain)
+            db_spec = self.datasource.database.db_engine_spec
+            d = {grain.duration: grain for grain in db_spec.time_grains}
+            grain = d.get(time_grain, None)
             if grain:
                 expr = grain.function.format(col=expr)
         return literal_column(expr, type_=DateTime).label(DTTM_ALIAS)
@@ -158,6 +159,7 @@ class KylinDatasource(Model, BaseDatasource):
     metric_class = KylinMetric
 
     datasource_name = Column(String(255), unique=True)
+    main_dttm_col = Column(String(250))
     uuid = Column(String(40), nullable=False)
     last_modified = Column(TIMESTAMP, nullable=False)
     active = Column(Boolean, default=True)
@@ -200,10 +202,16 @@ class KylinDatasource(Model, BaseDatasource):
             '<a href="{self.explore_url}">{name}</a>'.format(**locals()))
 
     @property
+    def dttm_cols(self):
+        l = [c.column_name for c in self.columns if c.is_dttm]  # noqa: E741
+        if self.main_dttm_col and self.main_dttm_col not in l:
+            l.append(self.main_dttm_col)
+        return l
+
+    @property
     def data(self):
         d = super(KylinDatasource, self).data
-        # d['granularity_sqla'] = utils.choicify(self.dttm_cols)
-        d['granularity_sqla'] = [["KYLIN_CAL_DT.YEAR_BEG_DT", "KYLIN_CAL_DT.YEAR_BEG_DT"]]
+        d['granularity_sqla'] = utils.choicify(self.dttm_cols)
         d['time_grain_sqla'] = [(g.duration, g.name) for g in KylinEngineSpec.time_grains]
         return d
 
@@ -390,75 +398,30 @@ class KylinDatasource(Model, BaseDatasource):
         if row_limit:
             qry = qry.limit(row_limit)
 
-        # if is_timeseries and \
-        #         timeseries_limit and groupby and not time_groupby_inline:
-        #     # some sql dialects require for order by expressions
-        #     # to also be in the select clause -- others, e.g. vertica,
-        #     # require a unique inner alias
-        #     inner_main_metric_expr = main_metric_expr.label('mme_inner__')
-        #     inner_select_exprs += [inner_main_metric_expr]
-        #     subq = select(inner_select_exprs)
-        #     subq = subq.select_from(tbl)
-        #     inner_time_filter = dttm_col.get_time_filter(
-        #         inner_from_dttm or from_dttm,
-        #         inner_to_dttm or to_dttm,
-        #     )
-        #     subq = subq.where(and_(*(where_clause_and + [inner_time_filter])))
-        #     subq = subq.group_by(*inner_groupby_exprs)
-
-        #     ob = inner_main_metric_expr
-        #     if timeseries_limit_metric:
-        #         timeseries_limit_metric = metrics_dict.get(timeseries_limit_metric)
-        #         ob = timeseries_limit_metric.sqla_col
-        #     direction = desc if order_desc else asc
-        #     subq = subq.order_by(direction(ob))
-        #     subq = subq.limit(timeseries_limit)
-
-        #     on_clause = []
-        #     for i, gb in enumerate(groupby):
-        #         on_clause.append(
-        #             groupby_exprs[i] == column(gb + '__'))
-
-        #     tbl = tbl.join(subq.alias(), and_(*on_clause))
-
         model_desc = json.loads(self.chunk).get('model_desc')['data']
-        fact_schema, fact_table = model_desc['fact_table'].split('.')
 
-        from_clause = ''
+        def get_table_clause(s, label=''):
+            _schema, _table = s.split('.')
+            table_clause = table(_table)
+            table_clause.schema = _schema
+
+            label = label if label else _table
+            return alias(table_clause, label)
+
+        from_clause = get_table_clause(model_desc['fact_table'])
         for lookup in model_desc.get('lookups'):
-            if from_clause is '':
-                from_clause = join(
-                    table(fact_table),
-                    alias(table(lookup['table'].split('.')[1]), lookup['alias']),
-                    literal_column(lookup['join']['foreign_key'][0]) == literal_column(lookup['join']['primary_key'][0]),
-                    isouter=False
-                )
-            else:
-                from_clause = join(
-                    from_clause,
-                    alias(table(lookup['table'].split('.')[1]), lookup['alias']),
-                    literal_column(lookup['join']['foreign_key'][0]) == literal_column(lookup['join']['primary_key'][0])
-                )
+            join_clause_and = []
+            for (idx, pk) in enumerate(lookup['join']['primary_key']):
+                fk = lookup['join']['foreign_key'][idx]
+                join_clause_and.append(literal_column(fk) == literal_column(pk))
 
-            # for (idx, pk) in enumerate(lookup['join']['primary_key']):
-            #     fk = lookup['join']['foreign_key'][idx]
-            #     from_clause.append(join(
-            #         table(fk.split('.')[0]),
-            #         table(pk.split('.')[0]),
-            #         literal_column(fk) == literal_column(pk)
-            #     ))
-
-        # for _ in from_clause:
-        #     qry = qry.select_from(_)
+            from_clause = join(
+                from_clause,
+                get_table_clause(lookup['table'], lookup['alias']),
+                and_(*join_clause_and)
+            )
 
         return qry.select_from(from_clause)
-
-        #
-        # return qry.select_from(join(
-        #     table("KYLIN_SALES"),
-        #     table("KYLIN_CAL_DT"),
-        #     literal_column("KYLIN_SALES.PART_DT") == literal_column("KYLIN_CAL_DT.CAL_DT")
-        # ))
 
     def get_query_str(self, query_obj):
         engine = self.project.get_kylin_engine()
@@ -546,12 +509,6 @@ class KylinProject(Model):
 
     @property
     def sqlalchemy_uri_decrypted(self):
-        # conn = sqla.engine.url.make_url(self.sqlalchemy_uri)
-        # if self.custom_password_store:
-        #     conn.password = self.custom_password_store(conn)
-        # else:
-        #     conn.password = self.password
-        # todo
         return str(self.kylin_client)
 
     def get_extra(self):

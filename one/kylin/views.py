@@ -37,16 +37,11 @@ class KylinColumnInlineView(CompactCRUDMixin, SupersetModelView):  # noqa
 
     can_delete = False
     list_widget = ListWidgetWithCheckboxes
-    # edit_columns = [
-    #     'column_name', 'verbose_name', 'description',
-    #     'type', 'groupby', 'filterable',
-    #     'table', 'count_distinct', 'sum', 'min', 'max', 'expression',
-    #     'is_dttm', 'python_date_format', 'database_expression']
     edit_columns = [
         'column_name', 'verbose_name', 'description',
         'type', 'groupby', 'filterable',
-        'count_distinct', 'sum', 'min', 'max',
-        'is_dttm']
+        'count_distinct', 'sum', 'min', 'max', 'expression',
+        'is_dttm', 'python_date_format', 'database_expression']
     add_columns = edit_columns
     list_columns = [
         'column_name', 'verbose_name', 'type', 'groupby', 'filterable', 'count_distinct',
