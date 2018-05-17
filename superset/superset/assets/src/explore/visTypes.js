@@ -1720,11 +1720,12 @@ export default visTypes;
 
 export function sectionsToRender(vizType, datasourceType) {
   const viz = visTypes[vizType];
+  const likeTable = ['kylin', 'table'];
   return [].concat(
     sections.datasourceAndVizType,
-    datasourceType === 'table' ? sections.sqlaTimeSeries : sections.druidTimeSeries,
+    likeTable.indexOf(datasourceType) > -1 ? sections.sqlaTimeSeries : sections.druidTimeSeries,
     viz.controlPanelSections,
-    datasourceType === 'table' ? sections.sqlClause : [],
-    datasourceType === 'table' ? sections.filters[0] : sections.filters,
+    likeTable.indexOf(datasourceType) > -1 ? sections.sqlClause : [],
+    likeTable.indexOf(datasourceType) > -1 ? sections.filters[0] : sections.filters,
   );
 }
