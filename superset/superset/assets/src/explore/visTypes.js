@@ -1731,11 +1731,12 @@ function adhocFilterEnabled(viz) {
 
 export function sectionsToRender(vizType, datasourceType) {
   const viz = visTypes[vizType];
+  const likeTable = ['kylin', 'table'];
   return [].concat(
     sections.datasourceAndVizType,
-    datasourceType === 'table' ? sections.sqlaTimeSeries : sections.druidTimeSeries,
+    likeTable.indexOf(datasourceType) > -1 ? sections.sqlaTimeSeries : sections.druidTimeSeries,
     viz.controlPanelSections,
-    !adhocFilterEnabled(viz) && (datasourceType === 'table' ? sections.sqlClause : []),
-    !adhocFilterEnabled(viz) && (datasourceType === 'table' ? sections.filters[0] : sections.filters),
+    !adhocFilterEnabled(viz) && (likeTable.indexOf(datasourceType) > -1 ? sections.sqlClause : []),
+    !adhocFilterEnabled(viz) && (likeTable.indexOf(datasourceType) > -1 ? sections.filters[0] : sections.filters),
   ).filter(section => section);
 }

@@ -1,30 +1,33 @@
-#!/bin/bash
-.DEFAULT_GOAL := dev
-SHELL:=/bin/bash
-
+dev: export SUPERSET_CONFIG_PATH=$(shell pwd)/bin/superset_config_dev.py
+dev: export SUPERSET_HOME=$(shell pwd)
+dev: export PYTHONPATH=$(shell pwd):PYTHONPATH
 dev:
 	superset runserver -d
 
+migrate: export SUPERSET_CONFIG_PATH=$(shell pwd)/bin/superset_config_dev.py
+migrate: export SUPERSET_HOME=$(shell pwd)
+migrate: export PYTHONPATH=$(shell pwd):PYTHONPATH
+migrate:
+	superset db migrate
+
+upgrade: export SUPERSET_CONFIG_PATH=$(shell pwd)/bin/superset_config_dev.py
+upgrade: export SUPERSET_HOME=$(shell pwd)
+upgrade: export PYTHONPATH=$(shell pwd):PYTHONPATH
+upgrade:
+	superset db upgrade
+
+initdev: export SUPERSET_CONFIG_PATH=$(shell pwd)/bin/superset_config_dev.py
+initdev: export SUPERSET_HOME=$(shell pwd)
+initdev: export PYTHONPATH=$(shell pwd):PYTHONPATH
+initdev:
+	@echo "Starting mysql services..."
+	@docker run --name superset-db -v `pwd`/mysql_data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=superset -d -p 3306:3306 mysql:5.7
+	@echo "Sleeping for 20s"
+	@sleep 20
+	./bin/superset-init
+
 build:
-	. ./bin/bootstrap.sh $(shell pwd)
+	docker build -f Dockerfile -t kyligence/superset-mod:latest .
 
-deploy:
-# server username: developer
-# debian 9 deploy
-	. ./bin/deploy_testing.sh
-
-poc:
-# server username: developer
-# debian 9 deploy
-	. ./bin/deploy_poc.sh
-
-clean:
-	docker stop superset-db
-	rm -rf mysql_data
-
-demo:
-	docker build -f bin/Dockerfile_supersetdemo -t superset:demo bin
-	docker run -d -p 8099:8099 --name superset-demo superset:demo
-
-sitemap:
-	tree -L 4 -I "*.pyc|node_modules|dist" superset/ > sitemap.log
+publish:
+	docker push kyligence/superset-mod:latest

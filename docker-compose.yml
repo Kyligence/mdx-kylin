@@ -1,0 +1,22 @@
+version: '3'
+services:
+  superset:
+    image: kyligence/superset-mod
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./bin/superset_config.py:/etc/superset/superset_config.py
+  mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: superset
+    volumes:
+      - mysql:/var/lib/mysql
+volumes:
+  mysql:
+    external: false

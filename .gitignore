@@ -102,3 +102,4 @@ ENV/
 
 mysql_data/
 .idea
+superset.db

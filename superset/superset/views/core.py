@@ -1465,6 +1465,8 @@ class Superset(BaseSupersetView):
                 ConnectorRegistry.sources['table'].column_class,
             'DruidColumnInlineView':
                 ConnectorRegistry.sources['druid'].column_class,
+            'KylinColumnInlineView':
+                ConnectorRegistry.sources['kylin'].column_class,
         }
         model = modelview_to_model[model_view]
         col = db.session.query(model).filter_by(id=id_).first()
