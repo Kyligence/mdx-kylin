@@ -10,6 +10,12 @@ migrate: export PYTHONPATH=$(shell pwd):PYTHONPATH
 migrate:
 	superset db migrate
 
+upgrade: export SUPERSET_CONFIG_PATH=$(shell pwd)/bin/superset_config_dev.py
+upgrade: export SUPERSET_HOME=$(shell pwd)
+upgrade: export PYTHONPATH=$(shell pwd):PYTHONPATH
+upgrade:
+	superset db upgrade
+
 initdev: export SUPERSET_CONFIG_PATH=$(shell pwd)/bin/superset_config_dev.py
 initdev: export SUPERSET_HOME=$(shell pwd)
 initdev: export PYTHONPATH=$(shell pwd):PYTHONPATH
