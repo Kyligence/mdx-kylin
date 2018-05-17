@@ -126,7 +126,7 @@ Follow these few simple steps to install Superset.::
     superset init
 
     # To start a development web server on port 8088, use -p to bind to another port
-    # superset runserver -d
+    superset runserver -d
 
 
 After installation, you should be able to point your browser to the right
@@ -293,6 +293,8 @@ Here's a list of some of the recommended packages.
 |  Postgres     | ``pip install psycopg2``            | ``postgresql+psycopg2://``                      |
 +---------------+-------------------------------------+-------------------------------------------------+
 |  Presto       | ``pip install pyhive``              | ``presto://``                                   |
++---------------+-------------------------------------+-------------------------------------------------+
+|  Hive         | ``pip install pyhive``              | ``hive://``                                     |
 +---------------+-------------------------------------+-------------------------------------------------+
 |  Oracle       | ``pip install cx_Oracle``           | ``oracle://``                                   |
 +---------------+-------------------------------------+-------------------------------------------------+

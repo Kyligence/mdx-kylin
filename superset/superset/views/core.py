@@ -26,7 +26,7 @@ import pandas as pd
 import simplejson as json
 from six import text_type
 import sqlalchemy as sqla
-from sqlalchemy import create_engine
+from sqlalchemy import and_, create_engine, update
 from sqlalchemy.engine.url import make_url
 from sqlalchemy.exc import IntegrityError
 from unidecode import unidecode
@@ -2146,6 +2146,7 @@ class Superset(BaseSupersetView):
         SqlaTable = ConnectorRegistry.sources['table']
         data = json.loads(request.form.get('data'))
         table_name = data.get('datasourceName')
+        template_params = data.get('templateParams')
         table = (
             db.session.query(SqlaTable)
             .filter_by(table_name=table_name)
@@ -2155,6 +2156,7 @@ class Superset(BaseSupersetView):
             table = SqlaTable(table_name=table_name)
         table.database_id = data.get('dbId')
         table.schema = data.get('schema')
+        table.template_params = data.get('templateParams')
         table.is_sqllab_view = True
         q = SupersetQuery(data.get('sql'))
         table.sql = q.stripped()
@@ -2551,6 +2553,35 @@ class Superset(BaseSupersetView):
             .all()
         )
         dict_queries = {q.client_id: q.to_dict() for q in sql_queries}
+
+        now = int(round(time.time() * 1000))
+
+        unfinished_states = [
+            utils.QueryStatus.PENDING,
+            utils.QueryStatus.RUNNING,
+        ]
+
+        queries_to_timeout = [
+            client_id for client_id, query_dict in dict_queries.items()
+            if (
+                query_dict['state'] in unfinished_states and (
+                    now - query_dict['startDttm'] >
+                    config.get('SQLLAB_ASYNC_TIME_LIMIT_SEC') * 1000
+                )
+            )
+        ]
+
+        if queries_to_timeout:
+            update(Query).where(
+                and_(
+                    Query.user_id == g.user.get_id(),
+                    Query.client_id in queries_to_timeout,
+                ),
+            ).values(state=utils.QueryStatus.TIMED_OUT)
+
+            for client_id in queries_to_timeout:
+                dict_queries[client_id]['status'] = utils.QueryStatus.TIMED_OUT
+
         return json_success(
             json.dumps(dict_queries, default=utils.json_int_dttm_ser))
 
