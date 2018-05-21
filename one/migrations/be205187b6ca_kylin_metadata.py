@@ -1,4 +1,4 @@
-"""empty message
+"""kylin metadata
 
 Revision ID: be205187b6ca
 Revises: 5ccf602336a0
@@ -8,7 +8,7 @@ Create Date: 2018-05-15 15:12:13.616212
 
 # revision identifiers, used by Alembic.
 revision = 'be205187b6ca'
-down_revision = '5ccf602336a0'
+down_revision = 'e502db2af7be'
 
 from alembic import op
 import sqlalchemy as sa
