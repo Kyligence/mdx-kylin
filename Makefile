@@ -27,7 +27,8 @@ initdev:
 	./bin/superset-init
 
 build:
-	docker build -f Dockerfile -t kyligence/superset-mod:latest .
+	cd superset/superset/assets && yarn && yarn run build
+	docker build -f Dockerfile -t kyligence/superset-kylin:latest .
 
 publish:
-	docker push kyligence/superset-mod:latest
+	docker push kyligence/superset-kylin:latest

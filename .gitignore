@@ -101,5 +101,6 @@ ENV/
 .mypy_cache/
 
 mysql_data/
+mysql/
 .idea
 superset.db
