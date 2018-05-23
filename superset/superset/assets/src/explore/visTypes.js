@@ -1722,9 +1722,9 @@ export function sectionsToRender(vizType, datasourceType) {
   const viz = visTypes[vizType];
   return [].concat(
     sections.datasourceAndVizType,
-    datasourceType === 'table' ? sections.sqlaTimeSeries : sections.druidTimeSeries,
+    (datasourceType === 'table' || datasourceType === 'kylin') ? sections.sqlaTimeSeries : sections.druidTimeSeries,
     viz.controlPanelSections,
-    datasourceType === 'table' ? sections.sqlClause : [],
-    datasourceType === 'table' ? sections.filters[0] : sections.filters,
+    (datasourceType === 'table' || datasourceType === 'kylin') ? sections.sqlClause : [],
+    (datasourceType === 'table' || datasourceType === 'kylin') ? sections.filters[0] : sections.filters,
   );
 }
