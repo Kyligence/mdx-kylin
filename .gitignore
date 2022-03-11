@@ -9,7 +9,6 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
-build/
 develop-eggs/
 dist/
 downloads/
@@ -46,10 +45,6 @@ coverage.xml
 *.cover
 .hypothesis/
 
-# Translations
-*.mo
-*.pot
-
 # Django stuff:
 *.log
 local_settings.py
@@ -81,6 +76,7 @@ celerybeat-schedule
 
 # dotenv
 .env
+!client/.env
 
 # virtualenv
 .venv
@@ -100,7 +96,25 @@ ENV/
 # mypy
 .mypy_cache/
 
-mysql_data/
-mysql/
 .idea
-superset.db
+.insight
+.tmp
+*.csv
+*.out
+.DS_Store
+*.code-workspace
+build/Kyligence*
+Pipfile.lock
+node_modules/
+.pytest_cache/
+.cache-loader/
+yarn.lock
+
+studio/requirements.txt
+studio/superset/build/
+studio/superset/superset/commit_SHA1
+
+semantic-mdx/semantic-server/src/main/resources/static/*
+semantic-mdx/semantic-server/src/main/webapp/WEB-INF/schema/
+semantic-mdx/semantic-server/src/main/webapp/WEB-INF/*_datasources.xml
+/build/Kylin-MDX-*/
