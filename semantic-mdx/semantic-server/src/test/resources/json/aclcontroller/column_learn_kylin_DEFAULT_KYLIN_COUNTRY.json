@@ -1,0 +1,19 @@
+{
+  "code": "000",
+  "data": {
+    "size": 1,
+    "user": [
+      {
+        "xu": [
+          "COUNTRY",
+          "LATITUDE",
+          "LONGITUDE",
+          "NAME"
+        ]
+      }
+    ],
+    "allowModifyAclInProject": true,
+    "group": []
+  },
+  "msg": "get column acl"
+}

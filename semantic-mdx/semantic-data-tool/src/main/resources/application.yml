@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: semantic layer - data tool
+  profiles:
+    active: mysql
+
+
+insight:
+  database:
+    ip: localhost
+    port: 3306
+    name: insight
+    username: root
+    password: 2303a047dba718ea3c259a59835f95c4
+
+
+
+

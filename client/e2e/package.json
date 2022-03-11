@@ -1,0 +1,25 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "e2e": "npm run e2e:chrome && npm run e2e:firefox",
+    "e2e:ie": "BROWSER=ie mocha ./index.js",
+    "e2e:chrome": "BROWSER=chrome mocha ./index.js",
+    "e2e:chrome45": "BROWSER=chrome VERSION=45 mocha ./index.js",
+    "e2e:firefox": "BROWSER=firefox mocha ./index.js",
+    "e2e-debug": "npm run e2e-debug:chrome && npm run e2e-debug:firefox",
+    "e2e-debug:chrome": "BROWSER=chrome mocha ./index.js --inspect-brk",
+    "e2e-debug:firefox": "BROWSER=firefox mocha ./index.js --inspect-brk"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chromedriver": "86.0.0",
+    "dotenv": "8.2.0",
+    "geckodriver": "1.20.0",
+    "mocha": "8.2.0",
+    "selenium-webdriver": "4.0.0-alpha.7"
+  }
+}

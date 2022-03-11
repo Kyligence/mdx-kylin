@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.kylin.mdx.insight.core.dao.NamedMeasureMapper">
+    <resultMap id="BaseResultMap" type="io.kylin.mdx.insight.core.entity.NamedMeasure">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="dataset_id" property="datasetId" jdbcType="INTEGER"/>
+        <result column="model" property="model" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="alias" property="alias" jdbcType="VARCHAR"/>
+        <result column="expression" property="expression" jdbcType="VARCHAR"/>
+        <result column="data_type" property="dataType" jdbcType="VARCHAR"/>
+        <result column="dim_column" property="dimColumn" jdbcType="VARCHAR"/>
+        <result column="extend" property="extend" jdbcType="VARCHAR"/>
+        <result column="format_type" property="formatType" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+      id, dataset_id, model, name, alias, expression, data_type, dim_column, extend, format_type
+    </sql>
+
+</mapper>

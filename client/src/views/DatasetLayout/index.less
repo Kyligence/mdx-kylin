@@ -1,0 +1,280 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.dataset-workspace {
+  padding: 10px 20px 15px 10px;
+  .steps-form-wrapper {
+    width: 600px;
+    height: 100%;
+    padding: 20px 0;
+    margin: 0 auto;
+  }
+
+  .steps-form-wrapper .el-select {
+    width: 100%;
+  }
+  
+  .relation-map-wrapper {
+    min-width: 1080px;
+    height: 100%;
+    position: relative;
+    padding: 20px;
+    .welcome {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .welcome-icon {
+      font-size: 100px;
+      color: #B2B2B2;
+      margin-bottom: 30px;
+    }
+    .welcome-tips {
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+    .icon-superset-alert {
+      position: relative;
+      top: 1px;
+      color: #7F7F7F;
+      margin-right: 5px;
+    }
+  }
+  
+  .map-model-wrapper {
+    width: 255px;
+    display: inline-block;
+    margin: 5px 10px;
+    padding: 15px;
+    background: #ffffff;
+    border: 1px solid #CCCCCC;
+    border-radius: 2px;
+    cursor: grab;
+    box-sizing: border-box;
+  }
+  
+  .map-model-wrapper:hover, .map-model-wrapper.dragging {
+    color: #0988DE;
+    background: #E6F3FB;
+    border: 1px dashed #0988DE;
+    box-shadow: 0 2px 4px 0 #CCCCCC;
+  }
+  
+  .map-model-wrapper.dragging div,  .map-model-wrapper.dragging dir {
+    opacity: 0;
+  }
+
+  .map-model-wrapper .map-warpper-header .title-sm {
+    width: calc(~'100% - 21px');
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
+  
+  .dragging-preview-wrapper .map-model-wrapper.dragging div,
+  .dragging-preview-wrapper .map-model-wrapper.dragging dir {
+    opacity: 1;
+  }
+  
+  .dataset-relation {
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .dataset-model-list {
+    float: left;
+    width: 295px;
+    height: 100%;
+    border-right: 1px solid #E5E5E5;
+    box-sizing: border-box;
+  
+    .model-list-wrapper {
+      height: calc(~'100% - 55px');
+      overflow: auto;
+      &.disabled .map-model-wrapper,
+      &.disabled .map-model-wrapper:hover {
+        cursor: not-allowed;
+        background: #f4f4f4;
+        color: #7f7f7f;
+        border: 1px solid #cccccc;
+      }
+    }
+    .model-filter-wrapper {
+      margin: 15px 20px 10px 20px;
+      width: 250px;
+      .el-form {
+        width: 250px;
+        margin-bottom: 0;
+      }
+    }
+    .map-model-wrapper {
+      margin: 0 20px 10px 20px;
+      width: 250px;
+      display: block;
+    }
+  
+    .tip {
+      display: block;
+      text-align: center;
+      padding: 0 15px;
+      color: #7F7F7F;
+      height: 48px;
+      line-height: 48px;
+    }
+  }
+  
+  .dataset-maker {
+    float: left;
+    width: calc(~'100% - 295px');
+    height: 100%;
+    padding: 10px 20px 15px 10px;
+    box-sizing: border-box;
+  
+    .drop-model-canvas {
+      min-width: 100%;
+      min-height: 100%;
+    }
+
+    .operation-area {
+      position: relative;
+      height: 100%;
+    }
+  
+    .jtk-dragging {
+      z-index: 1000;
+    }
+  
+    .jtk-endpoint {
+      cursor: move;
+    }
+  
+    .jtk-connector {
+      z-index: 0;
+    }
+  
+    .jtk-overlay {
+      cursor: pointer;
+      position: relative;
+      .link-button {
+        color: @color-text-primary;
+        background: #FFFFFF;
+        border: 1px solid #CCCCCC;
+        border-radius: 2px;
+        font-size: 12px;
+        &:hover {
+          color: @color-primary;
+          border: 1px solid @color-primary;
+        }
+      }
+      .link-button.is-error {
+        border-color: #e73371;
+        color: #e73371;
+      }
+      .link-warning {
+        color: red;
+        font-size: 12px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -120%);
+      }
+      .link-button .el-tooltip {
+        padding: 2px;
+        white-space: nowrap;
+      }
+    }
+  
+    .drop-model-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #FBFBFB;
+      overflow: auto;
+      padding: 15px;
+      box-sizing: border-box;
+      &.hover {
+        box-shadow: inset 0 0 8px 0 #0988DE;
+      }
+    }
+  
+    .tip {
+      font-size: 16px;
+      color: #B2B2B2;
+      letter-spacing: 0;
+      line-height: 1.5;
+      text-align: center;
+      width: 530px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      .icon-superset-model {
+        display: inline-block;
+        font-size: 100px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  
+  .map-warpper-header .model-actions {
+    float: right;
+    cursor: pointer;
+  
+    i {
+      margin-left: 5px;
+    }
+  }
+  
+  .map-warpper-description {
+    margin: 0;
+    margin-top: 15px;
+    padding: 0;
+  
+    p {
+      margin-bottom: 5px;
+    }
+  }
+  
+  .relation-models-page .relation-content {
+    padding: 10px 0;
+  }
+  
+  #relation-content-wrapper {
+    .icon-superset-link {
+      color: #3188de;
+      background: #fff;
+      border: 1px solid #3188de;
+      padding: 2px;
+    }
+  }  
+}
+
+.step-description {
+  width: auto !important;
+  max-width: 350px;
+  hyphens: auto;
+  pointer-events: none;
+}

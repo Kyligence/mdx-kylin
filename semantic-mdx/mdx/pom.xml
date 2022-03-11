@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>io.kylin.mdx</groupId>
+        <artifactId>semantic-mdx</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <name>mdx module</name>
+
+    <artifactId>mdx</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <maven.test.skip>false</maven.test.skip>
+        <sonar.coverage.jacoco.xmlReportPaths>
+            ${project.basedir}/../jacoco-report/target/site/jacoco-aggregate/jacoco.xml
+        </sonar.coverage.jacoco.xmlReportPaths>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.kylin.mdx</groupId>
+            <artifactId>semantic-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- Commons jars -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+
+        <!-- Mondrian & XmlaServer -->
+        <dependency>
+            <groupId>pentaho</groupId>
+            <artifactId>mondrian</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>jsp-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun</groupId>
+                    <artifactId>rt-jdk1.5</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.java.openjdk</groupId>
+                    <artifactId>rt-java6</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>validation-api</artifactId>
+                    <groupId>javax.validation</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.olap4j</groupId>
+            <artifactId>olap4j-xmlaserver</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.kylin</groupId>
+            <artifactId>kylin-jdbc</artifactId>
+            <version>${kylin-jdbc.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>pentaho</id>
+            <url>https://ivy-nexus.pentaho.org/content/groups/omni</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <build>
+        <plugins>
+            <!--            <plugin>-->
+            <!--                <groupId>com.github.wvengen</groupId>-->
+            <!--                <artifactId>proguard-maven-plugin</artifactId>-->
+            <!--                <version>2.2.0</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <phase>package</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>proguard</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--                <configuration>-->
+            <!--                    <attach>true</attach>-->
+            <!--                    <attachArtifactClassifier>pg</attachArtifactClassifier>-->
+            <!--                    <options>-->
+            <!--                        <option>-ignorewarnings</option>-->
+            <!--                        <option>-dontshrink</option>-->
+            <!--                        <option>-dontoptimize</option>-->
+            <!--                        <option>-dontskipnonpubliclibraryclasses</option>-->
+            <!--                        <option>-dontskipnonpubliclibraryclassmembers</option>-->
+            <!--                        <option>-repackageclasses io.kylin.mdx.mdx.pg</option>-->
+            <!--                        <option>-keepclassmembers enum * { *; }</option>-->
+            <!--                        <option>-keepclassmembers public class * {void set*(***);*** get*();}</option>-->
+            <!--                        <option>-printmapping server_mapping.txt</option>-->
+            <!--                        <option>-useuniqueclassmembernames</option>-->
+            <!--                        <option>-keepattributes Signature</option>-->
+            <!--                        <option>-keep class io.kylin.mdx.mdx.core.datasource.** { *;}</option>-->
+            <!--                        <option>-keep class io.kylin.mdx.mdx.core.mondrian.** { *;}</option>-->
+            <!--                        <option>-keepnames class MdxXmlaServlet { *;}</option>-->
+            <!--                        <option>-keepnames class MdxServiceFilter { *;}</option>-->
+            <!--                        <option>-keepnames class MdxAuthenticator { *;}</option>-->
+            <!--                        <option>-keepnames class HttpRequestWrapper { *;}</option>-->
+            <!--                        <option>-keepnames class MdxException { *;}</option>-->
+            <!--                        <option>-keepnames class io.kylin.mdx.mdx.core.MdxNeedAuthException { *;}</option>-->
+            <!--                        <option>-keepnames class MdxConfig { *;}</option>-->
+            <!--                        <option>-keepnames class KylinAuthenticationService { *;}</option>-->
+            <!--                        <option>-keepnames class KylinSqlQuery { *** add*(***);}</option>-->
+            <!--                        <option>-keepattributes SourceFile,LineNumberTable,*Annotation*</option>-->
+            <!--                    </options>-->
+            <!--                    <outjar>${project.build.finalName}-pg</outjar>-->
+            <!--                    <libs>-->
+            <!--                        <lib>${java.home}/lib/rt.jar</lib>-->
+            <!--                    </libs>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
+        </plugins>
+    </build>
+
+</project>

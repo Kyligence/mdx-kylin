@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.kylin.mdx.insight.core.dao.RoleInfoMapper">
+    <resultMap id="RoleResultMap" type="io.kylin.mdx.insight.core.entity.RoleInfo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="SimRoleResultMap" type="io.kylin.mdx.insight.core.entity.RoleInfo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insertOneReturnId" parameterType="io.kylin.mdx.insight.core.entity.RoleInfo"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into role_info
+        (name, extend, description, create_time,modify_time)
+        values
+        (#{name},#{extend},#{description},#{createTime},#{modifyTime})
+    </insert>
+
+    <select id="selectAllRolesByPage" resultMap="RoleResultMap">
+        select
+        id, name, description
+        from role_info
+        <where>
+            <if test="name != null and name != ''">
+                name like  CONCAT(CONCAT('%',#{name}),'%')
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+    <select id="selectLastModifyTime" resultType="java.lang.Long">
+        SELECT MAX(modify_time) from role_info
+    </select>
+
+</mapper>

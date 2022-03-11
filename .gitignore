@@ -103,7 +103,7 @@ ENV/
 *.out
 .DS_Store
 *.code-workspace
-build/Kyligence*
+build/Kylin*
 Pipfile.lock
 node_modules/
 .pytest_cache/

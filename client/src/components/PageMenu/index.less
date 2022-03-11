@@ -1,0 +1,164 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '~antd/lib/menu/style/index.css';
+@import '~antd/lib/tooltip/style/index.css';
+@import '~antd/lib/layout/style/index.css';
+// @import '~antd/lib/style/core/motion.less';
+@import '../../assets/stylesheets/variables.less';
+
+@sideMenu-background: #438eb9;
+@sideMenu-height: 56px;
+@sideMenu-padding-y: 6px;
+@sideMenu-content-padding: 10px;
+@sideMenu-padding: @sideMenu-padding-y 8px;
+@sideMenu-content-height: @sideMenu-height - @sideMenu-padding-y * 2;
+@sideMenu-content-line-height: @sideMenu-content-height - @sideMenu-content-padding * 2;
+@sideMenu-collapse-width: 64px;
+@sideMenu-collapse-height: 56px;
+@sideMenu-collapse-padding-x: 8px;
+@sideMenu-collapse-padding-y: 6px;
+@sideMenu-collapse-padding: @sideMenu-collapse-padding-y @sideMenu-collapse-padding-x;
+@sideMenu-collapse-content-padding-x: 12px;
+@sideMenu-collapse-content-padding-y: 10px;
+@sideMenu-collapse-content-padding: @sideMenu-collapse-content-padding-y @sideMenu-collapse-content-padding-x;
+@sideMenu-collapse-content-width: @sideMenu-collapse-width - @sideMenu-collapse-padding-x * 2;
+@sideMenu-collapse-content-height: @sideMenu-collapse-height - @sideMenu-collapse-padding-y * 2;
+@menuItem-color: #FDFDFD;
+@menuItem-active-color: @menuItem-color;
+@menuItem-hover-color: @menuItem-color;
+@menuItem-hover-background: fade(#892e65, 20%);
+@menuItem-active-background: #892e65;
+@subMenuItem-background: #0659A7;
+
+.ant-menu-item .anticon {
+  margin-right: 5px;
+}
+
+.page-menu {
+  height: 100vh;
+  background: @sideMenu-background;
+  overflow-x: hidden;
+  overflow-y: auto;
+  &.collapsed {
+    overflow: hidden;
+  }
+  .ant-layout-sider {
+    background: none;
+  }
+  .ant-menu-dark {
+    background: @sideMenu-background;
+    .ant-menu-item {
+      margin: 0;
+      height: @sideMenu-height;
+      background: @sideMenu-background;
+      color: @menuItem-color;
+      font-weight: 500;
+      padding: @sideMenu-padding!important;
+      .content {
+        border-radius: 6px;
+        overflow: hidden;
+        padding: @sideMenu-content-padding;
+        line-height: @sideMenu-content-line-height;
+        transition: color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), border-color 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), background 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), padding 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 22px;
+      }
+      &:hover .content {
+        background: @menuItem-hover-background;
+      }
+      &:hover {
+        color: @menuItem-hover-color;
+      }
+      &.ant-menu-item-selected {
+        .content {
+          background: @menuItem-active-background;
+        }
+      }
+      span, .anticon, svg {
+        vertical-align: middle;
+      }
+    }
+    .ant-menu-submenu-title {
+      margin: 0;
+      height: @sideMenu-height;
+      line-height: @sideMenu-height;
+      background: @sideMenu-background;
+      color: @menuItem-color;
+      font-weight: 500;
+      &:hover {
+        color: @menuItem-hover-color;
+      }
+      &:hover .content {
+        background: @menuItem-hover-background;
+      }
+    }
+    &.ant-menu-inline-collapsed {
+      width: @sideMenu-collapse-width;
+      .ant-menu-item,
+      .ant-menu-submenu-title {
+        padding: @sideMenu-collapse-padding!important;
+      }
+      .content {
+        padding: @sideMenu-collapse-content-padding;
+        height: @sideMenu-collapse-content-height;
+        width: @sideMenu-collapse-content-width;
+      }
+      span, .anticon, svg {
+        vertical-align: top;
+      }
+    }
+  }
+  .logo {
+    padding: 10px 0!important;
+    height: @page-header-height;
+    border-bottom: 1px solid transparent;
+    text-align: center;
+    transition: background 0.3s, width 0.2s;
+    cursor: pointer;
+  }
+  .full-logo {
+    line-height: initial;
+    height: 28px;
+  }
+  .short-logo {
+    line-height: initial;
+    height: 24px;
+    transform: translateY(1px);
+  }
+  .ant-menu-dark .ant-menu-item:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-item-active > .ant-menu-submenu-title > .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-submenu-active > .ant-menu-submenu-title > .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-submenu-open > .ant-menu-submenu-title > .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-submenu-selected > .ant-menu-submenu-title > .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-submenu-title:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-item:hover > .ant-menu-submenu-title:hover > .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-item-active > .ant-menu-submenu-title:hover > .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-submenu-active > .ant-menu-submenu-title:hover > .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-submenu-open > .ant-menu-submenu-title:hover > .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-submenu-selected > .ant-menu-submenu-title:hover > .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-submenu-title:hover > .ant-menu-submenu-title:hover > .ant-menu-submenu-arrow:after, .ant-menu-dark .ant-menu-item:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow:before, .ant-menu-dark .ant-menu-item-active > .ant-menu-submenu-title > .ant-menu-submenu-arrow:before, .ant-menu-dark .ant-menu-submenu-active > .ant-menu-submenu-title > .ant-menu-submenu-arrow:before, .ant-menu-dark .ant-menu-submenu-open > .ant-menu-submenu-title > .ant-menu-submenu-arrow:before, .ant-menu-dark .ant-menu-submenu-selected > .ant-menu-submenu-title > .ant-menu-submenu-arrow:before, .ant-menu-dark .ant-menu-submenu-title:hover > .ant-menu-submenu-title > .ant-menu-submenu-arrow:before, .ant-menu-dark .ant-menu-item:hover > .ant-menu-submenu-title:hover > .ant-menu-submenu-arrow:before, .ant-menu-dark .ant-menu-item-active > .ant-menu-submenu-title:hover > .ant-menu-submenu-arrow:before, .ant-menu-dark .ant-menu-submenu-active > .ant-menu-submenu-title:hover > .ant-menu-submenu-arrow:before, .ant-menu-dark .ant-menu-submenu-open > .ant-menu-submenu-title:hover > .ant-menu-submenu-arrow:before, .ant-menu-dark .ant-menu-submenu-selected > .ant-menu-submenu-title:hover > .ant-menu-submenu-arrow:before, .ant-menu-dark .ant-menu-submenu-title:hover > .ant-menu-submenu-title:hover > .ant-menu-submenu-arrow:before,
+  .ant-menu-submenu-vertical > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:after, .ant-menu-submenu-vertical-left > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:after, .ant-menu-submenu-vertical-right > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:after, .ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:after, .ant-menu-submenu-vertical > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:before, .ant-menu-submenu-vertical-left > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:before, .ant-menu-submenu-vertical-right > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:before, .ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow:before {
+    background: @color-text-regular;
+  }
+}
+
+.ant-tooltip-inner {
+  color: #FFFFFF;
+  background: #0E1E28;
+}
+
+.ant-tooltip-arrow {
+  color: #0E1E28;
+  border-right-color: #0E1E28 !important;
+}

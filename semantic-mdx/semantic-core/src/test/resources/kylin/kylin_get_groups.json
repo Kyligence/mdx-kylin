@@ -1,0 +1,103 @@
+{
+  "code": "000",
+  "data": {
+    "size": 9,
+    "usersWithGroup": [
+      {
+        "key": "ROLE_ADMIN",
+        "value": [
+          "ABC",
+          "sijie_test",
+          "top2",
+          "roger1",
+          "zhou_w",
+          "liang1",
+          "xu1",
+          "xu4",
+          "xu3",
+          "xu6",
+          "xu5",
+          "xu8",
+          "ADMIN",
+          "xu7",
+          "yyy2000",
+          "xu9",
+          "HeLiu",
+          "test",
+          "xu10",
+          "TEST_PSD",
+          "y300",
+          "zhou",
+          "y200",
+          "lwz_1292",
+          "y100",
+          "tableau",
+          "3",
+          "y2000",
+          "alfie_test",
+          "xu"
+        ]
+      },
+      {
+        "key": "ROLE_ANALYST",
+        "value": [
+          "bobo",
+          "alfie_test",
+          "Viewer",
+          "ADMIN"
+        ]
+      },
+      {
+        "key": "ROLE_MDX_ANALYST",
+        "value": [
+          "MDX_User1"
+        ]
+      },
+      {
+        "key": "ROLE_MODELER",
+        "value": [
+          "bobo",
+          "alfie_test",
+          "Viewer",
+          "ADMIN"
+        ]
+      },
+      {
+        "key": "W_GROUP",
+        "value": []
+      },
+      {
+        "key": "beijing_group",
+        "value": [
+          "bj_3",
+          "bj_4",
+          "bj_1",
+          "bj_2"
+        ]
+      },
+      {
+        "key": "luo_group",
+        "value": [
+          "admin_luo"
+        ]
+      },
+      {
+        "key": "shanghai_group",
+        "value": [
+          "sh_1",
+          "sh_3",
+          "sh_2",
+          "sh_4"
+        ]
+      },
+      {
+        "key": "w_group",
+        "value": [
+          "wanghui",
+          "wanghui_1"
+        ]
+      }
+    ]
+  },
+  "msg": "get users with group"
+}

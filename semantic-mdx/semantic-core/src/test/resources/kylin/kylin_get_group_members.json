@@ -1,0 +1,54 @@
+{
+  "code": "000",
+  "data": {
+    "groupMembers": [
+      {
+        "username": "ADMIN",
+        "authorities": [
+          {
+            "authority": "ROLE_ADMIN"
+          },
+          {
+            "authority": "ALL_USERS"
+          }
+        ],
+        "disabled": false,
+        "default_password": false,
+        "locked": false,
+        "uuid": "44ec56f2-c747-45bb-8234-11240f50d534",
+        "last_modified": 1612529336676,
+        "create_time": 1597645335323,
+        "locked_time": 0,
+        "wrong_time": 0,
+        "first_login_failed_time": 0
+      },
+      {
+        "username": "wanghui",
+        "authorities": [
+          {
+            "authority": "ALL_USERS"
+          },
+          {
+            "authority": "w_group"
+          },
+          {
+            "authority": "ROLE_ADMIN"
+          }
+        ],
+        "disabled": false,
+        "default_password": false,
+        "locked": false,
+        "uuid": "d5d9260f-a617-4c72-838b-faae9f0df1a1",
+        "last_modified": 1612509254099,
+        "create_time": 1612509253755,
+        "locked_time": 0,
+        "wrong_time": 0,
+        "first_login_failed_time": 0
+      }
+    ],
+    "offset": 0,
+    "limit": 10,
+    "total_size": 2
+  },
+  "msg": ""
+}

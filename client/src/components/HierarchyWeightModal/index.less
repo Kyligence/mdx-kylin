@@ -1,0 +1,70 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.hierarchy-weight-modal {
+  width: 760px;
+  .mdx-tip {
+    position: relative;
+    color: #323232;
+    margin: 0;
+    line-height: initial;
+    .icon-superset-alert {
+      color: #7f7f7f;
+      line-height: 20px;
+      float: left;
+    }
+    .mdx-tip-content {
+      margin-left: 19px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-select > .el-input {
+    overflow: hidden;
+  }
+  .hierarchy-weight-list {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  .hierarchy-weight-item td {
+    width: 50%;
+    padding: 7.5px 0;
+    vertical-align: top;
+    .el-form-item {
+      margin-bottom: 0;
+    }
+    .el-form-item__label {
+      padding-bottom: 10px;
+    }
+    &:first-child {
+      padding-right: 5px;
+    }
+    & + td {
+      padding-left: 5px;
+    }
+  }
+}

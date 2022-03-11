@@ -1,0 +1,368 @@
+{
+  "code": "000",
+  "data": {
+    "cube": {
+      "uuid": "6de23489-b25f-4328-ae0b-f78e87467f84",
+      "last_modified": 1553611356047,
+      "version": "3.4.0.0",
+      "name": "star_left_hierarchy_cube",
+      "is_draft": false,
+      "model_name": "star_left_model",
+      "description": "",
+      "null_string": null,
+      "dimensions": [
+        {
+          "name": "LEAF_CATEG_NAME",
+          "table": "KYLIN_CATEGORY_GROUPINGS",
+          "column": "LEAF_CATEG_NAME",
+          "derived": null
+        },
+        {
+          "name": "SITE_ID",
+          "table": "KYLIN_CATEGORY_GROUPINGS",
+          "column": "SITE_ID",
+          "derived": null
+        },
+        {
+          "name": "META_CATEG_NAME",
+          "table": "KYLIN_CATEGORY_GROUPINGS",
+          "column": "META_CATEG_NAME",
+          "derived": null
+        },
+        {
+          "name": "CATEG_LVL2_NAME",
+          "table": "KYLIN_CATEGORY_GROUPINGS",
+          "column": "CATEG_LVL2_NAME",
+          "derived": null
+        },
+        {
+          "name": "CATEG_LVL3_NAME",
+          "table": "KYLIN_CATEGORY_GROUPINGS",
+          "column": "CATEG_LVL3_NAME",
+          "derived": null
+        },
+        {
+          "name": "ACCOUNT_BUYER_LEVEL",
+          "table": "BUYER_ACCOUNT",
+          "column": "ACCOUNT_BUYER_LEVEL",
+          "derived": null
+        },
+        {
+          "name": "ACCOUNT_COUNTRY",
+          "table": "BUYER_ACCOUNT",
+          "column": "ACCOUNT_COUNTRY",
+          "derived": null
+        },
+        {
+          "name": "ACCOUNT_SELLER_LEVEL",
+          "table": "SELLER_ACCOUNT",
+          "column": "ACCOUNT_SELLER_LEVEL",
+          "derived": null
+        },
+        {
+          "name": "ACCOUNT_COUNTRY",
+          "table": "SELLER_ACCOUNT",
+          "column": "ACCOUNT_COUNTRY",
+          "derived": null
+        },
+        {
+          "name": "PART_DT",
+          "table": "KYLIN_SALES",
+          "column": "PART_DT",
+          "derived": null
+        }
+      ],
+      "measures": [
+        {
+          "name": "_COUNT_",
+          "description": "",
+          "function": {
+            "expression": "COUNT",
+            "parameter": {
+              "type": "constant",
+              "value": "1"
+            },
+            "returntype": "bigint",
+            "semi_additive_info": null
+          }
+        },
+        {
+          "name": "销售额",
+          "description": "",
+          "function": {
+            "expression": "SUM",
+            "parameter": {
+              "type": "column",
+              "value": "KYLIN_SALES.PRICE"
+            },
+            "returntype": "decimal(19,4)",
+            "semi_additive_info": null
+          }
+        },
+        {
+          "name": "销售人数去重",
+          "description": "",
+          "function": {
+            "expression": "COUNT_DISTINCT",
+            "parameter": {
+              "type": "column",
+              "value": "KYLIN_SALES.SELLER_ID"
+            },
+            "returntype": "bitmap",
+            "semi_additive_info": null
+          }
+        },
+        {
+          "name": "购买人数",
+          "description": "",
+          "function": {
+            "expression": "COUNT",
+            "parameter": {
+              "type": "column",
+              "value": "KYLIN_SALES.BUYER_ID"
+            },
+            "returntype": "bigint",
+            "semi_additive_info": null
+          }
+        },
+        {
+          "name": "最低价格",
+          "description": "",
+          "function": {
+            "expression": "MIN",
+            "parameter": {
+              "type": "column",
+              "value": "KYLIN_SALES.PRICE"
+            },
+            "returntype": "decimal(19,4)",
+            "semi_additive_info": null
+          }
+        },
+        {
+          "name": "最高成交数量",
+          "description": "",
+          "function": {
+            "expression": "SUM",
+            "parameter": {
+              "type": "column",
+              "value": "KYLIN_SALES.ITEM_COUNT"
+            },
+            "returntype": "bigint",
+            "semi_additive_info": null
+          }
+        }
+      ],
+      "dictionaries": [
+        {
+          "column": "KYLIN_SALES.SELLER_ID",
+          "builder": "org.apache.kylin.dict.GlobalDictionaryBuilder"
+        }
+      ],
+      "rowkey": {
+        "rowkey_columns": [
+          {
+            "column": "KYLIN_SALES.PART_DT",
+            "encoding": "date",
+            "encoding_version": 1,
+            "isShardBy": false
+          },
+          {
+            "column": "KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_NAME",
+            "encoding": "dict",
+            "encoding_version": 1,
+            "isShardBy": false
+          },
+          {
+            "column": "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL3_NAME",
+            "encoding": "dict",
+            "encoding_version": 1,
+            "isShardBy": false
+          },
+          {
+            "column": "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL2_NAME",
+            "encoding": "dict",
+            "encoding_version": 1,
+            "isShardBy": false
+          },
+          {
+            "column": "KYLIN_CATEGORY_GROUPINGS.META_CATEG_NAME",
+            "encoding": "dict",
+            "encoding_version": 1,
+            "isShardBy": false
+          },
+          {
+            "column": "KYLIN_CATEGORY_GROUPINGS.SITE_ID",
+            "encoding": "integer:4",
+            "encoding_version": 1,
+            "isShardBy": false
+          },
+          {
+            "column": "SELLER_ACCOUNT.ACCOUNT_COUNTRY",
+            "encoding": "dict",
+            "encoding_version": 1,
+            "isShardBy": false
+          },
+          {
+            "column": "BUYER_ACCOUNT.ACCOUNT_COUNTRY",
+            "encoding": "dict",
+            "encoding_version": 1,
+            "isShardBy": false
+          },
+          {
+            "column": "SELLER_ACCOUNT.ACCOUNT_SELLER_LEVEL",
+            "encoding": "integer:4",
+            "encoding_version": 1,
+            "isShardBy": false
+          },
+          {
+            "column": "BUYER_ACCOUNT.ACCOUNT_BUYER_LEVEL",
+            "encoding": "integer:4",
+            "encoding_version": 1,
+            "isShardBy": false
+          }
+        ]
+      },
+      "hbase_mapping": {
+        "column_family": [
+          {
+            "name": "F1",
+            "columns": [
+              {
+                "qualifier": "M",
+                "measure_refs": [
+                  "_COUNT_"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "F2",
+            "columns": [
+              {
+                "qualifier": "M",
+                "measure_refs": [
+                  "销售额"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "F3",
+            "columns": [
+              {
+                "qualifier": "M",
+                "measure_refs": [
+                  "销售人数去重"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "F4",
+            "columns": [
+              {
+                "qualifier": "M",
+                "measure_refs": [
+                  "购买人数"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "F5",
+            "columns": [
+              {
+                "qualifier": "M",
+                "measure_refs": [
+                  "最低价格"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "F6",
+            "columns": [
+              {
+                "qualifier": "M",
+                "measure_refs": [
+                  "最高成交数量"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "global_dim_cap": 0,
+      "aggregation_groups": [
+        {
+          "includes": [
+            "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL3_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL2_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.META_CATEG_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.SITE_ID",
+            "SELLER_ACCOUNT.ACCOUNT_COUNTRY",
+            "BUYER_ACCOUNT.ACCOUNT_COUNTRY"
+          ],
+          "select_rule": {
+            "hierarchy_dims": [
+              [
+                "KYLIN_CATEGORY_GROUPINGS.META_CATEG_NAME",
+                "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL2_NAME",
+                "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL3_NAME",
+                "KYLIN_CATEGORY_GROUPINGS.SITE_ID"
+              ]
+            ],
+            "mandatory_dims": [],
+            "joint_dims": []
+          }
+        },
+        {
+          "includes": [
+            "KYLIN_CATEGORY_GROUPINGS.META_CATEG_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL2_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL3_NAME",
+            "SELLER_ACCOUNT.ACCOUNT_SELLER_LEVEL",
+            "BUYER_ACCOUNT.ACCOUNT_BUYER_LEVEL"
+          ],
+          "select_rule": {
+            "hierarchy_dims": [
+              [
+                "KYLIN_CATEGORY_GROUPINGS.META_CATEG_NAME",
+                "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL2_NAME",
+                "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL3_NAME",
+                "KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_NAME"
+              ]
+            ],
+            "mandatory_dims": [],
+            "joint_dims": []
+          }
+        }
+      ],
+      "signature": "/JSKrSN3qj2MvGqjg112MA==",
+      "notify_list": [],
+      "status_need_notify": [
+        "ERROR",
+        "DISCARDED",
+        "SUCCEED"
+      ],
+      "partition_date_start": 0,
+      "partition_date_end": 3153600000000,
+      "auto_merge_time_ranges": [
+        604800000,
+        2419200000
+      ],
+      "volatile_range": 0,
+      "retention_range": 0,
+      "engine_type": 100,
+      "storage_type": 100,
+      "override_kylin_properties": {
+        "kap.smart.conf.aggGroup.strategy": "auto"
+      },
+      "cuboid_black_list": [],
+      "parent_forward": 3,
+      "mandatory_dimension_set_list": []
+    }
+  },
+  "msg": ""
+}

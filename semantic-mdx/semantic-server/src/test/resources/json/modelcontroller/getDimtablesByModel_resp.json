@@ -1,0 +1,9 @@
+{
+  "status": 0,
+  "data": [
+    "SELLER_COUNTRY",
+    "BUYER_COUNTRY",
+    "BUYER_ACCOUNT",
+    "KYLIN_CATEGORY_GROUPINGS"
+  ]
+}

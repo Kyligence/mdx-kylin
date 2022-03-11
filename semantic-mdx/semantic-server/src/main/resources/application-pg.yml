@@ -1,0 +1,56 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:postgresql://${insight.database.ip}:${insight.database.port}/${insight.database.name}?useSSL=${insight.database.useSSL}&currentSchema=${insight.database.postgres-schema:public}
+      username: ${insight.database.username}
+      password: ${insight.database.password}
+      initial-size: 2
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      validation-query: select 'x'
+      validationQueryTimeout: 2
+      time-between-eviction-runs-millis: 60000
+      filter:
+        slf4j:
+          enabled: false
+        wall:
+          enabled: true
+        stat:
+          slow-sql-millis: 1000
+          log-slow-sql: true
+          enabled: true
+      web-stat-filter:
+        enabled: false
+      stat-view-servlet:
+        enabled: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+      min-evictable-idle-time-millis: 30000
+      connection-init-sqls: 'select 1;'
+      #连接池中的minIdle数量以内的连接，空闲时间超过minEvictableIdleTimeMillis，则会执行keepAlive操作。
+      keep-alive: false
+      #定期把监控数据输出到日志
+      time-between-log-stats-millis: -1
+      #连接泄漏检测。RemoveAbandoned相关配置，用来关闭长时间不使用的连接
+      remove-abandoned: false
+      driver-class-name: org.postgresql.Driver
+    schema:
+      - classpath:kylin_semantic_pg_full.sql
+    initialization-mode: always
+mybatis:
+  mapper-locations: classpath:io/kylin/mdx/insight/core/dao/xml/*.xml
+
+pagehelper:
+  reasonable: false
+  page-size-zero: false
+  offset-as-page-num: true
+  helper-dialect: postgresql
+  row-bounds-with-count: true
+
+mapper:
+  not-empty: true
+  identity: postgresql

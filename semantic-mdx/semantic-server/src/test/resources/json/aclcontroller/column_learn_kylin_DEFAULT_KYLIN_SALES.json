@@ -1,0 +1,16 @@
+{
+  "code": "000",
+  "data": {
+    "size": 1,
+    "user": [
+      {
+        "wanghui": [
+          "ITEM_COUNT"
+        ]
+      }
+    ],
+    "allowModifyAclInProject": true,
+    "group": []
+  },
+  "msg": "get column acl"
+}

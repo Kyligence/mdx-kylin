@@ -1,0 +1,147 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+.folder-input {
+  padding: 10px;
+  background-color: #F5F5F5;
+  .el-form-item__content {
+    margin-top: -6px;
+  }
+  .el-alert--info {
+    padding: 0;
+    margin-bottom: 5px;
+  }
+  .el-alert__content {
+    line-height: 18px;
+    padding: 0;
+  }
+  .el-alert__title {
+    font-size: 12px;
+    color: #7F7F7F;
+  }
+  .display-folder-popover {
+    color: #546174;
+    font-weight: normal;
+    padding: 13px 24px;
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .display-folder-tooltip {
+    font-weight: normal;
+  }
+  .display-folder-tree {
+    border: none;
+    .el-tree-node__content:hover {
+      background-color: transparent;
+    }
+  }
+  .node-icon {
+    margin-right: 5px;
+  }
+  .el-autocomplete {
+    display: block;
+  }
+  .icon-superset-error_01 {
+    height: auto;
+    line-height: 30px;
+    cursor: pointer;
+    display: none;
+  }
+  .el-autocomplete:hover .icon-superset-error_01 {
+    display: block;
+  }
+  .el-tree .el-tree-node__content {
+    line-height: 32px;
+  }
+  .el-tree .el-tree-node__content .node-content,
+  .folder-option {
+    white-space: pre;
+  }
+  .el-autocomplete-suggestion {
+    z-index: 5 !important;
+    .el-autocomplete-suggestion__wrap {
+      max-height: none;
+    }
+    .folder-popover-header {
+      font-weight: 500;
+      line-height: 22px;
+      padding: 5px 20px;
+    }
+    .option-list {
+      max-height: 120px;
+      overflow: auto;
+    }
+    .display-folder-tree {
+      padding: 0 15px;
+      color: #8B99AE;
+      max-height: 95px;
+      overflow: auto;
+      .el-tree-node__content {
+        color: #8B99AE;
+      }
+      .el-tree-node__expand-icon {
+        border-left-color: #8B99AE;
+      }
+      .el-tree-node__expand-icon.is-leaf {
+        border-color: transparent;
+        cursor: default;
+      }
+    }
+    hr {
+      margin: 4px 0;
+      border:none;
+      border-bottom:1px solid #ECF0F8;
+    }
+    li {
+      padding: 5px 20px;
+      line-height: 22px;
+      vertical-align: middle;
+    }
+    .folder-option {
+      .icon-folder {
+        position: relative;
+        margin-right: 5px;
+        top: 3px;
+      }
+    }
+    .el-tree__empty-block {
+      text-align: left;
+      min-height: auto;
+      padding: 0 0 0 5px;
+    }
+    .el-tree__empty-text {
+      position: static;
+      left: auto;
+      top: auto;
+      transform: none;
+    }
+    .el-select-dropdown__empty {
+      text-align: left;
+      padding: 0 0 0 20px;
+    }
+    .el-tree__empty-text,
+    .el-select-dropdown__empty {
+      color: #A5B2C5;
+    }
+  }
+}

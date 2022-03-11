@@ -1,0 +1,260 @@
+{
+  "code": "000",
+  "data": {
+    "cube": {
+      "uuid": "0c94418b-dd19-455b-a7d5-3b08bd0975e6",
+      "last_modified": 1553610897029,
+      "version": "3.4.0.0",
+      "name": "snowflake_inner_hierarcy_cube",
+      "is_draft": false,
+      "model_name": "snowflake_inner_model",
+      "description": "",
+      "null_string": null,
+      "dimensions": [
+        {
+          "name": "LEAF_CATEG_NAME",
+          "table": "KYLIN_CATEGORY_GROUPINGS",
+          "column": "LEAF_CATEG_NAME",
+          "derived": null
+        },
+        {
+          "name": "META_CATEG_NAME",
+          "table": "KYLIN_CATEGORY_GROUPINGS",
+          "column": "META_CATEG_NAME",
+          "derived": null
+        },
+        {
+          "name": "CATEG_LVL2_NAME",
+          "table": "KYLIN_CATEGORY_GROUPINGS",
+          "column": "CATEG_LVL2_NAME",
+          "derived": null
+        },
+        {
+          "name": "CATEG_LVL3_NAME",
+          "table": "KYLIN_CATEGORY_GROUPINGS",
+          "column": "CATEG_LVL3_NAME",
+          "derived": null
+        },
+        {
+          "name": "ACCOUNT_BUYER_LEVEL",
+          "table": "BUYER_ACCOUNT",
+          "column": "ACCOUNT_BUYER_LEVEL",
+          "derived": null
+        },
+        {
+          "name": "NAME",
+          "table": "BUYER_COUNTRY",
+          "column": "NAME",
+          "derived": null
+        },
+        {
+          "name": "NAME",
+          "table": "SELLER_COUNTRY",
+          "column": "NAME",
+          "derived": null
+        }
+      ],
+      "measures": [
+        {
+          "name": "_COUNT_",
+          "description": "个数",
+          "function": {
+            "expression": "COUNT",
+            "parameter": {
+              "type": "constant",
+              "value": "1"
+            },
+            "returntype": "bigint",
+            "semi_additive_info": null
+          }
+        },
+        {
+          "name": "GMV_销售额",
+          "description": "",
+          "function": {
+            "expression": "SUM",
+            "parameter": {
+              "type": "column",
+              "value": "KYLIN_SALES.PRICE"
+            },
+            "returntype": "decimal(19,4)",
+            "semi_additive_info": null
+          }
+        },
+        {
+          "name": "销售数量总计",
+          "description": "销售数量总计",
+          "function": {
+            "expression": "SUM",
+            "parameter": {
+              "type": "column",
+              "value": "KYLIN_SALES.ITEM_COUNT"
+            },
+            "returntype": "bigint",
+            "semi_additive_info": null
+          }
+        }
+      ],
+      "dictionaries": [],
+      "rowkey": {
+        "rowkey_columns": [
+          {
+            "column": "SELLER_COUNTRY.NAME",
+            "encoding": "dict",
+            "encoding_version": 1,
+            "isShardBy": false,
+            "index": "eq"
+          },
+          {
+            "column": "BUYER_COUNTRY.NAME",
+            "encoding": "dict",
+            "encoding_version": 1,
+            "isShardBy": false,
+            "index": "eq"
+          },
+          {
+            "column": "KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_NAME",
+            "encoding": "dict",
+            "encoding_version": 1,
+            "isShardBy": false,
+            "index": "eq"
+          },
+          {
+            "column": "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL3_NAME",
+            "encoding": "dict",
+            "encoding_version": 1,
+            "isShardBy": false,
+            "index": "eq"
+          },
+          {
+            "column": "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL2_NAME",
+            "encoding": "dict",
+            "encoding_version": 1,
+            "isShardBy": false,
+            "index": "eq"
+          },
+          {
+            "column": "KYLIN_CATEGORY_GROUPINGS.META_CATEG_NAME",
+            "encoding": "dict",
+            "encoding_version": 1,
+            "isShardBy": false,
+            "index": "eq"
+          },
+          {
+            "column": "BUYER_ACCOUNT.ACCOUNT_BUYER_LEVEL",
+            "encoding": "integer:4",
+            "encoding_version": 1,
+            "isShardBy": false,
+            "index": "eq"
+          }
+        ]
+      },
+      "hbase_mapping": {
+        "column_family": [
+          {
+            "name": "F1",
+            "columns": [
+              {
+                "qualifier": "M",
+                "measure_refs": [
+                  "_COUNT_"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "F2",
+            "columns": [
+              {
+                "qualifier": "M",
+                "measure_refs": [
+                  "GMV_销售额"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "F3",
+            "columns": [
+              {
+                "qualifier": "M",
+                "measure_refs": [
+                  "销售数量总计"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "global_dim_cap": 0,
+      "aggregation_groups": [
+        {
+          "includes": [
+            "SELLER_COUNTRY.NAME",
+            "BUYER_COUNTRY.NAME",
+            "KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL3_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL2_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.META_CATEG_NAME",
+            "BUYER_ACCOUNT.ACCOUNT_BUYER_LEVEL"
+          ],
+          "select_rule": {
+            "hierarchy_dims": [
+              [
+                "KYLIN_CATEGORY_GROUPINGS.META_CATEG_NAME",
+                "KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_NAME",
+                "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL2_NAME",
+                "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL3_NAME"
+              ]
+            ],
+            "mandatory_dims": [],
+            "joint_dims": [],
+            "dim_cap": 0
+          }
+        },
+        {
+          "includes": [
+            "KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.META_CATEG_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL2_NAME"
+          ],
+          "select_rule": {
+            "hierarchy_dims": [
+              [
+                "KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_NAME",
+                "KYLIN_CATEGORY_GROUPINGS.META_CATEG_NAME",
+                "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL2_NAME"
+              ]
+            ],
+            "mandatory_dims": [],
+            "joint_dims": []
+          }
+        }
+      ],
+      "signature": "/K357+eO9yfApTixVJ1jIQ==",
+      "notify_list": [],
+      "status_need_notify": [
+        "ERROR",
+        "DISCARDED",
+        "SUCCEED"
+      ],
+      "partition_date_start": 0,
+      "partition_date_end": 3153600000000,
+      "auto_merge_time_ranges": [
+        604800000,
+        2419200000
+      ],
+      "volatile_range": 0,
+      "retention_range": 0,
+      "engine_type": 100,
+      "storage_type": 100,
+      "override_kylin_properties": {
+        "kap.smart.conf.aggGroup.strategy": "auto"
+      },
+      "cuboid_black_list": [],
+      "parent_forward": 3,
+      "mandatory_dimension_set_list": []
+    }
+  },
+  "msg": ""
+}

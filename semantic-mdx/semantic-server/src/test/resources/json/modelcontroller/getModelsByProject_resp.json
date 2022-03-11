@@ -1,0 +1,17 @@
+{
+  "status": 0,
+  "data": [
+    {
+      "modelName": "star_left_hierarchy_cube",
+      "lastModified": 1553611356047
+    },
+    {
+      "modelName": "snowflake_inner_hierarcy_cube",
+      "lastModified": 1553610897029
+    },
+    {
+      "modelName": "only_fact_cube",
+      "lastModified": 1553571838207
+    }
+  ]
+}

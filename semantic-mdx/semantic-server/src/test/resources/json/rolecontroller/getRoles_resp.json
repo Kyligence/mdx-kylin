@@ -1,0 +1,20 @@
+{
+  "status": 0,
+  "data": {
+    "pageNum": 0,
+    "pageSize": 100,
+    "list": [
+      {
+        "id": 15,
+        "name": "admin_10",
+        "description": "test"
+      },
+      {
+        "id": 1,
+        "name": "ADMIN",
+        "description": "ADMIN"
+      }
+    ],
+    "total": 2
+  }
+}

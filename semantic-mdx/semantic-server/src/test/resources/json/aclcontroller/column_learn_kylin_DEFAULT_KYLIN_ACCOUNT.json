@@ -1,0 +1,26 @@
+{
+  "code": "000",
+  "data": {
+    "size": 2,
+    "user": [
+      {
+        "xu": [
+          "ACCOUNT_BUYER_LEVEL",
+          "ACCOUNT_CONTACT",
+          "ACCOUNT_COUNTRY",
+          "ACCOUNT_ID",
+          "ACCOUNT_SELLER_LEVEL"
+        ]
+      }
+    ],
+    "allowModifyAclInProject": true,
+    "group": [
+      {
+        "w_group": [
+          "ACCOUNT_CONTACT"
+        ]
+      }
+    ]
+  },
+  "msg": "get column acl"
+}

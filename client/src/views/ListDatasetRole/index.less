@@ -1,0 +1,128 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.list-dataset-role {
+  &.layout-wrapper {
+    padding: 0;
+  }
+  .layout-sidebar-block > div:last-child {
+    margin-bottom: 0;
+    .el-collapse-item__content {
+      height: calc(~'100vh - 336px');
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+  }
+  .layout-sidebar-block > * {
+    margin-bottom: 10px;
+    &.add-role {
+      margin-bottom: 10px;
+      width: 100%;
+      text-align: left;
+    }
+  }
+  .layout-right-content {
+    position: relative;
+    margin-left: 290px;
+    height: 100%;
+  }
+  .layout-footer {
+    z-index: 999;
+  }
+  .form-content {
+    position: relative;
+    padding: 20px;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+    padding-bottom: 60px;
+    .el-transfer-panel {
+      height: calc(~'100vh - 281px');
+      width: calc(~'50% - 23px');
+    }
+  }
+  .actions {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+  }
+  .el-tabs {
+    clear: none;
+    margin-top: 15px;
+  }
+  .el-tabs__content {
+    overflow: visible;
+  }
+  .el-form-item:after,
+  .el-form-item:before,
+  .el-form-item__content:after,
+  .el-form-item__content:before {
+    display: initial;
+  }
+  .role-name-input {
+    margin-bottom: 0px;
+    .el-form-item__label {
+      margin-bottom: 0;
+    }
+    .el-input {
+      width: 200px;
+    }
+    .el-form-item__error {
+      position: relative;
+    }
+  }
+  .tab-content {
+    padding: 20px 0;
+  }
+  .el-transfer-panel__body {
+    height: calc(~'100% - 36px');
+  }
+  .el-transfer-panel__list.is-filterable {
+    height: calc(~'100% - 45px');
+  }
+  .el-transfer-panel__list {
+    height: 450px;
+  }
+  .transfer-display-name {
+    margin-right: 5px;
+  }
+  .transfer-real-name {
+    color: @color-info;
+  }
+  .collapse-button {
+    font-weight: normal;
+  }
+  .el-tabs__header {
+    margin-bottom: 0;
+  }
+  .filter-username {
+    display: block;
+    width: 250px;
+    margin-left: auto;
+    margin-bottom: 10px;
+  }
+}

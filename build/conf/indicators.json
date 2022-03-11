@@ -1,0 +1,393 @@
+{
+  "pageNum": 0,
+  "pageSize": 0,
+  "total": 0,
+  "list": [
+    {
+      "name": "Addition",
+      "template": "${0} + ${1}",
+      "folder": "Mathematical Operations",
+      "category": "calculateMeasure",
+      "buildin": true,
+      "description": "Calculate the sum of two values.",
+      "params": [
+        {
+          "name": "Base value",
+          "accept": [
+            "measure",
+            "calculateMeasure"
+          ],
+          "placeholder": "${Measure or Calculated Measure}"
+        },
+        {
+          "name": "Value to add",
+          "accept": [
+            "measure",
+            "calculateMeasure"
+          ],
+          "placeholder": "${Measure or Calculated Measure}"
+        }
+      ],
+      "translation": {
+        "zh": {
+          "name": "加法",
+          "folder": "数学运算",
+          "description": "计算两个值之和。",
+          "params.0.name": "基值",
+          "params.0.placeholder": "${度量 或 计算度量}",
+          "params.1.name": "要添加的值",
+          "params.1.placeholder": "${度量 或 计算度量}"
+        },
+        "en": {
+          "name": "Addition",
+          "folder": "Mathematical Operations",
+          "description": "Calculate the sum of two values.",
+          "params.0.name": "Base value",
+          "params.0.placeholder": "${Measure or Calculated Measure}",
+          "params.1.name": "Value to add",
+          "params.1.placeholder": "${Measure or Calculated Measure}"
+        }
+      }
+    },
+    {
+      "name": "Subtraction",
+      "template": "${0} - ${1}",
+      "folder": "Mathematical Operations",
+      "category": "calculateMeasure",
+      "buildin": true,
+      "description": "Calculate the difference between two values.",
+      "params": [
+        {
+          "name": "Base value",
+          "accept": [
+            "measure",
+            "calculateMeasure"
+          ],
+          "placeholder": "${Measure or Calculated Measure}"
+        },
+        {
+          "name": "Value to subtract",
+          "accept": [
+            "measure",
+            "calculateMeasure"
+          ],
+          "placeholder": "${Measure or Calculated Measure}"
+        }
+      ],
+      "translation": {
+        "zh": {
+          "name": "减法",
+          "folder": "数学运算",
+          "description": "计算两个值之间的差值。",
+          "params.0.name": "基值",
+          "params.0.placeholder": "${度量 或 计算度量}",
+          "params.1.name": "要减去的值",
+          "params.1.placeholder": "${度量 或 计算度量}"
+        },
+        "en": {
+          "name": "Subtraction",
+          "folder": "Mathematical Operations",
+          "description": "Calculate the difference between two values.",
+          "params.0.name": "Base value",
+          "params.0.placeholder": "${Measure or Calculated Measure}",
+          "params.1.name": "Value to subtract",
+          "params.1.placeholder": "${Measure or Calculated Measure}"
+        }
+      }
+    },
+    {
+      "name": "Multiplication",
+      "template": "1 * ${0} * ${1}",
+      "folder": "Mathematical Operations",
+      "category": "calculateMeasure",
+      "buildin": true,
+      "description": "Calculate the product of two values.",
+      "params": [
+        {
+          "name": "Base value",
+          "accept": [
+            "measure",
+            "calculateMeasure"
+          ],
+          "placeholder": "${Measure or Calculated Measure}"
+        },
+        {
+          "name": "Value to multiply with",
+          "accept": [
+            "measure",
+            "calculateMeasure"
+          ],
+          "placeholder": "${Measure or Calculated Measure}"
+        }
+      ],
+      "translation": {
+        "zh": {
+          "name": "乘法",
+          "folder": "数学运算",
+          "description": "计算两个值的乘积。",
+          "params.0.name": "基值",
+          "params.0.placeholder": "${度量 或 计算度量}",
+          "params.1.name": "要乘以的值",
+          "params.1.placeholder": "${度量 或 计算度量}"
+        },
+        "en": {
+          "name": "Multiplication",
+          "folder": "Mathematical Operations",
+          "description": "Calculate the product of two values.",
+          "params.0.name": "Base value",
+          "params.0.placeholder": "${Measure or Calculated Measure}",
+          "params.1.name": "Value to multiply with",
+          "params.1.placeholder": "${Measure or Calculated Measure}"
+        }
+      }
+    },
+    {
+      "name": "Division",
+      "template": "${0} / ${1}",
+      "folder": "Mathematical Operations",
+      "category": "calculateMeasure",
+      "buildin": true,
+      "description": "Calculate the ratio of a value to another one.",
+      "params": [
+        {
+          "name": "Numerator",
+          "accept": [
+            "measure",
+            "calculateMeasure"
+          ],
+          "placeholder": "${Measure or Calculated Measure}"
+        },
+        {
+          "name": "Denominator",
+          "accept": [
+            "measure",
+            "calculateMeasure"
+          ],
+          "placeholder": "${Measure or Calculated Measure}"
+        }
+      ],
+      "translation": {
+        "zh": {
+          "name": "除法",
+          "folder": "数学运算",
+          "description": "计算一个值与另一个值的比率。",
+          "params.0.name": "分子",
+          "params.0.placeholder": "${度量 或 计算度量}",
+          "params.1.name": "分母",
+          "params.1.placeholder": "${度量 或 计算度量}"
+        },
+        "en": {
+          "name": "Division",
+          "folder": "Mathematical Operations",
+          "description": "Calculate the ratio of a value to another one.",
+          "params.0.name": "Numerator",
+          "params.0.placeholder": "${Measure or Calculated Measure}",
+          "params.1.name": "Denominator",
+          "params.1.placeholder": "${Measure or Calculated Measure}"
+        }
+      }
+    },
+    {
+      "name": "Year-to-date Total",
+      "template": "SUM(\n  YTD(\n    ${0}.CurrentMember\n  ),\n  ${1}\n)",
+      "folder": "Time Intelligence",
+      "category": "calculateMeasure",
+      "buildin": true,
+      "description": "Calculate the total of the measure or calculated measure, starting from the beginning of the current year.",
+      "params": [
+        {
+          "name": "Time Hierarchy",
+          "accept": [
+            "hierarchy"
+          ],
+          "placeholder": "${Time Hierarchy}"
+        },
+        {
+          "name": "Measure or Calculated Measure",
+          "accept": [
+            "measure",
+            "calculateMeasure"
+          ],
+          "placeholder": "${Measure or Calculated Measure}"
+        }
+      ],
+      "translation": {
+        "zh": {
+          "name": "本年至今总计",
+          "folder": "时间智能",
+          "description": "计算从今年开始的度量或计算度量的总和。",
+          "params.0.name": "时间层级结构",
+          "params.0.placeholder": "${时间层级结构}",
+          "params.1.name": "度量 或 计算度量",
+          "params.1.placeholder": "${度量 或 计算度量}"
+        },
+        "en": {
+          "name": "Year-to-date Total",
+          "folder": "Time Intelligence",
+          "description": "Calculate the total of the measure or calculated measure, starting from the beginning of the current year.",
+          "params.0.name": "Time Hierarchy",
+          "params.0.placeholder": "${Time Hierarchy}",
+          "params.1.name": "Measure or Calculated Measure",
+          "params.1.placeholder": "${Measure or Calculated Measure}"
+        }
+      }
+    },
+    {
+      "name": "Month-to-date Total",
+      "template": "SUM(\n  MTD(\n    ${0}.CurrentMember\n  ),\n  ${1}\n)",
+      "folder": "Time Intelligence",
+      "category": "calculateMeasure",
+      "buildin": true,
+      "description": "Calculate the total of the measure or calculated measure, starting from the beginning of the current month.",
+      "params": [
+        {
+          "name": "Time Hierarchy",
+          "accept": [
+            "hierarchy"
+          ],
+          "placeholder": "${Time Hierarchy}"
+        },
+        {
+          "name": "Measure or Calculated Measure",
+          "accept": [
+            "measure",
+            "calculateMeasure"
+          ],
+          "placeholder": "${Measure or Calculated Measure}"
+        }
+      ],
+      "translation": {
+        "zh": {
+          "name": "本月至今总计",
+          "folder": "时间智能",
+          "description": "计算从本月开始的度量或计算度量的总和。",
+          "params.0.name": "时间层级结构",
+          "params.0.placeholder": "${时间层级结构}",
+          "params.1.name": "度量 或 计算度量",
+          "params.1.placeholder": "${度量 或 计算度量}"
+        },
+        "en": {
+          "name": "Month-to-date Total",
+          "folder": "Time Intelligence",
+          "description": "Calculate the total of the measure or calculated measure, starting from the beginning of the current month.",
+          "params.0.name": "Time Hierarchy",
+          "params.0.placeholder": "${Time Hierarchy}",
+          "params.1.name": "Measure or Calculated Measure",
+          "params.1.placeholder": "${Measure or Calculated Measure}"
+        }
+      }
+    },
+    {
+      "name": "Year-over-year Change",
+      "template": "${2} / SUM(\n  ParallelPeriod(\n    ${0},\n    1,\n    ${1}.CurrentMember\n  ),\n  ${2}\n) - 1",
+      "folder": "Time Intelligence",
+      "category": "calculateMeasure",
+      "buildin": true,
+      "description": "Calculate the total of the measure or calculated measure, starting from the beginning of the current month.",
+      "params": [
+        {
+          "name": "The year level of time Hierarchy",
+          "accept": [
+            "hierarchyLevel"
+          ],
+          "placeholder": "${The year level of time Hierarchy}"
+        },
+        {
+          "name": "Time Hierarchy",
+          "accept": [
+            "hierarchy"
+          ],
+          "placeholder": "${Time Hierarchy}"
+        },
+        {
+          "name": "Measure or Calculated Measure",
+          "accept": [
+            "measure",
+            "calculateMeasure"
+          ],
+          "placeholder": "${Measure or Calculated Measure}"
+        }
+      ],
+      "translation": {
+        "zh": {
+          "name": "年同期增长率",
+          "folder": "时间智能",
+          "description": "计算度量或计算度量的年同期增长率。",
+          "params.0.name": "时间层级结构的年层级",
+          "params.0.placeholder": "${时间层级结构的年层级}",
+          "params.1.name": "时间层级结构",
+          "params.1.placeholder": "${时间层级结构}",
+          "params.2.name": "度量 或 计算度量",
+          "params.2.placeholder": "${度量 或 计算度量}"
+        },
+        "en": {
+          "name": "Year-over-year Change",
+          "folder": "Time Intelligence",
+          "description": "Calculate the year-over-year change of the measure or calculated measure.",
+          "params.0.name": "The year level of time Hierarchy",
+          "params.0.placeholder": "${The year level of time Hierarchy}",
+          "params.1.name": "Time Hierarchy",
+          "params.1.placeholder": "${Time Hierarchy}",
+          "params.2.name": "Measure or Calculated Measure",
+          "params.2.placeholder": "${Measure or Calculated Measure}"
+        }
+      }
+    },
+    {
+      "name": "Month-over-month Change",
+      "template": "${2} / SUM(\n  ParallelPeriod(\n    ${0},\n    1,\n    ${1}.CurrentMember\n  ),\n  ${2}\n) - 1",
+      "folder": "Time Intelligence",
+      "category": "calculateMeasure",
+      "buildin": true,
+      "description": "Calculate the month-over-month change of the measure or calculated measure.",
+      "params": [
+        {
+          "name": "The month level of time Hierarchy",
+          "accept": [
+            "hierarchyLevel"
+          ],
+          "placeholder": "${The month level of time Hierarchy}"
+        },
+        {
+          "name": "Time Hierarchy",
+          "accept": [
+            "hierarchy"
+          ],
+          "placeholder": "${Time Hierarchy}"
+        },
+        {
+          "name": "Measure or Calculated Measure",
+          "accept": [
+            "measure",
+            "calculateMeasure"
+          ],
+          "placeholder": "${Measure or Calculated Measure}"
+        }
+      ],
+      "translation": {
+        "zh": {
+          "name": "月同期增长率",
+          "folder": "时间智能",
+          "description": "计算度量或计算度量的月同期增长率。",
+          "params.0.name": "时间层级结构的月层级",
+          "params.0.placeholder": "${时间层级结构的月层级}",
+          "params.1.name": "时间层级结构",
+          "params.1.placeholder": "${时间层级结构}",
+          "params.2.name": "度量 或 计算度量",
+          "params.2.placeholder": "${度量 或 计算度量}"
+        },
+        "en": {
+          "name": "Month-over-month Change",
+          "folder": "Time Intelligence",
+          "description": "Calculate the month-over-month change of the measure or calculated measure.",
+          "params.0.name": "The month level of time Hierarchy",
+          "params.0.placeholder": "${The month level of time Hierarchy}",
+          "params.1.name": "Time Hierarchy",
+          "params.1.placeholder": "${Time Hierarchy}",
+          "params.2.name": "Measure or Calculated Measure",
+          "params.2.placeholder": "${Measure or Calculated Measure}"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,287 @@
+{
+  "name": "kylin-mdx",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "EXTEND_ESLINT=true react-app-rewired start",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "build": "react-app-rewired build",
+    "postbuild": "bash ./scripts/postbuild.sh",
+    "translate": "bash ./scripts/translate.sh",
+    "test": "react-app-rewired test",
+    "test:badges": "CI=true react-app-rewired test --coverage && jest-coverage-badges --output \"./public\"",
+    "test:debug": "react-app-rewired --inspect-brk test --runInBand --no-cache",
+    "explore-chinese": "node ./scripts/explore-chinese.js --rootPath ./src/constants/strings.js",
+    "copyright": "node ./scripts/copyright.js",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "antd": "3.26.3",
+    "axios": "0.21.1",
+    "bootstrap-less": "3.3.8",
+    "bytes": "3.1.0",
+    "classnames": "2.2.6",
+    "clipboard": "2.0.6",
+    "connected-react-router": "6.6.1",
+    "dayjs": "1.10.4",
+    "dnd-core": "2.6.0",
+    "dotenv": "8.2.0",
+    "echarts": "5.0.0",
+    "history": "4.10.1",
+    "js-base64": "2.5.1",
+    "jsplumb": "2.12.8",
+    "kyligence-ui-react": "0.4.11",
+    "localforage": "1.7.3",
+    "lodash": "4.17.19",
+    "normalize.css": "8.0.1",
+    "numeral": "2.0.6",
+    "prop-types": "15.7.2",
+    "react": "16.12.0",
+    "react-ace": "9.2.0",
+    "react-app-polyfill": "2.0.0",
+    "react-dnd": "2.5.4",
+    "react-dnd-html5-backend": "2.5.4",
+    "react-dom": "16.12.0",
+    "react-hot-loader": "4.13.0",
+    "react-intl": "5.15.7",
+    "react-redux": "7.1.3",
+    "react-router": "5.1.2",
+    "react-router-dom": "5.1.2",
+    "react-transition-group": "4.3.0",
+    "react-waypoint": "10.1.0",
+    "redux": "4.0.4",
+    "redux-devtools-extension": "2.13.8",
+    "redux-thunk": "2.3.0",
+    "reselect": "4.0.0",
+    "resize-observer-polyfill": "1.5.1",
+    "url-search-params-polyfill": "8.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^13.1.1",
+    "babel-plugin-react-intl": "^5.1.11",
+    "babel-preset-react-app": "^10.0.0",
+    "customize-cra": "^1.0.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "file-loader": "6.2.0",
+    "happypack": "^5.0.1",
+    "http-proxy-middleware": "^2.0.1",
+    "jest-coverage-badges": "^1.1.2",
+    "jest-transform-stub": "^2.0.0",
+    "less": "^4.1.1",
+    "less-loader": "^5.0.0",
+    "react-app-rewired": "^2.1.8",
+    "react-error-overlay": "6.0.9",
+    "react-scripts": "^4.0.3",
+    "react-test-renderer": "^16.12.0",
+    "redux-mock-store": "^1.5.4",
+    "sinon": "^10.0.0",
+    "source-map-explorer": "^2.5.2",
+    "speed-measure-webpack-plugin": "^1.5.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "ie 11"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "mocha": true
+    },
+    "extends": [
+      "react-app",
+      "airbnb"
+    ],
+    "ignorePatterns": [
+      "**/node_modules/**"
+    ],
+    "rules": {
+      "react/no-find-dom-node": 0,
+      "func-names": 0,
+      "no-await-in-loop": 0,
+      "object-curly-newline": 0,
+      "import/prefer-default-export": 0,
+      "no-empty": 0,
+      "max-len": 1,
+      "no-unreachable": 1,
+      "no-unused-vars": 1,
+      "react/no-unused-prop-types": 1,
+      "import/no-extraneous-dependencies": 0,
+      "operator-linebreak": [
+        2,
+        "after",
+        {
+          "overrides": {
+            "?": "before",
+            ":": "before"
+          }
+        }
+      ],
+      "arrow-parens": [
+        2,
+        "as-needed"
+      ],
+      "react/static-property-placement": [
+        "error",
+        "static public field"
+      ],
+      "react/state-in-constructor": [
+        2,
+        "never"
+      ],
+      "camelcase": 0,
+      "react/jsx-fragments": 0,
+      "react/forbid-prop-types": 0,
+      "react/jsx-props-no-spreading": 0,
+      "react/jsx-one-expression-per-line": 0,
+      "jsx-a11y/control-has-associated-label": 0,
+      "no-restricted-syntax": [
+        2,
+        {
+          "selector": "ForInStatement",
+          "message": "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array."
+        },
+        {
+          "selector": "LabeledStatement",
+          "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
+        },
+        {
+          "selector": "WithStatement",
+          "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
+        }
+      ],
+      "react/sort-comp": [
+        "error",
+        {
+          "order": [
+            "static-methods",
+            "static-variables",
+            "instance-variables",
+            "lifecycle",
+            "/^on.+$/",
+            "getters",
+            "setters",
+            "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
+            "instance-methods",
+            "everything-else",
+            "rendering"
+          ],
+          "groups": {
+            "lifecycle": [
+              "displayName",
+              "propTypes",
+              "contextTypes",
+              "childContextTypes",
+              "mixins",
+              "statics",
+              "defaultProps",
+              "constructor",
+              "getDefaultProps",
+              "getInitialState",
+              "state",
+              "getChildContext",
+              "getDerivedStateFromProps",
+              "componentWillMount",
+              "UNSAFE_componentWillMount",
+              "componentDidMount",
+              "componentWillReceiveProps",
+              "UNSAFE_componentWillReceiveProps",
+              "shouldComponentUpdate",
+              "componentWillUpdate",
+              "UNSAFE_componentWillUpdate",
+              "getSnapshotBeforeUpdate",
+              "componentDidUpdate",
+              "componentDidCatch",
+              "componentWillUnmount",
+              "componentDidCatch"
+            ],
+            "rendering": [
+              "/^render.+$/",
+              "render"
+            ]
+          }
+        }
+      ],
+      "jsx-a11y/no-static-element-interactions": 0,
+      "jsx-a11y/click-events-have-key-events": 0,
+      "lines-between-class-members": [
+        "error",
+        "always",
+        {
+          "exceptAfterSingleLine": true
+        }
+      ],
+      "react/destructuring-assignment": [
+        "error",
+        "always",
+        {
+          "ignoreClassFields": true
+        }
+      ]
+    }
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/scripts/setupTests.js"
+    ],
+    "transform": {
+      "\\.js(x?)$": [
+        "babel-jest"
+      ],
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": [
+        "jest-transform-stub"
+      ]
+    },
+    "moduleNameMapper": {
+      "^.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!**/__test__/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
+      }
+    },
+    "coverageDirectory": "./coverage",
+    "coverageReporters": [
+      "json-summary",
+      "lcov"
+    ]
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          [
+            "@babel/plugin-proposal-decorators",
+            {
+              "legacy": true
+            }
+          ]
+        ]
+      }
+    }
+  }
+}

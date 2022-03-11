@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.kylin.mdx.insight.core.dao.MdxInfoMapper">
+
+    <resultMap id="MdxInfoResultMap" type="io.kylin.mdx.insight.core.entity.MdxInfo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="mdx_version" property="mdxVersion" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getDatabaseVersion" resultType="java.lang.String">
+        select version();
+    </select>
+
+</mapper>

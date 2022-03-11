@@ -1,0 +1,165 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.layout {
+  position: relative;
+  z-index: 1;
+  .layout-footer {
+    position: absolute;
+    height: 50px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: white;
+    border-top: 1px solid #CCCCCC;
+    & > * {
+      padding-top: 10px;
+      padding-right: 20px;
+    }
+  }
+
+  .layout-right {
+    position: relative;
+    z-index: 1;
+  }
+
+  .layout-left {
+    float: left;
+    position: relative;
+    z-index: 2;
+  }
+
+  .page-header {
+    z-index: 2;
+  }
+
+  .layout-content {
+    position: relative;
+    overflow: auto;
+    height: calc(~'100vh');
+    z-index: 1;
+  }
+
+  .page-header + .layout-content {
+    height: calc(~'100vh - 48px');
+    background-color: #FAFAFA;
+  }
+
+  .page-header + .bread-crumb + .layout-content {
+    height: calc(~'100vh - 48px - 34px');
+  }
+
+  .layout-wrapper {
+    background: white;
+    height: 100%;
+    padding: 20px;
+    overflow: auto;
+    position: relative;
+    z-index: 0;
+    box-sizing: border-box;
+    &.with-footer {
+      padding-bottom: 70px;
+    }
+    .steps-wrapper {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 100%;
+    }
+
+    .steps-content {
+      height: calc(~'100% - 93px');
+      overflow: auto;
+      padding-bottom: 51px;
+    }
+
+    .steps-header {
+      padding: 20px 60px 10px 60px;
+      border-bottom: 1px solid #cccccc;
+    }
+
+    .steps-actions {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: white;
+      border-top: 1px solid #cccccc;
+      padding: 10px 20px;
+      text-align: right;
+      z-index: 4;
+      box-sizing: border-box;
+    }
+  }
+
+  .layout-title {
+    > * {
+      font-size: @text-title-size;
+      font-weight: @font-medium;
+      line-height: 22px;
+      margin-bottom: 10px;
+      color: @color-text-primary;
+    }
+    &.with-line {
+      border-bottom: 1px solid @border-color-base;
+    }
+  }
+
+  .layout-actions {
+    margin-bottom: 10px;
+  }
+
+  .layout-sidebar {
+    width: 290px;
+    float: left;
+    border-right: 1px solid @border-color-base;
+    height: 100%;
+    overflow: auto;
+  }
+
+  @layout-sidebar-title-height: 53px;
+  .layout-sidebar-block {
+    &:nth-child(1) {
+      border-bottom: 1px solid @border-color-base;
+      height: @layout-sidebar-title-height;
+      padding: 20px 20px 10px;
+      overflow: hidden;
+    }
+    &:nth-child(2) {
+      @sidebar-body-height: @page-header-height + @breadcrumb-height + @layout-sidebar-title-height;
+      padding: 10px 20px 20px 20px;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+    &:nth-last-child(1):first-child {
+      @sidebar-body-height: @page-header-height + @breadcrumb-height;
+      height: 100%;
+      padding: 20px;
+    }
+    &:only-child {
+      border-bottom: 0;
+    }
+  }
+}

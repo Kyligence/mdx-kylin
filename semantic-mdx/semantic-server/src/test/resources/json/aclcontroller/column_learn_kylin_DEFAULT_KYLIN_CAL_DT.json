@@ -1,0 +1,16 @@
+{
+  "code": "000",
+  "data": {
+    "size": 1,
+    "user": [
+      {
+        "wanghui": [
+          "WEEK_BEG_DT"
+        ]
+      }
+    ],
+    "allowModifyAclInProject": true,
+    "group": []
+  },
+  "msg": "get column acl"
+}

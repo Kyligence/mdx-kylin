@@ -1,0 +1,335 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import './variables.less';
+@import './antd-select.less';
+
+body {
+  font-family: Lato, Noto Sans S Chinese, sans-serif;
+  color: @color-text-primary;
+  margin: 0;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  line-height: normal;
+}
+
+.title-lg,
+.title,
+.title-sm,
+.content,
+.content-sm,
+.content-tip {
+  font-weight: normal;
+}
+
+pre code {
+  font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  line-height: 1.5;
+}
+
+.title-lg {
+  font-size: @text-maintitle-size;
+}
+.title {
+  font-size: @text-title-size;
+}
+.title-sm {
+  font-size: @text-subtitle-size;
+}
+.content {
+  font-size: @text-base-size;
+}
+.content-sm {
+  font-size: @text-assist-size;
+}
+
+.font-medium {
+  font-weight: @font-medium;
+}
+.font-regular {
+  font-weight: @font-regular;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+a:hover {
+  color: rgba(58,160,229,0.90);
+}
+
+a:visited {
+  color: #087ac8;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+#main {
+  position: relative;
+  z-index: 2;
+}
+
+.empty-text {
+  color:@color-text-empty;
+  text-align: center;
+  line-height: 48px;
+}
+
+.plain-table {
+  border: 1px solid @border-color-base;
+  font-size: 14px;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  td {
+    border: 1px solid @border-color-base;
+    padding: 8px 10px;
+  }
+}
+
+.no-decoration {
+  text-decoration: none !important;
+}
+
+.plain-table {
+  tr:nth-child(2n) {
+    background: #f4f4f4;
+  }
+  .inline-row {
+    padding: 10px;
+    & > * {
+      line-height: 1;
+    }
+  }
+  .inline-row:not(:last-child) {
+    border-bottom: 1px solid #CCCCCC;
+  }
+}
+
+.el-input--prefix .el-input__prefix{
+  line-height: 30px;
+}
+
+.el-input--small .el-input__inner, .el-input--small .el-input__prefix{
+  line-height: 24px;
+}
+
+.pre-space{
+  white-space: pre;
+}
+
+@media screen and (min-width:~"0\0") {
+  .el-input--small .el-input__inner, .el-input--small .el-input__prefix{
+    line-height: 16px;
+  }
+}
+
+.el-message {
+  z-index: 1;
+}
+
+.el-select {
+  display: block;
+}
+
+.el-select.icon-mode {
+  border: 1px solid @border-color-base;
+  border-radius: 2px;
+  width: 60px;
+  .el-input__prefix {
+    color: @color-text-primary;
+  }
+  .el-input__inner {
+    opacity: 0;
+    padding: 0;
+    height: 28px;
+  }
+  .el-select-dropdown__item {
+    padding: 0;
+  }
+  .option-item {
+    padding: 8px 10px;
+    display: block;
+  }
+}
+
+.option-item-tooltip {
+  pointer-events: none;
+}
+
+.el-cascader {
+  display: block;
+}
+
+.el-tooltip {
+  display: inline-block;
+}
+
+*, :after, :before {
+  box-sizing: border-box;
+}
+
+.el-tag {
+  border-radius: 2px;
+  &.el-tag--success {
+    background: #E8FEE9;
+    border: 1px solid #4CB050;
+  }
+  &.el-tag--primary {
+    background: #E6F3FC;
+    border: 1px solid #0988DE;
+  }
+}
+
+.el-message-box {
+  .alert-icon {
+    float: left;
+    i {
+      line-height: 20px;
+    }
+  }
+  .alert-content {
+    margin-left: 21px;
+  }
+}
+
+.el-message-content {
+  position: relative;
+  z-index: 3;
+}
+
+.page-loading {
+  height: calc(~'100vh - 85px');
+}
+
+.overflow-tooltip .el-tooltip__popper {
+  max-width: 350px;
+  white-space: normal;
+  word-break: break-word;
+  pointer-events: none;
+}
+
+.icon-success {
+  color: @color-success;
+}
+
+.icon-warning {
+  color: @color-warning;
+}
+
+.icon-error {
+  color: @color-danger;
+}
+
+.icon-info {
+  color: @color-info;
+}
+
+.message-text {
+  margin-bottom: 5px;
+}
+
+.file-upload {
+  position: relative;
+  overflow: hidden;
+  span& {
+    display: inline-block;
+  }
+  .upload-zone {
+    position: absolute;
+    display: block;
+    width: 500%;
+    height: 100%;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+  }
+}
+
+.beta {
+  background-color: #EFDBFF;
+  color: #531DAB;
+  border-radius: 2px;
+  padding: 0 5px;
+}
+
+.layout-filters {
+  margin: 10px 0;
+  background: #F4F4F4;
+  padding: 10px 45px 5px 10px;
+  position: relative;
+  .el-tag {
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+}
+.filters-clear {
+  color: @color-primary;
+  cursor: pointer;
+  transform: translateY(-50%);
+  top: 50%;
+  position: absolute;
+  right: 10px;
+}
+
+.limited-column {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.el-form-item__label .icon-superset-what {
+  display: inline-block;
+  color: @color-text-regular;
+  transform: translateY(1px);
+}
+
+.el-form-item__description_popper {
+  max-width: 350px;
+  hyphens: auto;
+}
+
+.el-button--primary{
+  background-color: #438eb9;
+  border-color: #438eb9;
+}
+
+.el-button--primary:focus, .el-button--primary:hover{
+  background-color: #438eb9;
+  border-color: #438eb9;
+}

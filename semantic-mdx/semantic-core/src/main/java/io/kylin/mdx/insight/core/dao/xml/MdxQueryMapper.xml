@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.kylin.mdx.insight.core.dao.MdxQueryMapper">
+
+    <resultMap id="MdxQueryResultMap" type="io.kylin.mdx.insight.core.entity.MdxQuery">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="start" property="start" jdbcType="BIGINT"/>
+        <result column="total_execution_time" property="totalExecutionTime" jdbcType="BIGINT"/>
+        <result column="mdx_text" property="mdxText" jdbcType="VARCHAR"/>
+        <result column="dataset_name" property="datasetName" jdbcType="VARCHAR"/>
+        <result column="success" property="success" jdbcType="TINYINT"/>
+        <result column="application" property="application" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="mdx_query_id" property="mdxQueryId" jdbcType="VARCHAR"/>
+        <result column="mdx_cache_used" property="mdxCacheUsed" jdbcType="TINYINT"/>
+        <result column="other_used" property="otherUsed" jdbcType="TINYINT"/>
+        <result column="network_package" property="networkPackage" jdbcType="INTEGER"/>
+        <result column="timeout" property="timeout" jdbcType="TINYINT"/>
+        <result column="create_multidimensional_dataset" property="createMultiDimensionalDataset" jdbcType="BIGINT"/>
+        <result column="marshall_soap_message" property="marshallSoapMessage" jdbcType="BIGINT"/>
+        <result column="gateway" property="gateway" jdbcType="TINYINT"/>
+        <result column="node" property="node" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="RankingStatisticsMap" type="java.util.Map">
+        <result column="dataset_name" property="datasetName" jdbcType="VARCHAR"/>
+        <result column="num" property="data" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <insert id="insertOneReturnId" parameterType="io.kylin.mdx.insight.core.entity.MdxQuery"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into mdx_query
+        (mdx_query_id, mdx_text, start, total_execution_time, username, success, project, application, mdx_cache_used, before_connection,
+        connection, hierarchy_load, olaplayout_construction, aggregationqueries_construction, aggregationqueries_execution,
+        otherresult_construction,
+        network_package, timeout, message, calculate_axes, calculate_cell, calculate_cellrequest_num, create_rolapresult,
+        create_multidimensional_dataset, marshall_soap_message, dataset_name, gateway, other_used, node)
+        values
+        (#{mdxQueryId},#{mdxText},#{start},#{totalExecutionTime},#{username},#{success},#{project},#{application},#{mdxCacheUsed},
+        #{beforeConnectionTime},#{connectionTime},#{hierarchyLoadTime},#{olapLayoutTime},#{aggQueriesConstructionTime},
+        #{aggQueriesExecutionTime},#{otherResultConstructionTime},
+        #{networkPackage},#{timeout},#{message},#{calculateAxes},#{calculateCell},#{calculateCellRequestNum},
+        #{createRolapResult},#{createMultiDimensionalDataset},#{marshallSoapMessage},#{datasetName},#{gateway},
+        #{otherUsed}, #{node})
+    </insert>
+
+    <select id="countRecords" resultType="java.lang.Integer">
+        select count(1) from mdx_query
+    </select>
+
+    <select id="getDeleteUuid" resultType="java.lang.String">
+        select mdx_query_id
+        from mdx_query
+        order by id asc
+        limit #{batch}
+    </select>
+
+    <delete id="deleteByUuids">
+        delete from mdx_query
+        <where>
+            mdx_query_id in
+            <foreach collection="uuids" item="uuid" open="(" separator="," close=")">
+                #{uuid}
+            </foreach>
+        </where>
+    </delete>
+
+    <select id="selectMdxQueryByPage" resultMap="MdxQueryResultMap">
+        select
+        id, start, total_execution_time, mdx_text, dataset_name, success, application, username, mdx_query_id,
+        mdx_cache_used, other_used, network_package, timeout, create_multidimensional_dataset, marshall_soap_message, gateway, node
+        from mdx_query
+        <where>
+            project = #{project}
+            <if test="username != null and username != ''">
+                and username like CONCAT(#{username},'%')
+            </if>
+            <if test="mdxQueryId != null and mdxQueryId != ''">
+                and mdx_query_id like CONCAT(#{mdxQueryId},'%')
+            </if>
+            <if test="success != null">
+                and success = #{success}
+            </if>
+            <if test="application != null and application.size>0">
+                and application in
+                <foreach collection="application" item="applicationItem" open="(" separator="," close=")">
+                    #{applicationItem}
+                </foreach>
+            </if>
+            <if test="nodes != null and nodes.size>0">
+                and node in
+                <foreach collection="nodes" item="nodeItem" open="(" separator="," close=")">
+                    #{nodeItem}
+                </foreach>
+            </if>
+            <if test="startTimeFrom != null  and startTimeFrom != ''">
+                and #{startTimeFrom} &lt;= start
+            </if>
+            <if test="startTimeTo != null  and startTimeTo != ''">
+                and start &lt; #{startTimeTo}
+            </if>
+        </where>
+        <if test="orderBy != null and orderBy != ''">
+            order by ${orderBy}
+        </if>
+        <if test="orderBy == null or orderBy == ''">
+            order by start
+        </if>
+        <if test="direction != null and direction != ''">
+            ${direction}
+        </if>
+        <if test="direction == null or direction == ''">
+            desc
+        </if>
+    </select>
+
+    <select id="getUserNames" parameterType="io.kylin.mdx.insight.core.entity.SelectBasicStatistics"
+            resultType="java.lang.Integer">
+        SELECT count(DISTINCT(username))
+        FROM mdx_query
+        <where>
+            project=#{projectName}
+            and #{startTime} &lt;= start
+            and start &lt; #{endTime}
+        </where>
+    </select>
+
+    <select id="getSelectNum" parameterType="io.kylin.mdx.insight.core.entity.SelectBasicStatistics"
+            resultType="java.lang.Integer">
+        SELECT count(DISTINCT(mdx_query_id))
+        FROM mdx_query
+        <where>
+            project=#{projectName}
+            <if test="executeState != null">
+                and success = #{executeState}
+            </if>
+            and #{startTime} &lt;= start
+            and start &lt; #{endTime}
+        </where>
+    </select>
+
+    <select id="getSelectSuccessTime" parameterType="io.kylin.mdx.insight.core.entity.SelectBasicStatistics"
+            resultType="java.lang.Long">
+        SELECT sum(total_execution_time)
+        FROM mdx_query
+        <where>
+            project=#{projectName}
+            <if test="datasetName != null">
+                and dataset_name=#{datasetName}
+            </if>
+            <if test="executeState != null">
+                and success = #{executeState}
+            </if>
+            and #{startTime} &lt;= start
+            and start &lt; #{endTime}
+        </where>
+    </select>
+
+    <select id="getDataUseNum" parameterType="io.kylin.mdx.insight.core.entity.SelectBasicStatistics"
+            resultType="java.lang.Long">
+        SELECT count(DISTINCT(mdx_query_id))
+        FROM mdx_query
+        <where>
+            project=#{projectName}
+            and dataset_name=#{datasetName}
+            and #{startTime} &lt;= start
+            and start &lt; #{endTime}
+            <if test="executeState != null">
+                and success = #{executeState}
+            </if>
+        </where>
+    </select>
+
+    <select id="getSpecificTimeUseNum" parameterType="io.kylin.mdx.insight.core.entity.SelectBasicStatistics"
+            resultType="java.lang.Long">
+        SELECT count(DISTINCT(mdx_query_id))
+        FROM mdx_query
+        <where>
+            project=#{projectName}
+            <if test="executeState != null">
+                and success = #{executeState}
+            </if>
+            and #{startTime} &lt;= start
+            and start &lt; #{endTime}
+            <if test="minTime != null">
+                and #{minTime} &lt;= total_execution_time
+            </if>
+            <if test="maxTime != null">
+                and total_execution_time &lt;   #{maxTime}
+            </if>
+        </where>
+    </select>
+
+    <select id="getRankingStatisticsDesc" parameterType="io.kylin.mdx.insight.core.entity.SelectBasicStatistics"
+            resultMap="RankingStatisticsMap">
+        SELECT dataset_name, count(DISTINCT(mdx_query_id)) num
+        FROM mdx_query
+        <where>
+            project=#{projectName}
+            <if test="executeState != null">
+                and success = #{executeState}
+            </if>
+            and #{startTime} &lt;= start
+            and start &lt; #{endTime}
+        </where>
+        GROUP BY dataset_name
+        ORDER BY num
+        DESC
+        LIMIT #{count}
+    </select>
+
+    <select id="getRankingStatisticsAsc" parameterType="io.kylin.mdx.insight.core.entity.SelectBasicStatistics"
+            resultMap="RankingStatisticsMap">
+        SELECT dataset_name, count(DISTINCT(mdx_query_id)) num
+        FROM mdx_query
+        <where>
+            project=#{projectName}
+            <if test="executeState != null">
+                and success = #{executeState}
+            </if>
+            and #{startTime} &lt;= start
+            and start &lt; #{endTime}
+        </where>
+        GROUP BY dataset_name
+        ORDER BY num
+        ASC
+        LIMIT #{count}
+    </select>
+
+    <select id="getNodes" resultType="java.lang.String">
+        SELECT DISTINCT(node) FROM mdx_query
+        <where>
+            1=1
+            <if test="projectName != null">
+                and project=#{projectName}
+            </if>
+        </where>
+    </select>
+</mapper>

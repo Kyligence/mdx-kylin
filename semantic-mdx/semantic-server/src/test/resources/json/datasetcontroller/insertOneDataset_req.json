@@ -1,0 +1,173 @@
+{
+  "datasetId": 1,
+  "project": "learn_kylin",
+  "dataset_name": "dataset2",
+  "type": "SQL",
+  "front_v": "v0.2",
+  "model_relations": [
+    {
+      "model_left": "model_22",
+      "model_right": "model_33",
+      "relation": [
+        {
+          "left": "table_5",
+          "right": "table_5"
+        },
+        {
+          "left": "table_6",
+          "right": "table_6"
+        }
+      ]
+    }
+  ],
+  "models": [
+    {
+      "model_name": "model_1",
+      "fact_table": "DEFAULT.KYLIN_SALES",
+      "dimension_tables": [
+        {
+          "name": "table_5",
+          "type": "time",
+          "alias": "table-alias",
+          "actual_table": "DEFUALT.TABLE2",
+          "dim_cols": [
+            {
+              "name": "year",
+              "type": 1,
+              "alias": "year",
+              "data_type": "VARCHAR",
+              "is_visible": true,
+              "name_column": "year",
+              "value_column": "year"
+            },
+            {
+              "name": "quarter",
+              "type": 2,
+              "alias": "quarter",
+              "data_type": "VARCHAR",
+              "is_visible": true,
+              "name_column": "quarter",
+              "value_column": "quarter"
+            },
+            {
+              "name": "month",
+              "type": 3,
+              "alias": "month",
+              "data_type": "VARCHAR",
+              "is_visible": true,
+              "name_column": "month",
+              "value_column": "month"
+            }
+          ],
+          "hierarchys": [
+            {
+              "name": "xxx",
+              "dim_cols": [
+                "year",
+                "quarter",
+                "month"
+              ],
+              "weight_cols": [
+                null,
+                null,
+                null
+              ]
+            }
+          ]
+        }
+      ],
+      "measures": [
+        {
+          "name": "SUM_COST",
+          "alias": "成本",
+          "data_type": "decimal(19.4)",
+          "expression": "SUM",
+          "format": "regular",
+          "format_type": "currency",
+          "dim_column": "KYLIN_SALES.PRICE",
+          "is_visible": true
+        },
+        {
+          "name": "SUM_ITEM_COUNT",
+          "alias": "销售量",
+          "data_type": "bigint",
+          "expression": "SUM",
+          "format": "regular",
+          "format_type": "regular",
+          "dim_column": "KYLIN_SALES.ITEM_COUNT",
+          "is_visible": true
+        }
+      ]
+    }
+  ],
+  "calculate_measures": [
+    {
+      "name": "平均成本",
+      "format": "currency",
+      "format_type": "currency",
+      "expression": "[Measures].[成本]/[Measures].[销售量]",
+      "folder": "folder",
+      "is_visible": true,
+      "non_empty_behavior": [
+        {
+          "model": "model_1",
+          "name": "SUM_COST",
+          "alias": "成本"
+        }
+      ]
+    },
+    {
+      "name": "销售量加1",
+      "format": "regular",
+      "format_type": "regular",
+      "expression": "[Measures].[销售量] + 1",
+      "folder": "folder",
+      "is_visible": true
+    }
+  ],
+  "named_sets": [
+    {
+      "name": "Top CA Cities",
+      "expression": "TopCount([CA Cities], 2, [Measures].[Unit Sales])",
+      "invisible": [
+        {
+          "type": "user",
+          "name": "admin"
+        }
+      ],
+      "location": "Named Set",
+      "folder": "top-n",
+      "is_visible": true
+    }
+  ],
+  "dim_table_model_relations": [
+    {
+      "model_name": "model_22",
+      "table_relations": [
+        {
+          "table_name": "table_6",
+          "relation_type": 0,
+          "relation_fact_key": null,
+          "relation_bridge_table_name": null
+        },
+        {
+          "table_name": "table_6",
+          "relation_type": 2,
+          "relation_fact_key": null,
+          "relation_bridge_table_name": null
+        }
+      ]
+    },
+    {
+      "model_name": "model_33",
+      "table_relations": [
+        {
+          "table_name": "table_2",
+          "relation_type": 0,
+          "relation_fact_key": null,
+          "relation_bridge_table_name": null
+        }
+      ]
+    }
+  ]
+}

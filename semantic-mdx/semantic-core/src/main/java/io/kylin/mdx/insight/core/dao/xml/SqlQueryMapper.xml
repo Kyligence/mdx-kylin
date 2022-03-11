@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.kylin.mdx.insight.core.dao.SqlQueryMapper">
+
+    <resultMap id="SqlQueryResultMap" type="io.kylin.mdx.insight.core.entity.SqlQuery">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="sql_text" property="sqlText" jdbcType="VARCHAR"/>
+        <result column="sql_execution_time" property="sqlExecutionTime" jdbcType="BIGINT"/>
+        <result column="sql_cache_used" property="sqlCacheUsed" jdbcType="TINYINT"/>
+        <result column="exec_status" property="execStatus" jdbcType="TINYINT"/>
+        <result column="ke_query_id" property="keQueryId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insertOneReturnId" parameterType="io.kylin.mdx.insight.core.entity.SqlQuery"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into sql_query
+        (mdx_query_id, sql_text, sql_execution_time, sql_cache_used, exec_status, ke_query_id)
+        values
+        (#{mdxQueryId},#{sqlText},#{sqlExecutionTime},#{sqlCacheUsed}, #{execStatus}, #{keQueryId})
+    </insert>
+    <delete id="deleteByMdxQueryIds">
+        delete from sql_query
+        <where>
+            mdx_query_id in
+            <foreach collection="uuids" item="uuid" open="(" separator="," close=")">
+                #{uuid}
+            </foreach>
+        </where>
+    </delete>
+
+    <select id="selectSqlQueryByPage" resultMap="SqlQueryResultMap">
+        select
+        id, sql_execution_time, sql_text, sql_cache_used, exec_status, ke_query_id
+        from sql_query
+        <where>
+            mdx_query_id = #{mdxQueryId, jdbcType=VARCHAR}
+            <if test="execStatus != null">
+                and exec_status = #{execStatus}
+            </if>
+        </where>
+    </select>
+
+</mapper>

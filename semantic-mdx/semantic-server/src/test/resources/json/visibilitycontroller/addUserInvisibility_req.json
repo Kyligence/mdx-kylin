@@ -1,0 +1,16 @@
+{
+  "target_user": "lhs",
+  "project": "mdx_automation_test",
+  "dataset_name": "snowflake_dataset",
+  "invisible_dimension_col": {
+    "model": "snowflake_inner_hierarcy_cube",
+    "table_alias": "KYLIN_CATEGORY_GROUPINGS",
+    "dim_col_alias": "CATEG_LVL2_NAME"
+  },
+  "invisible_measure": {
+    "model": "snowflake_inner_hierarcy_cube",
+    "measure": "GMV_销售额"
+  },
+  "invisible_calculate_measure": "GMV",
+  "invisible_named_set": "Top CA Cities"
+}

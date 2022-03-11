@@ -1,0 +1,13 @@
+{
+  "code": "000",
+  "data": [
+    {
+      "database": "YEAR_BEG_DT",
+      "name": "KYLIN_CAL_DT",
+      "cardinality": {
+        "YEAR_BEG_DT": 1
+      }
+    }
+  ],
+  "msg": "get users with group"
+}

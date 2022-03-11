@@ -1,3 +1,8 @@
-# Kyligence One
+# MDX for Kylin
 
-Kyligence One is a leading business intelligence tool, buit for Kyligence Analytics Platform.
+## Mission
+* MDX Service
+
+## Web Frontend Client
+* ![Statements](./client/public/badge-statements.svg) ![Lines](./client/public/badge-lines.svg) ![Functions](./client/public/badge-functions.svg) ![Branches](./client/public/badge-branches.svg)
+* Development: https://github.com/Kyligence/mdx-kylin/tree/main/client

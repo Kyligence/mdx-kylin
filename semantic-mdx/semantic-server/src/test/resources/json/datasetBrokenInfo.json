@@ -1,0 +1,39 @@
+{
+  "dimension_cols": [
+    {
+      "datasetBrokenType": "MANY_TO_MANY_KEY_DELETED",
+      "name": "cube_1.table_1.key_1"
+    }
+  ],
+  "dimension_tables": [
+    {
+      "datasetBrokenType": "COMMON_TABLE_DELETED",
+      "name": "cube_1.table_1"
+    },
+    {
+      "datasetBrokenType": "BRIDGE_TABLE_DELETED",
+      "name": "cube_1.bridge_table"
+    }
+  ],
+  "hierarchys": [
+    {
+      "datasetBrokenType": "HIERARCHY_DIM_COL_DELETED",
+      "name": "cube_1.table_1.hierarchy",
+      "obj": "cube_1.table_1.col_1.weight_col_1"
+    }
+  ],
+  "models": [
+    {
+      "datasetBrokenType": "MODEL_DELETED",
+      "name": "cube_2"
+    },
+    {
+      "datasetBrokenType": "MODEL_DELETED",
+      "name": "cube_1"
+    },
+    {
+      "datasetBrokenType": "MODEL_DELETED",
+      "name": "cube_3"
+    }
+  ]
+}

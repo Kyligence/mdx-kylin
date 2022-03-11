@@ -1,0 +1,147 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import './color.less';
+@import './font.less';
+/* Element Chalk Variables */
+
+/* Transition
+-------------------------- */
+@all-transition: all .3s cubic-bezier(.645,.045,.355,1);
+@fade-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
+@fade-linear-transition: opacity 200ms linear;
+@md-fade-transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1), opacity 300ms cubic-bezier(0.23, 1, 0.32, 1);
+@border-transition-base: border-color .2s cubic-bezier(.645,.045,.355,1);
+@color-transition-base: color .2s cubic-bezier(.645,.045,.355,1);
+
+/* Colors
+-------------------------- */
+@color-white: #fff;
+@color-black: #000;
+
+@color-grey-1: #BDBDBD;
+@color-grey-2: #EEEEEE;
+@color-grey-3: #E2ECF1;
+@color-grey-4: #F1F7FA;
+@color-grey-5: #F5F5F5;
+
+@color-primary: #0988DE;
+@color-primary-light-1: mix(@color-white, @color-primary, 10%); /* #2294e1 */
+@color-primary-light-2: mix(@color-white, @color-primary, 20%); /* #3aa0e5 */
+@color-primary-light-3: mix(@color-white, @color-primary, 30%); /* #53ace8 */
+@color-primary-light-4: mix(@color-white, @color-primary, 40%); /* #6bb8eb */
+@color-primary-light-5: mix(@color-white, @color-primary, 50%); /* #84c4ef */
+@color-primary-light-6: mix(@color-white, @color-primary, 60%); /* #9dcff2 */
+@color-primary-light-7: mix(@color-white, @color-primary, 70%); /* #b5dbf5 */
+@color-primary-light-8: mix(@color-white, @color-primary, 80%); /* #cee7f8 */
+@color-primary-light-9: mix(@color-white, @color-primary, 90%); /* #e6f3fc */
+@color-primary-light-10: #E6F3FC;
+
+@color-success: #4CB050;
+@color-warning: #F7BA2A;
+@color-danger: #E73371;
+@color-info: #7F7F7F;
+
+@color-success-light: mix(@color-white, @color-success, 80%);
+@color-warning-light: mix(@color-white, @color-warning, 80%);
+@color-danger-light: mix(@color-white, @color-danger, 80%);
+@color-info-light: mix(@color-white, @color-info, 80%);
+
+@color-success-lighter: mix(@color-white, @color-success, 90%);
+@color-warning-lighter: mix(@color-white, @color-warning, 90%);
+@color-danger-lighter: mix(@color-white, @color-danger, 90%);
+@color-info-lighter: mix(@color-white, @color-info, 90%);
+
+@color-text-primary: #252525;
+@color-text-regular: #5C5C5C;
+@color-text-placeholder: #B6B6B6;
+@color-text-disabled: #989898;
+@color-text-empty: #7F7F7F;
+
+/* Background
+-------------------------- */
+@background-color-base: @color-grey-5;
+@background-color-light: #F9FBFC;
+@background-color-regular: #E2ECF1;
+
+/* Border
+-------------------------- */
+@border-width-base: 1px;
+@border-style-base: solid;
+@border-color-base: #DDD;
+@border-color-hover: @color-text-placeholder;
+@border-base: @border-width-base @border-style-base @border-color-base;
+@border-radius-base: 2px;
+@border-radius-small: 2px;
+@border-radius-circle: 100%;
+
+/* Box-shadow
+-------------------------- */
+@box-shadow-base: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+@box-shadow-dark: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .12);
+@box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+/* Fill
+-------------------------- */
+@fill-base: @color-white;
+
+/* Font
+-------------------------- */
+@font-path: 'fonts';
+@font-size-base: 14px;
+@font-size-small: 13px;
+@font-size-extra-small: 12px !default;
+@font-size-medium: 16px !default;
+@font-size-large: 18px;
+@font-color-disabled-base: #bbb;
+@font-weight-primary: 700;
+@font-line-height-primary: 24px;
+
+/* Size
+-------------------------- */
+@size-base: 14px;
+
+/* z-index
+-------------------------- */
+@index-normal: 1;
+@index-top: 1000;
+@index-popper: 2000;
+
+// MDX for Kylin
+@page-header-height: 48px;
+@page-footer-height: 50px;
+@page-header-shadow-color: #f7f7f7;
+@sideMenu-background: #102D41;
+@sideMenu-height: 56px;
+@breadcrumb-height: 34px;
+
+@text-maintitle-size: 18px;
+@text-title-size: 16px;
+@text-subtitle-size: 14px;
+@text-base-size: @font-size-base;
+@text-assist-size: 12px;
+
+@font-medium: 700;
+@font-bold: 500;
+@font-normal: 400;
+@font-regular: 300;

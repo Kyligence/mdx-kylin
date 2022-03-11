@@ -1,0 +1,77 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.ace_editor {
+  border: 1px solid @border-color-base;
+  border-radius: 2px;
+  &.ace-chrome:not(.ace_autocomplete) {
+    color: @color-text-primary;
+    // .ace_marker-layer .ace_active-line {
+    //   background: rgba(204,204,204,0.80);
+    // }
+    // .ace_gutter-active-line {
+    //   background: rgba(204,204,204,0.90);
+    // }
+    .ace_content {
+      background: #FBFBFB;
+    }
+    .ace_gutter {
+      background: #E5E5E5;
+      color: @color-text-primary;
+    }
+    .ace_placeholder {
+      color: #7F7F7F;
+      font-size: 14px;
+    }
+    .ace_cursor {
+      color: @color-text-primary;
+    }
+  }
+}
+
+.ace_editor.ace_autocomplete {
+  width: 350px;
+  &.ace-chrome {
+    color: @color-text-primary;
+    box-shadow: 0 2px 4px 0 #CCCCCC;
+    .ace_active-line {
+      background: #E6F3FB;
+    }
+    .ace_selected > *:not(.ace_rightAlignedText) {
+      color: @color-primary;
+    }
+    .ace_line-hover {
+      background: #E6F3FB;
+      border: 0;
+    }
+  }
+  .ace_bracket {
+    display: none;
+  }
+}
+
+.el-form-item.is-error > .el-form-item__content > .ace-editor {
+  border-color: #E73371;
+}

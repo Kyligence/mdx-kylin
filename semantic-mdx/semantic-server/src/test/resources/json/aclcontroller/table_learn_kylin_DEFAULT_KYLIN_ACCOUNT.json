@@ -1,0 +1,14 @@
+{
+  "code": "000",
+  "data": {
+    "size": 3,
+    "user": [
+      "ADMIN",
+      "wanghui"
+    ],
+    "allowModifyAclInProject": true,
+    "group": [
+    ]
+  },
+  "msg": "get table acl"
+}

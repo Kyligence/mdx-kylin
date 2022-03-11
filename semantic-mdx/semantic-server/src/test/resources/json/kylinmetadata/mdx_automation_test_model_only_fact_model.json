@@ -1,0 +1,59 @@
+{
+  "code": "000",
+  "data": {
+    "models": [
+      {
+        "uuid": "fad8859a-ffe9-4bb7-b96e-a782bd9fef4d",
+        "last_modified": 1553571949205,
+        "version": "3.4.0.0",
+        "name": "only_fact_model",
+        "owner": "ADMIN",
+        "is_draft": false,
+        "status": "",
+        "description": "",
+        "fact_table": "DEFAULT.KYLIN_SALES",
+        "lookups": [],
+        "dimensions": [
+          {
+            "table": "KYLIN_SALES",
+            "columns": [
+              "TRANS_ID",
+              "PART_DT",
+              "LSTG_FORMAT_NAME",
+              "LEAF_CATEG_ID",
+              "LSTG_SITE_ID",
+              "SLR_SEGMENT_CD",
+              "PRICE",
+              "ITEM_COUNT",
+              "SELLER_ID",
+              "BUYER_ID",
+              "OPS_USER_ID",
+              "OPS_REGION"
+            ]
+          }
+        ],
+        "metrics": [],
+        "filter_condition": "",
+        "partition_desc": {
+          "partition_date_column": "KYLIN_SALES.PART_DT",
+          "partition_time_column": "",
+          "partition_date_start": 0,
+          "partition_date_format": "yyyy-MM-dd HH:mm:ss",
+          "partition_time_format": "",
+          "partition_type": "TIME",
+          "partition_condition_builder": "org.apache.kylin.metadata.model.PartitionDesc$DefaultPartitionConditionBuilder",
+          "partition_condition_builder_args": null
+        },
+        "capacity": "MEDIUM",
+        "multilevel_partition_cols": [],
+        "computed_columns": [],
+        "smart_model": false,
+        "smart_model_sqls": [],
+        "project": "mdx_automation_test",
+        "editable": true
+      }
+    ],
+    "size": 1
+  },
+  "msg": ""
+}

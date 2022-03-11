@@ -1,0 +1,14 @@
+{
+  "name": "admin_10",
+  "description": "test",
+  "contains": [
+    {
+      "type": "user",
+      "name": "User_A1"
+    },
+    {
+      "type": "user",
+      "name": "User_B1"
+    }
+  ]
+}

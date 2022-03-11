@@ -1,0 +1,109 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables';
+
+.query-history {
+  padding: 20px;
+  .search-query-history {
+    width: 230px;
+  }
+  .el-table__expanded-cell {
+    padding: 15px;
+  }
+  .query-list-header {
+    margin-bottom: 10px;
+  }
+  .query-content-tab .el-tabs__header {
+    margin-bottom: 5px;
+  }
+  .pagination {
+    margin-bottom: 0;
+    margin-top: 5px !important;
+  }
+  .query-content {
+    margin-top: -5px;
+  }
+  .label-start-time {
+    position: relative;
+  }
+  .filter-node > span:first-child {
+    margin-right: 5px;
+  }
+  .filter-node .icon-superset-filter {
+    vertical-align: middle;
+  }
+  .filter-node.has-value .icon-superset-filter {
+    color: @color-primary;
+  }
+  .filter-node .checkbox-icon-filter-popper {
+    max-height: 220px;
+    overflow: auto;
+  }
+  .filter-node .checkbox-icon-filter-popper .el-checkbox {
+    line-height: 30px;
+    padding: 0 10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    max-width: 400px;
+    &:hover {
+      background: #E5F8FB;
+    }
+  }
+  .filter-node .el-checkbox + .el-checkbox {
+    margin-top: 0;
+  }
+  .filter-node .checkbox-icon-filter-popper,
+  .table-filter-box .el-popover {
+    font-weight: 400;
+  }
+  .table-header-filter-time {
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    transform: translate(0, -50%);
+    .icon-superset-type_timestamp {
+      color: @color-text-regular;
+    }
+    &:hover .icon-superset-type_timestamp {
+      color: @color-primary;
+    }
+    &.has-value .icon-superset-type_timestamp {
+      color: @color-primary;
+    }
+  }
+}
+
+.mdx-query-content {
+  width: 300px !important;
+  position: fixed;
+  .query-preview {
+    max-height: 255px;
+    word-break: break-all;
+    overflow: hidden;
+  }
+  .query-preview-tip {
+    margin-top: 5px;
+    text-align: center;
+  }
+}

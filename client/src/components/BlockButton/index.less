@@ -1,0 +1,79 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.block-button-warpper {
+  display: inline-block;
+  width: 100px;
+  .block-button {
+    border: 1px solid transparent;
+    border-radius: 6px;
+    height: 100px;
+    background: @color-grey-4;
+    cursor: pointer;
+    transition: all .15s;
+    text-align: center;
+    &:hover {
+      border-color: @color-primary;
+      box-shadow: 0 2px 4px 0 @border-color-base, 0 0 6px 0 @border-color-base;
+    }
+  }
+  .block-button-text {
+    text-align: center;
+    white-space: nowrap;
+  }
+  & + .block-button-warpper {
+    margin-left: 25px;
+  }
+  .icon {
+    color: @color-primary;
+    line-height: 100px;
+    font-size: 50px;
+  }
+  &.active {
+    .block-button {
+      background: @color-primary;
+      border-color: @color-primary;
+      .icon {
+        color: white;
+      }
+    }
+    .block-button-text {
+      font-weight: @font-medium;
+      color: @color-primary;
+    }
+  }
+  &.disabled {
+    .block-button {
+      cursor: not-allowed;
+      &:hover {
+        border-color: transparent;
+        box-shadow: none;
+      }
+    }
+    .icon {
+      color: #8E9FA8;
+    }
+  }
+}

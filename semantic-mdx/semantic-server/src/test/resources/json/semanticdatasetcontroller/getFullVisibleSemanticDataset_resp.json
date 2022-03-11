@@ -1,0 +1,286 @@
+{
+  "project": "mdx_automation_test",
+  "type": "MDX",
+  "models": [
+    {
+      "lookups": [
+        {
+          "table": "DEFAULT.KYLIN_CAL_DT",
+          "kind": "LOOKUP",
+          "alias": "KYLIN_CAL_DT",
+          "join": {
+            "type": "inner",
+            "primary_key": [
+              "KYLIN_CAL_DT.CAL_DT"
+            ],
+            "foreign_key": [
+              "KYLIN_SALES.PART_DT"
+            ]
+          }
+        },
+        {
+          "table": "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "kind": "LOOKUP",
+          "alias": "KYLIN_CATEGORY_GROUPINGS",
+          "join": {
+            "type": "inner",
+            "primary_key": [
+              "KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID",
+              "KYLIN_CATEGORY_GROUPINGS.SITE_ID"
+            ],
+            "foreign_key": [
+              "KYLIN_SALES.LEAF_CATEG_ID",
+              "KYLIN_SALES.LSTG_SITE_ID"
+            ]
+          }
+        },
+        {
+          "table": "DEFAULT.KYLIN_ACCOUNT",
+          "kind": "LOOKUP",
+          "alias": "BUYER_ACCOUNT",
+          "join": {
+            "type": "inner",
+            "primary_key": [
+              "BUYER_ACCOUNT.ACCOUNT_ID"
+            ],
+            "foreign_key": [
+              "KYLIN_SALES.BUYER_ID"
+            ]
+          }
+        },
+        {
+          "table": "DEFAULT.KYLIN_ACCOUNT",
+          "kind": "LOOKUP",
+          "alias": "SELLER_ACCOUNT",
+          "join": {
+            "type": "inner",
+            "primary_key": [
+              "SELLER_ACCOUNT.ACCOUNT_ID"
+            ],
+            "foreign_key": [
+              "KYLIN_SALES.SELLER_ID"
+            ]
+          }
+        },
+        {
+          "table": "DEFAULT.KYLIN_COUNTRY",
+          "kind": "LOOKUP",
+          "alias": "BUYER_COUNTRY",
+          "join": {
+            "type": "inner",
+            "primary_key": [
+              "BUYER_COUNTRY.COUNTRY"
+            ],
+            "foreign_key": [
+              "BUYER_ACCOUNT.ACCOUNT_COUNTRY"
+            ]
+          }
+        },
+        {
+          "table": "DEFAULT.KYLIN_COUNTRY",
+          "kind": "LOOKUP",
+          "alias": "SELLER_COUNTRY",
+          "join": {
+            "type": "inner",
+            "primary_key": [
+              "SELLER_COUNTRY.COUNTRY"
+            ],
+            "foreign_key": [
+              "SELLER_ACCOUNT.ACCOUNT_COUNTRY"
+            ]
+          }
+        }
+      ],
+      "measures": [
+        {
+          "name": "_COUNT_",
+          "expression": "COUNT",
+          "alias": "个数",
+          "formatString": "",
+          "invisible": false,
+          "desc": "",
+          "data_type": "bigint",
+          "dim_column": "constant"
+        },
+        {
+          "name": "GMV_销售额",
+          "expression": "SUM",
+          "alias": "GMV_销售额",
+          "formatString": "",
+          "invisible": true,
+          "desc": "",
+          "data_type": "decimal(19,4)",
+          "dim_column": "KYLIN_SALES.PRICE"
+        },
+        {
+          "name": "销售数量总计",
+          "expression": "SUM",
+          "alias": "销售数量总计",
+          "formatString": "",
+          "invisible": false,
+          "desc": "",
+          "data_type": "bigint",
+          "dim_column": "KYLIN_SALES.ITEM_COUNT"
+        }
+      ],
+      "model_name": "snowflake_inner_hierarcy_cube",
+      "model_alias": "snowflake_inner_hierarcy_cube",
+      "fact_table": "DEFAULT.KYLIN_SALES",
+      "dimension_tables": [
+        {
+          "name": "SELLER_COUNTRY",
+          "type": "regular",
+          "alias": "SELLER_COUNTRY",
+          "actual_table": "DEFAULT.KYLIN_COUNTRY",
+          "dim_columns": [
+            {
+              "name": "NAME",
+              "type": 0,
+              "alias": "NAME",
+              "invisible": false,
+              "desc": "",
+              "data_type": "VARCHAR"
+            }
+          ]
+        },
+        {
+          "name": "BUYER_COUNTRY",
+          "type": "regular",
+          "alias": "BUYER_COUNTRY",
+          "actual_table": "DEFAULT.KYLIN_COUNTRY",
+          "dim_columns": [
+            {
+              "name": "NAME",
+              "type": 0,
+              "alias": "NAME",
+              "invisible": false,
+              "desc": "",
+              "data_type": "VARCHAR"
+            }
+          ]
+        },
+        {
+          "name": "BUYER_ACCOUNT",
+          "type": "regular",
+          "alias": "购买者账户维表",
+          "actual_table": "DEFAULT.KYLIN_ACCOUNT",
+          "dim_columns": [
+            {
+              "name": "ACCOUNT_BUYER_LEVEL",
+              "type": 0,
+              "alias": "ACCOUNT_BUYER_LEVEL",
+              "invisible": true,
+              "desc": "",
+              "data_type": "INTEGER"
+            }
+          ]
+        },
+        {
+          "name": "KYLIN_CATEGORY_GROUPINGS",
+          "type": "regular",
+          "alias": "KYLIN_CATEGORY_GROUPINGS",
+          "actual_table": "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "dim_columns": [
+            {
+              "name": "CATEG_LVL2_NAME",
+              "type": 0,
+              "alias": "CATEG_LVL2_NAME",
+              "invisible": false,
+              "desc": "",
+              "data_type": "VARCHAR"
+            },
+            {
+              "name": "CATEG_LVL3_NAME",
+              "type": 0,
+              "alias": "CATEG_LVL3_NAME",
+              "invisible": false,
+              "desc": "",
+              "data_type": "VARCHAR"
+            },
+            {
+              "name": "META_CATEG_NAME",
+              "type": 0,
+              "alias": "META_CATEG_NAME",
+              "invisible": false,
+              "desc": "",
+              "data_type": "VARCHAR"
+            }
+          ],
+          "hierarchies": [
+            {
+              "name": "CATEGORY",
+              "desc": "",
+              "dim_columns": [
+                "META_CATEG_NAME",
+                "CATEG_LVL2_NAME",
+                "CATEG_LVL3_NAME"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_name": "snowflake_dataset",
+  "datasource_ip": "10.1.33.45",
+  "datasource_port": 7070,
+  "created_time": 1556421057,
+  "last_modified": 1556421057,
+  "model_relations": [
+    {
+      "relations": [],
+      "model_left": "snowflake_inner_hierarcy_cube",
+      "model_right": ""
+    }
+  ],
+  "calculate_measures": [
+    {
+      "name": "GMV",
+      "format": "$#,###",
+      "expression": "[Measures].[GMV_销售额] + 1000",
+      "folder": "",
+      "desc": "",
+      "invisible": false
+    }
+  ],
+  "named_sets": [
+    {
+      "name": "Top CA Cities",
+      "expression": "TopCount([CA Cities], 2, [Measures].[Unit Sales])",
+      "folder": "named-set",
+      "location" : "",
+      "invisible": false
+    }
+  ],
+  "dim_table_model_relations": [
+    {
+      "model_name": "snowflake_inner_hierarcy_cube",
+      "table_relations": [
+        {
+          "table_name": "SELLER_COUNTRY",
+          "relation_type": 0,
+          "relation_fact_key": "",
+          "relation_bridge_table_name": ""
+        },
+        {
+          "table_name": "BUYER_COUNTRY",
+          "relation_type": 0,
+          "relation_fact_key": "",
+          "relation_bridge_table_name": ""
+        },
+        {
+          "table_name": "BUYER_ACCOUNT",
+          "relation_type": 0,
+          "relation_fact_key": "",
+          "relation_bridge_table_name": ""
+        },
+        {
+          "table_name": "KYLIN_CATEGORY_GROUPINGS",
+          "relation_type": 0,
+          "relation_fact_key": "",
+          "relation_bridge_table_name": ""
+        }
+      ]
+    }
+  ]
+}

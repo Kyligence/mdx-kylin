@@ -1,0 +1,288 @@
+{
+  "code": "000",
+  "data": {
+    "models": [
+      {
+        "uuid": "150d03a9-2303-43c1-a5c0-14075d032ba2",
+        "last_modified": 1553571923949,
+        "version": "3.4.0.0",
+        "name": "star_left_model",
+        "owner": "ADMIN",
+        "is_draft": false,
+        "status": "",
+        "description": "",
+        "fact_table": "DEFAULT.KYLIN_SALES",
+        "lookups": [
+          {
+            "table": "DEFAULT.KYLIN_CAL_DT",
+            "kind": "LOOKUP",
+            "scd": "SCD_TYPE_2",
+            "alias": "KYLIN_CAL_DT",
+            "join": {
+              "type": "left",
+              "primary_key": [
+                "KYLIN_CAL_DT.CAL_DT"
+              ],
+              "foreign_key": [
+                "KYLIN_SALES.PART_DT"
+              ]
+            }
+          },
+          {
+            "table": "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+            "kind": "LOOKUP",
+            "scd": "SCD_TYPE_2",
+            "alias": "KYLIN_CATEGORY_GROUPINGS",
+            "join": {
+              "type": "left",
+              "primary_key": [
+                "KYLIN_CATEGORY_GROUPINGS.LEAF_CATEG_ID",
+                "KYLIN_CATEGORY_GROUPINGS.SITE_ID"
+              ],
+              "foreign_key": [
+                "KYLIN_SALES.LEAF_CATEG_ID",
+                "KYLIN_SALES.LSTG_SITE_ID"
+              ]
+            }
+          },
+          {
+            "table": "DEFAULT.KYLIN_ACCOUNT",
+            "kind": "LOOKUP",
+            "scd": "SCD_TYPE_2",
+            "alias": "BUYER_ACCOUNT",
+            "join": {
+              "type": "left",
+              "primary_key": [
+                "BUYER_ACCOUNT.ACCOUNT_ID"
+              ],
+              "foreign_key": [
+                "KYLIN_SALES.BUYER_ID"
+              ]
+            }
+          },
+          {
+            "table": "DEFAULT.KYLIN_ACCOUNT",
+            "kind": "LOOKUP",
+            "scd": "SCD_TYPE_2",
+            "alias": "SELLER_ACCOUNT",
+            "join": {
+              "type": "left",
+              "primary_key": [
+                "SELLER_ACCOUNT.ACCOUNT_ID"
+              ],
+              "foreign_key": [
+                "KYLIN_SALES.SELLER_ID"
+              ]
+            }
+          }
+        ],
+        "dimensions": [
+          {
+            "table": "KYLIN_CAL_DT",
+            "columns": [
+              "CAL_DT",
+              "YEAR_BEG_DT",
+              "QTR_BEG_DT",
+              "MONTH_BEG_DT",
+              "WEEK_BEG_DT",
+              "AGE_FOR_YEAR_ID",
+              "AGE_FOR_QTR_ID",
+              "AGE_FOR_MONTH_ID",
+              "AGE_FOR_WEEK_ID",
+              "AGE_FOR_DT_ID",
+              "AGE_FOR_RTL_YEAR_ID",
+              "AGE_FOR_RTL_QTR_ID",
+              "AGE_FOR_RTL_MONTH_ID",
+              "AGE_FOR_RTL_WEEK_ID",
+              "AGE_FOR_CS_WEEK_ID",
+              "DAY_OF_CAL_ID",
+              "DAY_OF_YEAR_ID",
+              "DAY_OF_QTR_ID",
+              "DAY_OF_MONTH_ID",
+              "DAY_OF_WEEK_ID",
+              "WEEK_OF_YEAR_ID",
+              "WEEK_OF_CAL_ID",
+              "MONTH_OF_QTR_ID",
+              "MONTH_OF_YEAR_ID",
+              "MONTH_OF_CAL_ID",
+              "QTR_OF_YEAR_ID",
+              "QTR_OF_CAL_ID",
+              "YEAR_OF_CAL_ID",
+              "YEAR_END_DT",
+              "QTR_END_DT",
+              "MONTH_END_DT",
+              "WEEK_END_DT",
+              "CAL_DT_NAME",
+              "CAL_DT_DESC",
+              "CAL_DT_SHORT_NAME",
+              "YTD_YN_ID",
+              "QTD_YN_ID",
+              "MTD_YN_ID",
+              "WTD_YN_ID",
+              "SEASON_BEG_DT",
+              "DAY_IN_YEAR_COUNT",
+              "DAY_IN_QTR_COUNT",
+              "DAY_IN_MONTH_COUNT",
+              "DAY_IN_WEEK_COUNT",
+              "RTL_YEAR_BEG_DT",
+              "RTL_QTR_BEG_DT",
+              "RTL_MONTH_BEG_DT",
+              "RTL_WEEK_BEG_DT",
+              "CS_WEEK_BEG_DT",
+              "CAL_DATE",
+              "DAY_OF_WEEK",
+              "MONTH_ID",
+              "PRD_DESC",
+              "PRD_FLAG",
+              "PRD_ID",
+              "PRD_IND",
+              "QTR_DESC",
+              "QTR_ID",
+              "QTR_IND",
+              "RETAIL_WEEK",
+              "RETAIL_YEAR",
+              "RETAIL_START_DATE",
+              "RETAIL_WK_END_DATE",
+              "WEEK_IND",
+              "WEEK_NUM_DESC",
+              "WEEK_BEG_DATE",
+              "WEEK_END_DATE",
+              "WEEK_IN_YEAR_ID",
+              "WEEK_ID",
+              "WEEK_BEG_END_DESC_MDY",
+              "WEEK_BEG_END_DESC_MD",
+              "YEAR_ID",
+              "YEAR_IND",
+              "CAL_DT_MNS_1YEAR_DT",
+              "CAL_DT_MNS_2YEAR_DT",
+              "CAL_DT_MNS_1QTR_DT",
+              "CAL_DT_MNS_2QTR_DT",
+              "CAL_DT_MNS_1MONTH_DT",
+              "CAL_DT_MNS_2MONTH_DT",
+              "CAL_DT_MNS_1WEEK_DT",
+              "CAL_DT_MNS_2WEEK_DT",
+              "CURR_CAL_DT_MNS_1YEAR_YN_ID",
+              "CURR_CAL_DT_MNS_2YEAR_YN_ID",
+              "CURR_CAL_DT_MNS_1QTR_YN_ID",
+              "CURR_CAL_DT_MNS_2QTR_YN_ID",
+              "CURR_CAL_DT_MNS_1MONTH_YN_ID",
+              "CURR_CAL_DT_MNS_2MONTH_YN_ID",
+              "CURR_CAL_DT_MNS_1WEEK_YN_IND",
+              "CURR_CAL_DT_MNS_2WEEK_YN_IND",
+              "RTL_MONTH_OF_RTL_YEAR_ID",
+              "RTL_QTR_OF_RTL_YEAR_ID",
+              "RTL_WEEK_OF_RTL_YEAR_ID",
+              "SEASON_OF_YEAR_ID",
+              "YTM_YN_ID",
+              "YTQ_YN_ID",
+              "YTW_YN_ID",
+              "KYLIN_CAL_DT_CRE_DATE",
+              "KYLIN_CAL_DT_CRE_USER",
+              "KYLIN_CAL_DT_UPD_DATE",
+              "KYLIN_CAL_DT_UPD_USER"
+            ]
+          },
+          {
+            "table": "KYLIN_CATEGORY_GROUPINGS",
+            "columns": [
+              "LEAF_CATEG_ID",
+              "LEAF_CATEG_NAME",
+              "SITE_ID",
+              "CATEG_BUSN_MGR",
+              "CATEG_BUSN_UNIT",
+              "REGN_CATEG",
+              "USER_DEFINED_FIELD1",
+              "USER_DEFINED_FIELD3",
+              "KYLIN_GROUPINGS_CRE_DATE",
+              "KYLIN_GROUPINGS_UPD_DATE",
+              "KYLIN_GROUPINGS_CRE_USER",
+              "KYLIN_GROUPINGS_UPD_USER",
+              "META_CATEG_ID",
+              "META_CATEG_NAME",
+              "CATEG_LVL2_ID",
+              "CATEG_LVL3_ID",
+              "CATEG_LVL4_ID",
+              "CATEG_LVL5_ID",
+              "CATEG_LVL6_ID",
+              "CATEG_LVL7_ID",
+              "CATEG_LVL2_NAME",
+              "CATEG_LVL3_NAME",
+              "CATEG_LVL4_NAME",
+              "CATEG_LVL5_NAME",
+              "CATEG_LVL6_NAME",
+              "CATEG_LVL7_NAME",
+              "CATEG_FLAGS",
+              "ADULT_CATEG_YN",
+              "DOMAIN_ID",
+              "USER_DEFINED_FIELD5",
+              "VCS_ID",
+              "GCS_ID",
+              "MOVE_TO",
+              "SAP_CATEGORY_ID",
+              "SRC_ID",
+              "BSNS_VRTCL_NAME"
+            ]
+          },
+          {
+            "table": "BUYER_ACCOUNT",
+            "columns": [
+              "ACCOUNT_ID",
+              "ACCOUNT_BUYER_LEVEL",
+              "ACCOUNT_SELLER_LEVEL",
+              "ACCOUNT_COUNTRY",
+              "ACCOUNT_CONTACT"
+            ]
+          },
+          {
+            "table": "SELLER_ACCOUNT",
+            "columns": [
+              "ACCOUNT_ID",
+              "ACCOUNT_BUYER_LEVEL",
+              "ACCOUNT_SELLER_LEVEL",
+              "ACCOUNT_COUNTRY",
+              "ACCOUNT_CONTACT"
+            ]
+          },
+          {
+            "table": "KYLIN_SALES",
+            "columns": [
+              "TRANS_ID",
+              "PART_DT",
+              "LSTG_FORMAT_NAME",
+              "LEAF_CATEG_ID",
+              "LSTG_SITE_ID",
+              "SLR_SEGMENT_CD",
+              "PRICE",
+              "ITEM_COUNT",
+              "SELLER_ID",
+              "BUYER_ID",
+              "OPS_USER_ID",
+              "OPS_REGION"
+            ]
+          }
+        ],
+        "metrics": [],
+        "filter_condition": "",
+        "partition_desc": {
+          "partition_date_column": "KYLIN_SALES.PART_DT",
+          "partition_time_column": "",
+          "partition_date_start": 0,
+          "partition_date_format": "yyyy-MM-dd HH:mm:ss",
+          "partition_time_format": "",
+          "partition_type": "TIME",
+          "partition_condition_builder": "org.apache.kylin.metadata.model.PartitionDesc$DefaultPartitionConditionBuilder",
+          "partition_condition_builder_args": null
+        },
+        "capacity": "MEDIUM",
+        "multilevel_partition_cols": [],
+        "computed_columns": [],
+        "smart_model": false,
+        "smart_model_sqls": [],
+        "project": "mdx_automation_test",
+        "editable": true
+      }
+    ],
+    "size": 1
+  },
+  "msg": ""
+}

@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Schema name="learn_kylin" metamodelVersion="4.0">
+  <PhysicalSchema>
+    <Table name="KYLIN_SALES" schema="DEFAULT" alias="KYLIN_SALES_0"/>
+    <Table name="KYLIN_CAL_DT" schema="DEFAULT" alias="KYLIN_CAL_DT_0" keyColumn="CAL_DT"/>
+    <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="KYLIN_ACCOUNT_0" keyColumn="ACCOUNT_ID"/>
+    <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="KYLIN_COUNTRY_0" keyColumn="COUNTRY"/>
+    <Link target="KYLIN_SALES_0" source="KYLIN_CAL_DT_0" foreignKeyColumn="PART_DT" type="INNER"/>
+    <Link target="KYLIN_SALES_0" source="KYLIN_ACCOUNT_0" foreignKeyColumn="BUYER_ID" type="INNER"/>
+    <Link target="KYLIN_ACCOUNT_0" source="KYLIN_COUNTRY_0" foreignKeyColumn="ACCOUNT_COUNTRY" type="INNER"/>
+  </PhysicalSchema>
+  <Cube name="learn_kylin" defaultMeasure="COUNT_ALL">
+    <Dimensions>
+      <Dimension name="KYLIN_COUNTRY" table="KYLIN_COUNTRY_0" key="COUNTRY">
+        <Attributes>
+          <Attribute name="COUNTRY" keyColumn="COUNTRY" subfolder=""/>
+          <Attribute name="LATITUDE" keyColumn="LATITUDE" subfolder=""/>
+          <Attribute name="LONGITUDE" keyColumn="LONGITUDE" subfolder=""/>
+          <Attribute name="NAME" keyColumn="NAME" subfolder=""/>
+        </Attributes>
+      </Dimension>
+      <Dimension name="KYLIN_SALES" table="KYLIN_SALES_0" key="CC_VALUE_1">
+        <Attributes>
+          <Attribute name="CC_VALUE_1" keyColumn="CC_VALUE_1" subfolder=""/>
+          <Attribute name="ITEM_COUNT" keyColumn="ITEM_COUNT" subfolder=""/>
+          <Attribute name="PRICE" keyColumn="PRICE" subfolder=""/>
+        </Attributes>
+      </Dimension>
+      <Dimension name="KYLIN_ACCOUNT" table="KYLIN_ACCOUNT_0" key="ACCOUNT_BUYER_LEVEL">
+        <Attributes>
+          <Attribute name="ACCOUNT_BUYER_LEVEL" keyColumn="ACCOUNT_BUYER_LEVEL" subfolder=""/>
+          <Attribute name="ACCOUNT_CONTACT" keyColumn="ACCOUNT_CONTACT" subfolder=""/>
+          <Attribute name="ACCOUNT_COUNTRY" keyColumn="ACCOUNT_COUNTRY" subfolder=""/>
+          <Attribute name="ACCOUNT_ID" keyColumn="ACCOUNT_ID" subfolder=""/>
+          <Attribute name="ACCOUNT_SELLER_LEVEL" keyColumn="ACCOUNT_SELLER_LEVEL" subfolder=""/>
+        </Attributes>
+      </Dimension>
+      <Dimension name="KYLIN_CAL_DT" table="KYLIN_CAL_DT_0" key="CAL_DT">
+        <Attributes>
+          <Attribute name="CAL_DT" keyColumn="CAL_DT" subfolder=""/>
+          <Attribute name="MONTH_BEG_DT" keyColumn="MONTH_BEG_DT" subfolder=""/>
+          <Attribute name="QTR_BEG_DT" keyColumn="QTR_BEG_DT" subfolder=""/>
+          <Attribute name="WEEK_BEG_DT" keyColumn="WEEK_BEG_DT" subfolder=""/>
+          <Attribute name="YEAR_BEG_DT" keyColumn="YEAR_BEG_DT" subfolder=""/>
+        </Attributes>
+        <Hierarchies>
+          <Hierarchy name="cal-dt-Hierarchy" hasAll="true">
+            <Level attribute="YEAR_BEG_DT"/>
+            <Level attribute="QTR_BEG_DT"/>
+            <Level attribute="MONTH_BEG_DT"/>
+            <Level attribute="WEEK_BEG_DT"/>
+            <Level attribute="CAL_DT"/>
+          </Hierarchy>
+        </Hierarchies>
+      </Dimension>
+    </Dimensions>
+    <MeasureGroups>
+      <MeasureGroup name="learn_kylin" table="KYLIN_SALES_0">
+        <Measures>
+          <Measure name="ACCOUNT_COUNT" table="KYLIN_ACCOUNT_0" aggregator="sum" column="ACCOUNT_ID" formatString="regular" subfolder=""/>
+          <Measure name="COUNT_ALL" aggregator="count" formatString="regular" subfolder=""/>
+          <Measure name="ITEM_COUNT" table="KYLIN_SALES_0" aggregator="count" column="ITEM_COUNT" formatString="regular" subfolder=""/>
+          <Measure name="MAX_PRICE" table="KYLIN_SALES_0" aggregator="max" column="PRICE" formatString="regular" subfolder=""/>
+          <Measure name="MIN_PRICE" table="KYLIN_SALES_0" aggregator="min" column="PRICE" formatString="regular" subfolder=""/>
+          <Measure name="SUM_PRICE" table="KYLIN_SALES_0" aggregator="sum" column="PRICE" formatString="regular" subfolder=""/>
+        </Measures>
+        <DimensionLinks>
+          <FactLink dimension="KYLIN_COUNTRY"/>
+          <FactLink dimension="KYLIN_SALES"/>
+          <FactLink dimension="KYLIN_ACCOUNT"/>
+          <FactLink dimension="KYLIN_CAL_DT"/>
+        </DimensionLinks>
+      </MeasureGroup>
+    </MeasureGroups>
+    <CalculatedMembers/>
+    <NamedSets/>
+  </Cube>
+</Schema>

@@ -1,0 +1,109 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables';
+
+.query-history-detail {
+  height: 280px;
+  .query-list,
+  .query-content {
+    float: left;
+    width: calc(~'50% - 15px');
+  }
+  .query-list {
+    margin-right: 15px;
+  }
+  .query-list .el-table__row {
+    cursor: pointer;
+  }
+  .query-list .el-table {
+    min-height: 181px;
+  }
+  .filter-failure-query {
+    float: right;
+  }
+  .query-detail {
+    border-spacing: 0;
+  }
+  .query-list-item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .query-detail-item {
+    background-color: transparent;
+  }
+  .query-detail-item .key {
+    color: @color-info;
+  }
+  tr.query-detail-item > td {
+    border: none;
+    height: 23px;
+    font-size: 12px;
+    padding-right: 5px;
+  }
+  tr.query-detail-item:hover > td {
+    background-color: transparent;
+  }
+  .copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: none;
+  }
+  .ace_editor:hover + .copy-button,
+  .copy-button:hover {
+    display: block;
+  }
+  .query-type {
+    color: @color-text-disabled;
+    margin-right: 5px;
+    display: inline-block;
+    width: 32px;
+  }
+  .failure-status {
+    margin-right: 5px;
+  }
+  .el-pagination button {
+    background-color: transparent;
+  }
+  .el-pager li {
+    background-color: transparent;
+  }
+  .el-pager li.active {
+    background-color: @color-primary;
+  }
+}
+
+.query-history-detail.has-mdx {
+  .query-list .el-table {
+    min-height: 210px;
+  }
+}
+
+.query-history-detail:not(.has-mdx) {
+  .el-table__empty-block {
+    height: 180px;
+    line-height: 180px;
+  }
+}
+

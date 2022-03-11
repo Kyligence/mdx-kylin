@@ -1,0 +1,10 @@
+{
+  "name": "admin_10",
+  "contains": [
+    {
+      "type": "user",
+      "name": "ADMIN"
+    }
+  ],
+  "description": ""
+}

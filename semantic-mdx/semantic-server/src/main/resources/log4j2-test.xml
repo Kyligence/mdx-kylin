@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%-5level] %X{qid}%c{1.}.%M - %m%n"/>
+        </Console>
+
+        <RollingFile name="semantic" fileName="../logs/semantic.log"
+                     filePattern="../logs/semantic.log.%i">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%-5level] %X{qid}%c{1.}.%M - %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="256 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <RollingFile name="mdx" fileName="../logs/mdx.log"
+                     filePattern="../logs/mdx.log.%i">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%-5level] %X{qid}%c{1.}.%M - %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="256 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <RollingFile name="performance" fileName="../logs/performance.log"
+                     filePattern="../logs/performance.log.%i">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%-5level] %X{qid}%c{1.}.%M - %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="256 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <RollingFile name="jstack" fileName="../logs/jstack.log"
+                     filePattern="../logs/jstack.log.%i">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%-5level] %X{qid}%c{1.}.%M - %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="256 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="3"/>
+        </RollingFile>
+
+        <RollingFile name="jmap" fileName="../logs/jmap.log"
+                     filePattern="../logs/jmap.log.%i">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%-5level] %X{qid}%c{1.}.%M - %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="256 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="3"/>
+        </RollingFile>
+
+        <RollingFile name="top" fileName="../logs/top.log"
+                     filePattern="../logs/top.log.%i">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} [%-5level] %X{qid}%c{1.}.%M - %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="256 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="3"/>
+        </RollingFile>
+    </appenders>
+
+    <loggers>
+        <logger name="io.kylin.mdx.mdx" level="INFO" additivity="false">
+            <appender-ref ref="${sys:mdx_log_mode:-console}"/>
+        </logger>
+        <logger name="mondrian" level="INFO" additivity="false">
+            <appender-ref ref="${sys:mdx_log_mode:-console}"/>
+        </logger>
+        <logger name="mondrian.sql" level="debug" additivity="false">
+            <appender-ref ref="${sys:mdx_log_mode:-console}"/>
+        </logger>
+        <logger name="gateway" level="INFO" additivity="false">
+            <appender-ref ref="${sys:mdx_log_mode:-console}"/>
+        </logger>
+        <logger name="performance" level="INFO" additivity="false">
+            <appender-ref ref="${sys:performance_log_mode:-console}"/>
+        </logger>
+        <logger name="diagnosis.jstack" level="INFO" additivity="false">
+            <appender-ref ref="jstack"/>
+        </logger>
+        <logger name="diagnosis.jmap" level="INFO" additivity="false">
+            <appender-ref ref="jmap"/>
+        </logger>
+        <logger name="diagnosis.top" level="INFO" additivity="false">
+            <appender-ref ref="top"/>
+        </logger>
+        <root level="INFO">
+            <appender-ref ref="${sys:semantic_log_mode:-console}"/>
+        </root>
+    </loggers>
+</configuration>

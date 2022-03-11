@@ -1,0 +1,104 @@
+{
+  "status": 0,
+  "data": {
+    "project": "mdx_automation_test",
+    "modelName": "snowflake_inner_hierarcy_cube",
+    "factTableAlias": "KYLIN_SALES",
+    "dimensionTables": [
+      {
+        "name": "SELLER_COUNTRY",
+        "dimensionColumns": [
+          {
+            "actualTable": "DEFAULT.KYLIN_COUNTRY",
+            "tableAlias": "SELLER_COUNTRY",
+            "columnName": "NAME",
+            "dataType": "VARCHAR"
+          }
+        ]
+      }, {
+        "name" : "KYLIN_SALES",
+        "actualTable" : "",
+        "dimensionColumns" : [ ]
+      },
+      {
+        "name": "BUYER_COUNTRY",
+        "dimensionColumns": [
+          {
+            "actualTable": "DEFAULT.KYLIN_COUNTRY",
+            "tableAlias": "BUYER_COUNTRY",
+            "columnName": "NAME",
+            "dataType": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "BUYER_ACCOUNT",
+        "dimensionColumns": [
+          {
+            "actualTable": "DEFAULT.KYLIN_ACCOUNT",
+            "tableAlias": "BUYER_ACCOUNT",
+            "columnName": "ACCOUNT_BUYER_LEVEL",
+            "dataType": "INTEGER"
+          }
+        ]
+      },
+      {
+        "name": "KYLIN_CATEGORY_GROUPINGS",
+        "dimensionColumns": [
+          {
+            "actualTable": "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+            "tableAlias": "KYLIN_CATEGORY_GROUPINGS",
+            "columnName": "CATEG_LVL2_NAME",
+            "dataType": "VARCHAR"
+          },
+          {
+            "actualTable": "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+            "tableAlias": "KYLIN_CATEGORY_GROUPINGS",
+            "columnName": "CATEG_LVL3_NAME",
+            "dataType": "VARCHAR"
+          },
+          {
+            "actualTable": "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+            "tableAlias": "KYLIN_CATEGORY_GROUPINGS",
+            "columnName": "LEAF_CATEG_NAME",
+            "dataType": "VARCHAR"
+          },
+          {
+            "actualTable": "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+            "tableAlias": "KYLIN_CATEGORY_GROUPINGS",
+            "columnName": "META_CATEG_NAME",
+            "dataType": "VARCHAR"
+          }
+        ]
+      }
+    ],
+    "cubeMeasures": [
+      {
+        "measureName": "_COUNT_",
+        "alias": "个数",
+        "dataType": "bigint",
+        "expression": "COUNT"
+      },
+      {
+        "measureName": "GMV_销售额",
+        "alias": "",
+        "colMeasured": {
+          "tableAlias": "KYLIN_SALES",
+          "colName": "PRICE"
+        },
+        "dataType": "decimal(19,4)",
+        "expression": "SUM"
+      },
+      {
+        "measureName": "销售数量总计",
+        "alias": "销售数量总计",
+        "colMeasured": {
+          "tableAlias": "KYLIN_SALES",
+          "colName": "ITEM_COUNT"
+        },
+        "dataType": "bigint",
+        "expression": "SUM"
+      }
+    ]
+  }
+}

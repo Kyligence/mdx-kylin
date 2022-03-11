@@ -1,0 +1,10 @@
+{
+  "status": 0,
+  "data": {
+    "insight.kylin.username": "ADMIN",
+    "insight.kylin.status": "active",
+    "insight.kylin.port": "7070",
+    "insight.kylin.host": "10.1.33.45",
+    "insight.dataset.allow-access-by-default": "false"
+  }
+}

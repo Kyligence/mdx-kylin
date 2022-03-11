@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Schema name="learn_kylin" metamodelVersion="4.0">
+  <PhysicalSchema>
+    <Table name="KYLIN_SALES" schema="DEFAULT" alias="KYLIN_SALES_0"/>
+    <Table name="KYLIN_CAL_DT" schema="DEFAULT" alias="KYLIN_CAL_DT_0" keyColumn="CAL_DT"/>
+    <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="KYLIN_ACCOUNT_0" keyColumn="ACCOUNT_ID"/>
+    <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="KYLIN_COUNTRY_0" keyColumn="COUNTRY"/>
+    <Link target="KYLIN_SALES_0" source="KYLIN_CAL_DT_0" foreignKeyColumn="PART_DT" type="inner"/>
+    <Link target="KYLIN_SALES_0" source="KYLIN_ACCOUNT_0" foreignKeyColumn="BUYER_ID" type="inner"/>
+    <Link target="KYLIN_ACCOUNT_0" source="KYLIN_COUNTRY_0" foreignKeyColumn="ACCOUNT_COUNTRY" type="inner"/>
+  </PhysicalSchema>
+  <Cube name="learn_kylin" defaultMeasure="_COUNT_">
+    <Dimensions>
+      <Dimension name="KYLIN_COUNTRY" table="KYLIN_COUNTRY_0" key="COUNTRY">
+        <Attributes>
+          <Attribute name="COUNTRY" keyColumn="COUNTRY" subfolder=""/>
+          <Attribute name="NAME" keyColumn="NAME" subfolder=""/>
+        </Attributes>
+      </Dimension>
+      <Dimension name="KYLIN_ACCOUNT" table="KYLIN_ACCOUNT_0" key="ACCOUNT_BUYER_LEVEL">
+        <Attributes>
+          <Attribute name="ACCOUNT_BUYER_LEVEL" keyColumn="ACCOUNT_BUYER_LEVEL" subfolder=""/>
+          <Attribute name="ACCOUNT_CONTACT" keyColumn="ACCOUNT_CONTACT" subfolder=""/>
+          <Attribute name="ACCOUNT_COUNTRY" keyColumn="ACCOUNT_COUNTRY" subfolder=""/>
+          <Attribute name="ACCOUNT_ID" keyColumn="ACCOUNT_ID" subfolder=""/>
+          <Attribute name="ACCOUNT_SELLER_LEVEL" keyColumn="ACCOUNT_SELLER_LEVEL" subfolder=""/>
+        </Attributes>
+      </Dimension>
+      <Dimension name="KYLIN_CAL_DT" table="KYLIN_CAL_DT_0" key="MONTH_BEG_DT" type="TIME">
+        <Attributes>
+          <Attribute name="MONTH_BEG_DT" keyColumn="MONTH_BEG_DT" subfolder="">
+            <Property name="QTR_BEG_DT" attribute="QTR_BEG_DT"/>
+            <Property name="YEAR_BEG_DT" attribute="YEAR_BEG_DT"/>
+          </Attribute>
+          <Attribute name="QTR_BEG_DT" keyColumn="QTR_BEG_DT" subfolder="">
+            <Property name="YEAR_BEG_DT" attribute="YEAR_BEG_DT"/>
+          </Attribute>
+          <Attribute name="WEEK_BEG_DT" keyColumn="WEEK_BEG_DT" subfolder="">
+            <Property name="MONTH_BEG_DT" attribute="MONTH_BEG_DT"/>
+            <Property name="QTR_BEG_DT" attribute="QTR_BEG_DT"/>
+            <Property name="YEAR_BEG_DT" attribute="YEAR_BEG_DT"/>
+          </Attribute>
+          <Attribute name="YEAR_BEG_DT" keyColumn="YEAR_BEG_DT" levelType="TimeYears" subfolder=""/>
+        </Attributes>
+        <Hierarchies>
+          <Hierarchy name="cal_dt-Hierarchy" hasAll="true">
+            <Level attribute="YEAR_BEG_DT"/>
+            <Level attribute="QTR_BEG_DT"/>
+            <Level attribute="MONTH_BEG_DT"/>
+            <Level attribute="WEEK_BEG_DT"/>
+          </Hierarchy>
+        </Hierarchies>
+      </Dimension>
+    </Dimensions>
+    <MeasureGroups>
+      <MeasureGroup name="test_kylin_sales" table="KYLIN_SALES_0">
+        <Measures>
+          <Measure name="MAX_PRICE" table="KYLIN_SALES_0" aggregator="max" column="PRICE" formatString="regular" subfolder=""/>
+          <Measure name="MIN_PRICE" table="KYLIN_SALES_0" aggregator="min" column="PRICE" formatString="regular" subfolder=""/>
+          <Measure name="SUM_PRICE" table="KYLIN_SALES_0" aggregator="sum" column="PRICE" formatString="regular" subfolder=""/>
+          <Measure name="_COUNT_" aggregator="count" formatString="regular" subfolder=""/>
+        </Measures>
+        <DimensionLinks>
+          <FactLink dimension="KYLIN_COUNTRY"/>
+          <FactLink dimension="KYLIN_ACCOUNT"/>
+          <FactLink dimension="KYLIN_CAL_DT"/>
+        </DimensionLinks>
+      </MeasureGroup>
+    </MeasureGroups>
+    <CalculatedMembers>
+      <CalculatedMember name="DateDiff" dimension="Measures" formatString="regular" folder="Calculated Measure">
+        <Formula>dateDiff("d", cDate("2012-01-01"), cDate("2012-02-01"))</Formula>
+      </CalculatedMember>
+    </CalculatedMembers>
+    <NamedSets>
+      <NamedSet name="FilterSet">
+        <Formula>Filter([KYLIN_ACCOUNT].[ACCOUNT_BUYER_LEVEL].Members, [Measures].[_COUNT_] > 10)</Formula>
+      </NamedSet>
+    </NamedSets>
+  </Cube>
+</Schema>

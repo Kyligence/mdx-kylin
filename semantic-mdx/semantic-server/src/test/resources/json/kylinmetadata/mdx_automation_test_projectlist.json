@@ -1,0 +1,4336 @@
+{
+  "code": "000",
+  "data": {
+    "projects": [
+      {
+        "uuid": "1c1b36ee-7cc8-4cee-80d7-3e0a30073926",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "11",
+        "tables": [
+          "SYSTEM.CATALOG",
+          "HR.JOBS",
+          "KYLIN.KYLIN_ACCOUNT",
+          "KYLIN.KYLIN_CAL_DT",
+          "HR.REGIONS",
+          "KYLIN.KYLIN_COUNTRY",
+          "SYSTEM.CUSTOMER",
+          "SYSTEM.LINEITEM",
+          "SYSTEM.PART",
+          "KYLIN.KYLIN_CATEGORY_GROUPINGS",
+          "KYLIN.KYLIN_SALES",
+          "HR.EMPLOYEES",
+          "SYSTEM.ORDERS"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1537263344062,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "test_oracle2"
+          },
+          {
+            "type": "CUBE",
+            "realization": "test_oracle_full_build"
+          },
+          {
+            "type": "CUBE",
+            "realization": "test_oracle_full_build2"
+          },
+          {
+            "type": "CUBE",
+            "realization": "test_oracle_12c"
+          }
+        ],
+        "models": [
+          "test_oracle",
+          "test_oracle2",
+          "test_oracle_full_build",
+          "test_oracle_full_build2",
+          "test_oracle_12c",
+          "test_oracle_12c_clone",
+          "11111",
+          "111111"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.source.jdbc.enable-short-sqoop-column-alias": "true",
+          "test": "2"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "160bd842-8500-4889-bad0-f7326db609f7",
+        "last_modified": 1554735185414,
+        "version": "3.4.0.0",
+        "name": "111",
+        "tables": [],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1550025084160,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.source.jdbc.adaptor": "io.kyligence.kap.sdk.datasource.adaptor.ADSAdaptor",
+          "kylin.source.jdbc.driver": "com.mysql.jdbc.Driver",
+          "kylin.source.jdbc.dialect": "ads"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "38b3e5b8-78a8-4052-b611-6a5c057d980b",
+        "last_modified": 1554735341868,
+        "version": "3.4.0.0",
+        "name": "1111",
+        "tables": [],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1554735338697,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "e058b133-8533-4300-9062-cedb4235993e",
+        "last_modified": 1553279748000,
+        "version": "3.4.0.0",
+        "name": "1111_hive",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1550803693652,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "de5ae1bc-a064-4ee5-95bf-debdf5b7eab5",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "12",
+        "tables": [
+          "DEFAULT.KYLIN_SALES_TIMESTAMP"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548673058089,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "1"
+          }
+        ],
+        "models": [
+          "1"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "863d0cfd-a4b0-4e58-b063-3b75ead197f8",
+        "last_modified": 1553279748000,
+        "version": "3.2.1.2001",
+        "name": "16_mysql",
+        "tables": [
+          "SAMPLE.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1542335368740,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "11"
+          },
+          {
+            "type": "CUBE",
+            "realization": "11_clone"
+          }
+        ],
+        "models": [
+          "11"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.source.jdbc.dialect": "mysql"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "adc362fd-25da-4cdb-839a-bfbcc87ac256",
+        "last_modified": 1555659427655,
+        "version": "3.4.0.0",
+        "name": "1_ads",
+        "tables": [
+          "KYLIGENCE.ORDERS",
+          "KYLIGENCE.SUPPLIER",
+          "KYLIGENCE.TEST_SUITE",
+          "KYLIGENCE.PARTSUPP",
+          "KYLIGENCE.LINEITEM",
+          "KYLIGENCE.CUSTOMER",
+          "KYLIGENCE.KYLIN_SALES",
+          "KYLIGENCE.REGION",
+          "KYLIGENCE.NATION",
+          "KYLIGENCE.PART"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1554733269082,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.jdbc.adaptor": "io.kyligence.kap.sdk.datasource.adaptor.ADSAdaptor",
+          "kylin.source.jdbc.driver": "com.mysql.jdbc.Driver",
+          "kylin.source.jdbc.connection-url": "jdbc:mysql://kyligence-9f993f57.cn-shanghai-1.ads.aliyuncs.com:10110/kyligence",
+          "kylin.source.jdbc.user": "LTAIjK3uRSBTtaa7",
+          "kylin.source.jdbc.pass": "${KnjxaLypdvofQJOAp6v1TfnfizIr52zWGeBjTPA27Gw=}",
+          "kylin.source.jdbc.dialect": "ads",
+          "kylin.source.default": "16",
+          "kylin.query.pushdown.runner-class-name": "io.kyligence.kap.query.pushdown.PushdownRunnerSDKImplForADS"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "1b328396-d479-4d0d-b6cc-7d61e6c283b5",
+        "last_modified": 1558456870093,
+        "version": "3.4.0.0",
+        "name": "1_mysql",
+        "tables": [
+          "TPCH.REGION",
+          "TPCH.PARTSUPP",
+          "TPCH.NATION",
+          "TPCH.SUPPLIER",
+          "TPCH.CUSTOMER",
+          "TPCH.LINEITEM",
+          "TPCH.ORDERS",
+          "TPCH.PART",
+          "TPCH.TEST"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1553598844303,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "mysql_1"
+          }
+        ],
+        "models": [
+          "mysql_1"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.jdbc.driver": "com.mysql.jdbc.Driver",
+          "kylin.source.jdbc.connection-url": "jdbc:mysql://10.1.2.33:3306/tpch",
+          "kylin.source.jdbc.user": "tpch",
+          "kylin.source.jdbc.pass": "${YWZ81MFJq6irvZacDw9sQw==}",
+          "kylin.source.jdbc.dialect": "mysql",
+          "kylin.source.jdbc.adaptor": "org.apache.kylin.sdk.datasource.adaptor.MysqlAdaptor",
+          "kylin.source.default": "16",
+          "kylin.query.pushdown.runner-class-name": "io.kyligence.kap.query.pushdown.PushdownRunnerSDKImpl",
+          "kylin.source.jdbc.connect.retry-times": "1",
+          "kylin.source.jdbc.connect.retry.sleep-millisec": "100",
+          "kylin.source.jdbc.sqoop-home": "/usr/hdp/current/sqoop-client",
+          "kylin.query.pushdown.jdbc.pool-max-total": "1",
+          "kylin.query.pushdown.jdbc.pool-max-idle": "1",
+          "kylin.query.pushdown.jdbc.pool-min-idle": "1"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "88a54c62-7424-43f6-85ec-a168e0248a07",
+        "last_modified": 1555416101960,
+        "version": "3.4.0.0",
+        "name": "1_oracle",
+        "tables": [
+          "KYLIN.KYLIN_SALES",
+          "KYLIN.KYLIN_CAL_DT",
+          "KYLIN.KYLIN_COUNTRY",
+          "SYS.ALL_CONSTRAINTS"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1554791781734,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.jdbc.adaptor": "io.kyligence.kap.sdk.datasource.adaptor.Oracle11gAdaptor",
+          "kylin.source.jdbc.dialect": "oracle11g",
+          "kylin.source.jdbc.user": "tdvt",
+          "kylin.source.jdbc.pass": "${eDVBljJDSGE/3AHNhcK1Ww==}",
+          "kylin.source.jdbc.connection-url": "jdbc:oracle:thin:@10.1.3.81:49161:xe",
+          "kylin.source.jdbc.driver": "oracle.jdbc.OracleDriver",
+          "kylin.query.pushdown.runner-class-name": "io.kyligence.kap.query.pushdown.PushdownRunnerSDKImplForOracle",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "0b67ad1a-5fcd-46cb-8950-eaf594453b79",
+        "last_modified": 1555558311267,
+        "version": "3.4.0.0",
+        "name": "1_postgresql",
+        "tables": [
+          "PUBLIC.LINEITEM",
+          "PUBLIC.REGION",
+          "PUBLIC.PARTSUPP",
+          "PUBLIC.SUPPLIER",
+          "PUBLIC.PART",
+          "PUBLIC.NATION",
+          "PUBLIC.ORDERS",
+          "PUBLIC.CUSTOMER"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1553598854456,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.jdbc.driver": "org.postgresql.Driver",
+          "kylin.source.jdbc.connection-url": "jdbc:postgresql://127.0.0.1:5432/tpch",
+          "kylin.source.jdbc.user": "tpch",
+          "kylin.source.jdbc.pass": "${YWZ81MFJq6irvZacDw9sQw==}",
+          "kylin.source.jdbc.dialect": "greenplum",
+          "kylin.source.default": "16",
+          "kylin.query.pushdown.runner-class-name": "io.kyligence.kap.query.pushdown.PushdownRunnerSDKImpl"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "4fc6171e-69c0-44df-ab25-421ab8cc0409",
+        "last_modified": 1553279748000,
+        "version": "3.4.0.0",
+        "name": "1_sqlserver",
+        "tables": [
+          "DBO.ORDERS",
+          "DBO.CUSTOMER"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1550469745620,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [
+          "1_test",
+          "2_test"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "087d0a2a-716a-452d-81ad-fbb0a133fcd6",
+        "last_modified": 1553840497678,
+        "version": "3.4.0.0",
+        "name": "_111",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1553770764526,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "kylin_sales"
+          }
+        ],
+        "models": [
+          "kylin_sales"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "e1753051-8f5e-4ab3-abd6-1775a545804b",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "a_test_suite",
+        "tables": [
+          "TEST_SUITE.TEST_SUITE"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548298384327,
+        "last_update_time": null,
+        "description": "test preparestatement pushdown, sqoop split-by",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "test_suite"
+          },
+          {
+            "type": "INVERTED_INDEX",
+            "realization": "test_suite"
+          }
+        ],
+        "models": [
+          "test_suite"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.query.pushdown.runner-class-name": "io.kyligence.kap.query.pushdown.PushdownRunnerSDKImpl"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "1eaca32a-a33e-4b69-83dd-0bb8b1f8c91b",
+        "last_modified": 1553279748000,
+        "version": "2.3.0.20505",
+        "name": "default",
+        "tables": [
+          "DEFAULT.TEST_COUNTRY",
+          "EDW.TEST_SITES",
+          "SSB.SUPPLIER",
+          "DEFAULT.KYLIN_CAL_DT",
+          "SSB.CUSTOMER",
+          "SSB.PART",
+          "DEFAULT.TEST_KYLIN_FACT",
+          "DEFAULT.KYLIN_SALES",
+          "DEFAULT.TEST_CATEGORY_GROUPINGS",
+          "DEFAULT.TEST_ORDER",
+          "SSB.DATES",
+          "EDW.TEST_SELLER_TYPE_DIM",
+          "DEFAULT.STREAMING_TABLE",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "SSB.V_LINEORDER",
+          "DEFAULT.KYLIN_COUNTRY",
+          "EDW.TEST_CAL_DT",
+          "DEFAULT.TEST_ACCOUNT"
+        ],
+        "owner": null,
+        "status": null,
+        "create_time_utc": 0,
+        "last_update_time": null,
+        "description": null,
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "ci_left_join_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "ci_inner_join_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "test_streaming_table_cube"
+          },
+          {
+            "type": "HYBRID",
+            "realization": "ci_inner_join_hybrid"
+          },
+          {
+            "type": "CUBE",
+            "realization": "ssb"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER1_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_DEFAULT_TEST_KYLIN_FACT1_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER2_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER3_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER4_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER5_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER6_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER7_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER8_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER9_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER10_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER11_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER12_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER13_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER14_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER15_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER16_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER17_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_SSB_V_LINEORDER18_CUBE"
+          }
+        ],
+        "models": [
+          "ssb",
+          "ci_inner_join_model",
+          "ci_left_join_model",
+          "test_kylin_inner_join_model_desc",
+          "test_kylin_left_join_model_desc",
+          "test_streaming_table_model_desc",
+          "AUTO_MODEL_SSB_V_LINEORDER1",
+          "AUTO_MODEL_DEFAULT_TEST_KYLIN_FACT1",
+          "AUTO_MODEL_SSB_V_LINEORDER2",
+          "AUTO_MODEL_SSB_V_LINEORDER3",
+          "AUTO_MODEL_SSB_V_LINEORDER4",
+          "AUTO_MODEL_SSB_V_LINEORDER5",
+          "AUTO_MODEL_SSB_V_LINEORDER6",
+          "AUTO_MODEL_SSB_V_LINEORDER7",
+          "AUTO_MODEL_SSB_V_LINEORDER8",
+          "AUTO_MODEL_SSB_V_LINEORDER9",
+          "AUTO_MODEL_SSB_V_LINEORDER10",
+          "AUTO_MODEL_SSB_V_LINEORDER11",
+          "AUTO_MODEL_SSB_V_LINEORDER12",
+          "AUTO_MODEL_SSB_V_LINEORDER13",
+          "AUTO_MODEL_SSB_V_LINEORDER14",
+          "AUTO_MODEL_SSB_V_LINEORDER15",
+          "AUTO_MODEL_SSB_V_LINEORDER16",
+          "AUTO_MODEL_SSB_V_LINEORDER17",
+          "AUTO_MODEL_SSB_V_LINEORDER18"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.storage.hbase.owner-tag": "kylin@kylin.apache.org",
+          "kylin.source.default": "0",
+          "kylin.query.pushdown.runner-class-name": "io.kyligence.kap.storage.parquet.adhoc.PushDownRunnerSparkImpl"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "110b5260-e94c-4dda-91e2-133a9e608493",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "hive_sql_validate",
+        "tables": [
+          "BICOREDATA.DWD_ONL_HISPACE_APP_INFO_DS",
+          "BICOREDATA.DWD_CUST_MAPPING",
+          "BICOREDATA.DWD_SAL_VMALL_ORDER_PAY_DS",
+          "BIADS.ADS_MUSIC_USER_VISIT_STATIS_DM",
+          "BICOREDATA.DWD_EVT_BISDK_CUSTOMIZE_DM",
+          "BICOREDATA.DWD_PTY_UP_LOGIN_IDENTITY_DS_HIS",
+          "BIADS.ADS_MOVIE_PLAY_STATIS_DM",
+          "BIADS.ADS_MOVIE_VIDEO_INFO_DM",
+          "BICOREDATA.DWD_EVT_APP_UPDATE_PACKET_CAPTURE_DM",
+          "BIADS.ADS_GAME_PAY_DETAIL_DM",
+          "BIADS.ADS_MAA_EMUI_APP_ACTION_USER_INFO_DM",
+          "BICOREDATA.DWD_PTY_HWCOIN_BAL_DS_HIS",
+          "BIADS.ADS_VMALL_SECOND_ORDER_SKU_DS",
+          "BICOREDATA.DWD_CON_HWMOVIE_CP_BASE_INFO_DS",
+          "BICOREDATA.DWD_EVT_BDREPORTER_APP_OPER_INFO_REPORT_DM",
+          "BIADS.ADS_VMALL_SECOND_PRODUCT_ATTRIBUTE_DS",
+          "BICOREDATA.DWD_EQP_DEVICE_DS_HIS",
+          "BIADS.ADS_GAME_ONLINE_USER_PAYMENT_DM",
+          "BICOREDATA.DWD_UP_USER_INFO_DS",
+          "BICOREDATA.DWD_EVT_GAME_CENTER_BOOKING_USER_REC_DM",
+          "BICOREDATA.DWD_SAL_VMALL_ORDER_DS",
+          "BICOREDATA.DWS_SERVICE_DEVICE_PUSH_MC_DM",
+          "BICOREDATA.DWD_EVT_GAME_CENTER_BOOKING_LIST_REC_DM",
+          "BIADS.ADS_MAA_EXPERIENCE_EMUI_INFO_DM"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1532318668873,
+        "last_update_time": null,
+        "description": "SDK HIVE验证",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "82aa8907-7a5c-4555-b006-dd7eef697e22",
+        "last_modified": 1553279748000,
+        "version": "2.3.0.20505",
+        "name": "jiangna_test",
+        "tables": [
+          "DEFAULT.TEST_COUNTRY",
+          "XADEMO.RECHARGE_DETAILS",
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.TEST_KYLIN_FACT",
+          "DEFAULT.KYLIN_SALES",
+          "DEFAULT.TEST_CATEGORY_GROUPINGS",
+          "DEFAULT.TEST_ORDER",
+          "XADEMO.CALL_DETAIL_RECORDS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_INTERMEDIATE_EDW_TEST_SELLER_TYPE_DIM",
+          "DEFAULT.KYLIN_COUNTRY",
+          "XADEMO.CUSTOMER_DETAILS",
+          "EDW.TEST_CAL_DT",
+          "DEFAULT.TEST_ACCOUNT"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1524106475534,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_DEFAULT_KYLIN_CAL_DT1_CUBE"
+          }
+        ],
+        "models": [
+          "AUTO_MODEL_DEFAULT_KYLIN_CAL_DT1"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "2fbca32a-a33e-4b69-83dd-0bb8b1f8c91b",
+        "last_modified": 1558605294276,
+        "version": "3.4.0.0",
+        "name": "learn_kylin",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": null,
+        "status": null,
+        "create_time_utc": 0,
+        "last_update_time": null,
+        "description": null,
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "kylin_sales_cube"
+          }
+        ],
+        "models": [
+          "kylin_sales_model",
+          "kylin_sales_model_clone"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "c3930d8e-77ef-48d3-a1cd-421a686f910f",
+        "last_modified": 1553514582000,
+        "version": "3.4.0.0",
+        "name": "learn_kylin_streaming",
+        "tables": [
+          "DEFAULT.KYLIN_STREAMING_TABLE"
+        ],
+        "owner": null,
+        "status": null,
+        "create_time_utc": 0,
+        "last_update_time": null,
+        "description": null,
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "kylin_streaming_cube"
+          }
+        ],
+        "models": [
+          "kylin_streaming_model"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "1"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "0e9c7a71-b1cb-4d0f-8478-c6841552416b",
+        "last_modified": 1553577756809,
+        "version": "3.4.0.0",
+        "name": "mdx_automation_test",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1553513833457,
+        "last_update_time": null,
+        "description": "mdx自动化测试的KE环境",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "only_fact_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "snowflake_inner_hierarcy_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "star_left_hierarchy_cube"
+          }
+        ],
+        "models": [
+          "only_fact_model",
+          "snowflake_inner_model",
+          "star_left_model"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "99ef02d3-7276-4a0b-9adf-730f850fced9",
+        "last_modified": 1553659027116,
+        "version": "2.3.0.20500",
+        "name": "mstr_cert",
+        "tables": [
+          "DEFAULT.JDBCTEST1",
+          "DEFAULT.JDBCBULKTEST",
+          "DEFAULT.JDBCTEST2",
+          "DEFAULT.BULKTEST",
+          "DEFAULT.JDBCTEST7"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1515410448879,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "61ae60aa-e8c0-47d5-8671-85ae9efbde5c",
+        "last_modified": 1553279748000,
+        "version": "2.3.0.20505",
+        "name": "new_test",
+        "tables": [],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1524194896349,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "1eaeeb55-586e-45d4-88f0-3f98a1f38e19",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "o11_normal_user",
+        "tables": [
+          "KYLIN_TEST.KYLIN_CAL_DT",
+          "KYLIN_TEST.KYLIN_COUNTRY",
+          "KYLIN_TEST.KYLIN_ACCOUNT",
+          "KYLIN_TEST.KYLIN_SALES",
+          "KYLIN_TEST.KYLIN_CATEGORY_GROUPINGS"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1547087211926,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "AUTO_MODEL_KYLIN_TEST_KYLIN_SALES1_CUBE"
+          },
+          {
+            "type": "CUBE",
+            "realization": "kylin_sales_model"
+          },
+          {
+            "type": "INVERTED_INDEX",
+            "realization": "kylin_sales_model"
+          }
+        ],
+        "models": [
+          "AUTO_MODEL_KYLIN_TEST_KYLIN_SALES1"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "1ee196cb-bdf8-49b1-aa5e-7f5e3c356538",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "o11g_tpcds",
+        "tables": [
+          "EDW_TPCDS.CUSTOMER",
+          "EDW_TPCDS.CALL_CENTER",
+          "EDW_TPCDS.CATALOG_RETURNS",
+          "EDW_TPCDS.WEB_PAGE"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1547118285062,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "test_cube1"
+          },
+          {
+            "type": "INVERTED_INDEX",
+            "realization": "test_cube1"
+          },
+          {
+            "type": "CUBE",
+            "realization": "test2_cube"
+          }
+        ],
+        "models": [
+          "test_tpcds_model",
+          "test2"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "4dde185b-f80e-4eca-85e4-07105ea0725d",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "oracle_sql_validate",
+        "tables": [
+          "HR.JOBS",
+          "HR.REGIONS",
+          "HR.EMPLOYEES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1533024459459,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "cube_test_oracle"
+          }
+        ],
+        "models": [
+          "model_test_oracle"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.source.jdbc.connection-url": "jdbc:oracle:thin:@10.4.0.108:49161:xe"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "b4617890-2bb7-4a24-ae16-aa5bdc778c3d",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "oracle_sql_validate_2",
+        "tables": [],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1533031129265,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "cfb386a7-a94e-4cee-aa69-c2cfa843d5c6",
+        "last_modified": 1553580344940,
+        "version": "3.4.0.0",
+        "name": "oracle_test",
+        "tables": [
+          "TDVT.CALCS"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1553579409106,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "CALCS"
+          },
+          {
+            "type": "INVERTED_INDEX",
+            "realization": "CALCS"
+          }
+        ],
+        "models": [
+          "CALCS"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.source.jdbc.adaptor": "io.kyligence.kap.sdk.datasource.adaptor.OracleAdaptor",
+          "kylin.source.jdbc.driver": "oracle.jdbc.OracleDriver",
+          "kylin.source.jdbc.connection-url": "jdbc:oracle:thin:@10.1.3.81:49161:xe",
+          "kylin.source.jdbc.user": "tdvt",
+          "kylin.source.jdbc.pass": "${eDVBljJDSGE/3AHNhcK1Ww==}",
+          "kylin.source.jdbc.dialect": "oracle11g",
+          "kylin.source.jdbc.sqoop-home": "/usr/hdp/current/sqoop-client"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "31587303-b639-4910-b515-d2c303e68126",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "oracle_xieyi",
+        "tables": [
+          "KYLIN.TEST1"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1533722846648,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "test_cube"
+          }
+        ],
+        "models": [
+          "test_model"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.source.jdbc.sqoop-home": "/usr/hdp/current/sqoop-client/bin"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "827eda26-e228-430b-9044-68b59afe0a60",
+        "last_modified": 1553659027192,
+        "version": "3.2.2.2020",
+        "name": "p1",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548827851211,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "4a1a62a1-b655-4249-b75b-f747a7227728",
+        "last_modified": 1553659027195,
+        "version": "3.2.2.2020",
+        "name": "p10",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548828745726,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "d683991b-57a7-41cd-9d2f-76fdefa4da2c",
+        "last_modified": 1553659027197,
+        "version": "3.2.2.2020",
+        "name": "p11",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548824412109,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "67404a6e-8544-4679-8587-19b2b225138e",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "p2",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.SAMPLE_07",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548828620668,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "c545e0bb-776e-4ae2-8467-57f448cc0460",
+        "last_modified": 1553659027199,
+        "version": "3.2.2.2020",
+        "name": "p3",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548828717834,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "806be3dc-7aa1-49dc-a971-2077dc7579b5",
+        "last_modified": 1553659027202,
+        "version": "3.2.2.2020",
+        "name": "r1",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "user8000",
+        "status": "ENABLED",
+        "create_time_utc": 1548840088827,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "2748f173-5e76-4e74-a113-ade7165da770",
+        "last_modified": 1553659027204,
+        "version": "3.2.2.2020",
+        "name": "r10",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "user8000",
+        "status": "ENABLED",
+        "create_time_utc": 1548840116324,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "74b36b5e-e1cc-4eae-8fb7-84c81545f556",
+        "last_modified": 1553659027206,
+        "version": "3.2.2.2020",
+        "name": "r2",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "user8000",
+        "status": "ENABLED",
+        "create_time_utc": 1548840091962,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "c146effe-bae0-4d99-bcee-98ecaaf12b6b",
+        "last_modified": 1553659027208,
+        "version": "3.2.2.2020",
+        "name": "r3",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "user8000",
+        "status": "ENABLED",
+        "create_time_utc": 1548840094572,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "5934f282-ac5a-485b-a230-15b6c2711942",
+        "last_modified": 1553659027211,
+        "version": "3.2.2.2020",
+        "name": "r4",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "user8000",
+        "status": "ENABLED",
+        "create_time_utc": 1548840097163,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "0df08083-4a1a-4a30-930c-aade32435629",
+        "last_modified": 1553659027247,
+        "version": "3.2.2.2020",
+        "name": "r5",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "user8000",
+        "status": "ENABLED",
+        "create_time_utc": 1548840100223,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "b2449edf-e404-4657-aa8a-e93ee9e65916",
+        "last_modified": 1553659027250,
+        "version": "3.2.2.2020",
+        "name": "r6",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "user8000",
+        "status": "ENABLED",
+        "create_time_utc": 1548840103099,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "303c0691-2292-4314-b899-a2ef1ad0ff9b",
+        "last_modified": 1553659027252,
+        "version": "3.2.2.2020",
+        "name": "r7",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "user8000",
+        "status": "ENABLED",
+        "create_time_utc": 1548840106672,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "86f7a007-643e-4dfd-b783-9e4176bd13aa",
+        "last_modified": 1553659027254,
+        "version": "3.2.2.2020",
+        "name": "r8",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "user8000",
+        "status": "ENABLED",
+        "create_time_utc": 1548840109792,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "601732ff-d82a-44c0-a44d-f7fd1ff2b729",
+        "last_modified": 1553659027257,
+        "version": "3.2.2.2020",
+        "name": "r9",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "user8000",
+        "status": "ENABLED",
+        "create_time_utc": 1548840113291,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "b3d30b49-e7cd-4f35-b979-813469c83362",
+        "last_modified": 1553279748000,
+        "version": "2.3.0.20505",
+        "name": "rdbms",
+        "tables": [
+          "RDBMS_TEST.X_ACCESS_TYPE_DEF"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1524205933922,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "test_mysql_cube_1"
+          }
+        ],
+        "models": [
+          "test_mysql_model_1"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.source.jdbc.driver": "com.mysql.jdbc.Driver",
+          "kylin.source.jdbc.connection-url": "jdbc:mysql://sandbox.hortonworks.com/RDBMS_TEST",
+          "kylin.source.jdbc.user": "hive",
+          "kylin.source.jdbc.pass": "hive",
+          "kylin.query.pushdown.runner-class-name": "io.kyligence.kap.query.pushdown.PushdownRunnerSDKImpl",
+          "kylin.source.jdbc.sqoop-home": "/usr/hdp/current/sqoop-client/bin"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "26018e71-110b-43f9-a4f7-1e34b04fb131",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "rdbms2",
+        "tables": [
+          "RDBMS_TEST.X_ACCESS_TYPE_DEF"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1531734853530,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "test_rdbms_cube2"
+          }
+        ],
+        "models": [
+          "test_rdbms_model2"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.source.jdbc.driver": "com.mysql.jdbc.Driver",
+          "kylin.source.jdbc.connection-url": "jdbc:mysql://sandbox.hortonworks.com/RDBMS_TEST",
+          "kylin.source.jdbc.user": "hive",
+          "kylin.source.jdbc.pass": "hive",
+          "kylin.query.pushdown.runner-class-name": "io.kyligence.kap.query.pushdown.PushdownRunnerSDKImpl",
+          "kylin.source.jdbc.sqoop-home": "/usr/hdp/current/sqoop-client/bin",
+          "kylin.source.jdbc.adaptor": "org.apache.kylin.sdk.datasource.adaptor.MysqlAdaptor"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "5dedd990-a4a8-4ada-92dc-ab31411b199a",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "rdbms_gbase",
+        "tables": [
+          "TEST.KYLIN_CAL_DT",
+          "TEST.KYLIN_SALES",
+          "TEST.TEST_SUITE",
+          "TEST.KYLIN_ACCOUNT",
+          "TEST.KYLIN_COUNTRY",
+          "TEST.KYLIN_CATEGORY_GROUPINGS"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1545738078732,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "test_gbase_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "test_kylin_sales"
+          }
+        ],
+        "models": [
+          "test_gbase_model",
+          "test_kylin_sales"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.query.pushdown.runner-class-name": "io.kyligence.kap.query.pushdown.PushdownRunnerSDKImpl"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "14f4a77d-be49-4e15-abe2-046b8c54fa55",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "rdbms_mysql",
+        "tables": [
+          "SAMPLE.KYLIN_SALES",
+          "TEST.SAMPLE_07"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1539160995600,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "test_rdbms_mysql_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "test_parallel_cube"
+          }
+        ],
+        "models": [
+          "test_rdbms_mysql",
+          "test_parallel_model"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "4e03aaae-eaed-455d-ba6d-c85d980163c5",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "rdbms_sqlserver",
+        "tables": [
+          "DBO.KYLIN_SALES",
+          "DBO.KYLIN_CAL_DT",
+          "SAMPLE.KYLIN_SALES",
+          "DBO.KYLIN_CATEGORY_GROUPINGS",
+          "DBO.KYLIN_ACCOUNT",
+          "DBO.KYLIN_COUNTRY"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1539166686678,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "test_rdbms_sqlserver_cube"
+          }
+        ],
+        "models": [
+          "test_rdbms_sqlser",
+          "test_1"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.source.jdbc.sqoop-home": "/usr/hdp/current/sqoop-client",
+          "kylin.query.pushdown.runner-class-name": "io.kyligence.kap.query.pushdown.PushdownRunnerSDKImpl"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "3af47b4c-0888-4d68-bb49-e5c4e50a910e",
+        "last_modified": 1553279748000,
+        "version": "3.2.1.2001",
+        "name": "rdbms_sqlserver_classpath",
+        "tables": [
+          "DBO.KYLIN_SALES",
+          "DBO.CUBE"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1542095264072,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "testaaa"
+          }
+        ],
+        "models": [
+          "testaaa"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "2ae7a9ff-c4e6-456c-a1c5-c52ccc617563",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "rdbms_sqlserver_quote",
+        "tables": [
+          "DBO.KYLIN_SALES",
+          "DBO.TEST",
+          "DBO.KYLIN_CAL_DT",
+          "CUBE.TEST",
+          "DBO.KYLIN_SALES_COPY1"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1541129992927,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "aa"
+          },
+          {
+            "type": "CUBE",
+            "realization": "testa"
+          }
+        ],
+        "models": [
+          "aa",
+          "testa"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "f2960d7e-5c09-4dd3-bda6-4b280396d3f8",
+        "last_modified": 1553279748000,
+        "version": "3.2.1.2001",
+        "name": "rdbms_sqlserver_quote_ci",
+        "tables": [
+          "DBO.KYLIN_SALES_COPY1"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1541408312566,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "ab"
+          }
+        ],
+        "models": [
+          "ab"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "d76e55d6-fcf4-4a96-8da7-9423a9f07cad",
+        "last_modified": 1553659027259,
+        "version": "3.2.2.2020",
+        "name": "rr1",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548842926099,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "6f3a0db5-5770-4739-99fd-3be8d9f0d6b0",
+        "last_modified": 1553659027261,
+        "version": "3.2.2.2020",
+        "name": "rr10",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548842964120,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "e9ed917e-a050-4ef7-bf64-3a2413f12cf2",
+        "last_modified": 1553659027263,
+        "version": "3.2.2.2020",
+        "name": "rr2",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548842930170,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "4115276c-a4d0-4185-a8d7-a15cc3bb9dbf",
+        "last_modified": 1553659027266,
+        "version": "3.2.2.2020",
+        "name": "rr3",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548842933672,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "999197cc-66fc-4f36-97cb-689af1382c3e",
+        "last_modified": 1553659027269,
+        "version": "3.2.2.2020",
+        "name": "rr4",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548842938232,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "78816fd4-b09f-4211-8b1d-4f00e1c51e79",
+        "last_modified": 1553659027271,
+        "version": "3.2.2.2020",
+        "name": "rr5",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "DEFAULT.KYLIN_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1548842942390,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "d409df9f-20b5-4694-ad09-9422aa7057a1",
+        "last_modified": 1553279748000,
+        "version": "2.3.0.20505",
+        "name": "sample_test",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1524190803878,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "f571cc11-21fc-475b-934c-6e20b2302e3e",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "sqlserver_test",
+        "tables": [
+          "DBO.KYLIN_ACCOUNT"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1538298570330,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "aaa"
+          }
+        ],
+        "models": [
+          "test1111"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.source.jdbc.sqoop-home": "/usr/hdp/current/sqoop-client"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "2eaca32a-a33e-4b69-83dd-0bb8b1f8c91b",
+        "last_modified": 1553279748000,
+        "version": "3.3.0.0",
+        "name": "ssb",
+        "tables": [
+          "SSB.DATES",
+          "SSB.SUPPLIER",
+          "SSB.LINEORDER",
+          "SSB.CUSTOMER",
+          "SSB.PART",
+          "SSB.P_LINEORDER"
+        ],
+        "owner": null,
+        "status": null,
+        "create_time_utc": 0,
+        "last_update_time": null,
+        "description": null,
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "ssb"
+          }
+        ],
+        "models": [
+          "ssb"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {},
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "66b27619-87a0-4dba-9fc7-fb6075b6ff93",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "ssb100",
+        "tables": [
+          "SSB_LOADTEST.DATES",
+          "SSB_LOADTEST.P_LINEORDER",
+          "SSB_LOADTEST.CUSTOMER",
+          "SSB_LOADTEST.SUPPLIER",
+          "SSB_LOADTEST.LINEORDER",
+          "SSB_LOADTEST.PART"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1546831584019,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "cube_ssb100"
+          },
+          {
+            "type": "CUBE",
+            "realization": "cube_ssb100_clone"
+          }
+        ],
+        "models": [
+          "model100"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "efc55695-5a68-4703-a6e0-7d065701089f",
+        "last_modified": 1553279748000,
+        "version": "3.3.0.0",
+        "name": "ssb_loadtest",
+        "tables": [
+          "SSB_LOADTEST.DATES",
+          "SSB_LOADTEST.P_LINEORDER",
+          "SSB_LOADTEST.CUSTOMER",
+          "SSB_LOADTEST.SUPPLIER",
+          "SSB_LOADTEST.LINEORDER",
+          "SSB_LOADTEST.PART"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1547780780881,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "cube_loadtest"
+          },
+          {
+            "type": "CUBE",
+            "realization": "test0121"
+          },
+          {
+            "type": "CUBE",
+            "realization": "test0121_0"
+          }
+        ],
+        "models": [
+          "mm_loadtest",
+          "ssb_test0121"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "40afe273-a9a2-492f-974a-1bcee51579ac",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "ssb_sf100",
+        "tables": [
+          "SSB_LOADTEST.DATES",
+          "SSB_LOADTEST.P_LINEORDER",
+          "SSB_LOADTEST.CUSTOMER",
+          "SSB_LOADTEST.SUPPLIER",
+          "SSB_LOADTEST.LINEORDER",
+          "SSB_LOADTEST.PART"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1545023922094,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "cube100"
+          }
+        ],
+        "models": [
+          "ssb_model"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "63a2b1f8-109f-41fd-a5a1-f287656ad5b8",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "t1",
+        "tables": [],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1540274147440,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "060c0b78-ceec-4d8b-b99c-ddf48c287a04",
+        "last_modified": 1553279748000,
+        "version": "2.3.0.20500",
+        "name": "tableau_cert",
+        "tables": [
+          "SQL.ADDR",
+          "SQL.AT3",
+          "SQL.UCHINESE",
+          "SQL.AT4",
+          "SQL.PARAM_TEST_TABLE",
+          "SQL.USMALLINT_TABLE",
+          "SQL.PRODUCT",
+          "SQL.EMP_C",
+          "SQL.STINYINT_TABLE",
+          "TDVT.CALCS",
+          "DBF.EMPLOYEE",
+          "SQL.D_DATE",
+          "SQL.SMALLINT_TABLE",
+          "SQL.LIKE_TESTING",
+          "SQL.COLL_TYPES",
+          "SQL.D_INT",
+          "SQL.UARABIC",
+          "SQL.CHAR_BOUNDARY_C",
+          "SQL.D_LOG_C",
+          "SQL.DOUBLE_BOUNDARY",
+          "SQL.SHIPMENT",
+          "SQL.TIME",
+          "TDVT.STAPLES_BACKUP",
+          "SQL.AT1",
+          "SQL.AT2",
+          "SQL.D_TM_C",
+          "SQL.D_WMEM",
+          "SQL.DATE_BOUNDARY_C",
+          "SQL.TRANS",
+          "SQL.FOREIGNKEYS",
+          "SQL.FLOAT_BOUNDARY_C",
+          "SQL.EMPTYSTR",
+          "SQL.DECIMAL_TABLE",
+          "SQL.FLOAT_BOUNDARY",
+          "SQL.EMP",
+          "SQL.VARCHAR_BOUNDARY",
+          "SQL.TIMESTAMP_BOUNDARY_C",
+          "SQL.D_TINT",
+          "SQL.D_INT_C",
+          "SQL.D_NUM_C",
+          "SQL.TIME_BOUNDARY2",
+          "SQL.TIMESTAMP_BOUNDARY2",
+          "SQL.UBIGINT_TABLE",
+          "SQL.BOYS",
+          "SQL.D_TINT_C",
+          "SQL.VARCHAR_TABLE",
+          "SQL.BIGINT",
+          "SQL.D_LOG",
+          "SQL.D_WCHAR_C",
+          "SQL.WCHAR_BOUNDARY_C",
+          "SQL.UINTEGER_TABLE",
+          "DBF.PRODUCT",
+          "SQL.TIMESTAMP_TABLE",
+          "SQL.ALLTYPE",
+          "SQL.NUMERIC_TABLE_38_9",
+          "SQL.PRIMARYKEYS",
+          "SQL.WVARCHAR_BOUNDARY_C",
+          "SQL.NUMERIC_TABLE_38_4",
+          "SQL.NUMERIC_TABLE_38_3",
+          "SQL.NUMERIC_TABLE_38_6",
+          "SQL.NUMERIC_TABLE_38_5",
+          "SQL.TINYINT_TABLE",
+          "SQL.D_WCHAR",
+          "SQL.D_RL",
+          "SQL.NUMERIC_TABLE_38_2",
+          "SQL.TRIG",
+          "SQL.NUMERIC_TABLE_38_1",
+          "SQL.D_WVC_C",
+          "SQL.NUMERIC_TABLE",
+          "SQL.NULL_TABLE",
+          "SQL.COLL_TYPES_2",
+          "SQL.TIME_BOUNDARY",
+          "SQL.TIME6_TABLE",
+          "SQL.DOUBLE_BOUNDARY_C",
+          "SQL.TIMESTAMP1_TABLE",
+          "SQL.D_BINT_C",
+          "SQL.AV3",
+          "SQL.DISCOUNT",
+          "SQL.AV4",
+          "SQL.DECIMAL_BOUNDARY",
+          "SQL.AV1",
+          "SQL.DECIMAL_BOUNDARY_C",
+          "SQL.AV2",
+          "SQL.WVARCHAR_BOUNDARY",
+          "DBF.ORDERS",
+          "SQL.FLOAT_TABLE",
+          "SQL.TIMESTAMP0_TABLE",
+          "SQL.UTINYINT_TABLE",
+          "SQL.NUMERIC_BOUNDARY_C",
+          "SQL.REAL_TABLE",
+          "SQL.TEMP_TABLE",
+          "SQL.VARCHAR_BOUNDARY_C",
+          "SQL.D_CHAR_C",
+          "SQL.REAL_BOUNDARY",
+          "SQL.TIME_TABLE",
+          "SQL.UJAPANESE",
+          "SQL.TIME_BOUNDARY2_C",
+          "SQL.BIT_TABLE",
+          "SQL.LONGVARCHAR_TABLE",
+          "DBF.ORDERDETAILS",
+          "SQL.D_VC_C",
+          "SQL.ALLTYPE1",
+          "SQL.ALLTYPE2",
+          "SQL.D_NUM",
+          "SQL.D_DBL_C",
+          "SQL.D_DATE_C",
+          "SQL.BIGINT_TABLE",
+          "SQL.NUMTYPE",
+          "SQL.D_CHAR",
+          "SQL.S",
+          "SQL.GIRLS",
+          "DBF.EMPLOYEEINFO",
+          "SQL.A_B",
+          "SQL.DOUBLE_TABLE",
+          "SQL.D_TM",
+          "SQL.T1",
+          "SQL.D_TS",
+          "SQL.NUMERIC_BOUNDARY",
+          "DBF.DEPARTMENT",
+          "SQL.TESTDML_TABLE",
+          "SQL.INT_TABLE",
+          "SQL.TIMESTAMP3_TABLE",
+          "SQL.CHAR_BOUNDARY",
+          "SQL.CHAR_TABLE",
+          "SQL.DATE_BOUNDARY",
+          "SQL.DEPT",
+          "SQL.TIMESTAMP9_TABLE",
+          "SQL.D_BINT",
+          "SQL.M",
+          "SQL.D_WVC",
+          "SQL.L",
+          "TDVT.STAPLES",
+          "SQL.TIMESTAMP_BOUNDARY2_C",
+          "SQL.D_RL_C",
+          "SQL.LOC",
+          "SQL.D_TS_C",
+          "SQL.WCHAR_TABLE",
+          "DBF.CONTACT",
+          "SQL.CUSTOMER",
+          "SQL.D_MEM",
+          "SQL.WCHAR_BOUNDARY",
+          "SQL.NT1",
+          "DBF.CUSTOMER",
+          "SQL.TIME_BOUNDARY_C",
+          "SQL.NT4",
+          "SQL.NT2",
+          "SQL.NT3",
+          "SQL.WVARCHAR_TABLE",
+          "SQL.REAL_BOUNDARY_C",
+          "SQL.DATE",
+          "DBF.ACCOUNT",
+          "SQL.EMPTYSTR_C",
+          "SQL.INTEGER_TABLE",
+          "SQL.DECIMAL_TABLE_38_4",
+          "SQL.D_DBL",
+          "SQL.D_SINT_C",
+          "SQL.DECIMAL_TABLE_38_3",
+          "SQL.DECIMAL_TABLE_38_6",
+          "SQL.DECIMAL_TABLE_38_5",
+          "SQL.TIMESTAMP_BOUNDARY",
+          "SQL.EMPTYSTR2",
+          "DBF.ACCOUNTINFO",
+          "SQL.DECIMAL_TABLE_38_9",
+          "SQL.TEST",
+          "SQL.TIME3_TABLE",
+          "SQL.D_SINT",
+          "SQL.DECIMAL_TABLE_38_2",
+          "SQL.DECIMAL_TABLE_38_1",
+          "SQL.MULTIENCODING",
+          "SQL.WLONGVARCHAR_TABLE",
+          "SQL.UNSIGNED",
+          "SQL.D_MEM_C",
+          "SQL.DECIMAL_TABLE_38_15",
+          "SQL.TIME9_TABLE",
+          "SQL.D_VC",
+          "SQL.D_WMEM_C",
+          "SQL.DATE_TABLE"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1515996877842,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "staples_cuve"
+          },
+          {
+            "type": "CUBE",
+            "realization": "account_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "accountinfo_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "contact_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "customer_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "department_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "employ_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "employeeinfo_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "orderdetails_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "orders_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "product_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "BIGINT__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_BINT__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_BINT_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "ALLTYPE2__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "ALLTYPE1__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_LOG__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_LOG_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_DATE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_DATE_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DATE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_NUM__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_NUM_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "T1__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NT1__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NT2__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NT3__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NT4__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AT3__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AT4__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_RL__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_RL_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "ALLTYPE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NUMTYPE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AT1__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AT2__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AV1__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AV2__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AV3__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "AV4__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_DBL__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_DBL_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TRIG__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "PARAM_TEST_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_INT_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_INT__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TEST__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "COLL_TYPES_2__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "COLL_TYPES__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DATE_BOUNDARY__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DATE_BOUNDARY_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NUMERIC_BOUNDARY__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NUMERIC_BOUNDARY_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DECIMAL_BOUNDARY_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DECIMAL_BOUNDARY__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DOUBLE_BOUNDARY__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DOUBLE_BOUNDARY_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "FLOAT_BOUNDARY_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "FLOAT_BOUNDARY__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "REAL_BOUNDARY__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "REAL_BOUNDARY_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIMESTAMP_BOUNDARY__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIMESTAMP_BOUNDARY2__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIMESTAMP_BOUNDARY2_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIMESTAMP_BOUNDARY_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "VARCHAR_BOUNDARY_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "VARCHAR_BOUNDARY__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "WVARCHAR_BOUNDARY_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "WVARCHAR_BOUNDARY__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "CHAR_BOUNDARY_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "CHAR_BOUNDARY__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIME_BOUNDARY__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIME_BOUNDARY2__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIME_BOUNDARY_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIME_BOUNDARY2_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "WCHAR_BOUNDARY_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "WCHAR_BOUNDARY__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_SINT__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_SINT_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_TS__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_TS_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_TINT__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_TINT_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "UNSIGNED__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "M__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "L__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "S__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "A_B__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "UJAPANESE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "UCHINESE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "UARABIC__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DISCOUNT__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "CUSTOMER__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "SHIPMENT__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "MULTIENCODING__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "ADDR__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "BIGINT_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "UBIGINT_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "BIT_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DATE_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NUMERIC_TABLE_38_2__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NUMERIC_TABLE_38_1__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NUMERIC_TABLE_38_3__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NUMERIC_TABLE_38_4__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NUMERIC_TABLE_38_5__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NUMERIC_TABLE_38_6__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NUMERIC_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NUMERIC_TABLE_38_9__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DECIMAL_TABLE_38_9__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DECIMAL_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DECIMAL_TABLE_38_15__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DECIMAL_TABLE_38_2__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DECIMAL_TABLE_38_3__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DECIMAL_TABLE_38_4__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DECIMAL_TABLE_38_5__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DECIMAL_TABLE_38_6__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DECIMAL_TABLE_38_1__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DOUBLE_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "FLOAT_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "REAL_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "INT_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "INTEGER_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "NULL_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "UINTEGER_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "SMALLINT_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "USMALLINT_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIMESTAMP0_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIMESTAMP1_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIMESTAMP3_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIMESTAMP9_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIMESTAMP_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "STINYINT_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "UTINYINT_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TINYINT_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "WVARCHAR_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "VARCHAR_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TEMP_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "CHAR_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "LIKE_TESTING__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "LONGVARCHAR_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TESTDML_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIME6_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIME3_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIME9_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIME_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "WLONGVARCHAR_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "WCHAR_TABLE__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "LOC__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "BOYS__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "GIRLS__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "PRIMARYKEYS__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "FOREIGNKEYS__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "PRODUCT__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TRANS__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_VC__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_VC_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_WVC__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_WVC_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "EMPTYSTR__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "EMPTYSTR2__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "EMPTYSTR_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_CHAR__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_CHAR_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DEPT__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "EMP__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "EMP_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_MEM__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_MEM_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_TM__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_TM_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "TIME__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_WCHAR__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_WCHAR_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_WMEM__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "D_WMEM_C__cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "tdvt_calcs_cube"
+          },
+          {
+            "type": "CUBE",
+            "realization": "staples_cuve_clone"
+          },
+          {
+            "type": "CUBE",
+            "realization": "DATE_cube"
+          },
+          {
+            "type": "INVERTED_INDEX",
+            "realization": "DATE_cube"
+          }
+        ],
+        "models": [
+          "tvdt_staples_backup",
+          "tdvt_staples",
+          "account_model",
+          "accountinfo_model",
+          "contact_model",
+          "customer_model",
+          "department_model",
+          "employee_model",
+          "employinfo_model",
+          "orderdetails_model",
+          "orders_model",
+          "product_model",
+          "BIGINT__model",
+          "D_BINT__model",
+          "D_BINT_C__model",
+          "ALLTYPE2__model",
+          "ALLTYPE1__model",
+          "D_LOG__model",
+          "D_LOG_C__model",
+          "D_DATE__model",
+          "D_DATE_C__model",
+          "DATE__model",
+          "D_NUM__model",
+          "D_NUM_C__model",
+          "T1__model",
+          "NT1__model",
+          "NT2__model",
+          "NT3__model",
+          "NT4__model",
+          "AT3__model",
+          "AT4__model",
+          "D_RL__model",
+          "D_RL_C__model",
+          "ALLTYPE__model",
+          "NUMTYPE__model",
+          "AT1__model",
+          "AT2__model",
+          "AV1__model",
+          "AV2__model",
+          "AV3__model",
+          "AV4__model",
+          "D_DBL__model",
+          "D_DBL_C__model",
+          "TRIG__model",
+          "PARAM_TEST_TABLE__model",
+          "D_INT_C__model",
+          "D_INT__model",
+          "TEST__model",
+          "COLL_TYPES_2__model",
+          "COLL_TYPES__model",
+          "DATE_BOUNDARY__model",
+          "DATE_BOUNDARY_C__model",
+          "NUMERIC_BOUNDARY__model",
+          "NUMERIC_BOUNDARY_C__model",
+          "DECIMAL_BOUNDARY_C__model",
+          "DECIMAL_BOUNDARY__model",
+          "DOUBLE_BOUNDARY__model",
+          "DOUBLE_BOUNDARY_C__model",
+          "FLOAT_BOUNDARY_C__model",
+          "FLOAT_BOUNDARY__model",
+          "REAL_BOUNDARY__model",
+          "REAL_BOUNDARY_C__model",
+          "TIMESTAMP_BOUNDARY__model",
+          "TIMESTAMP_BOUNDARY2__model",
+          "TIMESTAMP_BOUNDARY2_C__model",
+          "TIMESTAMP_BOUNDARY_C__model",
+          "VARCHAR_BOUNDARY_C__model",
+          "VARCHAR_BOUNDARY__model",
+          "WVARCHAR_BOUNDARY_C__model",
+          "WVARCHAR_BOUNDARY__model",
+          "CHAR_BOUNDARY_C__model",
+          "CHAR_BOUNDARY__model",
+          "TIME_BOUNDARY__model",
+          "TIME_BOUNDARY2__model",
+          "TIME_BOUNDARY_C__model",
+          "TIME_BOUNDARY2_C__model",
+          "WCHAR_BOUNDARY_C__model",
+          "WCHAR_BOUNDARY__model",
+          "D_SINT__model",
+          "D_SINT_C__model",
+          "D_TS__model",
+          "D_TS_C__model",
+          "D_TINT__model",
+          "D_TINT_C__model",
+          "UNSIGNED__model",
+          "M__model",
+          "L__model",
+          "S__model",
+          "A_B__model",
+          "UJAPANESE__model",
+          "UCHINESE__model",
+          "UARABIC__model",
+          "DISCOUNT__model",
+          "CUSTOMER__model",
+          "SHIPMENT__model",
+          "MULTIENCODING__model",
+          "ADDR__model",
+          "BIGINT_TABLE__model",
+          "UBIGINT_TABLE__model",
+          "BIT_TABLE__model",
+          "DATE_TABLE__model",
+          "NUMERIC_TABLE_38_2__model",
+          "NUMERIC_TABLE_38_1__model",
+          "NUMERIC_TABLE_38_3__model",
+          "NUMERIC_TABLE_38_4__model",
+          "NUMERIC_TABLE_38_5__model",
+          "NUMERIC_TABLE_38_6__model",
+          "NUMERIC_TABLE__model",
+          "NUMERIC_TABLE_38_9__model",
+          "DECIMAL_TABLE_38_9__model",
+          "DECIMAL_TABLE__model",
+          "DECIMAL_TABLE_38_15__model",
+          "DECIMAL_TABLE_38_2__model",
+          "DECIMAL_TABLE_38_3__model",
+          "DECIMAL_TABLE_38_4__model",
+          "DECIMAL_TABLE_38_5__model",
+          "DECIMAL_TABLE_38_6__model",
+          "DECIMAL_TABLE_38_1__model",
+          "DOUBLE_TABLE__model",
+          "FLOAT_TABLE__model",
+          "REAL_TABLE__model",
+          "INT_TABLE__model",
+          "INTEGER_TABLE__model",
+          "NULL_TABLE__model",
+          "UINTEGER_TABLE__model",
+          "SMALLINT_TABLE__model",
+          "USMALLINT_TABLE__model",
+          "TIMESTAMP0_TABLE__model",
+          "TIMESTAMP1_TABLE__model",
+          "TIMESTAMP3_TABLE__model",
+          "TIMESTAMP9_TABLE__model",
+          "TIMESTAMP_TABLE__model",
+          "STINYINT_TABLE__model",
+          "UTINYINT_TABLE__model",
+          "TINYINT_TABLE__model",
+          "WVARCHAR_TABLE__model",
+          "VARCHAR_TABLE__model",
+          "TEMP_TABLE__model",
+          "CHAR_TABLE__model",
+          "LIKE_TESTING__model",
+          "LONGVARCHAR_TABLE__model",
+          "TESTDML_TABLE__model",
+          "TIME6_TABLE__model",
+          "TIME3_TABLE__model",
+          "TIME9_TABLE__model",
+          "TIME_TABLE__model",
+          "WLONGVARCHAR_TABLE__model",
+          "WCHAR_TABLE__model",
+          "LOC__model",
+          "BOYS__model",
+          "GIRLS__model",
+          "PRIMARYKEYS__model",
+          "FOREIGNKEYS__model",
+          "PRODUCT__model",
+          "TRANS__model",
+          "D_VC__model",
+          "D_VC_C__model",
+          "D_WVC__model",
+          "D_WVC_C__model",
+          "EMPTYSTR__model",
+          "EMPTYSTR2__model",
+          "EMPTYSTR_C__model",
+          "D_CHAR__model",
+          "D_CHAR_C__model",
+          "DEPT__model",
+          "EMP__model",
+          "EMP_C__model",
+          "D_MEM__model",
+          "D_MEM_C__model",
+          "D_TM__model",
+          "D_TM_C__model",
+          "TIME__model",
+          "D_WCHAR__model",
+          "D_WCHAR_C__model",
+          "D_WMEM__model",
+          "D_WMEM_C__model",
+          "tdvt_calcs_model",
+          "DATE_model",
+          "ADDR_DEPT_model"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "63c9e5f9-40e6-4979-b195-63b2cec00604",
+        "last_modified": 1553279748000,
+        "version": "2.3.0.20500",
+        "name": "tdvt_test",
+        "tables": [
+          "TDVT.CALCS",
+          "TDVT.STAPLES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1525332578450,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "staples_tdvt"
+          },
+          {
+            "type": "CUBE",
+            "realization": "calcs_tdvt_clone"
+          },
+          {
+            "type": "INVERTED_INDEX",
+            "realization": "calcs_tdvt_clone"
+          },
+          {
+            "type": "CUBE",
+            "realization": "calcs_tdvt_2_clone"
+          },
+          {
+            "type": "INVERTED_INDEX",
+            "realization": "calcs_tdvt_2_clone"
+          }
+        ],
+        "models": [
+          "staples_tdvt_test",
+          "calcs_tdvt",
+          "calcs_tdvt_2"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "1ad22d5d-8cd6-46a2-938e-c1df7e26e034",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "test",
+        "tables": [],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1540265086686,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "35df103d-c167-4759-98ea-5f94434b8239",
+        "last_modified": 1553279748000,
+        "version": "2.3.0.20505",
+        "name": "TEST_02",
+        "tables": [],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1524110262752,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "0b811edb-a822-43ba-b6a5-aeb1335a6f26",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "TEST_CLE11",
+        "tables": [
+          "SCOTT.BONUS",
+          "SCOTT.DEPT",
+          "SCOTT.EMP"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1547029197330,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "46104663-d8a2-4351-a137-59cc18dfe7ec",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "test_datasource_mysql",
+        "tables": [
+          "DB.CUSTOMER"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1537243654680,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "test"
+          }
+        ],
+        "models": [
+          "test"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.source.jdbc.sqoop-home": "/usr/hdp/current/sqoop-client"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "6904e10a-e54a-4018-b4bb-f76183d442bc",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "test_mysql",
+        "tables": [],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1547627241631,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "005fd9eb-4e87-4df1-bd2f-6be1c32ee87c",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "test_mysql_sandbox",
+        "tables": [],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1538205223305,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "0cc78be3-6378-4583-8e7a-0aec4128721d",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "test_oracle",
+        "tables": [
+          "TPCDS.WEB_SALES",
+          "TPCDS.KYLIN_CAL_DT",
+          "TPCDS.KYLIN_SALES",
+          "TPCDS.KYLIN_ACCOUNT",
+          "TPCDS.CUSTOMER"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1545822834080,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "test_cube_oracle"
+          },
+          {
+            "type": "CUBE",
+            "realization": "test_cube_kylin_sales"
+          },
+          {
+            "type": "CUBE",
+            "realization": "test1"
+          },
+          {
+            "type": "INVERTED_INDEX",
+            "realization": "test1"
+          },
+          {
+            "type": "CUBE",
+            "realization": "test_cube_kylin_sales_4265696a696e67"
+          }
+        ],
+        "models": [
+          "test_model_oracle",
+          "test_model_kylin_sales",
+          "test1"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "cdf1ce3f-3d0c-44a5-8f00-b8b10d66c622",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "test_oracle11g",
+        "tables": [
+          "EDW_TPCDS.ITEM",
+          "EDW_TPCDS.WEB_SITE",
+          "EDW_TPCDS.STORE_SALES",
+          "EDW_TPCDS.WEB_PAGE",
+          "EDW_TPCDS.CATALOG_PAGE",
+          "EDW_TPCDS.CATALOG_SALES",
+          "SYSTEM.KYLIN_CATEGORY_GROUPINGS",
+          "SYSTEM.KYLIN_COUNTRY",
+          "EDW_TPCDS.WAREHOUSE",
+          "EDW_TPCDS.STORE",
+          "EDW_TPCDS.WEB_RETURNS",
+          "EDW_TPCDS.CUSTOMER_DEMOGRAPHICS",
+          "EDW_TPCDS.PROMOTION",
+          "EDW_TPCDS.REASON",
+          "SYSTEM.KYLIN_CAL_DT",
+          "EDW_TPCDS.CATALOG_RETURNS",
+          "EDW_TPCDS.WEB_SALES",
+          "EDW_TPCDS.DATE_DIM",
+          "EDW_TPCDS.STORE_RETURNS",
+          "EDW_TPCDS.CALL_CENTER",
+          "EDW_TPCDS.INCOME_BAND",
+          "EDW_TPCDS.INVENTORY",
+          "EDW_TPCDS.SHIP_MODE",
+          "SYSTEM.KYLIN_SALES",
+          "EDW_TPCDS.CUSTOMER",
+          "EDW_TPCDS.HOUSEHOLD_DEMOGRAPHICS",
+          "SYSTEM.KYLIN_ACCOUNT",
+          "EDW_TPCDS.CUSTOMER_ADDRESS",
+          "EDW_TPCDS.TIME_DIM"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1547028352859,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16",
+          "kylin.query.pushdown.runner-class-name": "io.kyligence.kap.query.pushdown.PushdownRunnerSDKImpl"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "7a5eed4b-57a8-48f4-adfd-375b564d2f71",
+        "last_modified": 1553279748000,
+        "version": "3.0.0.1",
+        "name": "testtest",
+        "tables": [],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1534297350326,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "40a504aa-8397-46a4-8ea6-09db103ddfc4",
+        "last_modified": 1553279748000,
+        "version": "2.0.0",
+        "name": "TPC_DS_ORACLE_3",
+        "tables": [
+          "EDW_TPCDS.WEB_SALES",
+          "EDW_TPCDS.ITEM",
+          "EDW_TPCDS.DATE_DIM",
+          "EDW_TPCDS.STORE_RETURNS",
+          "EDW_TPCDS.CALL_CENTER",
+          "EDW_TPCDS.STORE_SALES",
+          "EDW_TPCDS.WEB_SITE",
+          "EDW_TPCDS.INCOME_BAND",
+          "EDW_TPCDS.INVENTORY",
+          "EDW_TPCDS.WEB_PAGE",
+          "EDW_TPCDS.CATALOG_PAGE",
+          "EDW_TPCDS.CATALOG_SALES",
+          "EDW_TPCDS.SHIP_MODE",
+          "EDW_TPCDS.WAREHOUSE",
+          "EDW_TPCDS.HOUSEHOLD_DEMOGRAPHICS",
+          "EDW_TPCDS.CUSTOMER",
+          "EDW_TPCDS.STORE",
+          "EDW_TPCDS.WEB_RETURNS",
+          "EDW_TPCDS.CUSTOMER_DEMOGRAPHICS",
+          "EDW_TPCDS.CUSTOMER_ADDRESS",
+          "EDW_TPCDS.PROMOTION",
+          "EDW_TPCDS.REASON",
+          "EDW_TPCDS.CATALOG_RETURNS",
+          "EDW_TPCDS.TIME_DIM"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1497607236338,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "C_Q3"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q7"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q1"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q12"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q15"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q19"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q17"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q20"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q21"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q24"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q25"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q26"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q27"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q28"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q29"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q31_SS"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q31_WS"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q32"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q34"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q39"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q40"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q42"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q45"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q46"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q48"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q52"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q63"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q65"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q68"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q72"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q73"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q79"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q84"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q85"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q88"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q89"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q90"
+          },
+          {
+            "type": "CUBE",
+            "realization": "M_Q91"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q93"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q96"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q98"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q82"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q13"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q51_WS"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q51_SS"
+          }
+        ],
+        "models": [
+          "M_Q3",
+          "M_SS",
+          "M_SR",
+          "M_WS",
+          "M_CS",
+          "M_SS_SR_CS",
+          "M_INV",
+          "M_SS_SR",
+          "M_SS_alone",
+          "M_CS_CR_leftjoin",
+          "M_CS_CR_INV",
+          "M_WS_WR",
+          "M_CR",
+          "M_SS_INV"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": null,
+        "last_modified": 1553279748000,
+        "version": "2.0.0",
+        "name": "TPC_DS_ORACLE_5",
+        "tables": [
+          "EDW_TPCDS.WEB_SALES",
+          "EDW_TPCDS.ITEM",
+          "EDW_TPCDS.DATE_DIM",
+          "EDW_TPCDS.STORE_RETURNS",
+          "EDW_TPCDS.CALL_CENTER",
+          "EDW_TPCDS.STORE_SALES",
+          "EDW_TPCDS.WEB_SITE",
+          "EDW_TPCDS.INCOME_BAND",
+          "EDW_TPCDS.INVENTORY",
+          "EDW_TPCDS.WEB_PAGE",
+          "EDW_TPCDS.CATALOG_PAGE",
+          "EDW_TPCDS.CATALOG_SALES",
+          "EDW_TPCDS.SHIP_MODE",
+          "EDW_TPCDS.WAREHOUSE",
+          "EDW_TPCDS.HOUSEHOLD_DEMOGRAPHICS",
+          "EDW_TPCDS.CUSTOMER",
+          "EDW_TPCDS.STORE",
+          "EDW_TPCDS.WEB_RETURNS",
+          "EDW_TPCDS.CUSTOMER_DEMOGRAPHICS",
+          "EDW_TPCDS.CUSTOMER_ADDRESS",
+          "EDW_TPCDS.PROMOTION",
+          "EDW_TPCDS.REASON",
+          "EDW_TPCDS.CATALOG_RETURNS",
+          "EDW_TPCDS.TIME_DIM"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1497607236338,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "C_Q3"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q7"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q1"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q12"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q15"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q19"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q17"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q20"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q21"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q24"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q25"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q26"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q27"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q28"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q29"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q31_SS"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q31_WS"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q32"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q34"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q39"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q40"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q42"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q45"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q46"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q48"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q52"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q63"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q65"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q68"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q72"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q73"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q79"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q84"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q85"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q88"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q89"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q90"
+          },
+          {
+            "type": "CUBE",
+            "realization": "M_Q91"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q93"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q96"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q98"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q82"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q13"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q51_WS"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q51_SS"
+          }
+        ],
+        "models": [
+          "M_Q3",
+          "M_SS",
+          "M_SR",
+          "M_WS",
+          "M_CS",
+          "M_SS_SR_CS",
+          "M_INV",
+          "M_SS_SR",
+          "M_SS_alone",
+          "M_CS_CR_leftjoin",
+          "M_CS_CR_INV",
+          "M_WS_WR",
+          "M_CR",
+          "M_SS_INV"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {},
+        "project_dictionaries": null
+      },
+      {
+        "uuid": null,
+        "last_modified": 1553279748000,
+        "version": "2.0.0",
+        "name": "TPC_DS_ORACLE_6",
+        "tables": [
+          "EDW_TPCDS.WEB_SALES",
+          "EDW_TPCDS.ITEM",
+          "EDW_TPCDS.DATE_DIM",
+          "EDW_TPCDS.STORE_RETURNS",
+          "EDW_TPCDS.CALL_CENTER",
+          "EDW_TPCDS.STORE_SALES",
+          "EDW_TPCDS.WEB_SITE",
+          "EDW_TPCDS.INCOME_BAND",
+          "EDW_TPCDS.INVENTORY",
+          "EDW_TPCDS.WEB_PAGE",
+          "EDW_TPCDS.CATALOG_PAGE",
+          "EDW_TPCDS.CATALOG_SALES",
+          "EDW_TPCDS.SHIP_MODE",
+          "EDW_TPCDS.WAREHOUSE",
+          "EDW_TPCDS.HOUSEHOLD_DEMOGRAPHICS",
+          "EDW_TPCDS.CUSTOMER",
+          "EDW_TPCDS.STORE",
+          "EDW_TPCDS.WEB_RETURNS",
+          "EDW_TPCDS.CUSTOMER_DEMOGRAPHICS",
+          "EDW_TPCDS.CUSTOMER_ADDRESS",
+          "EDW_TPCDS.PROMOTION",
+          "EDW_TPCDS.REASON",
+          "EDW_TPCDS.CATALOG_RETURNS",
+          "EDW_TPCDS.TIME_DIM"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1497607236338,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "C_24"
+          }
+        ],
+        "models": [
+          "M_SS_SR"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {},
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "92282a79-812e-4cc6-a57e-e388f6e62ea2",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "tpcds_11g_2",
+        "tables": [
+          "EDW_TPCDS.WEB_SALES",
+          "EDW_TPCDS.CUSTOMER",
+          "EDW_TPCDS.WEB_PAGE",
+          "EDW_TPCDS.CATALOG_SALES"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1547201678576,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1",
+          "kylin.source.default": "16"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": null,
+        "last_modified": 1553279748000,
+        "version": "2.0.0",
+        "name": "TPCDS_GBASE",
+        "tables": [
+          "TPCDS_BIN_PARTITIONED_ORC_2.TIME_DIM",
+          "TPCDS_BIN_PARTITIONED_ORC_2.STORE_RETURNS",
+          "TPCDS_BIN_PARTITIONED_ORC_2.CATALOG_RETURNS",
+          "TPCDS_BIN_PARTITIONED_ORC_2.INVENTORY",
+          "TPCDS_BIN_PARTITIONED_ORC_2.SHIP_MODE",
+          "TPCDS_BIN_PARTITIONED_ORC_2.ITEM",
+          "TPCDS_BIN_PARTITIONED_ORC_2.CATALOG_SALES",
+          "TPCDS_BIN_PARTITIONED_ORC_2.CUSTOMER_DEMOGRAPHICS",
+          "TPCDS_BIN_PARTITIONED_ORC_2.CALL_CENTER",
+          "TPCDS_BIN_PARTITIONED_ORC_2.PROMOTION",
+          "TPCDS_BIN_PARTITIONED_ORC_2.WEB_RETURNS",
+          "TPCDS_BIN_PARTITIONED_ORC_2.WEB_SALES",
+          "TPCDS_BIN_PARTITIONED_ORC_2.HOUSEHOLD_DEMOGRAPHICS",
+          "TPCDS_BIN_PARTITIONED_ORC_2.CATALOG_PAGE",
+          "TPCDS_BIN_PARTITIONED_ORC_2.STORE",
+          "TPCDS_BIN_PARTITIONED_ORC_2.REASON",
+          "TPCDS_BIN_PARTITIONED_ORC_2.CUSTOMER_ADDRESS",
+          "TPCDS_BIN_PARTITIONED_ORC_2.INCOME_BAND",
+          "TPCDS_BIN_PARTITIONED_ORC_2.CUSTOMER",
+          "TPCDS_BIN_PARTITIONED_ORC_2.STORE_SALES",
+          "TPCDS_BIN_PARTITIONED_ORC_2.WEB_PAGE",
+          "TPCDS_BIN_PARTITIONED_ORC_2.WEB_SITE",
+          "TPCDS_BIN_PARTITIONED_ORC_2.WAREHOUSE",
+          "TPCDS_BIN_PARTITIONED_ORC_2.DATE_DIM"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1497607236338,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [
+          {
+            "type": "CUBE",
+            "realization": "C_Q3"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q7"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q1"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q12"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q15"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q19"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q17"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q20"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q21"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q24"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q25"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q26"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q27"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q28"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q29"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q31_SS"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q31_WS"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q32"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q34"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q39"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q40"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q42"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q45"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q46"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q48"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q52"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q63"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q65"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q68"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q72"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q73"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q79"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q84"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q85"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q88"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q89"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q90"
+          },
+          {
+            "type": "CUBE",
+            "realization": "M_Q91"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q93"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q96"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q98"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q82"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q13"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q51_WS"
+          },
+          {
+            "type": "CUBE",
+            "realization": "C_Q51_SS"
+          }
+        ],
+        "models": [
+          "M_Q3",
+          "M_SS",
+          "M_SR",
+          "M_WS",
+          "M_CS",
+          "M_SS_SR_CS",
+          "M_INV",
+          "M_SS_SR",
+          "M_SS_alone",
+          "M_CS_CR_leftjoin",
+          "M_CS_CR_INV",
+          "M_WS_WR",
+          "M_CR",
+          "M_SS_INV"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {},
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "da244246-eaec-46c5-9080-2ed73ba18d48",
+        "last_modified": 1553279748000,
+        "version": "3.2.2.2020",
+        "name": "TPCDS_ORACLE",
+        "tables": [],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1547779689866,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "-1"
+        },
+        "project_dictionaries": null
+      },
+      {
+        "uuid": "ee638406-7fc8-4289-ac61-d083e413ab2a",
+        "last_modified": 1553279748000,
+        "version": "2.3.0.20505",
+        "name": "vit",
+        "tables": [
+          "DEFAULT.KYLIN_CAL_DT",
+          "DEFAULT.KYLIN_CATEGORY_GROUPINGS",
+          "DEFAULT.KYLIN_ACCOUNT",
+          "DEFAULT.KYLIN_COUNTRY",
+          "XADEMO.CUSTOMER_DETAILS",
+          "DEFAULT.KYLIN_SALES",
+          "DEFAULT.TEST_KYLIN_FACT"
+        ],
+        "owner": "ADMIN",
+        "status": "ENABLED",
+        "create_time_utc": 1524119865319,
+        "last_update_time": null,
+        "description": "",
+        "realizations": [],
+        "models": [
+          "kylin_demo"
+        ],
+        "ext_filters": [],
+        "override_kylin_properties": {
+          "kylin.query.force-limit": "100",
+          "kylin.source.default": "0"
+        },
+        "project_dictionaries": null
+      }
+    ],
+    "size": 81
+  },
+  "msg": ""
+}

@@ -1,0 +1,77 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.checkbox-icon-filter {
+  .icon-superset-filter:hover {
+    color: @color-primary;
+    cursor: pointer;
+  }
+}
+
+.checkbox-icon-filter-popper {
+  max-height: 290px;
+  overflow: auto;
+  width: auto !important;
+  .catelogue {
+    color: @color-text-disabled;
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 17px;
+    cursor: default;
+  }
+  .el-checkbox {
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .el-checkbox__input,
+  .el-checkbox__label {
+    display: block;
+  }
+  .el-checkbox__input {
+    margin-right: 5px;
+  }
+  .el-checkbox__label {
+    flex: 1;
+    padding-left: 0;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+  }
+  .el-checkbox + .el-checkbox {
+    margin-left: 0;
+    margin-top: 5px;
+  }
+  .search-checkbox {
+    margin-bottom: 10px;
+  }
+  .no-data {
+    text-align: center;
+    color: @color-text-regular;
+  }
+  .el-checkbox + .catelogue {
+    margin-top: 10px;
+  }
+}

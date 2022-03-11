@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.kylin.mdx.insight.core.dao.DimTableModelRelMapper">
+    <resultMap id="BaseResultMap" type="io.kylin.mdx.insight.core.entity.DimTableModelRel">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="dataset_id" property="datasetId" jdbcType="INTEGER"/>
+        <result column="model" property="model" jdbcType="VARCHAR"/>
+        <result column="dim_table" property="dimTable" jdbcType="VARCHAR"/>
+        <result column="relation" property="relation" jdbcType="INTEGER"/>
+        <result column="intermediate_dim_table" property="intermediateDimTable" jdbcType="VARCHAR"/>
+        <result column="primary_dim_col" property="primaryDimCol" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, dataset_id, model, dim_table, relation, intermediate_dim_table, primary_dim_col
+    </sql>
+
+</mapper>
