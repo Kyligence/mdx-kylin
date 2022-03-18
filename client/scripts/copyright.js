@@ -1,25 +1,19 @@
 /*
-  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
 
-  http://kyligence.io
+    http://www.apache.org/licenses/LICENSE-2.0
 
-  This software is the confidential and proprietary information of
-  Kyligence Inc. ("Confidential Information"). You shall not disclose
-  such Confidential Information and shall use it only in accordance
-  with the terms of the license agreement you entered into with
-  Kyligence Inc.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
 */
 const fs = require('fs');
 const path = require('path');
@@ -32,28 +26,22 @@ const dirPaths = [
 ];
 
 (() => {
-  const copyrightRegex = /#* *Copyright \(C\) \d+ Kyligence Inc\. All rights reserved\.\n*#*\s*http:\/\/kyligence\.io\n*#*\s*This software is the confidential and proprietary information of\n*#*\s*Kyligence Inc\. \("Confidential Information"\)\. You shall not disclose\n*#*\s*such Confidential Information and shall use it only in accordance\n*#*\s*with the terms of the license agreement you entered into with\n*#*\s*Kyligence Inc\.\n*#*\s*THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n*#*\s*"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n*#*\s*LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n*#*\s*A PARTICULAR PURPOSE ARE DISCLAIMED\. IN NO EVENT SHALL THE COPYRIGHT\n*#*\s*OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\n*#*\s*SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES \(INCLUDING, BUT NOT\n*#*\s*LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n*#*\s*DATA, OR PROFITS; OR BUSINESS INTERRUPTION\) HOWEVER CAUSED AND ON ANY\n*#*\s*THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n*#*\s*\(INCLUDING NEGLIGENCE OR OTHERWISE\) ARISING IN ANY WAY OUT OF THE USE\n*#*\s*OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE\.\n/;
-  const copyrightContent = `  Copyright (C) ${new Date().getFullYear()} Kyligence Inc. All rights reserved.
+  const copyrightRegex = /#*\s*\n*Licensed to the Apache Software Foundation \(ASF\) under one\n#*\s*or more contributor license agreements\.\s*See the NOTICE file\n#*\s*distributed with this work for additional information\n#*\s*regarding copyright ownership\.\s*The ASF licenses this file\n#*\s*to you under the Apache License, Version 2\.0 \(the\n#*\s*"License"\); you may not use this file except in compliance\n#*\s*with the License\.\s*You may obtain a copy of the License at\n#*\s*\n#*\s*http:\/\/www\.apache\.org\/licenses\/LICENSE-2\.0\n#*\s*\n#*\s*Unless required by applicable law or agreed to in writing, software\n#*\s*distributed under the License is distributed on an "AS IS" BASIS,\n#*\s*WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied\.\n#*\s*See the License for the specific language governing permissions and\n#*\s*limitations under the License\.\n*/;
+  const copyrightContent = `  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
 
-  http://kyligence.io
+    http://www.apache.org/licenses/LICENSE-2.0
 
-  This software is the confidential and proprietary information of
-  Kyligence Inc. ("Confidential Information"). You shall not disclose
-  such Confidential Information and shall use it only in accordance
-  with the terms of the license agreement you entered into with
-  Kyligence Inc.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.`;
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.`;
 
   const comments = {
     '.jsx': ['/*', '*/'],
@@ -75,7 +63,11 @@ const dirPaths = [
     }
 
     const copyrightContentWithFix = copyrightContent.trim()
-      .split('  ').map(line => `${prefix} ${line}`).join('');
+      .split('\n  ')
+      .map((line, index) => (
+        index === 0 ? `${prefix} ${line}` : `\n${prefix} ${line}`
+      ))
+      .join('');
     fs.writeFileSync(filePath, `${copyrightContentWithFix}\n${fileContent}`, 'utf8');
   }
 
@@ -84,7 +76,7 @@ const dirPaths = [
     const hasCopyright = copyrightRegex.test(fileContent);
 
     if (hasCopyright) {
-      const replacedContent = fileContent.replace(copyrightRegex, `${copyrightContent}\n`);
+      const replacedContent = fileContent.replace(copyrightRegex, `\n${copyrightContent}\n`);
       fs.writeFileSync(filePath, replacedContent, 'utf8');
     } else {
       const copyrightContentWithFix = `${prefix}\n${copyrightContent}\n${suffix}`;
