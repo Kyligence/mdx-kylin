@@ -1,6 +1,6 @@
 spring:
   application:
-    name: kyligence insight - semantic layer
+    name: mdx for kylin - semantic layer
   jackson:
     serialization:
       indent_output: true
