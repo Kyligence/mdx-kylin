@@ -64,7 +64,7 @@ export const GET_MODEL_TABLES = 'api/dimtable/<%=project%>/<%=model%>';
 export const SAVE_DATASET = 'api/dataset?createType=<%=createType%>';
 export const UPDATE_DATASET = 'api/dataset/<%=datasetId%>?update_type=<%=updateType%>';
 export const DELETE_DATASET = 'api/dataset/<%=datasetId%>';
-export const CHECK_DATASET_NAME = 'api/dataset/<%=project%>/<%=datasetName%>/<%=type%>';
+export const CHECK_DATASET_NAME = 'api/dataset/<%=project%>/<%=datasetName%>/MDX';
 export const GET_DATASET = 'api/dataset/<%=datasetId%>';
 export const PREVIEW_FORMAT_SAMPLE = 'api/dataset/format/preview';
 export const VALIDATE_ALL_CMEASURE_EXPRESSION = 'api/semantic/cm/list/check';
