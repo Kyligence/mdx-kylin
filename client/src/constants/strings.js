@@ -276,7 +276,7 @@ const strings = defineMessages({
   // Form Login
   PLEASE_ENTER_USERNAME: { defaultMessage: 'Please enter username.', id: 'PLEASE_ENTER_USERNAME' },
   PLEASE_ENTER_PASSWORD: { defaultMessage: 'Please enter password.', id: 'PLEASE_ENTER_PASSWORD' },
-  FORGET_PASSWORD_TIP: { defaultMessage: 'MDX for Kylin use the same user credential as Kylin, for ADMIN user account, you will need to reset Kylin password to initial password using command "kylin.sh admin-password-reset" in the "$KYLIN_HOME/bin" folder. For other users please contact your system administrator for password rest.', id: 'FORGET_PASSWORD_TIP' },
+  FORGET_PASSWORD_TIP: { defaultMessage: 'MDX for Kylin use the same user credential as Kylin, please contact your system administrator for password rest.', id: 'FORGET_PASSWORD_TIP' },
   // Dataset App
   HIERARCHY: { defaultMessage: 'Hierarchy', id: 'HIERARCHY' },
   NAMEDSET: { defaultMessage: 'Named Set', id: 'NAMEDSET' },
