@@ -1,12 +1,7 @@
 This product includes software developed by Kyligence Inc.
 (http://kyligence.io)
+This product includes software from the Mondrian project.
 
-This product includes software developed by The Apache Software Foundation
-(http://www.apache.org/)
-
-This product includes kylin-mondrian
-(https://github.com/Kyligence/kylin-mondrian)
-
-This product includes kylin-olap4j-xmlaserver
-(https://github.com/Kyligence/kylin-olap4j-xmlaserver)
-
+-----
+Mondrian
+Copyright (C) 2006-2012 Pentaho and others
