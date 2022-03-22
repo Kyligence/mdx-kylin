@@ -198,7 +198,7 @@ const strings = defineMessages({
   USE_SQL_CACHE: { defaultMessage: 'Use SQL Cache', id: 'USE_SQL_CACHE' },
   SQL_EXECUTION_TIME: { defaultMessage: 'SQL Execution Time', id: 'SQL_EXECUTION_TIME' },
   SYSTEM_ID: { defaultMessage: 'System ID', id: 'SYSTEM_ID' },
-  KYLIN_QUERY_ID: { defaultMessage: 'Kyligence Query ID', id: 'KYLIN_QUERY_ID' },
+  KYLIN_QUERY_ID: { defaultMessage: 'Kylin Query ID', id: 'KYLIN_QUERY_ID' },
   // Dataset Role List
   MODIFY_EXPRESSION: { defaultMessage: 'Modify Expression', id: 'MODIFY_EXPRESSION' },
   ERROR_DATASET_CHECK_MSG: { defaultMessage: 'The following items are incorrect. Please modify and resubmit later.', id: 'ERROR_DATASET_CHECK_MSG' },
@@ -260,7 +260,7 @@ const strings = defineMessages({
   EXCEL_REPAIR_TOOL: { defaultMessage: 'Excel Repair Tool', id: 'EXCEL_REPAIR_TOOL' },
   EXCEL_REPAIR_TOOL_DESC_1: { defaultMessage: 'Usage Guidelines:', id: 'EXCEL_REPAIR_TOOL_DESC_1' },
   EXCEL_REPAIR_TOOL_DESC_2: { defaultMessage: '1. This tool is suitable for the original Excel file which has refresh exception caused by model changes (there is redundant information in Schema)', id: 'EXCEL_REPAIR_TOOL_DESC_2' },
-  EXCEL_REPAIR_TOOL_DESC_3: { defaultMessage: '2. Please make sure that the data source connected in the Excel file only contains Kyligence\'s data source', id: 'EXCEL_REPAIR_TOOL_DESC_3' },
+  EXCEL_REPAIR_TOOL_DESC_3: { defaultMessage: '2. Please make sure that the data source connected in the Excel file only contains Kylin\'s data source', id: 'EXCEL_REPAIR_TOOL_DESC_3' },
   EXCEL_REPAIR_TOOL_DESC_4: { defaultMessage: '3. Temporarily only support the repair of one Excel file at a time, and the size is not more than {fileLimit}', id: 'EXCEL_REPAIR_TOOL_DESC_4' },
   EXCEL_REPAIR_TOOL_DESC_5: { defaultMessage: '4. Please click "Select..." to select the file to be repaired, and then click "Repair & Download" to obtain the repaired new file', id: 'EXCEL_REPAIR_TOOL_DESC_5' },
   EXCEL_REPAIR_TOOL_DESC_6: { defaultMessage: '5. It is recommended to use Chrome browser', id: 'EXCEL_REPAIR_TOOL_DESC_6' },
@@ -271,7 +271,7 @@ const strings = defineMessages({
   SELECT: { defaultMessage: 'Select...', id: 'SELECT' },
   SCANNING_FILE: { defaultMessage: 'Scanning file...', id: 'SCANNING_FILE' },
   REPAIR_DOWNLOAD: { defaultMessage: 'Repair & Download', id: 'REPAIR_DOWNLOAD' },
-  NON_KYLIN_SOURCE: { defaultMessage: 'System detected the data source containing non-Kyligence, it is recommended to delete the file.', id: 'NON_KYLIN_SOURCE' },
+  NON_KYLIN_SOURCE: { defaultMessage: 'System detected the data source containing non-Kylin, it is recommended to delete the file.', id: 'NON_KYLIN_SOURCE' },
   EXCEED_FILE_LIMITED: { defaultMessage: 'The file size cannot exceed {fileLimit}.', id: 'EXCEED_FILE_LIMITED' },
   // Form Login
   PLEASE_ENTER_USERNAME: { defaultMessage: 'Please enter username.', id: 'PLEASE_ENTER_USERNAME' },
