@@ -1,0 +1,3 @@
+## Authentication API
+
+All APIs in MDX for Kylin are based on [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) authentication mechanism. Basic Authentication is a simple access control mechanism, which encodes account and password information based on Base64. Adding these information as request headers to HTTP request commands, the back-end will decode the account and password information from the request header for authentication. Take the default account and password of MDX for Kylin, `ADMIN:KYLIN`, as an example, after encoding, the corresponding authentication information would be `Basic QURNSU46S1lMSU4=`, and the corresponding HTTP header information is `Authorization: Basic QURNSU46S1lMSU4=`.

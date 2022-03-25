@@ -1,0 +1,69 @@
+{
+	"title" : "Manual of MDX for Kylin",
+	"description" : "MDX for Kylin 手册",
+	"links" : {
+		"sidebar" : {
+			"Home" : ""
+		}
+	},
+   "plugins": [
+        "-disqus",
+        "-lunr",
+        "-search",
+        "search-pro-kui",
+        "github",
+        "ace",
+        "emphasize",
+        "anchors",
+        "page-footer-ex",
+        "sectionx",
+        "expandable-chapters",
+        "codeblock-filename",
+        "edit-link",
+        "header",
+        "image-captions"
+    ],
+    "pluginsConfig": {
+        "disqus": {
+            "shortName": "manual-of-mdx-for-kylin"
+        },
+        "github": {
+            "url": "https://github.com/Kyligence/mdx-kylin/tree/manual"
+        },
+        "sharing": {
+            "weibo": false,
+            "facebook": false,
+            "twitter": false,
+            "google": false,
+            "instapaper": false,
+            "vk": false,
+            "all": [
+                "facebook", "google", "twitter",
+                "weibo", "instapaper"
+            ]
+        },
+
+        "page-footer-ex": {
+            "copyright":"&copy 2019 Kyligence Inc. All rights reserved. Powered by Gitbook.",
+            "update_label": "Last Modified：",
+            "update_format": "YYYY-MM-DD HH:mm:ss"
+        },
+
+        "edit-link": {
+                "base": "https://github.com/Kyligence/mdx-kylin/edit/manual",
+                "label": "Edit This Page"
+        },
+
+        "layout": {
+             "headerPath" : "layouts/header.html"
+        },
+
+        "image-captions": {
+             "caption": "_CAPTION_"
+        },
+
+        "validate-links": {
+            "local": "error"
+        }
+    }
+}

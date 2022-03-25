@@ -1,0 +1,7 @@
+_book
+.DS_Store
+node_modules
+.idea/
+*.pdf
+*.code-workspace
+/npm-debug.log
