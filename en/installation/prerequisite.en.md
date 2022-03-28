@@ -15,7 +15,7 @@ The installation prerequisites of MDX for Kylin are listed below.
 
 ### Kylin
 
-MDX for Kylin requires a Kylin instance or cluster. MDX for Kylin can only connect with Kylin 4.0.2 and upon.
+MDX for Kylin requires a Kylin instance or cluster. MDX for Kylin can connect with Kylin 4.0.2 and upon.
 
 If user want to use the MDX for Kylin before Kylin 4.x, please check the [reference](https://github.com/Kyligence/mdx-kylin/issues/1)
 

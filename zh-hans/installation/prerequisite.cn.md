@@ -14,7 +14,7 @@
 
 ### Kylin
 
-MDX for Kylin 需要对接一个 Kylin 实例或集群，现在 MDX for Kylin 仅能对接 Kylin 版本为 4.0.1 及以上
+MDX for Kylin 需要对接一个 Kylin 实例或集群，现在 MDX for Kylin 能对接 Kylin 版本为 4.0.2 及以上
 
 如果有需要低于 Kylin 4.x 版本，请参考[链接](https://github.com/Kyligence/mdx-kylin/issues/1)
 

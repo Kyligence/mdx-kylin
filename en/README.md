@@ -1,6 +1,6 @@
 ## MDX for Kylin Overview
 
-MDX for Kylin is an analytical data engine. MDX for Kylin offers enterprise-grade data governance capabilities, including efficient dataset development, security management.
+MDX for Kylin is an analytical data engine. MDX for Kylin offers data governance capabilities, including efficient dataset development, security management.
 
 MDX for Kylin has the following key strengths:
 
@@ -15,4 +15,4 @@ MDX for Kylin also offers an MDX interface, so users can connect directly to pop
 
 ### Granular Data Access Control
 
-MDX for Kylin provides access control for all semantic information in the dataset to meet the needs of enterprise-level analytics platforms for data security management.
+MDX for Kylin provides access control for all semantic information in the dataset to meet the needs of analytics platforms for data security management.

@@ -1,0 +1,1560 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Basic Configurations &#xB7; Manual of MDX for Kylin</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content>
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro-kui/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sectionx/sectionx.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-codeblock-filename/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="jvm.en.html">
+    
+    
+    <link rel="prev" href="files.en.html">
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../installation/">
+            
+                <a href="../installation/">
+            
+                    
+                    Installation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../installation/prerequisite.en.html">
+            
+                <a href="../installation/prerequisite.en.html">
+            
+                    
+                    Installation Prerequisites
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../installation/install_linux.en.html">
+            
+                <a href="../installation/install_linux.en.html">
+            
+                    
+                    Install on Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../installation/MDX_cluster_installation.en.html">
+            
+                <a href="../installation/MDX_cluster_installation.en.html">
+            
+                    
+                    MDX cluster installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../installation/uninstall.en.html">
+            
+                <a href="../installation/uninstall.en.html">
+            
+                    
+                    Uninstall
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../overview/">
+            
+                <a href="../overview/">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../dataset/">
+            
+                <a href="../dataset/">
+            
+                    
+                    Dataset
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../dataset/design_dataset/">
+            
+                <a href="../dataset/design_dataset/">
+            
+                    
+                    Dataset Design
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../dataset/design_dataset/s1_basic_info.en.html">
+            
+                <a href="../dataset/design_dataset/s1_basic_info.en.html">
+            
+                    
+                    Fill in the basic information
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../dataset/design_dataset/s2_relationship.en.html">
+            
+                <a href="../dataset/design_dataset/s2_relationship.en.html">
+            
+                    
+                    Define a relationship
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="../dataset/design_dataset/s3_semantic.en.html">
+            
+                <a href="../dataset/design_dataset/s3_semantic.en.html">
+            
+                    
+                    Define semantics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.3.1" data-path="../dataset/design_dataset/s3_1_dimension_table.en.html">
+            
+                <a href="../dataset/design_dataset/s3_1_dimension_table.en.html">
+            
+                    
+                    View and edit dimension table
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.2" data-path="../dataset/design_dataset/s3_2_dimension.en.html">
+            
+                <a href="../dataset/design_dataset/s3_2_dimension.en.html">
+            
+                    
+                    View and edit dimensions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.3" data-path="../dataset/design_dataset/s3_3_measure.en.html">
+            
+                <a href="../dataset/design_dataset/s3_3_measure.en.html">
+            
+                    
+                    View and edit measures
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.4" data-path="../dataset/design_dataset/s3_4_hierarchy.en.html">
+            
+                <a href="../dataset/design_dataset/s3_4_hierarchy.en.html">
+            
+                    
+                    Add, View and edit Hierarchy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.5" data-path="../dataset/design_dataset/s3_5_namedset.en.html">
+            
+                <a href="../dataset/design_dataset/s3_5_namedset.en.html">
+            
+                    
+                    Add, view and edit named sets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.6" data-path="../dataset/design_dataset/s3_6_calculated_measure.en.html">
+            
+                <a href="../dataset/design_dataset/s3_6_calculated_measure.en.html">
+            
+                    
+                    Add, view, and edit calculated measures
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.3.6.1" data-path="../dataset/design_dataset/s3_6_s1_non_empty_behavior.en.html">
+            
+                <a href="../dataset/design_dataset/s3_6_s1_non_empty_behavior.en.html">
+            
+                    
+                    Non-empty behavior
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.6.2" data-path="../dataset/design_dataset/s3_6_s2_template.en.html">
+            
+                <a href="../dataset/design_dataset/s3_6_s2_template.en.html">
+            
+                    
+                    Use template
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.6.3" data-path="../dataset/design_dataset/s3_6_s3_semi_additive_measure.en.html">
+            
+                <a href="../dataset/design_dataset/s3_6_s3_semi_additive_measure.en.html">
+            
+                    
+                    semi-additive measure
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.7" data-path="../dataset/design_dataset/s3_7_measure_group.en.html">
+            
+                <a href="../dataset/design_dataset/s3_7_measure_group.en.html">
+            
+                    
+                    View and edit measure group
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.8" data-path="../dataset/design_dataset/s3_8_batch_deletion.en.html">
+            
+                <a href="../dataset/design_dataset/s3_8_batch_deletion.en.html">
+            
+                    
+                    Batch deletion of named sets/hierarchies/calculated measures
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="../dataset/design_dataset/s4_translate.en.html">
+            
+                <a href="../dataset/design_dataset/s4_translate.en.html">
+            
+                    
+                    Define translation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" data-path="../dataset/design_dataset/s5_dimension_usage.en.html">
+            
+                <a href="../dataset/design_dataset/s5_dimension_usage.en.html">
+            
+                    
+                    Define dimension usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.6" data-path="../dataset/design_dataset/save.en.html">
+            
+                <a href="../dataset/design_dataset/save.en.html">
+            
+                    
+                    Save
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.7" data-path="../dataset/design_dataset/s8_xtd.en.html">
+            
+                <a href="../dataset/design_dataset/s8_xtd.en.html">
+            
+                    
+                    YTD, QTD, MTD Instructions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../dataset/access_list.en.html">
+            
+                <a href="../dataset/access_list.en.html">
+            
+                    
+                    Configure Access List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../dataset/import_export.en.html">
+            
+                <a href="../dataset/import_export.en.html">
+            
+                    
+                    Datasets Import and Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../dataset/rename_dataset.en.html">
+            
+                <a href="../dataset/rename_dataset.en.html">
+            
+                    
+                    Rename Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../dataset/mdx_list.en.html">
+            
+                <a href="../dataset/mdx_list.en.html">
+            
+                    
+                    MDX Function List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../dataset/metadata_synchronization.en.html">
+            
+                <a href="../dataset/metadata_synchronization.en.html">
+            
+                    
+                    Metadata Synchronization
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../mdx_query/">
+            
+                <a href="../mdx_query/">
+            
+                    
+                    Query
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../mdx_query/query_syntax.en.html">
+            
+                <a href="../mdx_query/query_syntax.en.html">
+            
+                    
+                    Query Syntax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../mdx_query/query_history.en.html">
+            
+                <a href="../mdx_query/query_history.en.html">
+            
+                    
+                    Query History
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../integration/">
+            
+                <a href="../integration/">
+            
+                    
+                    BI Integration
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../integration/excel_integration.en.html">
+            
+                <a href="../integration/excel_integration.en.html">
+            
+                    
+                    Integrate with Excel
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../integration/excel_function_list.en.html">
+            
+                <a href="../integration/excel_function_list.en.html">
+            
+                    
+                    Supported Excel Function List
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../integration/tableau_integration.en.html">
+            
+                <a href="../integration/tableau_integration.en.html">
+            
+                    
+                    Integrate with Tableau
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../integration/tableau_function_list.en.html">
+            
+                <a href="../integration/tableau_function_list.en.html">
+            
+                    
+                    Supported Tableau Function List
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../security/">
+            
+                <a href="../security/">
+            
+                    
+                    Security
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../security/role.en.html">
+            
+                <a href="../security/role.en.html">
+            
+                    
+                    Role
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../security/object_level_security.en.html">
+            
+                <a href="../security/object_level_security.en.html">
+            
+                    
+                    Object-level Security
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../operations/">
+            
+                <a href="../operations/">
+            
+                    
+                    System Operation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../operations/logging.en.html">
+            
+                <a href="../operations/logging.en.html">
+            
+                    
+                    System Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../operations/diagnosis.en.html">
+            
+                <a href="../operations/diagnosis.en.html">
+            
+                    
+                    Diagnosis Package
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../operations/error_code.en.html">
+            
+                <a href="../operations/error_code.en.html">
+            
+                    
+                    Error Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../operations/configuration.en.html">
+            
+                <a href="../operations/configuration.en.html">
+            
+                    
+                    Task Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../operations/metadata.en.html">
+            
+                <a href="../operations/metadata.en.html">
+            
+                    
+                    Metadata Import and Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    System Configuration
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="files.en.html">
+            
+                <a href="files.en.html">
+            
+                    
+                    Configuration Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9.2" data-path="properties.en.html">
+            
+                <a href="properties.en.html">
+            
+                    
+                    Basic Configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="jvm.en.html">
+            
+                <a href="jvm.en.html">
+            
+                    
+                    JVM Configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../rest/">
+            
+                <a href="../rest/">
+            
+                    
+                    Rest API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../rest/authentication.en.html">
+            
+                <a href="../rest/authentication.en.html">
+            
+                    
+                    Authentication API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../rest/dataset.en.html">
+            
+                <a href="../rest/dataset.en.html">
+            
+                    
+                    Dataset API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../rest/role.en.html">
+            
+                <a href="../rest/role.en.html">
+            
+                    
+                    Dataset Role API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../rest/query.en.html">
+            
+                <a href="../rest/query.en.html">
+            
+                    
+                    Query related API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../appendix/">
+            
+                <a href="../appendix/">
+            
+                    
+                    Appendix
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../appendix/faq.en.html">
+            
+                <a href="../appendix/faq.en.html">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../appendix/knownlimitation.en.html">
+            
+                <a href="../appendix/knownlimitation.en.html">
+            
+                    
+                    Known Limitations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../appendix/formatstring.en.html">
+            
+                <a href="../appendix/formatstring.en.html">
+            
+                    
+                    Predefined measure formats and measure format characters
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../contact/">
+            
+                <a href="../contact/">
+            
+                    
+                    Contact Us
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="..">Basic Configurations</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="basic-configurations"><a name="basic-configurations" class="plugin-anchor" href="#basic-configurations"><i class="fa fa-link" aria-hidden="true"></i></a>Basic Configurations</h2>
+<p>The file <code>insight.properties</code> is located in the directory  <code>conf</code>. This section details some configurations in the property file. After modifying configurations, you should restart the system to apply the changes.</p>
+<ul>
+<li><a href="#1-common-configuration">1. Common configuration</a></li>
+<li><a href="#2-semantic-service-module-configuration">2. Semantic Service module configuration</a></li>
+<li><a href="#3-mdx-module-configuration">3. MDX module configuration</a></li>
+</ul>
+<h3 id="1-common-configuration"><a name="1-common-configuration" class="plugin-anchor" href="#1-common-configuration"><i class="fa fa-link" aria-hidden="true"></i></a>1. Common configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Properties</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>insight.kylin.host</td>
+<td>This parameter specifies the IP address or Hostname of the Kylin server to be connected,such as <code>127.0.0.1</code>.The default is<code>localhost</code></td>
+</tr>
+<tr>
+<td>insight.kylin.port</td>
+<td>This parameter specifies the port of the Kylin server that needs to be connected, default is<code>7070</code></td>
+</tr>
+<tr>
+<td>insight.semantic.context-path</td>
+<td>This parameter specifies the context-path in MDX for Kylin, default is<code>/</code></td>
+</tr>
+<tr>
+<td>insight.kylin.ssl</td>
+<td>MDX for Kylin access Kylin is https enabled, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.database.type</td>
+<td>MDX for Kylin metadata database type, default is<code>mysql</code></td>
+</tr>
+<tr>
+<td>insight.database.useSSL</td>
+<td>Does MDX for Kylin Metabase use SSL connection, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.database.ip</td>
+<td>The IP address or Hostname of the Metabase that MDX for Kylin needs to connect to, default is<code>localhost</code></td>
+</tr>
+<tr>
+<td>insight.database.port</td>
+<td>The port of MDX for Kylin Metabase that MDX for Kylin needs to connect to, default is<code>3306</code></td>
+</tr>
+<tr>
+<td>insight.database.name</td>
+<td>MDX for Kylin needs to connect to Metabase name, default is<code>insight</code></td>
+</tr>
+<tr>
+<td>insight.database.username</td>
+<td>MDX for Kylin needs to connect to the user name of the metabase, default is<code>root</code></td>
+</tr>
+<tr>
+<td>insight.database.password</td>
+<td>This configuration is used to generate diagnostic packets. This configuration item requires you to fill in the IP and Port information of all nodes in the MDX for Kylin cluster. If you configure multiple nodes, separate them with commas, such as <code>insight.mdx.cluster.nodes=IP_1:Port_1,IP_2:Port_2</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-semantic-service-module-configuration"><a name="2-semantic-service-module-configuration" class="plugin-anchor" href="#2-semantic-service-module-configuration"><i class="fa fa-link" aria-hidden="true"></i></a>2. Semantic Service module configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Properties</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>insight.semantic.datasource-version</td>
+<td>This parameter specifies the version number of Kylin connected to the semantic service in MDX for Kylin. Only support <code>2</code></td>
+</tr>
+<tr>
+<td>insight.semantic.port</td>
+<td>This parameter specifies the port of the semantic service in MDX for Kylin, default is<code>7080</code></td>
+</tr>
+<tr>
+<td>insight.semantic.meta.sync.project-page-size</td>
+<td>This parameter specifies the maximum number of projects that can be obtained in a single page when the semantic service in MDX for Kylin synchronizes projects , default is<code>1000</code></td>
+</tr>
+<tr>
+<td>insight.dataset.verify.interval.count</td>
+<td>This parameter specifies the time interval for the semantic service in MDX for Kylin to verify the data set, unit: 20 seconds, for example: 2 means 2 * 20 = 40 seconds. It takes effect only when <code>insight.dataset.verify.enable</code> is configured as true, default is<code>15</code>, which is 5 minutes</td>
+</tr>
+<tr>
+<td>insight.dataset.verify.enable</td>
+<td>This parameter specifies whether the semantic service in MDX for Kylin enables the data set synchronization verification function, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.semantic.model.version.verify</td>
+<td>This parameter specifies whether the semantic service in MDX for Kylin enables metadata model version checking, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.semantic.startup.sync.enable</td>
+<td>This parameter specifies whether the semantic service in MDX for Kylin starts the synchronization task when the startup service is enabled, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.semantic.segment.sync.enable</td>
+<td>This parameter specifies whether the semantic service in MDX for Kylin is enabled. Check Kylin&apos;s Segment changes, and clear MDX for Kylin cache according to Segment changes, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.semantic.meta.sync.user-page-size</td>
+<td>This parameter specifies the size of each page when the semantic service in MDX for Kylin synchronizes user information from Kylin, default is<code>100000</code></td>
+</tr>
+<tr>
+<td>insight.semantic.cookie-age</td>
+<td>This parameter specifies the lifetime of the user cookie when accessing the semantic service Web UI in MDX for Kylin, default is<code>86400</code>, which is 86400 seconds</td>
+</tr>
+<tr>
+<td>insight.semantic.checkout.dataset.connect</td>
+<td>This parameter specifies whether to check the connection when MDX for Kylin data set is saved, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.semantic.connect.timeout</td>
+<td>The connection timeout time of MDX for Kylin to Kylin, in milliseconds, default is<code>5000</code></td>
+</tr>
+<tr>
+<td>insight.semantic.socket.timeout</td>
+<td>MDX for Kylin connection socket timeout time for Kylin connection, unit is milliseconds, default is<code>10000</code></td>
+</tr>
+<tr>
+<td>insight.semantic.connection.request.timeout</td>
+<td>The connection request timeout time of MDX for Kylin to Kylin, the unit is milliseconds, default is<code>8000</code></td>
+</tr>
+<tr>
+<td>insight.semantic.max-http-header-size</td>
+<td>The maximum length of MDX for Kylin&apos;s http request header, the unit is kb, default is<code>8192</code></td>
+</tr>
+<tr>
+<td>insight.semantic.meta.keep.mdx-query.max.rows</td>
+<td>The maximum number of mdx query history records in the system&#xFF0C;default is <code>1000000</code></td>
+</tr>
+<tr>
+<td>insight.semantic.segment.sync.enable</td>
+<td>whether to synchronize the segment information of Kylin, default is <code>true</code></td>
+</tr>
+<tr>
+<td>insight.kylin.only.normal.dim.enable</td>
+<td>MDX for Kylin only fetch normal dimension from Kylin when the join condition is many-to-many, default is <code>false</code>, current kylin not support many-to-many</td>
+</tr>
+<tr>
+<td>insight.semantic.zookeeper.enable</td>
+<td>Whether enable to register server info to ZooKeeper, default is <code>false</code></td>
+</tr>
+<tr>
+<td>insight.semantic.zookeeper.address</td>
+<td>The address of ZooKeeper, default is <code>localhost:2181</code></td>
+</tr>
+<tr>
+<td>insight.semantic.zookeeper.node.path</td>
+<td>The node path in ZooKeeper, default is <code>/mdx</code></td>
+</tr>
+<tr>
+<td>insight.semantic.zookeeper.session.timeout</td>
+<td>The session timeout with ZooKeeper, default is <code>30000</code></td>
+</tr>
+<tr>
+<td>insight.semantic.reject.enable</td>
+<td>This parameter is used to specify whether to enable the interception strategy. After enabling, the query request that meets the interception strategy will be rejected. The default is <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-mdx-module-configuration"><a name="3-mdx-module-configuration" class="plugin-anchor" href="#3-mdx-module-configuration"><i class="fa fa-link" aria-hidden="true"></i></a>3. MDX module configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Properties</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>insight.mdx.servlet-path</td>
+<td>This parameter specifies the servlet path in MDX for Kylin, default is<code>/mdx/xmla/</code></td>
+</tr>
+<tr>
+<td>insight.mdx.gateway-path</td>
+<td>This parameter specifies the gateway servlet path in MDX for Kylin, default is<code>/mdx/xmla_server/</code></td>
+</tr>
+<tr>
+<td>insight.mdx.optimize-enabled</td>
+<td>This parameter specifies whether to enable statement optimization for mdx in MDX for Kylin, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.calculate-total-need</td>
+<td>This parameter specifies whether mdx in MDX for Kylin calculates global summaries and subtotals, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.schema.create-from-dataset</td>
+<td>This parameter specifies whether mdx in MDX for Kylin will create a schema from the dataset, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.schema.refresh.disable</td>
+<td>This parameter specifies whether to disable refresh for mdx in MDX for Kylin, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.mdx.sql.orderby.enable</td>
+<td>This parameter specifies whether to enable SQL orderby in MDX for Kylin, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.sql.calcite-engine-hint.enable</td>
+<td>This parameter specifies whether Kylin is forced to use the Calcite engine when MDX for Kylin is connected to Excel and queries containing similar to are performed. Answer, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.mdx.skip-axis-nonempty-check</td>
+<td>This parameter specifies whether to skip the null value check when calculating the axis in MDX for Kylin, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.olap.case.sensitive</td>
+<td>This parameter specifies whether the mdx statement in MDX for Kylin is case sensitive, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.maxQueryThreads</td>
+<td>This parameter specifies the maximum number of query threads for mdx in MDX for Kylin, default is<code>50</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.query.sql.page.size</td>
+<td>This parameter specifies the maximum number of records obtained in a single page during mdx paging operation in MDX for Kylin, default is<code>10000</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.generate.formatted.sql</td>
+<td>This parameter specifies whether mdx in MDX for Kylin should format the output sql statement, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.star.disableCaching</td>
+<td>This parameter specifies whether to disable caching for mdx in MDX for Kylin, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.ignoreInvalidMembers</td>
+<td>This parameter specifies whether mdx in MDX for Kylin ignores invalid members, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.ignoreInvalidMembersDuringQuery</td>
+<td>This parameter specifies whether mdx in MDX for Kylin ignores invalid members in queries, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.cache.expire-minute</td>
+<td>This parameter specifies that the mdx cache expiration time in MDX for Kylin is several minutes, default is<code>720</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.olap.pure-axes-calculate.source.type</td>
+<td>This parameter specifies the dimensional data source type when calculating the mdx axis in MDX for Kylin. The optional parameters are: <code>SNAPSHOT</code>, <code>PARTIAL_CUBE</code>, <code>ALL_CUBE</code>, default is<code>PARTIAL_CUBE</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.olap.pure-axes-calculate.cardinality-gap</td>
+<td>This parameter specifies the maximum cardinality (exclusive) of dimension table that any SQL on a single dimension table in MDX for Kylin is forced to behavior like <code>insight.mdx.mondrian.olap.pure-axes-calculate.source.type=SNAPSHOT</code>, the special value <code>-1</code> means always forced and <code>0</code> means not forced, default is <code>-1</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.olap.pure-axes-calculate.total-cardinality-gap</td>
+<td>This parameter specifies the maximum cardinality (exclusive) of any total-axis SQL result that the SQL is forced to behavior like <code>insight.mdx.mondrian.olap.pure-axes-calculate.source.type=SNAPSHOT</code>, the special value <code>-1</code> means always forced and <code>0</code> means not forced, default is <code>0</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.olap.support-non-default-all-member</td>
+<td>This parameter specifies whether mdx in MDX for Kylin supports non-default all members, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.olap.cell.calc.join-dims</td>
+<td>This parameter specifies whether mdx in MDX for Kylin joins other dimension tables when calculating the cell, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.return-null-when-divide-zero</td>
+<td>This parameter specifies whether mdx in MDX for Kylin returns 0 when the divisor is 0, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.optimize-tuple-size-in-aggregate.enable</td>
+<td>This parameter specifies whether to enable tuple size optimization during mdx aggregation in MDX for Kylin, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.calculate-cell-when-non-measure</td>
+<td>This parameter specifies whether to aggregate cell data when mdx in MDX for Kylin has no measurement, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.sql.fetch-dim-from-snapshot</td>
+<td>This parameter specifies whether mdx in MDX for Kylin prefers to pull dimension data from snapshots, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.sql.enableOrderBy</td>
+<td>This parameter specifies whether to add collation when querying mdx sql in MDX for Kylin, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.jdbc.timezone</td>
+<td>This parameter specifies the time zone of the mdx jdbc query service in MDX for Kylin, default is<code>GMT+8:00</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.schema.init-level-group-order-by-key</td>
+<td>This parameter specifies whether mdx in MDX for Kylin is to initialize the level by key value, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.query.filter-pushdown.enable</td>
+<td>This parameter specifies whether mdx in MDX for Kylin is enabled for filtering pushdown, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.query.filter-pushdown.in-clause-max-size</td>
+<td>This parameter specifies the maximum filtering pushdown number of mdx clauses in MDX for Kylin, default is<code>20</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.query.sql.customize.enable</td>
+<td>This parameter specifies whether to enable customization of mdx in MDX for Kylin sql, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.query.sql.customize.class</td>
+<td>This parameter specifies the implementation class of mdx CustomizeSqlQuery in MDX for Kylin, default is<code>io.kylin.mdx.web.mondrian.rolap.sql.KylinSqlQuery</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.query.sql.max.size</td>
+<td>This parameter specifies the maximum number of query rows for mdx sql query in MDX for Kylin, default is<code>50000</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.star.disableLocalSegmentCache</td>
+<td>This parameter specifies whether to enable local cache for the segments queried by mdx in MDX for Kylin, generate specific cache and find block cache SPI, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.olap.triggers.enable</td>
+<td>This parameter specifies whether to notify Mondrian when the configuration properties of mdx in MDX for Kylin change?<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.nonempty</td>
+<td>This parameter specifies whether mdx in MDX for Kylin needs non-empty setting for each query axis, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.compareSiblingsByOrderKey</td>
+<td>This parameter specifies whether mdx in MDX for Kylin checks sibling members and pulls members from the original expression for verification, default is<code>false</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.maxSqlThreads</td>
+<td>This parameter specifies the maximum number of Mondrian instances that mdx supports SQL in MDX for Kylin, default is<code>100</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.maxCacheThreads</td>
+<td>This parameter specifies the maximum number of threads per Mondrian instance when mdx in MDX for Kylin supports caching, default is<code>100</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.rolap.queryTimeout</td>
+<td>Set the timeout time of MDX query, in seconds, default is<code>300</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.olap.NullMemberRepresentation</td>
+<td>This parameter specifies how to display the mdx in MDX for Kylin when the result is empty, default is<code>#null</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.visualtotal.solve.order</td>
+<td>This parameter specifies the mdx setting total order in MDX for Kylin, default is<code>-1</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.cross-join.native.enable</td>
+<td>This parameter specifies whether to use Cross Join natively when MDX for Kylin sends queries, default is<code>true</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.filter.row.limit</td>
+<td>This parameter specifies whether to add the Limit condition when MDX for Kylin is connected to Excel and perform Filter operation. The default is <code>0</code>, which means that the Limit condition is not added. If it is <code>10</code>, the SQL clause of limit 10 will be added to the query. Note: The parameters here must be written in <strong>positive integer</strong>, otherwise it will cause MDX query execution to report an error. <strong>Note</strong>: After setting this parameter, it may result in the inverse selection operation of the drop-down list in Excel <strong>Data incomplete</strong>, default is<code>0</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.result.limit</td>
+<td>This parameter is used to specify the number of rows returned by the check SQL and the number of cells. If the limit is exceeded, an error will be returned directly. , default is<code>100000</code></td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.mdprop.mdx.subqueries</td>
+<td>This parameter is used to indicate the mdx support level for subqueries. MDX defaults to 2 and does not support subqueries. If you need MDX to support subqueries, you can set it to 31, which is a beta version.</td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.query.sql.model-priority-hint.enable</td>
+<td>This parameter enables whether to specify model priorities in SQL statements.If enabled, the model referenced by the dataset will be specified as the high priority model in the SQL statements. The default value is <code>false</code>. Please note that model priorities will take effect only if the querying measures are all from the same Kylin model.</td>
+</tr>
+<tr>
+<td>insight.mdx.xmla.support-rowset-visibilities</td>
+<td>This property is used to define whether to enable the support for <code>HIERARCHY_VISIBILITY</code> and <code>MEASURE_VISIBILITY</code> restrictions of XML/A Schema. The default value of this property is <code>false</code>. After this property has been enabled, previous Excel files with pivot tables must be fixed, otherwise Excel will not work properly with these files.</td>
+</tr>
+<tr>
+<td>insight.mdx.mondrian.query.limit</td>
+<td>This parameters is that maximum number of simultaneous queries the system will allow, default is 1000.</td>
+</tr>
+</tbody>
+</table>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> Powered by Gitbook. </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> Last Modified&#xFF1A; 2022-03-25 11:19:34 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching &quot;<span class="search-query"></span>&quot;</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching &quot;<span class="search-query"></span>&quot;</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="files.en.html" class="navigation navigation-prev " aria-label="Previous page: Configuration Files">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="jvm.en.html" class="navigation navigation-next " aria-label="Next page: JVM Configurations">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Basic Configurations","level":"1.9.2","depth":2,"next":{"title":"JVM Configurations","level":"1.9.3","depth":2,"path":"configuration/jvm.en.md","ref":"configuration/jvm.en.md","articles":[]},"previous":{"title":"Configuration Files","level":"1.9.1","depth":2,"path":"configuration/files.en.md","ref":"configuration/files.en.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-disqus","-lunr","-search","search-pro-kui","github","ace","emphasize","anchors","page-footer-ex","sectionx","expandable-chapters","codeblock-filename","edit-link","header","image-captions"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"disqus":{"shortName":"manual-of-mdx-for-kylin"},"validate-links":{"local":"error"},"emphasize":{},"ace":{},"github":{"url":"https://github.com/Kyligence/mdx-kylin/tree/manual"},"page-footer-ex":{"copyright":"Powered by Gitbook.","markdown":false,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"Last Modified："},"layout":{"headerPath":"layouts/header.html"},"header":{},"fontsettings":{"theme":"white","family":"sans","size":2},"sectionx":{},"highlight":{},"codeblock-filename":{},"search-pro-kui":{},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/Kyligence/mdx-kylin/edit/manual"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"caption":"_CAPTION_","variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"installation/install_linux.en.html#fig1.2.2.1","level":"1.2.2","list_caption":"Figure: Startup with synchronization failure","alt":"Startup with synchronization failure","nro":1,"url":"images/start.en.png","index":1,"caption_template":"_CAPTION_","label":"Startup with synchronization failure","attributes":{},"skip":false,"key":"1.2.2.1"},{"backlink":"installation/install_linux.en.html#fig1.2.2.2","level":"1.2.2","list_caption":"Figure: Fill in connection user information","alt":"Fill in connection user information","nro":2,"url":"images/configure_connection_info.en.png","index":2,"caption_template":"_CAPTION_","label":"Fill in connection user information","attributes":{},"skip":false,"key":"1.2.2.2"},{"backlink":"overview/index.html#fig1.3.1","level":"1.3","list_caption":"Figure: Overview","alt":"Overview","nro":3,"url":"images/overview.en.png","index":1,"caption_template":"_CAPTION_","label":"Overview","attributes":{},"skip":false,"key":"1.3.1"},{"backlink":"overview/index.html#fig1.3.2","level":"1.3","list_caption":"Figure: Query Statistics","alt":"Query Statistics","nro":4,"url":"images/query_statistics.en.png","index":2,"caption_template":"_CAPTION_","label":"Query Statistics","attributes":{},"skip":false,"key":"1.3.2"},{"backlink":"overview/index.html#fig1.3.3","level":"1.3","list_caption":"Figure: Query Trend","alt":"Query Trend","nro":5,"url":"images/query_trend.en.png","index":3,"caption_template":"_CAPTION_","label":"Query Trend","attributes":{},"skip":false,"key":"1.3.3"},{"backlink":"overview/index.html#fig1.3.4","level":"1.3","list_caption":"Figure: Query Time","alt":"Query Time","nro":6,"url":"images/query_time.en.png","index":4,"caption_template":"_CAPTION_","label":"Query Time","attributes":{},"skip":false,"key":"1.3.4"},{"backlink":"overview/index.html#fig1.3.5","level":"1.3","list_caption":"Figure: Dataset Ranking","alt":"Dataset Ranking","nro":7,"url":"images/ranking.en.png","index":5,"caption_template":"_CAPTION_","label":"Dataset Ranking","attributes":{},"skip":false,"key":"1.3.5"},{"backlink":"dataset/design_dataset/s1_basic_info.en.html#fig1.4.1.1.1","level":"1.4.1.1","list_caption":"Figure: Open Dataset List","alt":"Open Dataset List","nro":8,"url":"images/basic_info/dataset_list.en.png","index":1,"caption_template":"_CAPTION_","label":"Open Dataset List","attributes":{},"skip":false,"key":"1.4.1.1.1"},{"backlink":"dataset/design_dataset/s1_basic_info.en.html#fig1.4.1.1.2","level":"1.4.1.1","list_caption":"Figure: create dataset","alt":"create dataset","nro":9,"url":"images/basic_info/create_dataset.en.png","index":2,"caption_template":"_CAPTION_","label":"create dataset","attributes":{},"skip":false,"key":"1.4.1.1.2"},{"backlink":"dataset/design_dataset/s1_basic_info.en.html#fig1.4.1.1.3","level":"1.4.1.1","list_caption":"Figure: fill basic information","alt":"fill basic information","nro":10,"url":"images/basic_info/basic_information.en.png","index":3,"caption_template":"_CAPTION_","label":"fill basic information","attributes":{},"skip":false,"key":"1.4.1.1.3"},{"backlink":"dataset/design_dataset/s2_relationship.en.html#fig1.4.1.2.1","level":"1.4.1.2","list_caption":"Figure: Add the basic model","alt":"Add the basic model","nro":11,"url":"images/relationship/add_first_model.en.gif","index":1,"caption_template":"_CAPTION_","label":"Add the basic model","attributes":{},"skip":false,"key":"1.4.1.2.1"},{"backlink":"dataset/design_dataset/s2_relationship.en.html#fig1.4.1.2.2","level":"1.4.1.2","list_caption":"Figure: Add an associated cube","alt":"Add an associated cube","nro":12,"url":"images/relationship/add_second_model.en.gif","index":2,"caption_template":"_CAPTION_","label":"Add an associated cube","attributes":{},"skip":false,"key":"1.4.1.2.2"},{"backlink":"dataset/design_dataset/s3_semantic.en.html#fig1.4.1.3.1","level":"1.4.1.3","list_caption":"Figure: define semantics","alt":"define semantics","nro":13,"url":"images/semantic/define_semantics.en.png","index":1,"caption_template":"_CAPTION_","label":"define semantics","attributes":{},"skip":false,"key":"1.4.1.3.1"},{"backlink":"dataset/design_dataset/s3_1_dimension_table.en.html#fig1.4.1.3.1.1","level":"1.4.1.3.1","list_caption":"Figure: view dimension tables","alt":"view dimension tables","nro":14,"url":"images/dimension_table/show_dimension_table.en.png","index":1,"caption_template":"_CAPTION_","label":"view dimension tables","attributes":{},"skip":false,"key":"1.4.1.3.1.1"},{"backlink":"dataset/design_dataset/s3_1_dimension_table.en.html#fig1.4.1.3.1.2","level":"1.4.1.3.1","list_caption":"Figure: edit dimension table","alt":"edit dimension table","nro":15,"url":"images/dimension_table/edit_dimension_table.en.png","index":2,"caption_template":"_CAPTION_","label":"edit dimension table","attributes":{},"skip":false,"key":"1.4.1.3.1.2"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.1","level":"1.4.1.3.2","list_caption":"Figure: show dimension","alt":"show dimension","nro":16,"url":"images/dimension/show_dimension.en.png","index":1,"caption_template":"_CAPTION_","label":"show dimension","attributes":{},"skip":false,"key":"1.4.1.3.2.1"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.2","level":"1.4.1.3.2","list_caption":"Figure: edit dimension","alt":"edit dimension","nro":17,"url":"images/dimension/edit_dimensions.en.png","index":2,"caption_template":"_CAPTION_","label":"edit dimension","attributes":{},"skip":false,"key":"1.4.1.3.2.2"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.3","level":"1.4.1.3.2","list_caption":"Figure: Edit Attribute","alt":"Edit Attribute","nro":18,"url":"images/dimension/type.en.png","index":3,"caption_template":"_CAPTION_","label":"Edit Attribute","attributes":{},"skip":false,"key":"1.4.1.3.2.3"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.4","level":"1.4.1.3.2","list_caption":"Figure: Edit Name Column","alt":"Edit Name Column","nro":19,"url":"images/dimension/namecolumn.en.png","index":4,"caption_template":"_CAPTION_","label":"Edit Name Column","attributes":{},"skip":false,"key":"1.4.1.3.2.4"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.5","level":"1.4.1.3.2","list_caption":"Figure: Edit Value Column","alt":"Edit Value Column","nro":20,"url":"images/dimension/valuecolumn.en.png","index":5,"caption_template":"_CAPTION_","label":"Edit Value Column","attributes":{},"skip":false,"key":"1.4.1.3.2.5"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.6","level":"1.4.1.3.2","list_caption":"Figure: Edit Properties","alt":"Edit Properties","nro":21,"url":"images/dimension/properties.en.png","index":6,"caption_template":"_CAPTION_","label":"Edit Properties","attributes":{},"skip":false,"key":"1.4.1.3.2.6"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.7","level":"1.4.1.3.2","list_caption":"Figure: Edit Folder","alt":"Edit Folder","nro":22,"url":"images/dimension/folder.en.png","index":7,"caption_template":"_CAPTION_","label":"Edit Folder","attributes":{},"skip":false,"key":"1.4.1.3.2.7"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.8","level":"1.4.1.3.2","list_caption":"Figure: Set Default Member","alt":"Set Default Member","nro":23,"url":"images/dimension/default_member.en.png","index":8,"caption_template":"_CAPTION_","label":"Set Default Member","attributes":{},"skip":false,"key":"1.4.1.3.2.8"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.9","level":"1.4.1.3.2","list_caption":"Figure: Edit Visibility","alt":"Edit Visibility","nro":24,"url":"images/dimension/visible.en.png","index":9,"caption_template":"_CAPTION_","label":"Edit Visibility","attributes":{},"skip":false,"key":"1.4.1.3.2.9"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.1","level":"1.4.1.3.3","list_caption":"Figure: show measures","alt":"show measures","nro":25,"url":"images/measures/show_measures.en.png","index":1,"caption_template":"_CAPTION_","label":"show measures","attributes":{},"skip":false,"key":"1.4.1.3.3.1"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.2","level":"1.4.1.3.3","list_caption":"Figure: edit measures","alt":"edit measures","nro":26,"url":"images/measures/edit_measures.en.png","index":2,"caption_template":"_CAPTION_","label":"edit measures","attributes":{},"skip":false,"key":"1.4.1.3.3.2"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.3","level":"1.4.1.3.3","list_caption":"Figure: Edit measure format","alt":"Edit measure format","nro":27,"url":"images/measures/format.en.png","index":3,"caption_template":"_CAPTION_","label":"Edit measure format","attributes":{},"skip":false,"key":"1.4.1.3.3.3"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.4","level":"1.4.1.3.3","list_caption":"Figure: Edit measure format","alt":"Edit measure format","nro":28,"url":"images/measures/format_numeric_en.png","index":4,"caption_template":"_CAPTION_","label":"Edit measure format","attributes":{},"skip":false,"key":"1.4.1.3.3.4"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.5","level":"1.4.1.3.3","list_caption":"Figure: Edit measure format","alt":"Edit measure format","nro":29,"url":"images/measures/format_user_define_en.png","index":5,"caption_template":"_CAPTION_","label":"Edit measure format","attributes":{},"skip":false,"key":"1.4.1.3.3.5"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.6","level":"1.4.1.3.3","list_caption":"Figure: Edit Folder","alt":"Edit Folder","nro":30,"url":"images/measures/folder.en.png","index":6,"caption_template":"_CAPTION_","label":"Edit Folder","attributes":{},"skip":false,"key":"1.4.1.3.3.6"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.7","level":"1.4.1.3.3","list_caption":"Figure: Edit Visibility","alt":"Edit Visibility","nro":31,"url":"images/measures/visible.en.png","index":7,"caption_template":"_CAPTION_","label":"Edit Visibility","attributes":{},"skip":false,"key":"1.4.1.3.3.7"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.1","level":"1.4.1.3.4","list_caption":"Figure: hierarchy in excel","alt":"hierarchy in excel","nro":32,"url":"images/hierarchy/excel_hierarchy.en.png","index":1,"caption_template":"_CAPTION_","label":"hierarchy in excel","attributes":{},"skip":false,"key":"1.4.1.3.4.1"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.2","level":"1.4.1.3.4","list_caption":"Figure: add hierarchy","alt":"add hierarchy","nro":33,"url":"images/hierarchy/add_hierarchy.en.png","index":2,"caption_template":"_CAPTION_","label":"add hierarchy","attributes":{},"skip":false,"key":"1.4.1.3.4.2"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.3","level":"1.4.1.3.4","list_caption":"Figure: show hierarchy","alt":"show hierarchy","nro":34,"url":"images/hierarchy/show_hierarchy.en.png","index":3,"caption_template":"_CAPTION_","label":"show hierarchy","attributes":{},"skip":false,"key":"1.4.1.3.4.3"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.4","level":"1.4.1.3.4","list_caption":"Figure: edit hierarchy","alt":"edit hierarchy","nro":35,"url":"images/hierarchy/edit_hierarchy.en.png","index":4,"caption_template":"_CAPTION_","label":"edit hierarchy","attributes":{},"skip":false,"key":"1.4.1.3.4.4"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.5","level":"1.4.1.3.4","list_caption":"Figure: Table D_MEDICINE","alt":"Table D_MEDICINE","nro":36,"url":"images/hierarchy/customrollup/dimension_table.en.png","index":5,"caption_template":"_CAPTION_","label":"Table D_MEDICINE","attributes":{},"skip":false,"key":"1.4.1.3.4.5"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.6","level":"1.4.1.3.4","list_caption":"Figure: Create Hierarchy","alt":"Create Hierarchy","nro":37,"url":"images/hierarchy/customrollup/hierarchy.en.png","index":6,"caption_template":"_CAPTION_","label":"Create Hierarchy","attributes":{},"skip":false,"key":"1.4.1.3.4.6"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.7","level":"1.4.1.3.4","list_caption":"Figure: Create a hierarchy","alt":"Create a hierarchy","nro":38,"url":"images/hierarchy/customrollup/set_weight.en.png","index":7,"caption_template":"_CAPTION_","label":"Create a hierarchy","attributes":{},"skip":false,"key":"1.4.1.3.4.7"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.8","level":"1.4.1.3.4","list_caption":"Figure: Set Weight","alt":"Set Weight","nro":39,"url":"images/hierarchy/customrollup/set_weight_prompt.en.png","index":8,"caption_template":"_CAPTION_","label":"Set Weight","attributes":{},"skip":false,"key":"1.4.1.3.4.8"},{"backlink":"dataset/design_dataset/s3_5_namedset.en.html#fig1.4.1.3.5.1","level":"1.4.1.3.5","list_caption":"Figure: add named set","alt":"add named set","nro":40,"url":"images/named_set/add_named_set.en.png","index":1,"caption_template":"_CAPTION_","label":"add named set","attributes":{},"skip":false,"key":"1.4.1.3.5.1"},{"backlink":"dataset/design_dataset/s3_5_namedset.en.html#fig1.4.1.3.5.2","level":"1.4.1.3.5","list_caption":"Figure: show named set","alt":"show named set","nro":41,"url":"images/named_set/show_named_set.en.png","index":2,"caption_template":"_CAPTION_","label":"show named set","attributes":{},"skip":false,"key":"1.4.1.3.5.2"},{"backlink":"dataset/design_dataset/s3_5_namedset.en.html#fig1.4.1.3.5.3","level":"1.4.1.3.5","list_caption":"Figure: change location","alt":"change location","nro":42,"url":"images/named_set/edit_folder_named_set.en.png","index":3,"caption_template":"_CAPTION_","label":"change location","attributes":{},"skip":false,"key":"1.4.1.3.5.3"},{"backlink":"dataset/design_dataset/s3_5_namedset.en.html#fig1.4.1.3.5.4","level":"1.4.1.3.5","list_caption":"Figure: Example Named Set","alt":"Example Named Set","nro":43,"url":"images/named_set/example_namedset_en.png","index":4,"caption_template":"_CAPTION_","label":"Example Named Set","attributes":{},"skip":false,"key":"1.4.1.3.5.4"},{"backlink":"dataset/design_dataset/s3_5_namedset.en.html#fig1.4.1.3.5.5","level":"1.4.1.3.5","list_caption":"Figure: Example Named Set in Excel","alt":"Example Named Set in Excel","nro":44,"url":"images/named_set/example_namedset_excel_en.png","index":5,"caption_template":"_CAPTION_","label":"Example Named Set in Excel","attributes":{},"skip":false,"key":"1.4.1.3.5.5"},{"backlink":"dataset/design_dataset/s3_5_namedset.en.html#fig1.4.1.3.5.6","level":"1.4.1.3.5","list_caption":"Figure: Example Named Set in Tableau","alt":"Example Named Set in Tableau","nro":45,"url":"images/named_set/example_namedset_tableau_en.png","index":6,"caption_template":"_CAPTION_","label":"Example Named Set in Tableau","attributes":{},"skip":false,"key":"1.4.1.3.5.6"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.en.html#fig1.4.1.3.6.1","level":"1.4.1.3.6","list_caption":"Figure: add calculated mesasures","alt":"add calculated mesasures","nro":46,"url":"images/calculated_measure/add_calculated_measures.en.png","index":1,"caption_template":"_CAPTION_","label":"add calculated mesasures","attributes":{},"skip":false,"key":"1.4.1.3.6.1"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.en.html#fig1.4.1.3.6.2","level":"1.4.1.3.6","list_caption":"Figure: show calculated measures","alt":"show calculated measures","nro":47,"url":"images/calculated_measure/show_calculated_measures.en.png","index":2,"caption_template":"_CAPTION_","label":"show calculated measures","attributes":{},"skip":false,"key":"1.4.1.3.6.2"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.en.html#fig1.4.1.3.6.3","level":"1.4.1.3.6","list_caption":"Figure: edit calculated measures","alt":"edit calculated measures","nro":48,"url":"images/calculated_measure/edit_calculated_measures.en.png","index":3,"caption_template":"_CAPTION_","label":"edit calculated measures","attributes":{},"skip":false,"key":"1.4.1.3.6.3"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.en.html#fig1.4.1.3.6.4","level":"1.4.1.3.6","list_caption":"Figure: Edit Folder","alt":"Edit Folder","nro":49,"url":"images/calculated_measure/folder.en.png","index":4,"caption_template":"_CAPTION_","label":"Edit Folder","attributes":{},"skip":false,"key":"1.4.1.3.6.4"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.en.html#fig1.4.1.3.6.5","level":"1.4.1.3.6","list_caption":"Figure: Edit Visibility","alt":"Edit Visibility","nro":50,"url":"images/calculated_measure/visible.en.png","index":5,"caption_template":"_CAPTION_","label":"Edit Visibility","attributes":{},"skip":false,"key":"1.4.1.3.6.5"},{"backlink":"dataset/design_dataset/s3_6_s3_semi_additive_measure.en.html#fig1.4.1.3.6.3.1","level":"1.4.1.3.6.3","list_caption":"Figure: Add semi-additive measure","alt":"Add semi-additive measure","nro":51,"url":"images/calculated_measure/add_semi_additive_measure.en.png","index":1,"caption_template":"_CAPTION_","label":"Add semi-additive measure","attributes":{},"skip":false,"key":"1.4.1.3.6.3.1"},{"backlink":"dataset/design_dataset/s3_7_measure_group.en.html#fig1.4.1.3.7.1","level":"1.4.1.3.7","list_caption":"Figure: edit measure group name","alt":"edit measure group name","nro":52,"url":"images/measures/measure_group_en.png","index":1,"caption_template":"_CAPTION_","label":"edit measure group name","attributes":{},"skip":false,"key":"1.4.1.3.7.1"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.1","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":53,"url":"images/measures/dataset_info_en.png","index":1,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.1"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.2","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":54,"url":"images/measures/dataset_info_cm_en.png","index":2,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.2"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.3","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":55,"url":"images/measures/dataset_info_ns_en.png","index":3,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.3"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.4","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":56,"url":"images/measures/dataset_replace_model_en.png","index":4,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.4"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.5","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":57,"url":"images/measures/dataset_invalid_object_en.png","index":5,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.5"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.6","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":58,"url":"images/measures/dataset_del_invalid_object_en.png","index":6,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.6"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.7","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":59,"url":"images/measures/dataset_del_invalid_object_dc_en.png","index":7,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.7"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.8","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":60,"url":"images/measures/dataset_del_success_en.png","index":8,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.8"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.9","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":61,"url":"images/measures/dataset_del_save_en.png","index":9,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.9"},{"backlink":"dataset/design_dataset/s4_translate.en.html#fig1.4.1.4.1","level":"1.4.1.4","list_caption":"Figure: Add language","alt":"Add language","nro":62,"url":"images/translate/add_translation_btn.en.png","index":1,"caption_template":"_CAPTION_","label":"Add language","attributes":{},"skip":false,"key":"1.4.1.4.1"},{"backlink":"dataset/design_dataset/s4_translate.en.html#fig1.4.1.4.2","level":"1.4.1.4","list_caption":"Figure: Choose language","alt":"Choose language","nro":63,"url":"images/translate/choose_language.en.png","index":2,"caption_template":"_CAPTION_","label":"Choose language","attributes":{},"skip":false,"key":"1.4.1.4.2"},{"backlink":"dataset/design_dataset/s4_translate.en.html#fig1.4.1.4.3","level":"1.4.1.4","list_caption":"Figure: Define translation","alt":"Define translation","nro":64,"url":"images/translate/add_translation_content.en.png","index":3,"caption_template":"_CAPTION_","label":"Define translation","attributes":{},"skip":false,"key":"1.4.1.4.3"},{"backlink":"dataset/design_dataset/s4_translate.en.html#fig1.4.1.4.4","level":"1.4.1.4","list_caption":"Figure: example_translation","alt":"example_translation","nro":65,"url":"images/translate/example_translation.png","index":4,"caption_template":"_CAPTION_","label":"example_translation","attributes":{},"skip":false,"key":"1.4.1.4.4"},{"backlink":"dataset/design_dataset/s4_translate.en.html#fig1.4.1.4.5","level":"1.4.1.4","list_caption":"Figure: translation_cn","alt":"translation_cn","nro":66,"url":"images/translate/example_translation_excel_cn.png","index":5,"caption_template":"_CAPTION_","label":"translation_cn","attributes":{},"skip":false,"key":"1.4.1.4.5"},{"backlink":"dataset/design_dataset/s4_translate.en.html#fig1.4.1.4.6","level":"1.4.1.4","list_caption":"Figure: translation_en","alt":"translation_en","nro":67,"url":"images/translate/example_translation_excel_en.png","index":6,"caption_template":"_CAPTION_","label":"translation_en","attributes":{},"skip":false,"key":"1.4.1.4.6"},{"backlink":"dataset/design_dataset/s5_dimension_usage.en.html#fig1.4.1.5.1","level":"1.4.1.5","list_caption":"Figure: show dimension usage","alt":"show dimension usage","nro":68,"url":"images/dimension_usage/show_dimension_usage.en.png","index":1,"caption_template":"_CAPTION_","label":"show dimension usage","attributes":{},"skip":false,"key":"1.4.1.5.1"},{"backlink":"dataset/design_dataset/s5_dimension_usage.en.html#fig1.4.1.5.2","level":"1.4.1.5","list_caption":"Figure: edit_dimension_usage","alt":"edit_dimension_usage","nro":69,"url":"images/dimension_usage/edit_dimension_usage.en.png","index":2,"caption_template":"_CAPTION_","label":"edit_dimension_usage","attributes":{},"skip":false,"key":"1.4.1.5.2"},{"backlink":"dataset/design_dataset/s5_dimension_usage.en.html#fig1.4.1.5.3","level":"1.4.1.5","list_caption":"Figure: regular link","alt":"regular link","nro":70,"url":"images/dimension_usage/regular_relationship.en.png","index":3,"caption_template":"_CAPTION_","label":"regular link","attributes":{},"skip":false,"key":"1.4.1.5.3"},{"backlink":"dataset/design_dataset/save.en.html#fig1.4.1.6.1","level":"1.4.1.6","list_caption":"Figure: create dataset successfully","alt":"create dataset successfully","nro":71,"url":"images/finish/finish.en.png","index":1,"caption_template":"_CAPTION_","label":"create dataset successfully","attributes":{},"skip":false,"key":"1.4.1.6.1"},{"backlink":"dataset/design_dataset/s8_xtd.en.html#fig1.4.1.7.1","level":"1.4.1.7","list_caption":"Figure: define dimension table","alt":"define dimension table","nro":72,"url":"images/YTD/set_table_attribute.en.png","index":1,"caption_template":"_CAPTION_","label":"define dimension table","attributes":{},"skip":false,"key":"1.4.1.7.1"},{"backlink":"dataset/design_dataset/s8_xtd.en.html#fig1.4.1.7.2","level":"1.4.1.7","list_caption":"Figure: define dimension attribute","alt":"define dimension attribute","nro":73,"url":"images/YTD/set_attribute.en.png","index":2,"caption_template":"_CAPTION_","label":"define dimension attribute","attributes":{},"skip":false,"key":"1.4.1.7.2"},{"backlink":"dataset/access_list.en.html#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: Access List","alt":"Access List","nro":74,"url":"images/access_list/access_list.en.png","index":1,"caption_template":"_CAPTION_","label":"Access List","attributes":{},"skip":false,"key":"1.4.2.1"},{"backlink":"dataset/access_list.en.html#fig1.4.2.2","level":"1.4.2","list_caption":"Figure: Select User or Role","alt":"Select User or Role","nro":75,"url":"images/access_list/access_list_detail.en.png","index":2,"caption_template":"_CAPTION_","label":"Select User or Role","attributes":{},"skip":false,"key":"1.4.2.2"},{"backlink":"dataset/import_export.en.html#fig1.4.3.1","level":"1.4.3","list_caption":"Figure: Export Dataset","alt":"Export Dataset","nro":76,"url":"images/export_single_en.png","index":1,"caption_template":"_CAPTION_","label":"Export Dataset","attributes":{},"skip":false,"key":"1.4.3.1"},{"backlink":"dataset/import_export.en.html#fig1.4.3.2","level":"1.4.3","list_caption":"Figure: Export Dataset","alt":"Export Dataset","nro":77,"url":"images/export_multi_en.png","index":2,"caption_template":"_CAPTION_","label":"Export Dataset","attributes":{},"skip":false,"key":"1.4.3.2"},{"backlink":"dataset/import_export.en.html#fig1.4.3.3","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":78,"url":"images/import_sel_en.png","index":3,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.3"},{"backlink":"dataset/import_export.en.html#fig1.4.3.4","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":79,"url":"images/import_config_en.png","index":4,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.4"},{"backlink":"dataset/import_export.en.html#fig1.4.3.5","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":80,"url":"images/import_addnew_en.png","index":5,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.5"},{"backlink":"dataset/import_export.en.html#fig1.4.3.6","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":81,"url":"images/import_all_same_en.png","index":6,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.6"},{"backlink":"dataset/import_export.en.html#fig1.4.3.7","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":82,"url":"images/import_part_same_new_en.png","index":7,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.7"},{"backlink":"dataset/import_export.en.html#fig1.4.3.8","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":83,"url":"images/import_part_same_del_en.png","index":8,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.8"},{"backlink":"dataset/import_export.en.html#fig1.4.3.9","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":84,"url":"images/import_quit_en.png","index":9,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.9"},{"backlink":"dataset/rename_dataset.en.html#fig1.4.4.1","level":"1.4.4","list_caption":"Figure: Export Dataset","alt":"Export Dataset","nro":85,"url":"images/rename_dataset_en.png","index":1,"caption_template":"_CAPTION_","label":"Export Dataset","attributes":{},"skip":false,"key":"1.4.4.1"},{"backlink":"dataset/rename_dataset.en.html#fig1.4.4.2","level":"1.4.4","list_caption":"Figure: Export Dataset","alt":"Export Dataset","nro":86,"url":"images/rename_enter_en.png","index":2,"caption_template":"_CAPTION_","label":"Export Dataset","attributes":{},"skip":false,"key":"1.4.4.2"},{"backlink":"dataset/rename_dataset.en.html#fig1.4.4.3","level":"1.4.4","list_caption":"Figure: Export Dataset","alt":"Export Dataset","nro":87,"url":"images/rename_done_en.png","index":3,"caption_template":"_CAPTION_","label":"Export Dataset","attributes":{},"skip":false,"key":"1.4.4.3"},{"backlink":"mdx_query/query_history.en.html#fig1.5.2.1","level":"1.5.2","list_caption":"Figure: View Query History","alt":"View Query History","nro":88,"url":"./images/query_history_1.en.png","index":1,"caption_template":"_CAPTION_","label":"View Query History","attributes":{},"skip":false,"key":"1.5.2.1"},{"backlink":"mdx_query/query_history.en.html#fig1.5.2.2","level":"1.5.2","list_caption":"Figure: View History Details","alt":"View History Details","nro":89,"url":"./images/query_history_2.en.png","index":2,"caption_template":"_CAPTION_","label":"View History Details","attributes":{},"skip":false,"key":"1.5.2.2"},{"backlink":"mdx_query/query_history.en.html#fig1.5.2.3","level":"1.5.2","list_caption":"Figure: MDX Query Details","alt":"MDX Query Details","nro":90,"url":"./images/query_history_3.en.png","index":3,"caption_template":"_CAPTION_","label":"MDX Query Details","attributes":{},"skip":false,"key":"1.5.2.3"},{"backlink":"mdx_query/query_history.en.html#fig1.5.2.4","level":"1.5.2","list_caption":"Figure: SQL Query Details","alt":"SQL Query Details","nro":91,"url":"./images/query_history_4.en.png","index":4,"caption_template":"_CAPTION_","label":"SQL Query Details","attributes":{},"skip":false,"key":"1.5.2.4"},{"backlink":"integration/excel_integration.en.html#fig1.6.1.1","level":"1.6.1","list_caption":"Figure: connect to Excel","alt":"connect to Excel","nro":92,"url":"images/excel/make_connection.png","index":1,"caption_template":"_CAPTION_","label":"connect to Excel","attributes":{},"skip":false,"key":"1.6.1.1"},{"backlink":"integration/excel_integration.en.html#fig1.6.1.2","level":"1.6.1","list_caption":"Figure: Connect Successfully","alt":"Connect Successfully","nro":93,"url":"images/excel/mdx_step_3.png","index":2,"caption_template":"_CAPTION_","label":"Connect Successfully","attributes":{},"skip":false,"key":"1.6.1.2"},{"backlink":"integration/excel_integration.en.html#fig1.6.1.3","level":"1.6.1","list_caption":"Figure: Analysis Dataset","alt":"Analysis Dataset","nro":94,"url":"images/excel/sample_data.png","index":3,"caption_template":"_CAPTION_","label":"Analysis Dataset","attributes":{},"skip":false,"key":"1.6.1.3"},{"backlink":"integration/tableau_integration.en.html#fig1.6.2.1","level":"1.6.2","list_caption":"Figure: Recommended driver","alt":"Recommended driver","nro":95,"url":"images/tableau/drivers_ssas.en.png","index":1,"caption_template":"_CAPTION_","label":"Recommended driver","attributes":{},"skip":false,"key":"1.6.2.1"},{"backlink":"integration/tableau_integration.en.html#fig1.6.2.2","level":"1.6.2","list_caption":"Figure: connect to tableau","alt":"connect to tableau","nro":96,"url":"images/tableau/connect_to_tableau.en.png","index":2,"caption_template":"_CAPTION_","label":"connect to tableau","attributes":{},"skip":false,"key":"1.6.2.2"},{"backlink":"integration/tableau_integration.en.html#fig1.6.2.3","level":"1.6.2","list_caption":"Figure: connect successfully","alt":"connect successfully","nro":97,"url":"images/tableau/select_dataset.en.png","index":3,"caption_template":"_CAPTION_","label":"connect successfully","attributes":{},"skip":false,"key":"1.6.2.3"},{"backlink":"integration/tableau_integration.en.html#fig1.6.2.4","level":"1.6.2","list_caption":"Figure: analysis dataset","alt":"analysis dataset","nro":98,"url":"images/tableau/tableau_analysis.en.png","index":4,"caption_template":"_CAPTION_","label":"analysis dataset","attributes":{},"skip":false,"key":"1.6.2.4"},{"backlink":"security/role.en.html#fig1.7.1.1","level":"1.7.1","list_caption":"Figure: role","alt":"role","nro":99,"url":"images/role/default_role.en.png","index":1,"caption_template":"_CAPTION_","label":"role","attributes":{},"skip":false,"key":"1.7.1.1"},{"backlink":"security/role.en.html#fig1.7.1.2","level":"1.7.1","list_caption":"Figure: role","alt":"role","nro":100,"url":"images/role/edit_role.en.png","index":2,"caption_template":"_CAPTION_","label":"role","attributes":{},"skip":false,"key":"1.7.1.2"},{"backlink":"security/role.en.html#fig1.7.1.3","level":"1.7.1","list_caption":"Figure: role","alt":"role","nro":101,"url":"images/role/add_user.en.png","index":3,"caption_template":"_CAPTION_","label":"role","attributes":{},"skip":false,"key":"1.7.1.3"},{"backlink":"security/role.en.html#fig1.7.1.4","level":"1.7.1","list_caption":"Figure: role","alt":"role","nro":102,"url":"images/role/manage_role.en.png","index":4,"caption_template":"_CAPTION_","label":"role","attributes":{},"skip":false,"key":"1.7.1.4"},{"backlink":"security/object_level_security.en.html#fig1.7.2.1","level":"1.7.2","list_caption":"Figure: Edit Visibility","alt":"Edit Visibility","nro":103,"url":"../dataset/design_dataset/images/dimension/visible.en.png","index":1,"caption_template":"_CAPTION_","label":"Edit Visibility","attributes":{},"skip":false,"key":"1.7.2.1"},{"backlink":"operations/logging.en.html#fig1.8.1.1","level":"1.8.1","list_caption":"Figure: Query ID","alt":"Query ID","nro":104,"url":"images/username.en.png","index":1,"caption_template":"_CAPTION_","label":"Query ID","attributes":{},"skip":false,"key":"1.8.1.1"},{"backlink":"operations/logging.en.html#fig1.8.1.2","level":"1.8.1","list_caption":"Figure: API Caller","alt":"API Caller","nro":105,"url":"images/query_id.en.png","index":2,"caption_template":"_CAPTION_","label":"API Caller","attributes":{},"skip":false,"key":"1.8.1.2"},{"backlink":"operations/diagnosis.en.html#fig1.8.2.1","level":"1.8.2","list_caption":"Figure: Enter the administrator page","alt":"Enter the administrator page","nro":106,"url":"images/login_admin.en.png","index":1,"caption_template":"_CAPTION_","label":"Enter the administrator page","attributes":{},"skip":false,"key":"1.8.2.1"},{"backlink":"operations/configuration.en.html#fig1.8.4.1","level":"1.8.4","list_caption":"Figure: Login Administrator Page","alt":"Login Administrator Page","nro":107,"url":"images/login_admin.en.png","index":1,"caption_template":"_CAPTION_","label":"Login Administrator Page","attributes":{},"skip":false,"key":"1.8.4.1"},{"backlink":"operations/configuration.en.html#fig1.8.4.2","level":"1.8.4","list_caption":"Figure: Parameter Configuration","alt":"Parameter Configuration","nro":108,"url":"images/conf.en.png","index":2,"caption_template":"_CAPTION_","label":"Parameter Configuration","attributes":{},"skip":false,"key":"1.8.4.2"},{"backlink":"operations/configuration.en.html#fig1.8.4.3","level":"1.8.4","list_caption":"Figure: Restart Task","alt":"Restart Task","nro":109,"url":"images/restart_task.en.png","index":3,"caption_template":"_CAPTION_","label":"Restart Task","attributes":{},"skip":false,"key":"1.8.4.3"},{"backlink":"operations/configuration.en.html#fig1.8.4.4","level":"1.8.4","list_caption":"Figure: Edit User Information","alt":"Edit User Information","nro":110,"url":"images/edit_user_info.en.png","index":4,"caption_template":"_CAPTION_","label":"Edit User Information","attributes":{},"skip":false,"key":"1.8.4.4"},{"backlink":"appendix/knownlimitation.en.html#fig1.11.2.1","level":"1.11.2","list_caption":"Figure: Limitation 1","alt":"Limitation 1","nro":111,"url":"images/limitation1.en.png","index":1,"caption_template":"_CAPTION_","label":"Limitation 1","attributes":{},"skip":false,"key":"1.11.2.1"},{"backlink":"appendix/knownlimitation.en.html#fig1.11.2.2","level":"1.11.2","list_caption":"Figure: Limitation 3","alt":"Limitation 3","nro":112,"url":"images/limitation3.en.png","index":2,"caption_template":"_CAPTION_","label":"Limitation 3","attributes":{},"skip":false,"key":"1.11.2.2"}]},"title":"Manual of MDX for Kylin","language":"en","links":{"sidebar":{"Home":""}},"gitbook":"*","description":"MDX for Kylin 手册"},"file":{"path":"configuration/properties.en.md","mtime":"2022-03-25T03:19:34.198Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-28T10:49:07.240Z"},"basePath":"..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro-kui/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro-kui/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sectionx/sectionx.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

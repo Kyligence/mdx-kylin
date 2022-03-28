@@ -1,0 +1,1492 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272; API &#xB7; Manual of MDX for Kylin</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content>
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro-kui/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sectionx/sectionx.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-codeblock-filename/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="query.cn.html">
+    
+    
+    <link rel="prev" href="dataset.cn.html">
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="&#x8F93;&#x5165;&#x5E76;&#x641C;&#x7D22;">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../installation/">
+            
+                <a href="../installation/">
+            
+                    
+                    &#x5B89;&#x88C5;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../installation/prerequisite.cn.html">
+            
+                <a href="../installation/prerequisite.cn.html">
+            
+                    
+                    &#x5B89;&#x88C5;&#x524D;&#x7F6E;&#x6761;&#x4EF6;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../installation/install_linux.cn.html">
+            
+                <a href="../installation/install_linux.cn.html">
+            
+                    
+                    &#x5728; Linux &#x73AF;&#x5883;&#x5B89;&#x88C5;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../installation/MDX_cluster_installation.cn.html">
+            
+                <a href="../installation/MDX_cluster_installation.cn.html">
+            
+                    
+                    MDX &#x96C6;&#x7FA4;&#x90E8;&#x7F72;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../installation/uninstall.cn.html">
+            
+                <a href="../installation/uninstall.cn.html">
+            
+                    
+                    &#x5378;&#x8F7D;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../overview/">
+            
+                <a href="../overview/">
+            
+                    
+                    &#x6982;&#x89C8;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../dataset/">
+            
+                <a href="../dataset/">
+            
+                    
+                    &#x6570;&#x636E;&#x96C6;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../dataset/design_dataset/">
+            
+                <a href="../dataset/design_dataset/">
+            
+                    
+                    &#x8BBE;&#x8BA1;&#x6570;&#x636E;&#x96C6;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../dataset/design_dataset/s1_basic_info.cn.html">
+            
+                <a href="../dataset/design_dataset/s1_basic_info.cn.html">
+            
+                    
+                    &#x586B;&#x5199;&#x57FA;&#x672C;&#x4FE1;&#x606F;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../dataset/design_dataset/s2_relationship.cn.html">
+            
+                <a href="../dataset/design_dataset/s2_relationship.cn.html">
+            
+                    
+                    &#x5B9A;&#x4E49;&#x5173;&#x7CFB;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="../dataset/design_dataset/s3_semantic.cn.html">
+            
+                <a href="../dataset/design_dataset/s3_semantic.cn.html">
+            
+                    
+                    &#x5B9A;&#x4E49;&#x8BED;&#x4E49;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.3.1" data-path="../dataset/design_dataset/s3_1_dimension_table.cn.html">
+            
+                <a href="../dataset/design_dataset/s3_1_dimension_table.cn.html">
+            
+                    
+                    &#x67E5;&#x770B;&#x53CA;&#x7F16;&#x8F91;&#x7EF4;&#x5EA6;&#x8868;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.2" data-path="../dataset/design_dataset/s3_2_dimension.cn.html">
+            
+                <a href="../dataset/design_dataset/s3_2_dimension.cn.html">
+            
+                    
+                    &#x67E5;&#x770B;&#x53CA;&#x7F16;&#x8F91;&#x7EF4;&#x5EA6;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.3" data-path="../dataset/design_dataset/s3_3_measure.cn.html">
+            
+                <a href="../dataset/design_dataset/s3_3_measure.cn.html">
+            
+                    
+                    &#x67E5;&#x770B;&#x53CA;&#x7F16;&#x8F91;&#x5EA6;&#x91CF;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.4" data-path="../dataset/design_dataset/s3_4_hierarchy.cn.html">
+            
+                <a href="../dataset/design_dataset/s3_4_hierarchy.cn.html">
+            
+                    
+                    &#x65B0;&#x589E;&#x3001;&#x67E5;&#x770B;&#x53CA;&#x7F16;&#x8F91;&#x5C42;&#x7EA7;&#x7ED3;&#x6784;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.5" data-path="../dataset/design_dataset/s3_5_namedset.cn.html">
+            
+                <a href="../dataset/design_dataset/s3_5_namedset.cn.html">
+            
+                    
+                    &#x65B0;&#x589E;&#x3001;&#x67E5;&#x770B;&#x53CA;&#x7F16;&#x8F91;&#x547D;&#x540D;&#x96C6;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.6" data-path="../dataset/design_dataset/s3_6_calculated_measure.cn.html">
+            
+                <a href="../dataset/design_dataset/s3_6_calculated_measure.cn.html">
+            
+                    
+                    &#x65B0;&#x589E;&#x3001;&#x67E5;&#x770B;&#x53CA;&#x7F16;&#x8F91;&#x8BA1;&#x7B97;&#x5EA6;&#x91CF;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.3.6.1" data-path="../dataset/design_dataset/s3_6_s1_non_empty_behavior.cn.html">
+            
+                <a href="../dataset/design_dataset/s3_6_s1_non_empty_behavior.cn.html">
+            
+                    
+                    &#x975E;&#x7A7A;&#x884C;&#x4E3A;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.6.2" data-path="../dataset/design_dataset/s3_6_s2_template.cn.html">
+            
+                <a href="../dataset/design_dataset/s3_6_s2_template.cn.html">
+            
+                    
+                    &#x4F7F;&#x7528;&#x6A21;&#x677F;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.6.3" data-path="../dataset/design_dataset/s3_6_s3_semi_additive_measure.cn.html">
+            
+                <a href="../dataset/design_dataset/s3_6_s3_semi_additive_measure.cn.html">
+            
+                    
+                    &#x534A;&#x7D2F;&#x52A0;&#x5EA6;&#x91CF;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.7" data-path="../dataset/design_dataset/s3_7_measure_group.cn.html">
+            
+                <a href="../dataset/design_dataset/s3_7_measure_group.cn.html">
+            
+                    
+                    &#x67E5;&#x770B;&#x53CA;&#x7F16;&#x8F91;&#x5EA6;&#x91CF;&#x7EC4;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.8" data-path="../dataset/design_dataset/s3_8_del_objects.cn.html">
+            
+                <a href="../dataset/design_dataset/s3_8_del_objects.cn.html">
+            
+                    
+                    &#x6279;&#x91CF;&#x5220;&#x9664;&#x547D;&#x540D;&#x96C6;/&#x5C42;&#x7EA7;&#x7ED3;&#x6784;/&#x8BA1;&#x7B97;&#x5EA6;&#x91CF;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="../dataset/design_dataset/s4_translate.cn.html">
+            
+                <a href="../dataset/design_dataset/s4_translate.cn.html">
+            
+                    
+                    &#x5B9A;&#x4E49;&#x7FFB;&#x8BD1;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" data-path="../dataset/design_dataset/s5_dimension_usage.cn.html">
+            
+                <a href="../dataset/design_dataset/s5_dimension_usage.cn.html">
+            
+                    
+                    &#x5B9A;&#x4E49;&#x7EF4;&#x5EA6;&#x7528;&#x6CD5;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.6" data-path="../dataset/design_dataset/save.cn.html">
+            
+                <a href="../dataset/design_dataset/save.cn.html">
+            
+                    
+                    &#x4FDD;&#x5B58;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.7" data-path="../dataset/design_dataset/s8_xtd.cn.html">
+            
+                <a href="../dataset/design_dataset/s8_xtd.cn.html">
+            
+                    
+                    YTD&#x3001;QTD&#x3001;MTD &#x4F7F;&#x7528;&#x8BF4;&#x660E;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../dataset/access_list.cn.html">
+            
+                <a href="../dataset/access_list.cn.html">
+            
+                    
+                    &#x914D;&#x7F6E;&#x6743;&#x9650;&#x5217;&#x8868;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../dataset/import_export.cn.html">
+            
+                <a href="../dataset/import_export.cn.html">
+            
+                    
+                    &#x6570;&#x636E;&#x96C6;&#x5BFC;&#x5165;&#x5BFC;&#x51FA;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../dataset/rename_dataset_cn.html">
+            
+                <a href="../dataset/rename_dataset_cn.html">
+            
+                    
+                    &#x91CD;&#x547D;&#x540D;&#x6570;&#x636E;&#x96C6;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../dataset/mdx_list.cn.html">
+            
+                <a href="../dataset/mdx_list.cn.html">
+            
+                    
+                    MDX &#x51FD;&#x6570;&#x5217;&#x8868;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../dataset/metadata_synchronization.cn.html">
+            
+                <a href="../dataset/metadata_synchronization.cn.html">
+            
+                    
+                    &#x5143;&#x6570;&#x636E;&#x540C;&#x6B65;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../mdx_query/">
+            
+                <a href="../mdx_query/">
+            
+                    
+                    &#x67E5;&#x8BE2;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../mdx_query/query_syntax.cn.html">
+            
+                <a href="../mdx_query/query_syntax.cn.html">
+            
+                    
+                    &#x67E5;&#x8BE2;&#x8BED;&#x6CD5;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../mdx_query/query_history.cn.html">
+            
+                <a href="../mdx_query/query_history.cn.html">
+            
+                    
+                    &#x67E5;&#x8BE2;&#x5386;&#x53F2;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../integration/">
+            
+                <a href="../integration/">
+            
+                    
+                    BI &#x96C6;&#x6210;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../integration/excel_integration.cn.html">
+            
+                <a href="../integration/excel_integration.cn.html">
+            
+                    
+                    &#x4E0E; Excel &#x96C6;&#x6210;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../integration/excel_function_list.cn.html">
+            
+                <a href="../integration/excel_function_list.cn.html">
+            
+                    
+                    Excel &#x529F;&#x80FD;&#x652F;&#x6301;&#x5217;&#x8868;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../integration/tableau_integration.cn.html">
+            
+                <a href="../integration/tableau_integration.cn.html">
+            
+                    
+                    &#x4E0E; Tableau &#x96C6;&#x6210;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../integration/tableau_function_list.cn.html">
+            
+                <a href="../integration/tableau_function_list.cn.html">
+            
+                    
+                    Tableau &#x529F;&#x80FD;&#x652F;&#x6301;&#x5217;&#x8868;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../security/">
+            
+                <a href="../security/">
+            
+                    
+                    &#x5B89;&#x5168;&#x63A7;&#x5236;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../security/role.cn.html">
+            
+                <a href="../security/role.cn.html">
+            
+                    
+                    &#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../security/object_level_security.cn.html">
+            
+                <a href="../security/object_level_security.cn.html">
+            
+                    
+                    &#x5B9E;&#x4F53;&#x5B89;&#x5168;&#x6027;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../operations/">
+            
+                <a href="../operations/">
+            
+                    
+                    &#x7CFB;&#x7EDF;&#x8FD0;&#x7EF4;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../operations/logging.cn.html">
+            
+                <a href="../operations/logging.cn.html">
+            
+                    
+                    &#x65E5;&#x5FD7;&#x6587;&#x4EF6;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../operations/diagnosis.cn.html">
+            
+                <a href="../operations/diagnosis.cn.html">
+            
+                    
+                    &#x8BCA;&#x65AD;&#x5305;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../operations/error_code.cn.html">
+            
+                <a href="../operations/error_code.cn.html">
+            
+                    
+                    &#x9519;&#x8BEF;&#x7801;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../operations/configuration.cn.html">
+            
+                <a href="../operations/configuration.cn.html">
+            
+                    
+                    &#x4EFB;&#x52A1;&#x914D;&#x7F6E;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../operations/metadata.cn.html">
+            
+                <a href="../operations/metadata.cn.html">
+            
+                    
+                    &#x5143;&#x6570;&#x636E;&#x5BFC;&#x5165;&#x548C;&#x5BFC;&#x51FA;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../configuration/">
+            
+                <a href="../configuration/">
+            
+                    
+                    &#x7CFB;&#x7EDF;&#x914D;&#x7F6E;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../configuration/files.cn.html">
+            
+                <a href="../configuration/files.cn.html">
+            
+                    
+                    &#x914D;&#x7F6E;&#x6587;&#x4EF6;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../configuration/properties.cn.html">
+            
+                <a href="../configuration/properties.cn.html">
+            
+                    
+                    &#x57FA;&#x672C;&#x914D;&#x7F6E;&#x53C2;&#x6570;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../configuration/jvm.cn.html">
+            
+                <a href="../configuration/jvm.cn.html">
+            
+                    
+                    JVM &#x53C2;&#x6570;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Rest API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="authentication.cn.html">
+            
+                <a href="authentication.cn.html">
+            
+                    
+                    &#x5B89;&#x5168;&#x8BA4;&#x8BC1; API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="dataset.cn.html">
+            
+                <a href="dataset.cn.html">
+            
+                    
+                    &#x6570;&#x636E;&#x96C6; API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.3" data-path="role.cn.html">
+            
+                <a href="role.cn.html">
+            
+                    
+                    &#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272; API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="query.cn.html">
+            
+                <a href="query.cn.html">
+            
+                    
+                    &#x67E5;&#x8BE2;&#x76F8;&#x5173; API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../appendix/">
+            
+                <a href="../appendix/">
+            
+                    
+                    &#x9644;&#x5F55;
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../appendix/faq.cn.html">
+            
+                <a href="../appendix/faq.cn.html">
+            
+                    
+                    &#x5E38;&#x89C1;&#x95EE;&#x9898;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../appendix/knownlimitation.cn.html">
+            
+                <a href="../appendix/knownlimitation.cn.html">
+            
+                    
+                    &#x5DF2;&#x77E5;&#x9650;&#x5236;
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../appendix/formatstring.cn.html">
+            
+                <a href="../appendix/formatstring.cn.html">
+            
+                    
+                    &#x9884;&#x5B9A;&#x4E49;&#x5EA6;&#x91CF;&#x683C;&#x5F0F;&#x548C;&#x5EA6;&#x91CF;&#x683C;&#x5F0F;&#x5B57;&#x7B26;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../contact/">
+            
+                <a href="../contact/">
+            
+                    
+                    &#x8054;&#x7CFB;&#x6211;&#x4EEC;
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            &#x672C;&#x4E66;&#x4F7F;&#x7528; GitBook &#x53D1;&#x5E03;
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="..">&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272; API</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272;-api"><a name="&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272;-api" class="plugin-anchor" href="#&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272;-api"><i class="fa fa-link" aria-hidden="true"></i></a>&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272; API</h2>
+<p>&#x5BF9;&#x4E8E;&#x6709;&#x5BF9;&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272;&#x8FDB;&#x884C;&#x76F8;&#x5173;&#x64CD;&#x4F5C;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x672C;&#x8282;&#x4ECB;&#x7ECD;&#x7684;&#x76F8;&#x5173; API &#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x76F8;&#x5173;&#x64CD;&#x4F5C;&#x5305;&#x542B;&#xFF1A;</p>
+<ul>
+<li><a href="#&#x65B0;&#x589E;&#x89D2;&#x8272;">&#x65B0;&#x589E;&#x89D2;&#x8272;</a></li>
+<li><a href="#&#x66F4;&#x65B0;&#x89D2;&#x8272;">&#x66F4;&#x65B0;&#x89D2;&#x8272;</a></li>
+<li><a href="#&#x67E5;&#x8BE2;&#x89D2;&#x8272;">&#x67E5;&#x8BE2;&#x89D2;&#x8272;</a></li>
+<li><a href="#&#x5220;&#x9664;&#x89D2;&#x8272;">&#x5220;&#x9664;&#x89D2;&#x8272;</a></li>
+<li><a href="#&#x5411;&#x5DF2;&#x6709;&#x89D2;&#x8272;&#x589E;&#x52A0;&#x5355;&#x4E2A;&#x7528;&#x6237;">&#x5411;&#x5DF2;&#x6709;&#x89D2;&#x8272;&#x589E;&#x52A0;&#x5355;&#x4E2A;&#x7528;&#x6237;</a></li>
+<li><a href="#&#x4ECE;&#x5DF2;&#x6709;&#x89D2;&#x8272;&#x5220;&#x9664;&#x5355;&#x4E2A;&#x7528;&#x6237;">&#x4ECE;&#x5DF2;&#x6709;&#x89D2;&#x8272;&#x5220;&#x9664;&#x5355;&#x4E2A;&#x7528;&#x6237;</a></li>
+<li><a href="#&#x67E5;&#x8BE2;&#x89D2;&#x8272;&#x5217;&#x8868;">&#x67E5;&#x8BE2;&#x89D2;&#x8272;&#x5217;&#x8868;</a></li>
+</ul>
+<h3 id="&#x65B0;&#x589E;&#x89D2;&#x8272;"><a name="&#x65B0;&#x589E;&#x89D2;&#x8272;" class="plugin-anchor" href="#&#x65B0;&#x589E;&#x89D2;&#x8272;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x65B0;&#x589E;&#x89D2;&#x8272;</h3>
+<p>&#x8BE5; API &#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x65B0;&#x589E;&#x89D2;&#x8272;&#xFF0C;&#x5E76;&#x4E14;&#x76F4;&#x63A5;&#x5411;&#x5176;&#x4E2D;&#x6DFB;&#x52A0;&#x7528;&#x6237;</p>
+<ul>
+<li><code>POST  http://host:port/api/role</code></li>
+<li>Basic Auth &#x8BA4;&#x8BC1;</li>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+<li>HTTP Body &#x662F; <code>json</code>&#xFF0C;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;[&#x89D2;&#x8272;&#x540D;]&quot;</span>,
+    <span class="hljs-string">&quot;contains&quot;</span>: [
+        {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;user&quot;</span>,
+            <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;[&#x7528;&#x6237;&#x540D;1]&quot;</span>
+        },
+        {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;user&quot;</span>,
+            <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;[&#x7528;&#x6237;&#x540D;2]&quot;</span>
+        }
+    ],
+    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;[&#x89D2;&#x8272;&#x63CF;&#x8FF0;]&quot;</span>
+}
+</code></pre>
+<ul>
+<li>Curl &#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-sh">curl -X POST \
+<span class="hljs-string">&apos;http://host:port/api/role&apos;</span> \
+-H <span class="hljs-string">&apos;Authorization: Basic QURNSU46S1lMSU4=&apos;</span> \
+-H <span class="hljs-string">&apos;Content-Type:application/json;charset=utf8&apos;</span> \
+<span class="hljs-_">-d</span> <span class="hljs-string">&apos;{&quot;name&quot;:&quot;role_test&quot;,&quot;contains&quot;:[{&quot;type&quot;:&quot;user&quot;,&quot;name&quot;:&quot;ADMIN&quot;}],&quot;description&quot;:&quot;test&quot;}&apos;</span>
+</code></pre>
+<blockquote>
+<p>&#x547D;&#x4EE4;&#x89E3;&#x91CA;&#xFF1A;&#x8C03;&#x7528;&#x63A5;&#x53E3;&#xFF0C;&#x65B0;&#x589E;&#x5305;&#x542B;ADMIN&#x7528;&#x6237;&#x7684;&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272;&#xFF1A;role_test&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;</li>
+</ul>
+<pre><code class="lang-sh">{
+    <span class="hljs-string">&quot;status&quot;</span>: 0,
+    <span class="hljs-string">&quot;data&quot;</span>: {
+        <span class="hljs-string">&quot;role_id&quot;</span>: 2
+    }
+}
+</code></pre>
+<blockquote>
+<p>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x89E3;&#x91CA;&#xFF1A;status &#x4E3A; 0 &#x8868;&#x793A;&#x6210;&#x529F;, role_id &#x4E3A;&#x89D2;&#x8272; id&#x3002;</p>
+</blockquote>
+<h3 id="&#x66F4;&#x65B0;&#x89D2;&#x8272;"><a name="&#x66F4;&#x65B0;&#x89D2;&#x8272;" class="plugin-anchor" href="#&#x66F4;&#x65B0;&#x89D2;&#x8272;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x66F4;&#x65B0;&#x89D2;&#x8272;</h3>
+<p>&#x8BE5; API &#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x89D2;&#x8272;&#x4E2D;&#x7684;&#x7528;&#x6237;</p>
+<ul>
+<li><code>PUT http://host:port/api/role/{roleId}</code></li>
+<li>URL Path Variable<ul>
+<li><code>roleId</code>: &#x53D6;&#x503C;&#x4E3A;&#x89D2;&#x8272; id</li>
+</ul>
+</li>
+<li>Basic Auth &#x8BA4;&#x8BC1;</li>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+<li>HTTP Body &#x662F; <code>json</code>&#xFF0C;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;[&#x89D2;&#x8272;&#x540D;]&quot;</span>,
+    <span class="hljs-string">&quot;contains&quot;</span>: [
+        {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;user&quot;</span>,
+            <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;[&#x7528;&#x6237;&#x540D;1]&quot;</span>
+        },
+        {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;user&quot;</span>,
+            <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;[&#x7528;&#x6237;&#x540D;1]&quot;</span>
+        }
+    ],
+    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;[&#x89D2;&#x8272;&#x63CF;&#x8FF0;]&quot;</span>
+}
+</code></pre>
+<ul>
+<li>Curl &#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-sh">curl -X PUT \
+<span class="hljs-string">&apos;http://host:port/api/role/2&apos;</span> \
+-H <span class="hljs-string">&apos;Authorization: Basic QURNSU46S1lMSU4=&apos;</span> \
+-H <span class="hljs-string">&apos;Content-Type:application/json;charset=utf8&apos;</span> \
+<span class="hljs-_">-d</span> <span class="hljs-string">&apos;{&quot;name&quot;:&quot;role_test&quot;,&quot;contains&quot;:[{&quot;type&quot;:&quot;user&quot;,&quot;name&quot;:&quot;ADMIN&quot;}],&quot;description&quot;:&quot;test_update&quot;}&apos;</span>
+</code></pre>
+<blockquote>
+<p>&#x547D;&#x4EE4;&#x89E3;&#x91CA;&#xFF1A;&#x8C03;&#x7528;&#x63A5;&#x53E3;&#xFF0C;&#x5168;&#x91CF;&#x66F4;&#x65B0;&#x540D;&#x79F0;&#x4E3A; role_test &#x7684;&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272;&#x53CA;&#x63CF;&#x8FF0;&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;</li>
+</ul>
+<pre><code class="lang-sh">{
+    <span class="hljs-string">&quot;status&quot;</span>: 0,
+    <span class="hljs-string">&quot;data&quot;</span>: {
+        <span class="hljs-string">&quot;role_id&quot;</span>: 2
+    }
+}
+</code></pre>
+<blockquote>
+<p>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x89E3;&#x91CA;&#xFF1A;status &#x4E3A; 0 &#x8868;&#x793A;&#x6210;&#x529F;&#xFF0C;role_id &#x4E3A;&#x89D2;&#x8272; id&#x3002;</p>
+</blockquote>
+<h3 id="&#x67E5;&#x8BE2;&#x89D2;&#x8272;"><a name="&#x67E5;&#x8BE2;&#x89D2;&#x8272;" class="plugin-anchor" href="#&#x67E5;&#x8BE2;&#x89D2;&#x8272;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x67E5;&#x8BE2;&#x89D2;&#x8272;</h3>
+<ul>
+<li><code>GET http://host:port/api/role/{roleId}</code></li>
+<li>URL Path Variable<ul>
+<li><code>roleId</code>: &#x53D6;&#x503C;&#x4E3A;&#x89D2;&#x8272; id</li>
+</ul>
+</li>
+<li>Basic Auth&#x8BA4;&#x8BC1;</li>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+<li>Curl &#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-sh">curl -X GET \
+<span class="hljs-string">&apos;http://host:port/api/role/2&apos;</span> \
+-H <span class="hljs-string">&apos;Authorization: Basic QURNSU46S1lMSU4=&apos;</span>
+</code></pre>
+<blockquote>
+<p>&#x547D;&#x4EE4;&#x89E3;&#x91CA;&#xFF1A;&#x8C03;&#x7528;&#x63A5;&#x53E3;&#xFF0C;&#x67E5;&#x8BE2;&#x89D2;&#x8272; id &#x4E3A; 2 &#x7684;&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272;&#x4FE1;&#x606F;&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;</li>
+</ul>
+<pre><code class="lang-sh">{
+    <span class="hljs-string">&quot;status&quot;</span>: 0,
+    <span class="hljs-string">&quot;data&quot;</span>: {
+        <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;role_test&quot;</span>,
+        <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;test_update&quot;</span>,
+        <span class="hljs-string">&quot;contains&quot;</span>: [
+            {
+                <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;user&quot;</span>,
+                <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;ADMIN&quot;</span>
+            }
+        ]
+    }
+}
+</code></pre>
+<blockquote>
+<p>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x89E3;&#x91CA;&#xFF1A;status&#x4E3A;0&#x8868;&#x793A;&#x6210;&#x529F;&#xFF0C;data&#x5305;&#x542B;&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272;&#x4FE1;&#x606F;&#x3002;</p>
+</blockquote>
+<h3 id="&#x5220;&#x9664;&#x89D2;&#x8272;"><a name="&#x5220;&#x9664;&#x89D2;&#x8272;" class="plugin-anchor" href="#&#x5220;&#x9664;&#x89D2;&#x8272;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5220;&#x9664;&#x89D2;&#x8272;</h3>
+<ul>
+<li><code>DELETE http://host:port/api/role/{roleId}</code></li>
+<li>URL Path Variable<ul>
+<li><code>roleId</code>: &#x53D6;&#x503C;&#x4E3A;&#x89D2;&#x8272;id</li>
+</ul>
+</li>
+<li>Basic Auth&#x8BA4;&#x8BC1;</li>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+<li>Curl &#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-sh">curl -X DELETE \
+<span class="hljs-string">&apos;http://host:port/api/role/2&apos;</span> \
+-H <span class="hljs-string">&apos;Authorization: Basic QURNSU46S1lMSU4=&apos;</span>
+</code></pre>
+<blockquote>
+<p>&#x547D;&#x4EE4;&#x89E3;&#x91CA;&#xFF1A;&#x8C03;&#x7528;&#x63A5;&#x53E3;&#xFF0C;&#x5220;&#x9664;&#x89D2;&#x8272;id&#x4E3A;2&#x7684;&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272;&#x4FE1;&#x606F;&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;</li>
+</ul>
+<pre><code class="lang-sh">{
+  <span class="hljs-string">&quot;status&quot;</span> : 0,
+  <span class="hljs-string">&quot;data&quot;</span> : <span class="hljs-string">&quot;success&quot;</span>
+}
+</code></pre>
+<blockquote>
+<p>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x89E3;&#x91CA;&#xFF1A;status&#x4E3A;0&#x8868;&#x793A;&#x6210;&#x529F;&#xFF0C;data&#x5305;&#x542B;&#x5220;&#x9664;&#x6210;&#x529F;&#x4FE1;&#x606F;&#x3002;</p>
+</blockquote>
+<h3 id="&#x5411;&#x5DF2;&#x6709;&#x89D2;&#x8272;&#x589E;&#x52A0;&#x5355;&#x4E2A;&#x7528;&#x6237;"><a name="&#x5411;&#x5DF2;&#x6709;&#x89D2;&#x8272;&#x589E;&#x52A0;&#x5355;&#x4E2A;&#x7528;&#x6237;" class="plugin-anchor" href="#&#x5411;&#x5DF2;&#x6709;&#x89D2;&#x8272;&#x589E;&#x52A0;&#x5355;&#x4E2A;&#x7528;&#x6237;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x5411;&#x5DF2;&#x6709;&#x89D2;&#x8272;&#x589E;&#x52A0;&#x5355;&#x4E2A;&#x7528;&#x6237;</h3>
+<ul>
+<li><code>POST http://host:port/api/role/user/visibility/{roleId}</code></li>
+<li>URL Path Variable <ul>
+<li><code>roleId</code>: &#x53D6;&#x503C;&#x4E3A;&#x89D2;&#x8272; id</li>
+</ul>
+</li>
+<li>Basic Auth&#x8BA4;&#x8BC1;</li>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+<li>HTTP Body &#x662F; <code>json</code>&#xFF0C;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;[&#x89D2;&#x8272;&#x540D;]&quot;</span>,
+    <span class="hljs-string">&quot;contains&quot;</span>: [
+        {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;user&quot;</span>,
+            <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;[&#x7528;&#x6237;&#x540D;]&quot;</span>
+        }
+    ],
+    <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;&quot;</span>
+}
+</code></pre>
+<ul>
+<li>Curl &#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-sh">curl -X POST \
+<span class="hljs-string">&apos;http://host:port/api/role/user/visibility/2&apos;</span> \
+-H <span class="hljs-string">&apos;Authorization: Basic QURNSU46S1lMSU4=&apos;</span> \
+-H <span class="hljs-string">&apos;Content-Type:application/json;charset=utf8&apos;</span> \
+<span class="hljs-_">-d</span> <span class="hljs-string">&apos;{&quot;name&quot;:&quot;role_test&quot;,&quot;contains&quot;:[{&quot;type&quot;:&quot;user&quot;,&quot;name&quot;:&quot;ANALYST&quot;}],&quot;description&quot;:&quot;&quot;}&apos;</span>
+</code></pre>
+<blockquote>
+<p>&#x547D;&#x4EE4;&#x89E3;&#x91CA;&#xFF1A;&#x8C03;&#x7528;&#x63A5;&#x53E3;&#xFF0C;&#x5411;&#x5DF2;&#x6709;&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272; role_test &#x4E2D;&#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x7528;&#x6237; ANALYST &#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;</li>
+</ul>
+<pre><code class="lang-sh">{
+  <span class="hljs-string">&quot;status&quot;</span> : 0,
+  <span class="hljs-string">&quot;data&quot;</span> : <span class="hljs-string">&quot;success&quot;</span>
+}
+</code></pre>
+<blockquote>
+<p>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x89E3;&#x91CA;&#xFF1A;status &#x4E3A; 0 &#x8868;&#x793A;&#x6210;&#x529F;&#xFF0C;data &#x5305;&#x542B;&#x5220;&#x9664;&#x6210;&#x529F;&#x4FE1;&#x606F;&#x3002;</p>
+</blockquote>
+<h3 id="&#x4ECE;&#x5DF2;&#x6709;&#x89D2;&#x8272;&#x5220;&#x9664;&#x5355;&#x4E2A;&#x7528;&#x6237;"><a name="&#x4ECE;&#x5DF2;&#x6709;&#x89D2;&#x8272;&#x5220;&#x9664;&#x5355;&#x4E2A;&#x7528;&#x6237;" class="plugin-anchor" href="#&#x4ECE;&#x5DF2;&#x6709;&#x89D2;&#x8272;&#x5220;&#x9664;&#x5355;&#x4E2A;&#x7528;&#x6237;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x4ECE;&#x5DF2;&#x6709;&#x89D2;&#x8272;&#x5220;&#x9664;&#x5355;&#x4E2A;&#x7528;&#x6237;</h3>
+<ul>
+<li><code>DELETE http://host:port/api/role/user/visibility/{roleId}</code></li>
+<li>URL Path Variable<ul>
+<li><code>roleId</code>: &#x53D6;&#x503C;&#x4E3A;&#x89D2;&#x8272; id</li>
+</ul>
+</li>
+<li>Basic Auth&#x8BA4;&#x8BC1;</li>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+<li>Curl &#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</li>
+</ul>
+<pre><code class="lang-sh">curl -X DELETE \
+<span class="hljs-string">&apos;http://host:port/api/role/user/visibility/2&apos;</span> \
+-H <span class="hljs-string">&apos;Authorization: Basic QURNSU46S1lMSU4=&apos;</span> \
+-H <span class="hljs-string">&apos;Content-Type:application/json;charset=utf8&apos;</span> \
+<span class="hljs-_">-d</span> <span class="hljs-string">&apos;{&quot;name&quot;:&quot;role_test&quot;,&quot;contains&quot;:[{&quot;type&quot;:&quot;user&quot;,&quot;name&quot;:&quot;ANALYST&quot;}],&quot;description&quot;:&quot;&quot;}&apos;</span>
+</code></pre>
+<blockquote>
+<p>&#x547D;&#x4EE4;&#x89E3;&#x91CA;&#xFF1A;&#x8C03;&#x7528;&#x63A5;&#x53E3;&#xFF0C;&#x4ECE;&#x5DF2;&#x6709;&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272; role_test &#x4E2D;&#x79FB;&#x9664;&#x4E00;&#x4E2A;&#x7528;&#x6237; ANALYST &#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;</li>
+</ul>
+<pre><code class="lang-sh">{
+  <span class="hljs-string">&quot;status&quot;</span> : 0,
+  <span class="hljs-string">&quot;data&quot;</span> : <span class="hljs-string">&quot;success&quot;</span>
+}
+</code></pre>
+<blockquote>
+<p>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x89E3;&#x91CA;&#xFF1A;status &#x4E3A; 0 &#x8868;&#x793A;&#x6210;&#x529F;&#xFF0C;data &#x5305;&#x542B;&#x5220;&#x9664;&#x6210;&#x529F;&#x4FE1;&#x606F;&#x3002;</p>
+</blockquote>
+<h3 id="&#x67E5;&#x8BE2;&#x89D2;&#x8272;&#x5217;&#x8868;"><a name="&#x67E5;&#x8BE2;&#x89D2;&#x8272;&#x5217;&#x8868;" class="plugin-anchor" href="#&#x67E5;&#x8BE2;&#x89D2;&#x8272;&#x5217;&#x8868;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x67E5;&#x8BE2;&#x89D2;&#x8272;&#x5217;&#x8868;</h3>
+<ul>
+<li><code>GET http://host:port/api/roles</code></li>
+<li>Basic Auth&#x8BA4;&#x8BC1;</li>
+<li><code>Content-Type</code>: <code>application/json</code></li>
+</ul>
+<p>URL Parameters</p>
+<ul>
+<li><code>pageNum</code>- &#x5FC5;&#x9009; <code>Integer</code>, &#x9875;&#x6570;&#xFF0C;&#x6700;&#x5C0F;&#x4E3A; 0</li>
+<li><code>pageSize</code>- &#x5FC5;&#x9009;  <code>Integer</code>, &#x6BCF;&#x9875;&#x5927;&#x5C0F;</li>
+<li><code>containsDesc</code>- &#x5FC5;&#x9009;  <code>Boolean</code> , &#x662F;&#x5426;&#x5305;&#x542B;&#x89D2;&#x8272;&#x63CF;&#x8FF0;</li>
+<li><p><code>RoleName</code>- &#x53EF;&#x9009; <code>String</code> , &#x6A21;&#x7CCA;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4E0D;&#x9009;&#x4E3A;&#x6B63;&#x5E38;&#x5168;&#x67E5;&#x8BE2;&#xFF0C;&#x9009;&#x5B9A;&#x5219;&#x4F1A;&#x6839;&#x636E;&#x5BF9;&#x5E94;&#x5B57;&#x7B26;&#x4E32;&#x8FDB;&#x884C;&#x6A21;&#x7CCA;&#x67E5;&#x8BE2;</p>
+</li>
+<li><p>Curl &#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;</p>
+</li>
+</ul>
+<pre><code class="lang-sh">curl -X GET \
+<span class="hljs-string">&apos;http://host:port/api/roles?pageNum=0&amp;pageSize=500&amp;containsDesc=true&apos;</span> \
+-H <span class="hljs-string">&apos;Authorization: Basic QURNSU46S1lMSU4=&apos;</span>
+</code></pre>
+<blockquote>
+<p>&#x547D;&#x4EE4;&#x89E3;&#x91CA;&#xFF1A;&#x8C03;&#x7528;&#x63A5;&#x53E3;&#xFF0C;&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x5206;&#x9875;&#x7684;&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272;&#x5217;&#x8868;&#x3002;</p>
+</blockquote>
+<ul>
+<li>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;</li>
+</ul>
+<pre><code class="lang-sh">{
+    <span class="hljs-string">&quot;status&quot;</span>: 0,
+    <span class="hljs-string">&quot;data&quot;</span>: {
+        <span class="hljs-string">&quot;pageNum&quot;</span>: 0,
+        <span class="hljs-string">&quot;pageSize&quot;</span>: 500,
+        <span class="hljs-string">&quot;list&quot;</span>: [
+            {
+                <span class="hljs-string">&quot;id&quot;</span>: 3,
+                <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;role_test&quot;</span>,
+                <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;test_update&quot;</span>
+            }, {
+                <span class="hljs-string">&quot;id&quot;</span>: 1,
+                <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Admin&quot;</span>,
+                <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;This role is an admin role with all semantic information access to all datasets&quot;</span>
+            }
+        ],
+        <span class="hljs-string">&quot;total&quot;</span>: 2
+    }
+}
+</code></pre>
+<blockquote>
+<p>&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x89E3;&#x91CA;&#xFF1A;status &#x4E3A; 0 &#x8868;&#x793A;&#x6210;&#x529F;&#xFF0C;data &#x5305;&#x542B;&#x6570;&#x636E;&#x96C6;&#x89D2;&#x8272;&#x5217;&#x8868;&#x4FE1;&#x606F;&#x3002;</p>
+</blockquote>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> Powered by Gitbook. </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> Last Modified&#xFF1A; 2022-03-23 16:41:46 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching &quot;<span class="search-query"></span>&quot;</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching &quot;<span class="search-query"></span>&quot;</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="dataset.cn.html" class="navigation navigation-prev " aria-label="Previous page: &#x6570;&#x636E;&#x96C6; API">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="query.cn.html" class="navigation navigation-next " aria-label="Next page: &#x67E5;&#x8BE2;&#x76F8;&#x5173; API">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"数据集角色 API","level":"1.10.3","depth":2,"next":{"title":"查询相关 API","level":"1.10.4","depth":2,"path":"rest/query.cn.md","ref":"rest/query.cn.md","articles":[]},"previous":{"title":"数据集 API","level":"1.10.2","depth":2,"path":"rest/dataset.cn.md","ref":"rest/dataset.cn.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-disqus","-lunr","-search","search-pro-kui","github","ace","emphasize","anchors","page-footer-ex","sectionx","expandable-chapters","codeblock-filename","edit-link","header","image-captions"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"disqus":{"shortName":"manual-of-mdx-for-kylin"},"validate-links":{"local":"error"},"emphasize":{},"ace":{},"github":{"url":"https://github.com/Kyligence/mdx-kylin/tree/manual"},"livereload":{},"page-footer-ex":{"copyright":"Powered by Gitbook.","markdown":false,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"Last Modified："},"layout":{"headerPath":"layouts/header.html"},"header":{},"fontsettings":{"theme":"white","family":"sans","size":2},"sectionx":{},"highlight":{},"codeblock-filename":{},"search-pro-kui":{},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/Kyligence/mdx-kylin/edit/manual"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"caption":"_CAPTION_","variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"installation/install_linux.cn.html#fig1.2.2.1","level":"1.2.2","list_caption":"Figure: 首次启动同步失败","alt":"首次启动同步失败","nro":1,"url":"images/start.cn.png","index":1,"caption_template":"_CAPTION_","label":"首次启动同步失败","attributes":{},"skip":false,"key":"1.2.2.1"},{"backlink":"overview/index.html#fig1.3.1","level":"1.3","list_caption":"Figure: 概览界面","alt":"概览界面","nro":2,"url":"images/overview.cn.png","index":1,"caption_template":"_CAPTION_","label":"概览界面","attributes":{},"skip":false,"key":"1.3.1"},{"backlink":"overview/index.html#fig1.3.2","level":"1.3","list_caption":"Figure: 查询统计","alt":"查询统计","nro":3,"url":"images/query_statistics.cn.png","index":2,"caption_template":"_CAPTION_","label":"查询统计","attributes":{},"skip":false,"key":"1.3.2"},{"backlink":"overview/index.html#fig1.3.3","level":"1.3","list_caption":"Figure: 查询趋势","alt":"查询趋势","nro":4,"url":"images/query_trend.cn.png","index":3,"caption_template":"_CAPTION_","label":"查询趋势","attributes":{},"skip":false,"key":"1.3.3"},{"backlink":"overview/index.html#fig1.3.4","level":"1.3","list_caption":"Figure: 查询时间","alt":"查询时间","nro":5,"url":"images/query_time.cn.png","index":4,"caption_template":"_CAPTION_","label":"查询时间","attributes":{},"skip":false,"key":"1.3.4"},{"backlink":"overview/index.html#fig1.3.5","level":"1.3","list_caption":"Figure: 数据集排名","alt":"数据集排名","nro":6,"url":"images/ranking.cn.png","index":5,"caption_template":"_CAPTION_","label":"数据集排名","attributes":{},"skip":false,"key":"1.3.5"},{"backlink":"dataset/design_dataset/s1_basic_info.cn.html#fig1.4.1.1.1","level":"1.4.1.1","list_caption":"Figure: 打开数据集列表","alt":"打开数据集列表","nro":7,"url":"images/basic_info/open_dataset_list.cn.png","index":1,"caption_template":"_CAPTION_","label":"打开数据集列表","attributes":{},"skip":false,"key":"1.4.1.1.1"},{"backlink":"dataset/design_dataset/s1_basic_info.cn.html#fig1.4.1.1.2","level":"1.4.1.1","list_caption":"Figure: 创建数据集","alt":"创建数据集","nro":8,"url":"images/basic_info/create_dataset.cn.png","index":2,"caption_template":"_CAPTION_","label":"创建数据集","attributes":{},"skip":false,"key":"1.4.1.1.2"},{"backlink":"dataset/design_dataset/s1_basic_info.cn.html#fig1.4.1.1.3","level":"1.4.1.1","list_caption":"Figure: 填写基本信息","alt":"填写基本信息","nro":9,"url":"images/basic_info/basic_information.cn.png","index":3,"caption_template":"_CAPTION_","label":"填写基本信息","attributes":{},"skip":false,"key":"1.4.1.1.3"},{"backlink":"dataset/design_dataset/s3_semantic.cn.html#fig1.4.1.3.1","level":"1.4.1.3","list_caption":"Figure: 定义语义_初始界面","alt":"定义语义_初始界面","nro":10,"url":"images/semantic/semantic_overview.cn.png","index":1,"caption_template":"_CAPTION_","label":"定义语义_初始界面","attributes":{},"skip":false,"key":"1.4.1.3.1"},{"backlink":"dataset/design_dataset/s3_1_dimension_table.cn.html#fig1.4.1.3.1.1","level":"1.4.1.3.1","list_caption":"Figure: 查看维度表属性","alt":"查看维度表属性","nro":11,"url":"images/dimensions_table/show_dimensions_table.cn.png","index":1,"caption_template":"_CAPTION_","label":"查看维度表属性","attributes":{},"skip":false,"key":"1.4.1.3.1.1"},{"backlink":"dataset/design_dataset/s3_1_dimension_table.cn.html#fig1.4.1.3.1.2","level":"1.4.1.3.1","list_caption":"Figure: 编辑维度表属性","alt":"编辑维度表属性","nro":12,"url":"images/dimensions_table/edit_dimension_table.cn.png","index":2,"caption_template":"_CAPTION_","label":"编辑维度表属性","attributes":{},"skip":false,"key":"1.4.1.3.1.2"},{"backlink":"dataset/design_dataset/s3_2_dimension.cn.html#fig1.4.1.3.2.1","level":"1.4.1.3.2","list_caption":"Figure: 显示维度","alt":"显示维度","nro":13,"url":"images/dimension/show_dimension.cn.png","index":1,"caption_template":"_CAPTION_","label":"显示维度","attributes":{},"skip":false,"key":"1.4.1.3.2.1"},{"backlink":"dataset/design_dataset/s3_2_dimension.cn.html#fig1.4.1.3.2.2","level":"1.4.1.3.2","list_caption":"Figure: 编辑维度","alt":"编辑维度","nro":14,"url":"images/dimension/edit_dimensions.cn.png","index":2,"caption_template":"_CAPTION_","label":"编辑维度","attributes":{},"skip":false,"key":"1.4.1.3.2.2"},{"backlink":"dataset/design_dataset/s3_2_dimension.cn.html#fig1.4.1.3.2.3","level":"1.4.1.3.2","list_caption":"Figure: 编辑 Name Column","alt":"编辑 Name Column","nro":15,"url":"images/dimension/namecolumn.cn.png","index":3,"caption_template":"_CAPTION_","label":"编辑 Name Column","attributes":{},"skip":false,"key":"1.4.1.3.2.3"},{"backlink":"dataset/design_dataset/s3_2_dimension.cn.html#fig1.4.1.3.2.4","level":"1.4.1.3.2","list_caption":"Figure: 编辑 Value Column","alt":"编辑 Value Column","nro":16,"url":"images/dimension/valuecolumn.cn.png","index":4,"caption_template":"_CAPTION_","label":"编辑 Value Column","attributes":{},"skip":false,"key":"1.4.1.3.2.4"},{"backlink":"dataset/design_dataset/s3_2_dimension.cn.html#fig1.4.1.3.2.5","level":"1.4.1.3.2","list_caption":"Figure: 编辑 Properties","alt":"编辑 Properties","nro":17,"url":"images/dimension/properties.cn.png","index":5,"caption_template":"_CAPTION_","label":"编辑 Properties","attributes":{},"skip":false,"key":"1.4.1.3.2.5"},{"backlink":"dataset/design_dataset/s3_2_dimension.cn.html#fig1.4.1.3.2.6","level":"1.4.1.3.2","list_caption":"Figure: 编辑文件夹","alt":"编辑文件夹","nro":18,"url":"images/dimension/folder.cn.png","index":6,"caption_template":"_CAPTION_","label":"编辑文件夹","attributes":{},"skip":false,"key":"1.4.1.3.2.6"},{"backlink":"dataset/design_dataset/s3_2_dimension.cn.html#fig1.4.1.3.2.7","level":"1.4.1.3.2","list_caption":"Figure: 设置默认成员","alt":"设置默认成员","nro":19,"url":"images/dimension/default_member.cn.png","index":7,"caption_template":"_CAPTION_","label":"设置默认成员","attributes":{},"skip":false,"key":"1.4.1.3.2.7"},{"backlink":"dataset/design_dataset/s3_2_dimension.cn.html#fig1.4.1.3.2.8","level":"1.4.1.3.2","list_caption":"Figure: 编辑可见性","alt":"编辑可见性","nro":20,"url":"images/dimension/visible.cn.png","index":8,"caption_template":"_CAPTION_","label":"编辑可见性","attributes":{},"skip":false,"key":"1.4.1.3.2.8"},{"backlink":"dataset/design_dataset/s3_3_measure.cn.html#fig1.4.1.3.3.1","level":"1.4.1.3.3","list_caption":"Figure: 显示度量","alt":"显示度量","nro":21,"url":"images/measures/show_measures.cn.png","index":1,"caption_template":"_CAPTION_","label":"显示度量","attributes":{},"skip":false,"key":"1.4.1.3.3.1"},{"backlink":"dataset/design_dataset/s3_3_measure.cn.html#fig1.4.1.3.3.2","level":"1.4.1.3.3","list_caption":"Figure: 编辑度量","alt":"编辑度量","nro":22,"url":"images/measures/edit_measures.cn.png","index":2,"caption_template":"_CAPTION_","label":"编辑度量","attributes":{},"skip":false,"key":"1.4.1.3.3.2"},{"backlink":"dataset/design_dataset/s3_3_measure.cn.html#fig1.4.1.3.3.3","level":"1.4.1.3.3","list_caption":"Figure: 编辑度量格式","alt":"编辑度量格式","nro":23,"url":"images/measures/format_cn.png","index":3,"caption_template":"_CAPTION_","label":"编辑度量格式","attributes":{},"skip":false,"key":"1.4.1.3.3.3"},{"backlink":"dataset/design_dataset/s3_3_measure.cn.html#fig1.4.1.3.3.4","level":"1.4.1.3.3","list_caption":"Figure: 设置数值格式","alt":"设置数值格式","nro":24,"url":"images/measures/format_numeric_cn.png","index":4,"caption_template":"_CAPTION_","label":"设置数值格式","attributes":{},"skip":false,"key":"1.4.1.3.3.4"},{"backlink":"dataset/design_dataset/s3_3_measure.cn.html#fig1.4.1.3.3.5","level":"1.4.1.3.3","list_caption":"Figure: 设置自定义格式","alt":"设置自定义格式","nro":25,"url":"images/measures/format_user_define_cn.png","index":5,"caption_template":"_CAPTION_","label":"设置自定义格式","attributes":{},"skip":false,"key":"1.4.1.3.3.5"},{"backlink":"dataset/design_dataset/s3_3_measure.cn.html#fig1.4.1.3.3.6","level":"1.4.1.3.3","list_caption":"Figure: 编辑文件夹","alt":"编辑文件夹","nro":26,"url":"images/measures/folder.cn.png","index":6,"caption_template":"_CAPTION_","label":"编辑文件夹","attributes":{},"skip":false,"key":"1.4.1.3.3.6"},{"backlink":"dataset/design_dataset/s3_3_measure.cn.html#fig1.4.1.3.3.7","level":"1.4.1.3.3","list_caption":"Figure: 编辑可见性","alt":"编辑可见性","nro":27,"url":"images/measures/visible.cn.png","index":7,"caption_template":"_CAPTION_","label":"编辑可见性","attributes":{},"skip":false,"key":"1.4.1.3.3.7"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.cn.html#fig1.4.1.3.4.1","level":"1.4.1.3.4","list_caption":"Figure: 层级结构在 Excel 中的展示","alt":"层级结构在 Excel 中的展示","nro":28,"url":"images/hierarchy/excel_hierarchy.cn.png","index":1,"caption_template":"_CAPTION_","label":"层级结构在 Excel 中的展示","attributes":{},"skip":false,"key":"1.4.1.3.4.1"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.cn.html#fig1.4.1.3.4.2","level":"1.4.1.3.4","list_caption":"Figure: 新增层级结构","alt":"新增层级结构","nro":29,"url":"images/hierarchy/add_hierarchy.cn.png","index":2,"caption_template":"_CAPTION_","label":"新增层级结构","attributes":{},"skip":false,"key":"1.4.1.3.4.2"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.cn.html#fig1.4.1.3.4.3","level":"1.4.1.3.4","list_caption":"Figure: 显示层级结构","alt":"显示层级结构","nro":30,"url":"images/hierarchy/show_hierarchy.cn.png","index":3,"caption_template":"_CAPTION_","label":"显示层级结构","attributes":{},"skip":false,"key":"1.4.1.3.4.3"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.cn.html#fig1.4.1.3.4.4","level":"1.4.1.3.4","list_caption":"Figure: 编辑层级结构","alt":"编辑层级结构","nro":31,"url":"images/hierarchy/edit_hierarchy.cn.png","index":4,"caption_template":"_CAPTION_","label":"编辑层级结构","attributes":{},"skip":false,"key":"1.4.1.3.4.4"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.cn.html#fig1.4.1.3.4.5","level":"1.4.1.3.4","list_caption":"Figure: 表 D_MEDICINE 部分截图示意","alt":"表 D_MEDICINE 部分截图示意","nro":32,"url":"images/hierarchy/customrollup/dimension_table.cn.png","index":5,"caption_template":"_CAPTION_","label":"表 D_MEDICINE 部分截图示意","attributes":{},"skip":false,"key":"1.4.1.3.4.5"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.cn.html#fig1.4.1.3.4.6","level":"1.4.1.3.4","list_caption":"Figure: Create Hierarchy","alt":"Create Hierarchy","nro":33,"url":"images/hierarchy/customrollup/hierarchy.cn.png","index":6,"caption_template":"_CAPTION_","label":"Create Hierarchy","attributes":{},"skip":false,"key":"1.4.1.3.4.6"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.cn.html#fig1.4.1.3.4.7","level":"1.4.1.3.4","list_caption":"Figure: 创建层级结构","alt":"创建层级结构","nro":34,"url":"images/hierarchy/customrollup/set_weight.cn.png","index":7,"caption_template":"_CAPTION_","label":"创建层级结构","attributes":{},"skip":false,"key":"1.4.1.3.4.7"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.cn.html#fig1.4.1.3.4.8","level":"1.4.1.3.4","list_caption":"Figure: 设置权重","alt":"设置权重","nro":35,"url":"images/hierarchy/customrollup/set_weight_prompt.cn.png","index":8,"caption_template":"_CAPTION_","label":"设置权重","attributes":{},"skip":false,"key":"1.4.1.3.4.8"},{"backlink":"dataset/design_dataset/s3_5_namedset.cn.html#fig1.4.1.3.5.1","level":"1.4.1.3.5","list_caption":"Figure: 新增命名集","alt":"新增命名集","nro":36,"url":"images/named_set/add_named_set.cn.png","index":1,"caption_template":"_CAPTION_","label":"新增命名集","attributes":{},"skip":false,"key":"1.4.1.3.5.1"},{"backlink":"dataset/design_dataset/s3_5_namedset.cn.html#fig1.4.1.3.5.2","level":"1.4.1.3.5","list_caption":"Figure: 显示命名集","alt":"显示命名集","nro":37,"url":"images/named_set/show_named_set.cn.png","index":2,"caption_template":"_CAPTION_","label":"显示命名集","attributes":{},"skip":false,"key":"1.4.1.3.5.2"},{"backlink":"dataset/design_dataset/s3_5_namedset.cn.html#fig1.4.1.3.5.3","level":"1.4.1.3.5","list_caption":"Figure: 编辑命名集","alt":"编辑命名集","nro":38,"url":"images/named_set/edit_folder_named_set.cn.png","index":3,"caption_template":"_CAPTION_","label":"编辑命名集","attributes":{},"skip":false,"key":"1.4.1.3.5.3"},{"backlink":"dataset/design_dataset/s3_5_namedset.cn.html#fig1.4.1.3.5.4","level":"1.4.1.3.5","list_caption":"Figure: 示例命名集","alt":"示例命名集","nro":39,"url":"images/named_set/example_namedset_cn.png","index":4,"caption_template":"_CAPTION_","label":"示例命名集","attributes":{},"skip":false,"key":"1.4.1.3.5.4"},{"backlink":"dataset/design_dataset/s3_5_namedset.cn.html#fig1.4.1.3.5.5","level":"1.4.1.3.5","list_caption":"Figure: 示例命名集在Excel下展示","alt":"示例命名集在Excel下展示","nro":40,"url":"images/named_set/example_namedset_excel_cn.png","index":5,"caption_template":"_CAPTION_","label":"示例命名集在Excel下展示","attributes":{},"skip":false,"key":"1.4.1.3.5.5"},{"backlink":"dataset/design_dataset/s3_5_namedset.cn.html#fig1.4.1.3.5.6","level":"1.4.1.3.5","list_caption":"Figure: 示例命名集在Tableau下展示","alt":"示例命名集在Tableau下展示","nro":41,"url":"images/named_set/example_namedset_tableau_cn.png","index":6,"caption_template":"_CAPTION_","label":"示例命名集在Tableau下展示","attributes":{},"skip":false,"key":"1.4.1.3.5.6"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.cn.html#fig1.4.1.3.6.1","level":"1.4.1.3.6","list_caption":"Figure: 新增计算度量","alt":"新增计算度量","nro":42,"url":"images/calculated_measure/add_calculate_measure.cn.png","index":1,"caption_template":"_CAPTION_","label":"新增计算度量","attributes":{},"skip":false,"key":"1.4.1.3.6.1"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.cn.html#fig1.4.1.3.6.2","level":"1.4.1.3.6","list_caption":"Figure: 显示计算度量","alt":"显示计算度量","nro":43,"url":"images/calculated_measure/show_calculate_measure.cn.png","index":2,"caption_template":"_CAPTION_","label":"显示计算度量","attributes":{},"skip":false,"key":"1.4.1.3.6.2"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.cn.html#fig1.4.1.3.6.3","level":"1.4.1.3.6","list_caption":"Figure: 编辑计算度量","alt":"编辑计算度量","nro":44,"url":"images/calculated_measure/edit_calculate_measure.cn.png","index":3,"caption_template":"_CAPTION_","label":"编辑计算度量","attributes":{},"skip":false,"key":"1.4.1.3.6.3"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.cn.html#fig1.4.1.3.6.4","level":"1.4.1.3.6","list_caption":"Figure: 编辑文件夹","alt":"编辑文件夹","nro":45,"url":"images/calculated_measure/folder.cn.png","index":4,"caption_template":"_CAPTION_","label":"编辑文件夹","attributes":{},"skip":false,"key":"1.4.1.3.6.4"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.cn.html#fig1.4.1.3.6.5","level":"1.4.1.3.6","list_caption":"Figure: 编辑可见性","alt":"编辑可见性","nro":46,"url":"images/calculated_measure/visible.cn.png","index":5,"caption_template":"_CAPTION_","label":"编辑可见性","attributes":{},"skip":false,"key":"1.4.1.3.6.5"},{"backlink":"dataset/design_dataset/s3_6_s3_semi_additive_measure.cn.html#fig1.4.1.3.6.3.1","level":"1.4.1.3.6.3","list_caption":"Figure: 新增半累加度量","alt":"新增半累加度量","nro":47,"url":"images/calculated_measure/add_semi_additive_measure.cn.png","index":1,"caption_template":"_CAPTION_","label":"新增半累加度量","attributes":{},"skip":false,"key":"1.4.1.3.6.3.1"},{"backlink":"dataset/design_dataset/s3_7_measure_group.cn.html#fig1.4.1.3.7.1","level":"1.4.1.3.7","list_caption":"Figure: 编辑度量组名称","alt":"编辑度量组名称","nro":48,"url":"images/measures/measure_group_cn.png","index":1,"caption_template":"_CAPTION_","label":"编辑度量组名称","attributes":{},"skip":false,"key":"1.4.1.3.7.1"},{"backlink":"dataset/design_dataset/s3_8_del_objects.cn.html#fig1.4.1.3.8.1","level":"1.4.1.3.8","list_caption":"Figure: 数据集总览","alt":"数据集总览","nro":49,"url":"images/Fix/dataset_info_cn.png","index":1,"caption_template":"_CAPTION_","label":"数据集总览","attributes":{},"skip":false,"key":"1.4.1.3.8.1"},{"backlink":"dataset/design_dataset/s3_8_del_objects.cn.html#fig1.4.1.3.8.2","level":"1.4.1.3.8","list_caption":"Figure: 计算度量总览","alt":"计算度量总览","nro":50,"url":"images/Fix/cm_info_cn.png","index":2,"caption_template":"_CAPTION_","label":"计算度量总览","attributes":{},"skip":false,"key":"1.4.1.3.8.2"},{"backlink":"dataset/design_dataset/s3_8_del_objects.cn.html#fig1.4.1.3.8.3","level":"1.4.1.3.8","list_caption":"Figure: 命名集总览","alt":"命名集总览","nro":51,"url":"images/Fix/ns_info_cn.png","index":3,"caption_template":"_CAPTION_","label":"命名集总览","attributes":{},"skip":false,"key":"1.4.1.3.8.3"},{"backlink":"dataset/design_dataset/s3_8_del_objects.cn.html#fig1.4.1.3.8.4","level":"1.4.1.3.8","list_caption":"Figure: 模型替换","alt":"模型替换","nro":52,"url":"images/Fix/new_models_cn.png","index":4,"caption_template":"_CAPTION_","label":"模型替换","attributes":{},"skip":false,"key":"1.4.1.3.8.4"},{"backlink":"dataset/design_dataset/s3_8_del_objects.cn.html#fig1.4.1.3.8.5","level":"1.4.1.3.8","list_caption":"Figure: 对象失效","alt":"对象失效","nro":53,"url":"images/Fix/object_error_cn.png","index":5,"caption_template":"_CAPTION_","label":"对象失效","attributes":{},"skip":false,"key":"1.4.1.3.8.5"},{"backlink":"dataset/design_dataset/s3_8_del_objects.cn.html#fig1.4.1.3.8.6","level":"1.4.1.3.8","list_caption":"Figure: 确认删除","alt":"确认删除","nro":54,"url":"images/Fix/confirm_del_cn.png","index":6,"caption_template":"_CAPTION_","label":"确认删除","attributes":{},"skip":false,"key":"1.4.1.3.8.6"},{"backlink":"dataset/design_dataset/s3_8_del_objects.cn.html#fig1.4.1.3.8.7","level":"1.4.1.3.8","list_caption":"Figure: 确认删除","alt":"确认删除","nro":55,"url":"images/Fix/del_double_check_cn.png","index":7,"caption_template":"_CAPTION_","label":"确认删除","attributes":{},"skip":false,"key":"1.4.1.3.8.7"},{"backlink":"dataset/design_dataset/s3_8_del_objects.cn.html#fig1.4.1.3.8.8","level":"1.4.1.3.8","list_caption":"Figure: 删除成功","alt":"删除成功","nro":56,"url":"images/Fix/del_finish_cn.png","index":8,"caption_template":"_CAPTION_","label":"删除成功","attributes":{},"skip":false,"key":"1.4.1.3.8.8"},{"backlink":"dataset/design_dataset/s3_8_del_objects.cn.html#fig1.4.1.3.8.9","level":"1.4.1.3.8","list_caption":"Figure: 保存数据集","alt":"保存数据集","nro":57,"url":"images/Fix/save_dataset_cn.png","index":9,"caption_template":"_CAPTION_","label":"保存数据集","attributes":{},"skip":false,"key":"1.4.1.3.8.9"},{"backlink":"dataset/design_dataset/s4_translate.cn.html#fig1.4.1.4.1","level":"1.4.1.4","list_caption":"Figure: 添加翻译语言按钮","alt":"添加翻译语言按钮","nro":58,"url":"images/translate/add_translation_btn.cn.png","index":1,"caption_template":"_CAPTION_","label":"添加翻译语言按钮","attributes":{},"skip":false,"key":"1.4.1.4.1"},{"backlink":"dataset/design_dataset/s4_translate.cn.html#fig1.4.1.4.2","level":"1.4.1.4","list_caption":"Figure: 选择翻译语言","alt":"选择翻译语言","nro":59,"url":"images/translate/choose_language.cn.png","index":2,"caption_template":"_CAPTION_","label":"选择翻译语言","attributes":{},"skip":false,"key":"1.4.1.4.2"},{"backlink":"dataset/design_dataset/s4_translate.cn.html#fig1.4.1.4.3","level":"1.4.1.4","list_caption":"Figure: 定义翻译","alt":"定义翻译","nro":60,"url":"images/translate/add_translation_content.cn.png","index":3,"caption_template":"_CAPTION_","label":"定义翻译","attributes":{},"skip":false,"key":"1.4.1.4.3"},{"backlink":"dataset/design_dataset/s4_translate.cn.html#fig1.4.1.4.4","level":"1.4.1.4","list_caption":"Figure: 翻译示例","alt":"翻译示例","nro":61,"url":"images/translate/example_translation.png","index":4,"caption_template":"_CAPTION_","label":"翻译示例","attributes":{},"skip":false,"key":"1.4.1.4.4"},{"backlink":"dataset/design_dataset/s4_translate.cn.html#fig1.4.1.4.5","level":"1.4.1.4","list_caption":"Figure: 翻译中文","alt":"翻译中文","nro":62,"url":"images/translate/example_translation_excel_cn.png","index":5,"caption_template":"_CAPTION_","label":"翻译中文","attributes":{},"skip":false,"key":"1.4.1.4.5"},{"backlink":"dataset/design_dataset/s4_translate.cn.html#fig1.4.1.4.6","level":"1.4.1.4","list_caption":"Figure: 翻译英文","alt":"翻译英文","nro":63,"url":"images/translate/example_translation_excel_en.png","index":6,"caption_template":"_CAPTION_","label":"翻译英文","attributes":{},"skip":false,"key":"1.4.1.4.6"},{"backlink":"dataset/design_dataset/s5_dimension_usage.cn.html#fig1.4.1.5.1","level":"1.4.1.5","list_caption":"Figure: 显示维度用法","alt":"显示维度用法","nro":64,"url":"images/dimension_usage/dimension_usage_overview.cn.png","index":1,"caption_template":"_CAPTION_","label":"显示维度用法","attributes":{},"skip":false,"key":"1.4.1.5.1"},{"backlink":"dataset/design_dataset/s5_dimension_usage.cn.html#fig1.4.1.5.2","level":"1.4.1.5","list_caption":"Figure: 无法关联","alt":"无法关联","nro":65,"url":"images/dimension_usage/dimension_usage_overview2.cn.png","index":2,"caption_template":"_CAPTION_","label":"无法关联","attributes":{},"skip":false,"key":"1.4.1.5.2"},{"backlink":"dataset/design_dataset/s5_dimension_usage.cn.html#fig1.4.1.5.3","level":"1.4.1.5","list_caption":"Figure: 编辑维度用法","alt":"编辑维度用法","nro":66,"url":"images/dimension_usage/edit_dimension_usage.cn.png","index":3,"caption_template":"_CAPTION_","label":"编辑维度用法","attributes":{},"skip":false,"key":"1.4.1.5.3"},{"backlink":"dataset/design_dataset/s5_dimension_usage.cn.html#fig1.4.1.5.4","level":"1.4.1.5","list_caption":"Figure: 常规关联","alt":"常规关联","nro":67,"url":"images/dimension_usage/regular_relationship.cn.png","index":4,"caption_template":"_CAPTION_","label":"常规关联","attributes":{},"skip":false,"key":"1.4.1.5.4"},{"backlink":"dataset/design_dataset/save.cn.html#fig1.4.1.6.1","level":"1.4.1.6","list_caption":"Figure: 完成操作","alt":"完成操作","nro":68,"url":"images/save/finish.cn.png","index":1,"caption_template":"_CAPTION_","label":"完成操作","attributes":{},"skip":false,"key":"1.4.1.6.1"},{"backlink":"dataset/design_dataset/s8_xtd.cn.html#fig1.4.1.7.1","level":"1.4.1.7","list_caption":"Figure: 定义维表","alt":"定义维表","nro":69,"url":"images/YTD/set_table_attribute.cn.png","index":1,"caption_template":"_CAPTION_","label":"定义维表","attributes":{},"skip":false,"key":"1.4.1.7.1"},{"backlink":"dataset/design_dataset/s8_xtd.cn.html#fig1.4.1.7.2","level":"1.4.1.7","list_caption":"Figure: 定义维度类型","alt":"定义维度类型","nro":70,"url":"images/YTD/set_attribute.cn.png","index":2,"caption_template":"_CAPTION_","label":"定义维度类型","attributes":{},"skip":false,"key":"1.4.1.7.2"},{"backlink":"dataset/access_list.cn.html#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: 权限列表","alt":"权限列表","nro":71,"url":"images/access_list/access_list.cn.png","index":1,"caption_template":"_CAPTION_","label":"权限列表","attributes":{},"skip":false,"key":"1.4.2.1"},{"backlink":"dataset/access_list.cn.html#fig1.4.2.2","level":"1.4.2","list_caption":"Figure: 设置角色或者用户的权限列表","alt":"设置角色或者用户的权限列表","nro":72,"url":"images/access_list/access_list_detail.cn.png","index":2,"caption_template":"_CAPTION_","label":"设置角色或者用户的权限列表","attributes":{},"skip":false,"key":"1.4.2.2"},{"backlink":"dataset/import_export.cn.html#fig1.4.3.1","level":"1.4.3","list_caption":"Figure: 导出导入","alt":"导出导入","nro":73,"url":"images/export_single_cn.png","index":1,"caption_template":"_CAPTION_","label":"导出导入","attributes":{},"skip":false,"key":"1.4.3.1"},{"backlink":"dataset/import_export.cn.html#fig1.4.3.2","level":"1.4.3","list_caption":"Figure: 导出导入","alt":"导出导入","nro":74,"url":"images/export_more_cn.png","index":2,"caption_template":"_CAPTION_","label":"导出导入","attributes":{},"skip":false,"key":"1.4.3.2"},{"backlink":"dataset/import_export.cn.html#fig1.4.3.3","level":"1.4.3","list_caption":"Figure: 导出导入","alt":"导出导入","nro":75,"url":"images/import_cn.png","index":3,"caption_template":"_CAPTION_","label":"导出导入","attributes":{},"skip":false,"key":"1.4.3.3"},{"backlink":"dataset/import_export.cn.html#fig1.4.3.4","level":"1.4.3","list_caption":"Figure: 导出导入","alt":"导出导入","nro":76,"url":"images/import_config_cn.png","index":4,"caption_template":"_CAPTION_","label":"导出导入","attributes":{},"skip":false,"key":"1.4.3.4"},{"backlink":"dataset/import_export.cn.html#fig1.4.3.5","level":"1.4.3","list_caption":"Figure: 导出导入","alt":"导出导入","nro":77,"url":"images/show_dataset_info_cn.png","index":5,"caption_template":"_CAPTION_","label":"导出导入","attributes":{},"skip":false,"key":"1.4.3.5"},{"backlink":"dataset/import_export.cn.html#fig1.4.3.6","level":"1.4.3","list_caption":"Figure: 导出导入","alt":"导出导入","nro":78,"url":"images/same_dataset_cn.png","index":6,"caption_template":"_CAPTION_","label":"导出导入","attributes":{},"skip":false,"key":"1.4.3.6"},{"backlink":"dataset/import_export.cn.html#fig1.4.3.7","level":"1.4.3","list_caption":"Figure: 导出导入","alt":"导出导入","nro":79,"url":"images/dataset_diff_add_cn.png","index":7,"caption_template":"_CAPTION_","label":"导出导入","attributes":{},"skip":false,"key":"1.4.3.7"},{"backlink":"dataset/import_export.cn.html#fig1.4.3.8","level":"1.4.3","list_caption":"Figure: 导出导入","alt":"导出导入","nro":80,"url":"images/dataset_diff_del_cn.png","index":8,"caption_template":"_CAPTION_","label":"导出导入","attributes":{},"skip":false,"key":"1.4.3.8"},{"backlink":"dataset/import_export.cn.html#fig1.4.3.9","level":"1.4.3","list_caption":"Figure: 导出导入","alt":"导出导入","nro":81,"url":"images/dataset_diff_quit_cn.png","index":9,"caption_template":"_CAPTION_","label":"导出导入","attributes":{},"skip":false,"key":"1.4.3.9"},{"backlink":"dataset/rename_dataset_cn.html#fig1.4.4.1","level":"1.4.4","list_caption":"Figure: 重命名","alt":"重命名","nro":82,"url":"images/rename_dataset_entry_cn.png","index":1,"caption_template":"_CAPTION_","label":"重命名","attributes":{},"skip":false,"key":"1.4.4.1"},{"backlink":"dataset/rename_dataset_cn.html#fig1.4.4.2","level":"1.4.4","list_caption":"Figure: 重命名","alt":"重命名","nro":83,"url":"images/rename_dataset_ok_cn.png","index":2,"caption_template":"_CAPTION_","label":"重命名","attributes":{},"skip":false,"key":"1.4.4.2"},{"backlink":"dataset/rename_dataset_cn.html#fig1.4.4.3","level":"1.4.4","list_caption":"Figure: 重命名","alt":"重命名","nro":84,"url":"images/rename_dataset_done_cn.png","index":3,"caption_template":"_CAPTION_","label":"重命名","attributes":{},"skip":false,"key":"1.4.4.3"},{"backlink":"dataset.htmlx_list.cn.md#fig1.4.5.1","level":"1.4.5","list_caption":"Figure: 定义维表","alt":"定义维表","nro":85,"url":"images/time_table.cn.png","index":1,"caption_template":"_CAPTION_","label":"定义维表","attributes":{},"skip":false,"key":"1.4.5.1"},{"backlink":"dataset.htmlx_list.cn.md#fig1.4.5.2","level":"1.4.5","list_caption":"Figure: 定义维度类型","alt":"定义维度类型","nro":86,"url":"images/dim_attribute.cn.png","index":2,"caption_template":"_CAPTION_","label":"定义维度类型","attributes":{},"skip":false,"key":"1.4.5.2"},{"backlink":"mdx_query/query_history.cn.html#fig1.5.2.1","level":"1.5.2","list_caption":"Figure: 打开查询历史","alt":"打开查询历史","nro":87,"url":"./images/query_history_1.cn.png","index":1,"caption_template":"_CAPTION_","label":"打开查询历史","attributes":{},"skip":false,"key":"1.5.2.1"},{"backlink":"mdx_query/query_history.cn.html#fig1.5.2.2","level":"1.5.2","list_caption":"Figure: 查询历史详情展开","alt":"查询历史详情展开","nro":88,"url":"./images/query_history_2.cn.png","index":2,"caption_template":"_CAPTION_","label":"查询历史详情展开","attributes":{},"skip":false,"key":"1.5.2.2"},{"backlink":"mdx_query/query_history.cn.html#fig1.5.2.3","level":"1.5.2","list_caption":"Figure: SQL 查询执行详情","alt":"SQL 查询执行详情","nro":89,"url":"./images/query_history_3.cn.png","index":3,"caption_template":"_CAPTION_","label":"SQL 查询执行详情","attributes":{},"skip":false,"key":"1.5.2.3"},{"backlink":"mdx_query/query_history.cn.html#fig1.5.2.4","level":"1.5.2","list_caption":"Figure: SQL 查询执行详情","alt":"SQL 查询执行详情","nro":90,"url":"./images/query_history_4.cn.png","index":4,"caption_template":"_CAPTION_","label":"SQL 查询执行详情","attributes":{},"skip":false,"key":"1.5.2.4"},{"backlink":"integration/excel_integration.cn.html#fig1.6.1.1","level":"1.6.1","list_caption":"Figure: 连接 Excel","alt":"连接 Excel","nro":91,"url":"images/excel/step_1.png","index":1,"caption_template":"_CAPTION_","label":"连接 Excel","attributes":{},"skip":false,"key":"1.6.1.1"},{"backlink":"integration/excel_integration.cn.html#fig1.6.1.2","level":"1.6.1","list_caption":"Figure: 选择数据集","alt":"选择数据集","nro":92,"url":"images/excel/step_3.png","index":2,"caption_template":"_CAPTION_","label":"选择数据集","attributes":{},"skip":false,"key":"1.6.1.2"},{"backlink":"integration/excel_integration.cn.html#fig1.6.1.3","level":"1.6.1","list_caption":"Figure: 勾选刷新数据","alt":"勾选刷新数据","nro":93,"url":"images/excel/step_4.png","index":3,"caption_template":"_CAPTION_","label":"勾选刷新数据","attributes":{},"skip":false,"key":"1.6.1.3"},{"backlink":"integration/excel_integration.cn.html#fig1.6.1.4","level":"1.6.1","list_caption":"Figure: 使用 Excel 分析","alt":"使用 Excel 分析","nro":94,"url":"images/excel/excel_analysis.png","index":4,"caption_template":"_CAPTION_","label":"使用 Excel 分析","attributes":{},"skip":false,"key":"1.6.1.4"},{"backlink":"integration/tableau_integration.cn.html#fig1.6.2.1","level":"1.6.2","list_caption":"Figure: 推荐驱动","alt":"推荐驱动","nro":95,"url":"images/tableau/drivers_ssas.cn.png","index":1,"caption_template":"_CAPTION_","label":"推荐驱动","attributes":{},"skip":false,"key":"1.6.2.1"},{"backlink":"integration/tableau_integration.cn.html#fig1.6.2.2","level":"1.6.2","list_caption":"Figure: 连接Tableau","alt":"连接Tableau","nro":96,"url":"images/tableau/connect_to_tableau.cn.png","index":2,"caption_template":"_CAPTION_","label":"连接Tableau","attributes":{},"skip":false,"key":"1.6.2.2"},{"backlink":"integration/tableau_integration.cn.html#fig1.6.2.3","level":"1.6.2","list_caption":"Figure: 选择Dataset","alt":"选择Dataset","nro":97,"url":"images/tableau/select_dataset.cn.png","index":3,"caption_template":"_CAPTION_","label":"选择Dataset","attributes":{},"skip":false,"key":"1.6.2.3"},{"backlink":"integration/tableau_integration.cn.html#fig1.6.2.4","level":"1.6.2","list_caption":"Figure: 使用Tableau分析","alt":"使用Tableau分析","nro":98,"url":"images/tableau/tableau_analysis.cn.png","index":4,"caption_template":"_CAPTION_","label":"使用Tableau分析","attributes":{},"skip":false,"key":"1.6.2.4"},{"backlink":"security/role.cn.html#fig1.7.1.1","level":"1.7.1","list_caption":"Figure: 查看默认角色","alt":"查看默认角色","nro":99,"url":"images/role/admin_role.cn.png","index":1,"caption_template":"_CAPTION_","label":"查看默认角色","attributes":{},"skip":false,"key":"1.7.1.1"},{"backlink":"security/role.cn.html#fig1.7.1.2","level":"1.7.1","list_caption":"Figure: 管理角色","alt":"管理角色","nro":100,"url":"images/role/manage_role.cn.png","index":2,"caption_template":"_CAPTION_","label":"管理角色","attributes":{},"skip":false,"key":"1.7.1.2"},{"backlink":"security/object_level_security.cn.html#fig1.7.2.1","level":"1.7.2","list_caption":"Figure: 编辑可见性","alt":"编辑可见性","nro":101,"url":"../dataset/design_dataset/images/dimension/visible.cn.png","index":1,"caption_template":"_CAPTION_","label":"编辑可见性","attributes":{},"skip":false,"key":"1.7.2.1"},{"backlink":"operations/logging.cn.html#fig1.8.1.1","level":"1.8.1","list_caption":"Figure: 查询 ID","alt":"查询 ID","nro":102,"url":"images/query_id.cn.png","index":1,"caption_template":"_CAPTION_","label":"查询 ID","attributes":{},"skip":false,"key":"1.8.1.1"},{"backlink":"operations/logging.cn.html#fig1.8.1.2","level":"1.8.1","list_caption":"Figure: API 调用者","alt":"API 调用者","nro":103,"url":"images/username.cn.png","index":2,"caption_template":"_CAPTION_","label":"API 调用者","attributes":{},"skip":false,"key":"1.8.1.2"},{"backlink":"operations/configuration.cn.html#fig1.8.4.1","level":"1.8.4","list_caption":"Figure: 登陆管理员页面","alt":"登陆管理员页面","nro":104,"url":"images/login_admin.cn.png","index":1,"caption_template":"_CAPTION_","label":"登陆管理员页面","attributes":{},"skip":false,"key":"1.8.4.1"},{"backlink":"operations/configuration.cn.html#fig1.8.4.2","level":"1.8.4","list_caption":"Figure: 参数配置","alt":"参数配置","nro":105,"url":"images/conf.cn.png","index":2,"caption_template":"_CAPTION_","label":"参数配置","attributes":{},"skip":false,"key":"1.8.4.2"},{"backlink":"operations/configuration.cn.html#fig1.8.4.3","level":"1.8.4","list_caption":"Figure: 重启任务","alt":"重启任务","nro":106,"url":"images/restart_task.cn.png","index":3,"caption_template":"_CAPTION_","label":"重启任务","attributes":{},"skip":false,"key":"1.8.4.3"},{"backlink":"operations/configuration.cn.html#fig1.8.4.4","level":"1.8.4","list_caption":"Figure: 编辑用户信息","alt":"编辑用户信息","nro":107,"url":"images/edit_user_info.cn.png","index":4,"caption_template":"_CAPTION_","label":"编辑用户信息","attributes":{},"skip":false,"key":"1.8.4.4"},{"backlink":"appendix/knownlimitation.cn.html#fig1.11.2.1","level":"1.11.2","list_caption":"Figure: 限制 1","alt":"限制 1","nro":108,"url":"images/limitation1.cn.png","index":1,"caption_template":"_CAPTION_","label":"限制 1","attributes":{},"skip":false,"key":"1.11.2.1"},{"backlink":"appendix/knownlimitation.cn.html#fig1.11.2.2","level":"1.11.2","list_caption":"Figure: 限制 3","alt":"限制 3","nro":109,"url":"images/limitation3.cn.png","index":2,"caption_template":"_CAPTION_","label":"限制 3","attributes":{},"skip":false,"key":"1.11.2.2"}]},"title":"Manual of MDX for Kylin","language":"zh-hans","links":{"sidebar":{"Home":""}},"gitbook":"*","description":"MDX for Kylin 手册"},"file":{"path":"rest/role.cn.md","mtime":"2022-03-23T08:41:46.275Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-28T09:41:32.576Z"},"basePath":"..","book":{"language":"zh-hans"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro-kui/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro-kui/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sectionx/sectionx.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

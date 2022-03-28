@@ -44,7 +44,7 @@
         },
 
         "page-footer-ex": {
-            "copyright":"&copy 2019 Kyligence Inc. All rights reserved. Powered by Gitbook.",
+            "copyright":"Powered by Gitbook.",
             "update_label": "Last Modified：",
             "update_format": "YYYY-MM-DD HH:mm:ss"
         },

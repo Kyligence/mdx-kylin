@@ -1,0 +1,2116 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>MDX Function List &#xB7; Manual of MDX for Kylin</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content>
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro-kui/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-ace/ace.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-footer-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-sectionx/sectionx.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-codeblock-filename/block.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-image-captions/image-captions.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="metadata_synchronization.en.html">
+    
+    
+    <link rel="prev" href="rename_dataset.en.html">
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../installation/">
+            
+                <a href="../installation/">
+            
+                    
+                    Installation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../installation/prerequisite.en.html">
+            
+                <a href="../installation/prerequisite.en.html">
+            
+                    
+                    Installation Prerequisites
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../installation/install_linux.en.html">
+            
+                <a href="../installation/install_linux.en.html">
+            
+                    
+                    Install on Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../installation/MDX_cluster_installation.en.html">
+            
+                <a href="../installation/MDX_cluster_installation.en.html">
+            
+                    
+                    MDX cluster installation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../installation/uninstall.en.html">
+            
+                <a href="../installation/uninstall.en.html">
+            
+                    
+                    Uninstall
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../overview/">
+            
+                <a href="../overview/">
+            
+                    
+                    Overview
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Dataset
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="design_dataset/">
+            
+                <a href="design_dataset/">
+            
+                    
+                    Dataset Design
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="design_dataset/s1_basic_info.en.html">
+            
+                <a href="design_dataset/s1_basic_info.en.html">
+            
+                    
+                    Fill in the basic information
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="design_dataset/s2_relationship.en.html">
+            
+                <a href="design_dataset/s2_relationship.en.html">
+            
+                    
+                    Define a relationship
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="design_dataset/s3_semantic.en.html">
+            
+                <a href="design_dataset/s3_semantic.en.html">
+            
+                    
+                    Define semantics
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.3.1" data-path="design_dataset/s3_1_dimension_table.en.html">
+            
+                <a href="design_dataset/s3_1_dimension_table.en.html">
+            
+                    
+                    View and edit dimension table
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.2" data-path="design_dataset/s3_2_dimension.en.html">
+            
+                <a href="design_dataset/s3_2_dimension.en.html">
+            
+                    
+                    View and edit dimensions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.3" data-path="design_dataset/s3_3_measure.en.html">
+            
+                <a href="design_dataset/s3_3_measure.en.html">
+            
+                    
+                    View and edit measures
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.4" data-path="design_dataset/s3_4_hierarchy.en.html">
+            
+                <a href="design_dataset/s3_4_hierarchy.en.html">
+            
+                    
+                    Add, View and edit Hierarchy
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.5" data-path="design_dataset/s3_5_namedset.en.html">
+            
+                <a href="design_dataset/s3_5_namedset.en.html">
+            
+                    
+                    Add, view and edit named sets
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.6" data-path="design_dataset/s3_6_calculated_measure.en.html">
+            
+                <a href="design_dataset/s3_6_calculated_measure.en.html">
+            
+                    
+                    Add, view, and edit calculated measures
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.3.6.1" data-path="design_dataset/s3_6_s1_non_empty_behavior.en.html">
+            
+                <a href="design_dataset/s3_6_s1_non_empty_behavior.en.html">
+            
+                    
+                    Non-empty behavior
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.6.2" data-path="design_dataset/s3_6_s2_template.en.html">
+            
+                <a href="design_dataset/s3_6_s2_template.en.html">
+            
+                    
+                    Use template
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.6.3" data-path="design_dataset/s3_6_s3_semi_additive_measure.en.html">
+            
+                <a href="design_dataset/s3_6_s3_semi_additive_measure.en.html">
+            
+                    
+                    semi-additive measure
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.7" data-path="design_dataset/s3_7_measure_group.en.html">
+            
+                <a href="design_dataset/s3_7_measure_group.en.html">
+            
+                    
+                    View and edit measure group
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3.8" data-path="design_dataset/s3_8_batch_deletion.en.html">
+            
+                <a href="design_dataset/s3_8_batch_deletion.en.html">
+            
+                    
+                    Batch deletion of named sets/hierarchies/calculated measures
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.4" data-path="design_dataset/s4_translate.en.html">
+            
+                <a href="design_dataset/s4_translate.en.html">
+            
+                    
+                    Define translation
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.5" data-path="design_dataset/s5_dimension_usage.en.html">
+            
+                <a href="design_dataset/s5_dimension_usage.en.html">
+            
+                    
+                    Define dimension usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.6" data-path="design_dataset/save.en.html">
+            
+                <a href="design_dataset/save.en.html">
+            
+                    
+                    Save
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.7" data-path="design_dataset/s8_xtd.en.html">
+            
+                <a href="design_dataset/s8_xtd.en.html">
+            
+                    
+                    YTD, QTD, MTD Instructions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="access_list.en.html">
+            
+                <a href="access_list.en.html">
+            
+                    
+                    Configure Access List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="import_export.en.html">
+            
+                <a href="import_export.en.html">
+            
+                    
+                    Datasets Import and Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="rename_dataset.en.html">
+            
+                <a href="rename_dataset.en.html">
+            
+                    
+                    Rename Dataset
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.5" data-path="mdx_list.en.html">
+            
+                <a href="mdx_list.en.html">
+            
+                    
+                    MDX Function List
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="metadata_synchronization.en.html">
+            
+                <a href="metadata_synchronization.en.html">
+            
+                    
+                    Metadata Synchronization
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../mdx_query/">
+            
+                <a href="../mdx_query/">
+            
+                    
+                    Query
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../mdx_query/query_syntax.en.html">
+            
+                <a href="../mdx_query/query_syntax.en.html">
+            
+                    
+                    Query Syntax
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../mdx_query/query_history.en.html">
+            
+                <a href="../mdx_query/query_history.en.html">
+            
+                    
+                    Query History
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../integration/">
+            
+                <a href="../integration/">
+            
+                    
+                    BI Integration
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../integration/excel_integration.en.html">
+            
+                <a href="../integration/excel_integration.en.html">
+            
+                    
+                    Integrate with Excel
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../integration/excel_function_list.en.html">
+            
+                <a href="../integration/excel_function_list.en.html">
+            
+                    
+                    Supported Excel Function List
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../integration/tableau_integration.en.html">
+            
+                <a href="../integration/tableau_integration.en.html">
+            
+                    
+                    Integrate with Tableau
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../integration/tableau_function_list.en.html">
+            
+                <a href="../integration/tableau_function_list.en.html">
+            
+                    
+                    Supported Tableau Function List
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../security/">
+            
+                <a href="../security/">
+            
+                    
+                    Security
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../security/role.en.html">
+            
+                <a href="../security/role.en.html">
+            
+                    
+                    Role
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../security/object_level_security.en.html">
+            
+                <a href="../security/object_level_security.en.html">
+            
+                    
+                    Object-level Security
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../operations/">
+            
+                <a href="../operations/">
+            
+                    
+                    System Operation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../operations/logging.en.html">
+            
+                <a href="../operations/logging.en.html">
+            
+                    
+                    System Log
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../operations/diagnosis.en.html">
+            
+                <a href="../operations/diagnosis.en.html">
+            
+                    
+                    Diagnosis Package
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../operations/error_code.en.html">
+            
+                <a href="../operations/error_code.en.html">
+            
+                    
+                    Error Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../operations/configuration.en.html">
+            
+                <a href="../operations/configuration.en.html">
+            
+                    
+                    Task Configuration
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../operations/metadata.en.html">
+            
+                <a href="../operations/metadata.en.html">
+            
+                    
+                    Metadata Import and Export
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../configuration/">
+            
+                <a href="../configuration/">
+            
+                    
+                    System Configuration
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../configuration/files.en.html">
+            
+                <a href="../configuration/files.en.html">
+            
+                    
+                    Configuration Files
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../configuration/properties.en.html">
+            
+                <a href="../configuration/properties.en.html">
+            
+                    
+                    Basic Configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../configuration/jvm.en.html">
+            
+                <a href="../configuration/jvm.en.html">
+            
+                    
+                    JVM Configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../rest/">
+            
+                <a href="../rest/">
+            
+                    
+                    Rest API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../rest/authentication.en.html">
+            
+                <a href="../rest/authentication.en.html">
+            
+                    
+                    Authentication API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../rest/dataset.en.html">
+            
+                <a href="../rest/dataset.en.html">
+            
+                    
+                    Dataset API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../rest/role.en.html">
+            
+                <a href="../rest/role.en.html">
+            
+                    
+                    Dataset Role API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../rest/query.en.html">
+            
+                <a href="../rest/query.en.html">
+            
+                    
+                    Query related API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../appendix/">
+            
+                <a href="../appendix/">
+            
+                    
+                    Appendix
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../appendix/faq.en.html">
+            
+                <a href="../appendix/faq.en.html">
+            
+                    
+                    FAQ
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../appendix/knownlimitation.en.html">
+            
+                <a href="../appendix/knownlimitation.en.html">
+            
+                    
+                    Known Limitations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../appendix/formatstring.en.html">
+            
+                <a href="../appendix/formatstring.en.html">
+            
+                    
+                    Predefined measure formats and measure format characters
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../contact/">
+            
+                <a href="../contact/">
+            
+                    
+                    Contact Us
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="..">MDX Function List</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="mdx-function-list"><a name="mdx-function-list" class="plugin-anchor" href="#mdx-function-list"><i class="fa fa-link" aria-hidden="true"></i></a>MDX Function List</h2>
+<p>These are the functions implemented in the current MDX for Kylin release.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Name</th>
+<th style="text-align:left">Description&amp;Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">()</td>
+<td style="text-align:left">Brace operator constructs a Tuple.                           <br><code>&lt;Tuple&gt;</code>: (<code>&lt;Member&gt;</code>[ ,<code>&lt;Member&gt;</code>...])                      <br><br>([Date].[Day].&amp;[1917-02-09],[Product].[Color].&amp;[Blue])</td>
+</tr>
+<tr>
+<td style="text-align:left">{}</td>
+<td style="text-align:left">Brace operator constructs a Set.                             <br><code>&lt;Set&gt;</code>: {<code>&lt;Member&gt;</code>[ ,<code>&lt;Member&gt;</code>...]} <br><code>&lt;Set&gt;</code>: {<code>&lt;Tuple&gt;</code>[ ,<code>&lt;Tuple&gt;</code>...]}  <br><br>Example 1&#xFF1A;{[Customer].[BirthDate].&amp;[1917-02-09]}<br>Example 2&#xFF1A;{[Customer].[BirthDate].[BirthDate] .Members}<br>Example 3&#xFF1A;{([Customer].[BirthDate].&amp;[1917-02-09],[Product].[Color].&amp;[Blue])}</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">Multiplies two numbers.                                      <br><code>&lt;Numeric&gt;</code>: <code>&lt;Numeric&gt;</code> <code>*</code> <code>&lt;Numeric&gt;</code>                          <br><br>[Measures].[Count]<code>*</code>5</td>
+</tr>
+<tr>
+<td style="text-align:left">*</td>
+<td style="text-align:left">Returns the cross product of two sets.                       <br><code>&lt;Set&gt;</code>: <code>&lt;Set&gt;</code> <code>*</code> <code>&lt;Set&gt;</code><br> <code>&lt;Set&gt;</code>:<code>&lt;Member&gt;</code> <code>*</code> <code>&lt;Set&gt;</code><br> <code>&lt;Set&gt;</code>:<code>&lt;Set&gt;</code> <code>*</code> <code>&lt;Member&gt;</code><br> <code>&lt;Set&gt;</code>:<code>&lt;Member&gt;</code> <code>*</code> <code>&lt;Member&gt;</code>  <br><br>Example 1&#xFF1A;{[Customer].[BirthDate].[BirthDate] .Members} <code>*</code>{[Customer].[Education].[Education].Members}<br>Example 2&#xFF1A;{[Customer].[BirthDate].&amp;[1917-02-19]}<code>*</code>{[Customer].[Education].[Education] .Members}<br>Example 3&#xFF1A;{[Customer].[BirthDate].[BirthDate] .Members} <code>*</code> {[Customer].[Education].&amp;[Bachelors]}<br>Example 4&#xFF1A;{[Customer].[BirthDate].&amp;[1917-02-19]}<code>*</code>{[Customer].[Education].&amp;[Bachelors]}</td>
+</tr>
+<tr>
+<td style="text-align:left">+</td>
+<td style="text-align:left">Adds two numbers                                             <br><code>&lt;Numeric&gt;</code>: <code>&lt;Numeric&gt;</code> + <code>&lt;Numeric&gt;</code>                        <br><br>[Measures].[Count]+2</td>
+</tr>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">Subtracts two numbers.                                       <br><code>&lt;Numeric&gt;</code>: <code>&lt;Numeric&gt;</code> - <code>&lt;Numeric&gt;</code>                        <br><br>[Measures].[Count]-2</td>
+</tr>
+<tr>
+<td style="text-align:left">-</td>
+<td style="text-align:left">Returns the negative of a number.                            <br><code>&lt;Numeric&gt;</code>: - <code>&lt;Numeric Expression&gt;</code>                         -<br><br>[Measures].[Count]</td>
+</tr>
+<tr>
+<td style="text-align:left">/</td>
+<td style="text-align:left">Divides two numbers.                                         <br><code>&lt;Numeric&gt;</code>: <code>&lt;Numeric&gt;</code> / <code>&lt;Numeric&gt;</code>                        <br><br>Example 1&#xFF1A;2/1<br>Example 2&#xFF1A;[Measures].[Count]/5</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;</td>
+<td style="text-align:left">Returns whether an expression is less than another.          <br><code>&lt;Boolean&gt;</code>: <code>&lt;Numeric&gt;</code> &lt; <code>&lt;Numeric&gt;</code><br><code>&lt;Boolean&gt;</code>: <code>&lt;String&gt;</code> &lt; <code>&lt;String&gt;</code>  <br><br>Example 1&#xFF1A;[Measures].[A] &lt; [Measures].[B]<br>Example 2&#xFF1A;&apos;kylin&apos; &lt; &apos;kylingence&apos;</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;=</td>
+<td style="text-align:left">Returns whether an expression is less than or equal to another. <br><code>&lt;Boolean&gt;</code>: <code>&lt;Numeric&gt;</code> &lt;= <code>&lt;Numeric&gt;</code><br><code>&lt;Boolean&gt;</code>: <code>&lt;String&gt;</code> &lt;= <code>&lt;String&gt;</code> <br><br>Example 1&#xFF1A;[Measures].[A] &lt;= 10000<br>Example 2&#xFF1A;&apos;kylin&apos; &lt;= &apos;kylingence&apos;</td>
+</tr>
+<tr>
+<td style="text-align:left">&lt;&gt;</td>
+<td style="text-align:left">Returns whether two expressions are not equal.               <br><code>&lt;Boolean&gt;</code>: <code>&lt;Numeric&gt;</code> &lt;&gt; <code>&lt;Numeric&gt;</code><br><code>&lt;Boolean&gt;</code>: <code>&lt;String&gt;</code> &lt;&gt; <code>&lt;String&gt;</code>  <br><br>Example 1&#xFF1A;[Measures].[A] &lt;&gt; 10000<br>Example 2&#xFF1A;&apos;kylin&apos; &lt;&gt; &apos;kylingence&apos;</td>
+</tr>
+<tr>
+<td style="text-align:left">=</td>
+<td style="text-align:left">Returns whether two expressions are equal.                   <br><code>&lt;Boolean&gt;</code>: <code>&lt;Numeric&gt;</code> = <code>&lt;Numeric&gt;</code><br><code>&lt;Boolean&gt;</code>: <code>&lt;String&gt;</code> = <code>&lt;String&gt;</code>  <br><br>Example 1&#xFF1A;1 = 2<br>Example 2&#xFF1A;&apos;kylin&apos; = &apos;kylingence&apos;</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;</td>
+<td style="text-align:left">Returns whether an expression is greater than another.       <br><code>&lt;Boolean&gt;</code>: <code>&lt;Numeric&gt;</code> &gt; <code>&lt;Numeric&gt;</code><br><code>&lt;Boolean&gt;</code>: <code>&lt;String&gt;</code> &gt; <code>&lt;String&gt;</code>  <br><br>Example 1&#xFF1A;1 &gt; 2<br>Example 2&#xFF1A;&apos;kylin&apos; &gt; &apos;kylingence&apos;</td>
+</tr>
+<tr>
+<td style="text-align:left">&gt;=</td>
+<td style="text-align:left">Returns whether an expression is greater than or equal to another. <br><code>&lt;Boolean&gt;</code>: <code>&lt;Numeric&gt;</code> &gt;= <code>&lt;Numeric&gt;</code><br><code>&lt;Boolean&gt;</code>: <code>&lt;String&gt;</code> &gt;= <code>&lt;String&gt;</code> <br><br> Example 1&#xFF1A;1 &gt; 2<br>Example 2&#xFF1A;&apos;kylin&apos; &gt; &apos;kylingence&apos;</td>
+</tr>
+<tr>
+<td style="text-align:left">AND</td>
+<td style="text-align:left">Returns the conjunction of two conditions.                   <br><code>&lt;Boolean&gt;</code>: <code>&lt;Boolean&gt;</code> AND <code>&lt;Boolean&gt;</code>                      <br><br>([Measures].[Count]&gt;10000) AND (1=2)</td>
+</tr>
+<tr>
+<td style="text-align:left">Abs</td>
+<td style="text-align:left">Returns a value of the same type that is passed to it specifying the absolute value of a number. <br><code>&lt;Numeric&gt;</code>: Abs(<code>&lt;Numeric&gt;</code>)  <br><br>Abs(200.1-300)</td>
+</tr>
+<tr>
+<td style="text-align:left">Acos</td>
+<td style="text-align:left">Returns the arccosine, or inverse cosine, of a number. The arccosine is the angle whose cosine is Arg1. The returned angle is given in radians in the range 0 (zero) to pi. <br><code>&lt;Numeric&gt;</code>: Acos(<code>&lt;Numeric&gt;</code>)  <br><br>Acos(0.540302)+acos (-1.000000)</td>
+</tr>
+<tr>
+<td style="text-align:left">Acosh</td>
+<td style="text-align:left">Returns the inverse hyperbolic cosine of a number. Number must be greater than or equal to 1. The inverse hyperbolic cosine is the value whose hyperbolic cosine is Arg1, so Acosh(Cosh(number)) equals Arg1. <br><code>&lt;Numeric&gt;</code>: Acosh(<code>&lt;Numeric&gt;</code>)  <br><br>Acosh(1)+Acosh(10)</td>
+</tr>
+<tr>
+<td style="text-align:left">Aggregate</td>
+<td style="text-align:left">Returns a calculated value using the appropriate aggregate function, based on the context of the query. <br><code>&lt;Numeric&gt;</code>: Aggregate(<code>&lt;Set&gt;</code>) <code>&lt;Numeric&gt;</code>: Aggregate(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)  <br><br>Example 1&#xFF1A;Aggregate({[Date].[CalendarYear].&amp;[2014],[Date].[CalendarYear].&amp;[2013]})<br>Example 2&#xFF1A;Aggregate({[Date].[CalendarYear].&amp;[2014],[Date].[CalendarYear].&amp;[2013]},[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">AllMembers</td>
+<td style="text-align:left">Returns a set that contains all members ,including calculated members,of the specified object. <br><code>&lt;Set&gt;</code>: <code>&lt;Dimension&gt;</code>.AllMembers<br><code>&lt;Set&gt;</code>: <code>&lt;Hierarchy&gt;</code>.AllMembers<br><code>&lt;Set&gt;</code>: <code>&lt;Level&gt;</code>.AllMembers  <br><br>Example 1&#xFF1A;[Date].[CalendarSemester].[CalendarSemester] .Allmembers<br>Example 2&#xFF1A;[Date].[Due Fiscal Date-Hierarchy].Allmembers<br>Example 3&#xFF1A;[Date].[Due Fiscal Date-Hierarchy].[FiscalYear].Allmembers</td>
+</tr>
+<tr>
+<td style="text-align:left">Asc</td>
+<td style="text-align:left">Returns an Integer representing the character code corresponding to the first letter in a string. <br><code>&lt;Integer&gt;</code>: Asc(<code>&lt;String&gt;</code>)  Asc(&quot;kylingence&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">AscB</td>
+<td style="text-align:left">See Asc.                                                     <br><code>&lt;Integer&gt;</code>: AscB(<code>&lt;String&gt;</code>)  AscB(&quot;kylingence&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">AscW</td>
+<td style="text-align:left">See Asc.                                                     <br><code>&lt;Integer&gt;</code>: AscW(<code>&lt;String&gt;</code>)                                 <br><br>AscW(&quot;kylingence&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">Ascendants</td>
+<td style="text-align:left">Returns the set of the ascendants of a specified member.     <br><code>&lt;Set&gt;</code>: Ascendants(<code>&lt;Member&gt;</code>)                               <br><br>Ascendants([Date].[Due Fiscal Date-Hierarchy].[FiscalYear].&amp;[2013].&amp;[1]</td>
+</tr>
+<tr>
+<td style="text-align:left">Asin</td>
+<td style="text-align:left">Returns the arcsine, or inverse sine, of a number. The arcsine is the angle whose sine is Arg1. The returned angle is given in radians in the range -pi/2 to pi/2. <br><code>&lt;Numeric&gt;</code>: Asin(<code>&lt;Numeric&gt;</code>)  <br><br>Asin(-0.5)</td>
+</tr>
+<tr>
+<td style="text-align:left">Asinh</td>
+<td style="text-align:left">Returns the inverse hyperbolic sine of a number. The inverse hyperbolic sine is the value whose hyperbolic sine is Arg1, so Asinh(Sinh(number)) equals Arg1. <br><code>&lt;Numeric&gt;</code>: Asinh(<code>&lt;Numeric&gt;</code>) <br><br>Asinh(-5)</td>
+</tr>
+<tr>
+<td style="text-align:left">Atan2</td>
+<td style="text-align:left">Returns the arctangent, or inverse tangent, of the specified <code>x-</code> and <code>y-</code>coordinates. The arctangent is the angle from the <code>x-axis</code> to a line containing the origin (0, 0) and a point with coordinates (<code>x_num</code>, <code>y_num</code>). The angle is given in radians between -pi and pi, excluding <code>-pi</code> <br><code>&lt;Numeric&gt;</code>: Atan2(<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>) <br><br>Atan2 (-7,7)</td>
+</tr>
+<tr>
+<td style="text-align:left">Atanh</td>
+<td style="text-align:left">Returns the inverse hyperbolic tangent of a number. Number must be between -1 and 1 (excluding -1 and 1). <br><code>&lt;Numeric&gt;</code>: Atanh(<code>&lt;Numeric&gt;</code>) <br><br>Atanh(0.76159416)</td>
+</tr>
+<tr>
+<td style="text-align:left">Atn</td>
+<td style="text-align:left">Returns a Double specifying the arctangent of a number.      <br><code>&lt;Numeric&gt;</code>: Atn(<code>&lt;Numeric&gt;</code>) <br><br>Atn (90)</td>
+</tr>
+<tr>
+<td style="text-align:left">Avg</td>
+<td style="text-align:left">Returns the average value of a numeric expression evaluated over a set. <br><code>&lt;Numeric&gt;</code>: Avg(<code>&lt;Set&gt;</code>) <code>&lt;Numeric&gt;</code> Avg(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)  <br><br>Example 1&#xFF1A;Avg({[Date].[CalendarQuarter].[CalendarQuarter].members})<br>Example 2&#xFF1A;Avg({[Date].[CalendarQuarter].[CalendarQuarter].members},[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">BottomPercent</td>
+<td style="text-align:left">The BottomPercent function calculates the sum of the specified numeric expression evaluated over a specified set. The function then returns the elements with the lowest values whose cumulative percentage of the total summed value is at least the specified percentage. This function returns the smallest subset of a set whose cumulative total is at least the specified percentage. <br><code>&lt;Set&gt;</code>: BottomPercent(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)     <br><br>BottomPercent({[Product].[Color].[Color].members},60,[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">BottomSum</td>
+<td style="text-align:left">Sorts a set and returns the bottom N elements whose cumulative total is at least a specified value. <br><code>&lt;Set&gt;</code>: BottomSum(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)<br><br>BottomSum({[Product].[Color].[Color].members},5220,[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">CBool</td>
+<td style="text-align:left">Returns an expression that has been converted to a Variant of subtype Boolean. <br><code>&lt;Boolean&gt;</code>: CBool(<code>&lt;Value&gt;</code>) <br><br>CBool(100)</td>
+</tr>
+<tr>
+<td style="text-align:left">CDate</td>
+<td style="text-align:left">Returns an expression that has been converted to a Variant of subtype Date. <br><code>&lt;DateTime&gt;</code>: CDate(<code>&lt;Value&gt;</code>) <br><br>CDate(&quot;2020-07-25 17:44:10&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">CDbl</td>
+<td style="text-align:left">Returns an expression that has been converted to a Variant of subtype Double. <br><code>&lt;Numeric&gt;</code>: CDbl(<code>&lt;Value&gt;</code>) <br><br>CDbl(234.456784)</td>
+</tr>
+<tr>
+<td style="text-align:left">CInt</td>
+<td style="text-align:left">Returns an expression that has been converted to a Variant of subtype Integer. <br><code>&lt;Integer&gt;</code>: CInt(<code>&lt;Value&gt;</code>)  <br><br>CInt(234.121231231)</td>
+</tr>
+<tr>
+<td style="text-align:left">Cache</td>
+<td style="text-align:left">Evaluates and returns its sole argument, applying statement-level.cachingCache(&lt;<code>&lt;Expression&gt;</code>&gt;)<br><br>Cache([Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Caption</td>
+<td style="text-align:left">Returns the caption of an object.                            <br><code>&lt;String&gt;</code>: <code>&lt;Dimension&gt;</code>.Caption<br><code>&lt;String&gt;</code>: <code>&lt;Hierarchy&gt;</code>.Caption<br><code>&lt;String&gt;</code>: <code>&lt;Level&gt;</code>.Caption<br><code>&lt;String&gt;</code>: <code>&lt;Member&gt;</code>.Caption  <br><br>Example 1&#xFF1A;[Customer].[EmailAddress].Caption<br>Example 2&#xFF1A;[Date].[Due Calendar Date-Hierarchy].Caption<br>Example 3&#xFF1A;[Date].[Due Calendar Date-Hierarchy].[CalendarYear].Caption<br>Example 4&#xFF1A;[Product].[Class].&amp;[M].caption</td>
+</tr>
+<tr>
+<td style="text-align:left">Cast</td>
+<td style="text-align:left">Converts values to another type.                             <br><code>&lt;Type&gt;</code>: Cast(<code>&lt;Expression&gt;</code> AS <code>&lt;Type&gt;</code>) <br><br>Cast(1+2 AS STRING)</td>
+</tr>
+<tr>
+<td style="text-align:left">Children</td>
+<td style="text-align:left">Returns the children of a member.                            <br><code>&lt;Set&gt;</code>: <code>&lt;Member&gt;</code>.Children <br><br>[Date].[Due Calendar Date-Hierarchy].[CalendarYear].&amp;[2010].children</td>
+</tr>
+<tr>
+<td style="text-align:left">Chr</td>
+<td style="text-align:left">Returns a String containing the character associated with the specified character code. <br><code>&lt;String&gt;</code>: Chr(<code>&lt;Integer&gt;</code>)<br><br>chr(48)</td>
+</tr>
+<tr>
+<td style="text-align:left">ChrB</td>
+<td style="text-align:left">See Chr.                                                     <br><code>&lt;String&gt;</code>: ChrB(<code>&lt;Integer&gt;</code>)   <br><br>ChrB(48)</td>
+</tr>
+<tr>
+<td style="text-align:left">ChrW</td>
+<td style="text-align:left">See Chr.                                                     <br><code>&lt;String&gt;</code>: ChrW(<code>&lt;Integer&gt;</code>)    <br><br>ChrW(48)</td>
+</tr>
+<tr>
+<td style="text-align:left">ClosingPeriod</td>
+<td style="text-align:left">Returns the last descendant of a member at a level.          <br><code>&lt;Member&gt;</code>: ClosingPeriod() <br><code>&lt;Member&gt;</code>: ClosingPeriod(<code>&lt;Level&gt;</code>) <br><code>&lt;Member&gt;</code>: ClosingPeriod(<code>&lt;Level&gt;</code>, <code>&lt;Member&gt;</code>) <br><code>&lt;Member&gt;</code>: ClosingPeriod(<code>&lt;Member&gt;</code>) <br><br> Example 1&#xFF1A;[Customer].[person-Hierarchy].[Education].closingperiod<br>Example 2&#xFF1A;ClosingPeriod([Date].[Due Fiscal Date-Hierarchy].[FiscalYear])<br>Example 3&#xFF1A;ClosingPeriod([ Date].[Due Fiscal Date-Hierarchy].[FiscalYear] ,[Date].[Due Fiscal Date-Hierarchy].[FiscalYear].&amp;[2010])<br>Example 4&#xFF1A;ClosingPeriod([Date].[Due Fiscal Date-Hierarchy].[FiscalYear].&amp;[2010])</td>
+</tr>
+<tr>
+<td style="text-align:left">CoalesceEmpty</td>
+<td style="text-align:left">Coalesces an empty cell value to a different value. All of the expressions must be of the same type (number or string).<br>CoalesceEmpty(<code>&lt;Value Expression&gt;</code>[,<code>&lt;Value Expression&gt;</code>...])  <br><br>CoalesceEmpty(88)</td>
+</tr>
+<tr>
+<td style="text-align:left">Correlation</td>
+<td style="text-align:left">Returns the correlation of two series evaluated over a set.  <br><code>&lt;Numeric&gt;</code>: Correlation(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>) <br><code>&lt;Numeric&gt;</code>: Correlation(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)  <br><br>Example 1&#xFF1A;Correlation({[Customer].[Education].&amp;[Bachelors],[Customer].[Education].&amp;[High School]},[Measures].[Count])<br>Example 2&#xFF1A;Correlation({[Customer].[Education].&amp;[Bachelors],[Customer].[Education].&amp;[High School]},[Measures].[SalesAmout],[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Cos</td>
+<td style="text-align:left">Returns a Double specifying the cosine of an angle.          <br><code>&lt;Numeric&gt;</code>: Cos(<code>&lt;Numeric&gt;</code>)  <br><br>Cos(60*Pi()/180)</td>
+</tr>
+<tr>
+<td style="text-align:left">Cosh</td>
+<td style="text-align:left">Returns the hyperbolic cosine of a number.                   <br><code>&lt;Numeric&gt;</code>: Cosh(<code>&lt;Numeric&gt;</code>) <br><br>Cosh(4)</td>
+</tr>
+<tr>
+<td style="text-align:left">Count</td>
+<td style="text-align:left">Returns the number of tuples in a set, empty cells included unless the optional EXCLUDEEMPTY flag is used. <br><code>&lt;Numeric&gt;</code>: Count(<code>&lt;Set&gt;</code>) <code>&lt;Numeric&gt;</code>: Count(<code>&lt;Set&gt;</code>, <code>&lt;Symbol&gt;</code>) <br><br>Example 1&#xFF1A;Count({[Product].[Color].[Color].members})<br>Example 2&#xFF1A;Count({[Product].[Color].[Color].members},EXCLUDEEMPTY)</td>
+</tr>
+<tr>
+<td style="text-align:left">Count</td>
+<td style="text-align:left">Returns the number of tuples in a set including empty cells. <br><code>&lt;Integer&gt;</code>: <code>&lt;Set&gt;</code>.Count  <br><br>[Product].[Class].[Class].members.Count</td>
+</tr>
+<tr>
+<td style="text-align:left">Covariance</td>
+<td style="text-align:left">Returns the covariance of two series evaluated over a set (biased). <br><code>&lt;Numeric&gt;</code>: Covariance(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>) <br><code>&lt;Numeric&gt;</code>: Covariance(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)  <br><br>Example 1&#xFF1A;Covariance([Product].[Class].[Class].Members, [Measures].[Product Standard Cost])<br>Example 2&#xFF1A;Covariance([Product].[Class].[Class].Members, [Measures].[Product Standard Cost], [Measures].[Freight])</td>
+</tr>
+<tr>
+<td style="text-align:left">CovarianceN</td>
+<td style="text-align:left">Returns the covariance of two series evaluated over a set (unbiased). <br><code>&lt;Numeric&gt;</code>: CovarianceN(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)<br> <code>&lt;Numeric&gt;</code>: CovarianceN(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)  <br><br>Example 1&#xFF1A;Covariancen([Product].[Class].[Class].Members, [Measures].[Product Standard Cost]) <br>Example 2&#xFF1A;Covariancen([Product].[Class].[Class].Members, [Measures].[Product Standard Cost], [Measures].[Freight])</td>
+</tr>
+<tr>
+<td style="text-align:left">Crossjoin</td>
+<td style="text-align:left">Returns the cross product of two sets.                       <br><code>&lt;Set&gt;</code>: Crossjoin(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>) <br><br>Crossjoin([Product].[Color].[Color].members,[Product].[Size].[Size].members)</td>
+</tr>
+<tr>
+<td style="text-align:left">CurrentDateMember</td>
+<td style="text-align:left">Returns the exact member within the specified dimension corresponding to the current date, in the format specified by the format parameter. If there is no such date, returns the NULL member. Format strings are the same as used by the MDX Format function, namely the Visual Basic format strings. <br><code>&lt;Member&gt;</code>: CurrentDateMember(<code>&lt;Hierarchy&gt;</code>, <code>&lt;String&gt;</code>)<br><br>CurrentDateMember([Date].[Calendar-Hierarchy],&apos;yyyymmdd&apos;)</td>
+</tr>
+<tr>
+<td style="text-align:left">CurrentDateMember</td>
+<td style="text-align:left">Returns the closest or exact member within the specified dimension corresponding to the current date, in the format specified by the format parameter. Format strings are the same as used by the MDX Format function, namely the Visual Basic format strings. <br><code>&lt;Member&gt;</code>: CurrentDateMember(<code>&lt;Hierarchy&gt;</code>, <code>&lt;String&gt;</code>, <code>&lt;Symbol&gt;</code>)<br><br>CurrentDateMember([Date].[Order Fiscal Date-Hierarchy],&quot;20050402&quot;,BEFORE)</td>
+</tr>
+<tr>
+<td style="text-align:left">CurrentDateString</td>
+<td style="text-align:left">Returns the current date formatted as specified by the format parameter. <br><code>&lt;String&gt;</code>: CurrentDateString(<code>&lt;String&gt;</code>)<br><br> CurrentDateString(&apos;yyyymmdd&apos;)</td>
+</tr>
+<tr>
+<td style="text-align:left">CurrentMember</td>
+<td style="text-align:left">Returns the current member along a dimension during an iteration. <br><code>&lt;Member&gt;</code>: <code>&lt;Dimension&gt;</code>.CurrentMember <br><br>[Product].[Class].CurrentMember</td>
+</tr>
+<tr>
+<td style="text-align:left">CurrentMember</td>
+<td style="text-align:left">Returns the current member along a hierarchy during an iteration. <br><code>&lt;Member&gt;</code>: <code>&lt;Hierarchy&gt;</code>.CurrentMember  <br><br>[Date].[Order Fiscal Date-Hierarchy].CurrentMember</td>
+</tr>
+<tr>
+<td style="text-align:left">DDB</td>
+<td style="text-align:left">Returns a Double specifying the depreciation of an asset for a specific time period using the double-declining balance method or some other method you specify. <br><code>&lt;Numeric&gt;</code>: DDB(<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)<br>Parameter1:The initial cost of the asset.<br>Parameter2:The value at the end of the depreciation. This value can be 0.<br>Parameter3:The number of periods over which the asset is being depreciated <br>Parameter4:The period for which you want to calculate the depreciation. Period must use the same units as life.<br>Parameter5:The rate at which the balance declines. If factor is omitted, it is assumed to be 2 (the double-declining balance method). <br><br>Example 1&#xFF1A;DDB(24000,3000,10,2)<br>Example 2&#xFF1A;DDB(24000,3000,10,2,1.5)</td>
+</tr>
+<tr>
+<td style="text-align:left">DataMember</td>
+<td style="text-align:left">Returns the system-generated data member that is associated with a nonleaf member of a dimension. <br><code>&lt;Member&gt;</code>: <code>&lt;Member&gt;</code>.DataMember <br><br> [Customer].[CustomerKey].&amp;[11001].DataMember</td>
+</tr>
+<tr>
+<td style="text-align:left">Date</td>
+<td style="text-align:left">Returns a Variant (Date) containing the current system date. <br><code>&lt;DateTime&gt;</code>: Date()  Date()</td>
+</tr>
+<tr>
+<td style="text-align:left">DateAdd</td>
+<td style="text-align:left">Returns a Variant (Date) containing a date to which a specified time interval has been added. <br><code>&lt;DateTime&gt;</code>: DateAdd(<code>&lt;String&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;DateTime&gt;</code>)  <br><br>Example 1&#xFF1A;DateAdd(&quot;h&quot;,1,date())<br>Example 2&#xFF1A;DateAdd(&quot;h&quot;,1,[DUEDATE].[DateKey].&amp;[2011-11-23])</td>
+</tr>
+<tr>
+<td style="text-align:left">DateDiff</td>
+<td style="text-align:left">Returns a Variant (Long) specifying the number of time intervals between two specified dates. <br><code>&lt;Numeric&gt;</code>: DateDiff(<code>&lt;String&gt;</code>, <code>&lt;DateTime&gt;</code>, <code>&lt;DateTime&gt;</code>, <code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>)<br>String Type&#xFF1A;yyyy,q,m,y,d,ww,w,hh,n,s,ms,mcs,ns<br>Parameter4:A constant that specifies the first day of the week. If not specified, Sunday is assumed.<br>Parameter5:A constant that specifies the first week of the year. If not specified, the first week is assumed to be the week in which January <br>1 occurs.  <br><br>Example 1&#xFF1A;DateDiff(&quot;yyyy&quot;,Date(),Date())<br>Example 2&#xFF1A;DateDiff(&quot;yyyy&quot;,[Date].[DateKey].&amp;[2011-11-23],<br>[Date].[DateKey].&amp;[2012-11-24])<br>Example 3&#xFF1A;DateDiff(&quot;yyyy&quot;,Date(),Date(),1)<br>Example 4&#xFF1A;DateDiff(&quot;yyyy&quot;,Date(),Date(),1,1)</td>
+</tr>
+<tr>
+<td style="text-align:left">DatePart</td>
+<td style="text-align:left">Returns a Variant (Integer) containing the specified part of a given date. <br><code>&lt;Integer&gt;</code>: DatePart(<code>&lt;String&gt;</code>, <code>&lt;DateTime&gt;</code>, <code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>)<br>Parameter3:A constant that specifies the first day of the week. If not<br> specified, Sunday is assumed.<br>Parameter4:A constant that specifies the first week of the year. If not<br> specified, the first week is assumed to be the week in which January<br> 1 occurs.  <br><br>Example 1&#xFF1A;DatePart(&quot;yyyy&quot;,[Date].[DateKey].&amp;[2011-11-23])<br>Example 2&#xFF1A;DatePart(&quot;yyyy&quot;,[Date].[DateKey].&amp;[2011-11-23],1)<br>Example 3&#xFF1A;DatePart(&quot;yyyy&quot;,[Date].[DateKey].&amp;[2011-11-23],1,1)</td>
+</tr>
+<tr>
+<td style="text-align:left">DateSerial</td>
+<td style="text-align:left">Returns a Variant (Date) for a specified year, month, and day. <br><code>&lt;DateTime&gt;</code>: DateSerial(<code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>)  <br><br>DateSerial(2020,3,5)</td>
+</tr>
+<tr>
+<td style="text-align:left">DateValue</td>
+<td style="text-align:left">Returns a Variant (Date).                                    <br><code>&lt;DateTime&gt;</code>: DateValue(<code>&lt;DateTime&gt;</code>)  <br><br>DateValue(CDate(&apos;2020-08-27&apos;))</td>
+</tr>
+<tr>
+<td style="text-align:left">Day</td>
+<td style="text-align:left">Returns a Variant (Integer) specifying a whole number between 1 and 31, inclusive, representing the day of the month. <br><code>&lt;Integer&gt;</code>: Day(<code>&lt;DateTime&gt;</code>)  <br><br>Day(CDate(&apos;2010-09-23&apos;))</td>
+</tr>
+<tr>
+<td style="text-align:left">DefaultMember</td>
+<td style="text-align:left">Returns the default member of an object.                     <br><code>&lt;Member&gt;</code>: <code>&lt;Dimension&gt;</code>.DefaultMember<br><code>&lt;Member&gt;</code>: <code>&lt;Hierarchy&gt;</code>.DefaultMember <br><br>Example 1&#xFF1A;[Product].[Class].DefaultMember<br>Example 2&#xFF1A;[Date].[Order Fiscal Date-Hierarchy].DefaultMember</td>
+</tr>
+<tr>
+<td style="text-align:left">Degrees</td>
+<td style="text-align:left">Converts radians to degrees.                                 <br><code>&lt;Numeric&gt;</code>: Degrees(<code>&lt;Numeric&gt;</code>)  Degrees(0.5*Pi())</td>
+</tr>
+<tr>
+<td style="text-align:left">Descendants</td>
+<td style="text-align:left">Returns the set of descendants of a member at a specified level,optionally including or excluding descendants in other levels. <br><code>&lt;Set&gt;</code>: Descendants(<code>&lt;Member&gt;</code>) <br><code>&lt;Set&gt;</code>: Descendants(<code>&lt;Member&gt;</code>, <code>&lt;Level&gt;</code>) <br><code>&lt;Set&gt;</code>: Descendants(<code>&lt;Member&gt;</code>, <code>&lt;Level&gt;</code>,<code>&lt;Symbol&gt;</code>) <br><code>&lt;Set&gt;</code>: Descendants(<code>&lt;Member&gt;</code>, <code>&lt;Numeric&gt;</code>) <br><code>&lt;Set&gt;</code>: Descendants(<code>&lt;Member&gt;</code>, <code>&lt;Numeric Expression&gt;</code>, <code>&lt;Symbol&gt;</code>) <br><code>&lt;Set&gt;</code>: Descendants(<code>&lt;Member&gt;</code>, <code>&lt;Empty&gt;</code>, <code>&lt;Symbol&gt;</code>)<br><br> Example 1&#xFF1A;Descendants([Date].[Due Calendar Date-Hierarchy].[CalendarYear].&amp;[2010])<br>Example 2&#xFF1A;Descendants([Date].[Due Calendar Date-Hierarchy].[CalendarYear].&amp;[2010], [Date].[Due Calendar Date-Hierarchy].[DateKey])<br>Example 3&#xFF1A;Descendants([Date].[Due Calendar Date-Hierarchy].[CalendarYear].&amp;[2010],[Date].[Due Calendar Date-Hierarchy].[CalendarYear],SELF)</td>
+</tr>
+<tr>
+<td style="text-align:left">Dimension</td>
+<td style="text-align:left">Returns the dimension that contains a specified object.      <br><code>&lt;Dimension&gt;</code>: <code>&lt;Dimension&gt;</code>.Dimension<br><code>&lt;Dimension&gt;</code>: <code>&lt;Hierarchy&gt;</code>.Dimension<br><code>&lt;Dimension&gt;</code>: <code>&lt;Level&gt;</code>.Dimension<br><code>&lt;Dimension&gt;</code>: <code>&lt;Member&gt;</code>.Dimension  <br><br>Example 1&#xFF1A;[Date].[CalendarYear].[CalendarYear].Dimension<br>Example 2&#xFF1A;[Date].[Due Calendar Date-Hierarchy].Dimension<br>Example 3&#xFF1A;[Date].[Due Fiscal Date-Hierarchy].[FiscalYear].Dimension<br>Example 4&#xFF1A;[Date].[CalendarYear].&amp;[2010].Dimension</td>
+</tr>
+<tr>
+<td style="text-align:left">Dimensions</td>
+<td style="text-align:left">Returns the dimension whose zero-based position within the cube is specified by a numeric expression. <br><code>&lt;Dimension&gt;</code>: Dimensions(<code>&lt;Numeric&gt;</code>)<br><br> Dimensions(2)</td>
+</tr>
+<tr>
+<td style="text-align:left">Dimensions</td>
+<td style="text-align:left">Returns the dimension whose name is specified by a string.   <br><code>&lt;Dimension&gt;</code>: Dimensions(<code>&lt;String&gt;</code>) <br><br>Dimensions(&apos;[Customer].[AddressLine]&apos;)</td>
+</tr>
+<tr>
+<td style="text-align:left">Distinct</td>
+<td style="text-align:left">Eliminates duplicate tuples from a set.                      <br><code>&lt;Set&gt;</code>: Distinct(<code>&lt;Set&gt;</code>)  <br><br>Distinct({[Date].[FiscalYear].&amp;[2005],[Date].[FiscalYear].&amp;[2005],[Date].[FiscalYear].&amp;[2006]})</td>
+</tr>
+<tr>
+<td style="text-align:left">DrilldownLevel</td>
+<td style="text-align:left">Drills down the members of a set, at a specified level, to one level below. Alternatively, drills down on a specified dimension in the set.According to the multi-level hierarchical data structure,you can explicitly choose a level at which to drill down. There are two mutually exclusive ways to specify the level. The first approach is to set the level_expression argument using an MDX expression that returns the level, An alternative approach is to specify the index argument, using a numeric expression that specifies the level by number. <br><code>&lt;Set&gt;</code>: DrilldownLevel(<code>&lt;Set&gt;</code>)<br> <code>&lt;Set&gt;</code>: DrilldownLevel(<code>&lt;Set&gt;</code>, <code>&lt;Level&gt;</code>) <br><code>&lt;Set&gt;</code>: DrilldownLevel(<code>&lt;Set&gt;</code>, <code>&lt;Empty&gt;</code>, <code>&lt;Numeric&gt;</code>)<br><code>&lt;Set&gt;</code>: DrilldownLevel(<code>&lt;Set&gt;</code>)<br><code>&lt;Set&gt;</code>: DrilldownLevel(<code>&lt;Set&gt;</code>, <code>&lt;Level&gt;</code>)<br><code>&lt;Set&gt;</code>: DrilldownLevel(<code>&lt;Set&gt;</code>, <code>&lt;Empty&gt;</code>, <code>&lt;Numeric&gt;</code>)<br>Expression2:Set Level_expression<br>Expression3:Set Index <br><br>Example 1&#xFF1A;DrillDownLevel([Date].[Due Calendar Date-Hierarchy].[CalendarQuarter].Members)<br>Example 2&#xFF1A;DrilldownLevel([Date].[Due Calendar Date-Hierarchy].[CalendarQuarter].Members,[Date].[Due Calendar Date-Hierarchy].[EnglishMonthName])<br>Example 3&#xFF1A;DrilldownLevel([Date].[Due Calendar Date-Hierarchy].[CalendarYear].Members,,1)</td>
+</tr>
+<tr>
+<td style="text-align:left">DrilldownMember</td>
+<td style="text-align:left">Drills down the members in a set that are present in a second specified set.If RECURSIVE is specified, the function continues to recursively compare the members of the result set against the second set, retrieving the children for each member in the result set that is also present in the second set until no more members from the result set can be found in the second set. <br><code>&lt;Set&gt;</code>: DrilldownMember(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>) <br><code>&lt;Set&gt;</code> DrilldownMember(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>, <code>&lt;Symbol&gt;</code>)<br>Symbol Type&#xFF1A;RECURSIVE  <br><br>Example 1&#xFF1A;DrillDownMember([Date].[Due Fiscal Date-Hierarchy].Members,[Date].[Due Calendar Date-Hierarchy].Members)<br>Example 2&#xFF1A;DrilldownMember([Date].[Due Fiscal Date-Hierarchy].Members,[Date].[Due Calendar Date-Hierarchy].Members,RECURSIVE)</td>
+</tr>
+<tr>
+<td style="text-align:left">Except</td>
+<td style="text-align:left">Finds the difference between two sets, optionally retaining duplicates.If ALL is specified, the function retains duplicates found in the first set; duplicates found in the second set will still be removed. The members are returned in the order they appear in the first set. <br><code>&lt;Set&gt;</code>: Except(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>)<br> <code>&lt;Set&gt;</code>: Except(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>, <code>&lt;Symbol&gt;</code>)<br>Symbol Type&#xFF1A;ALL  <br><br>Except({[Date].[CalendarYear].&amp;[2005],[Date].[CalendarYear].&amp;[2006]},{[Date].[CalendarYear].&amp;[2005]})</td>
+</tr>
+<tr>
+<td style="text-align:left">Exclude</td>
+<td style="text-align:left">Restrict the level of detail of a measure,For example, the expression is <code>Exclude( [Product], [Measures].[Qty] )</code>, which means that the calculation of [Measures].[Qty] will not be affected by the filter conditions of the dimensions in the dimension table [Product].  <br><code>&lt;Value&gt;</code> : Exclude( [<code>&lt;Dimension&gt;</code> | <code>&lt;Hierarchy&gt;</code>, ...]<br> <code>&lt;Measure Expression&gt;</code>)<br><br>Exclude([Date].[DueFiscalDate-Hierarchy],[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Exists</td>
+<td style="text-align:left">Returns the the set of tuples of the first set that exist with one or more tuples of the second set. <br><code>&lt;Set&gt;</code>: Exists(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>) <br><br>Exists({[Customer].[Education].&amp;[Bachelors]},{[Customer].[Education].&amp;[Bachelors],[Customer].[Education].&amp;[High School]})</td>
+</tr>
+<tr>
+<td style="text-align:left">Exp</td>
+<td style="text-align:left">Returns a Double specifying e (the base of natural logarithms) raised to a power. <br><code>&lt;Numeric&gt;</code> Exp(<code>&lt;Numeric&gt;</code>)   <br><br>[Measures].[Count]*exp(1)</td>
+</tr>
+<tr>
+<td style="text-align:left">Extract</td>
+<td style="text-align:left">Returns a set of tuples from extracted dimension elements. The opposite of Crossjoin. <br><code>&lt;Set&gt;</code>: Extract(<code>&lt;Set&gt;</code>, <code>&lt;Dimension&gt;</code>[, <code>&lt;Dimension&gt;</code>...])  <br><br>Extract( [Customer].[Education].[Education].Members * {[Date].[CalendarYear].&amp;[2011],[Date].[CalendarYear].&amp;[2013]}, [Customer].[Education] )</td>
+</tr>
+<tr>
+<td style="text-align:left">FV</td>
+<td style="text-align:left">Returns a Double specifying the future value of an annuity based on periodic, fixed payments and a fixed interest rate. <br><code>&lt;Numeric&gt;</code>: FV(<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Boolean&gt;</code>)<br>Parameter1:The interest rate per period.<br>Parameter2:The total number of payment periods in an annuity.<br>Parameter3:The payment made each period; it cannot change over the life of the annuity. Typically, pmt contains principal and interest but no other fees or taxes. If pmt is omitted, you must include the pv argument.  <br><br>Example 1&#xFF1A;FV(0.12,4,10000)<br>Example 2&#xFF1A;FV(0.01,48,1000,1)<br>Example 3&#xFF1A;FV(0.01,48,1000,1,1)</td>
+</tr>
+<tr>
+<td style="text-align:left">Filter</td>
+<td style="text-align:left">Returns the set resulting from filtering a set based on a search condition. <br><code>&lt;Set&gt;</code>: Filter(<code>&lt;Set&gt;</code>,<code>&lt;Boolean&gt;</code>)  <br><br>Filter([Customer].[CustomerKey].[CustomerKey].Members,[Measures].[Count]&gt;6)</td>
+</tr>
+<tr>
+<td style="text-align:left">FirstChild</td>
+<td style="text-align:left">Returns the first child of a member.                         <br><code>&lt;Member&gt;</code>: <code>&lt;Member&gt;</code>.FirstChild   <br><br>[Date].[Due Calendar Date-Hierarchy].[CalendarYear].&amp;[2013].FirstChild</td>
+</tr>
+<tr>
+<td style="text-align:left">FirstQ</td>
+<td style="text-align:left">Returns the 1st quartile value of a numeric expression evaluated over a set. <br><code>&lt;Numeric&gt;</code>: FirstQ(<code>&lt;Set&gt;</code>)<br> <code>&lt;Numeric&gt;</code>: FirstQ(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)<br><br> FirstQ([Date].[CalendarYear].[CalendarYear].Members,[Measures].[SalesAmout])</td>
+</tr>
+<tr>
+<td style="text-align:left">FirstSibling</td>
+<td style="text-align:left">Returns the first child of the parent of a member.           <br><code>&lt;Member&gt;</code>: <code>&lt;Member&gt;</code>.FirstSibling <br><br>[Date].[CalendarYear].&amp;[2009].FirstSibling</td>
+</tr>
+<tr>
+<td style="text-align:left">Fix</td>
+<td style="text-align:left">Returns the integer portion of a number. If negative, returns the negative number greater than or equal to the number. <br><code>&lt;Integer&gt;</code>: Fix(<code>&lt;Numeric&gt;</code>)  <br><br>[Measures].[Count]*fix(1.3)</td>
+</tr>
+<tr>
+<td style="text-align:left">Fixed</td>
+<td style="text-align:left">Restrict the level of detail of a measure,For example, the expression is <code>Fixed( [Product], [Measures].[Qty] )</code>, which means that the calculation of [Measures].[Qty] will not be affected by the filter conditions of the dimensions in the dimension table [Product]. <br><code>&lt;Value&gt;</code> : Fixed( [<code>&lt;Dimension&gt;</code> | <code>&lt;Hierarchy&gt;</code>, ...] <br><code>&lt;Measure Expression&gt;</code>) <br><br>Fixed([Product].[Class].[Class],[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Format</td>
+<td style="text-align:left">Formats a number or date to a string.                        <br><code>&lt;String&gt;</code>: Format(<code>&lt;Member&gt;</code>, <code>&lt;String&gt;</code>) <br><code>&lt;String&gt;</code>: Format(<code>&lt;Numeric&gt;</code>, <code>&lt;String&gt;</code>)<br> <code>&lt;String&gt;</code>: Format(<code>&lt;DateTime&gt;</code>, <code>&lt;String&gt;</code>) <br><br>format([Measures].[ Count],&quot;#,##0.00&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">FormatCurrency</td>
+<td style="text-align:left">Returns an expression formatted as a currency value using the currency symbol defined in the system control panel. <br><code>&lt;String&gt;</code>: FormatCurrency(<code>&lt;Value&gt;</code>, <code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>,<br> <code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>)<br>Parameter1:Expression to be formatted.<br>Parameter2:Numeric value indicating how many places to the right of the decimal are displayed. Default value is &#x2013;1<br>Parameter3:Tristate constant that indicates whether or not a leading zero is displayed for fractional values. See Settings section for values.<br>Parameter4:Tristate constant that indicates whether or not to place negative values within parentheses. See Settings section for values.<br>Parameter5:Tristate constant that indicates whether or not numbers are grouped using the group delimiter specified in the computer&apos;s regional settings. See Settings section for values.<br>-2 = TristateUseDefault - Use the setting from the computer&apos;s regional settings.<br>-1 = TristateTrue - True<br>0 = TristateFalse - False  <br><br>Example 1&#xFF1A;FormatCurrency([Measures].[Unitprice])<br>Example 2&#xFF1A;FormatCurrency([Measures].[Unitprice],2)<br>Example 3&#xFF1A;FormatCurrency([Measures].[Unitprice],2,-1)<br>Example 4&#xFF1A;FormatCurrency([Measures].[Unitprice],2,-1,-2)<br>Example 5&#xFF1A;FormatCurrency([Measures].[Unitprice],2,-1,-2,-1)</td>
+</tr>
+<tr>
+<td style="text-align:left">FormatDateTime</td>
+<td style="text-align:left">Returns an expression formatted as a date or time.           <br><code>&lt;String&gt;</code>: FormatDateTime(<code>&lt;DateTime&gt;</code>, <code>&lt;Integer&gt;</code>) <br><br>Example 1&#xFF1A;FormatDateTime(Date())<br>Example 2&#xFF1A;FormatDateTime(Date(),2)</td>
+</tr>
+<tr>
+<td style="text-align:left">FormatNumber</td>
+<td style="text-align:left">Returns an expression formatted as a number.                 <br><code>&lt;String&gt;</code>: FormatNumber(<code>&lt;Value&gt;</code>, <code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>, <br><code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>)<br>Parameter1:Expression to be formatted.<br>Parameter2:Numeric value indicating how many places to the right of the decimal are displayed. Default value is &#x2013;1<br>Parameter3:Tristate constant that indicates whether or not a leading zero is displayed for fractional values. See Settings section for values.<br>Parameter4:Tristate constant that indicates whether or not to place negative values within parentheses. See Settings section for values.<br>Parameter5:Tristate constant that indicates whether or not numbers are grouped using the group delimiter specified in the computer&apos;s regional settings. See Settings section for values.<br>-2 = TristateUseDefault - Use the setting from the computer&apos;s regional settings.<br>-1 = TristateTrue - True<br>0 = TristateFalse - False  <br><br>Example 1&#xFF1A;FormatNumber([Measures].[Freight])<br>Example 2&#xFF1A;FormatNumber([Measures].[Freight],2)<br>Example 3&#xFF1A;FormatNumber([Measures].[Unitprice],2,-1)<br>Example 4&#xFF1A;FormatNumber([Measures].[Unitprice],2,-1,-2)<br>Example 5&#xFF1A;FormatNumber([Measures].[Unitprice],2,-1,-2,-1)</td>
+</tr>
+<tr>
+<td style="text-align:left">FormatPercent</td>
+<td style="text-align:left">Returns an expression formatted as a percentage (multipled by 100) with a trailing <code>%</code> character. <br><code>&lt;String&gt;</code>: FormatPercent(<code>&lt;Value&gt;</code>, <code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>, <br><code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>)<br>Parameter1:Expression to be formatted.<br>Parameter2:Numeric value indicating how many places to the right of the decimal are displayed. Default value is &#x2013;1<br>Parameter3:Tristate constant that indicates whether or not a leading zero is displayed for fractional values. See Settings section for values.<br>Parameter4:Tristate constant that indicates whether or not to place negative values within parentheses. See Settings section for values.<br>Parameter5:Tristate constant that indicates whether or not numbers are grouped using the group delimiter specified in the computer&apos;s regional settings. See Settings section for values.<br>-2 = TristateUseDefault - Use the setting from the computer&apos;s regional settings.<br>-1 = TristateTrue - True<br>0 = TristateFalse - False  <br><br>Example 1&#xFF1A;FormatPercent([Measures].[Count]/60398)<br>Example 2&#xFF1A;FormatPercent([Measures].[Count]/60398,2)<br>Example 3&#xFF1A;FormatPercent([Measures].[Count]/61000,2,-1)<br>Example 4&#xFF1A;FormatPercent([Measures].[Count]/61000,2,-1,-2)<br>Example 5&#xFF1A;FormatPercent([Measures].[Count]/61000,2,-1,-2,-1)</td>
+</tr>
+<tr>
+<td style="text-align:left">Generate</td>
+<td style="text-align:left">Applies a set to each member of another set and joins the resulting sets by union.If ALL is specified, the function retains duplicates in the resulting set. <br><code>&lt;Set&gt;</code>: Generate(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>)<br><code>&lt;Set&gt;</code>: Generate(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>, <code>&lt;Symbol&gt;</code>)<br>Symbol Type&#xFF1A;ALL  <br><br>Generate( [Date].[CalendarYear].[CalendarYear].Members , <br>TopCount( [Date].[CalendarYear].CurrentMember <code>*</code><br> [Product].[ProductLine].[ProductLine].Members ,3, [Measures].[SalesAmout))</td>
+</tr>
+<tr>
+<td style="text-align:left">Generate</td>
+<td style="text-align:left">Applies a set to a string expression and joins resulting sets by string concatenation. <br><code>&lt;String&gt;</code>: Generate(<code>&lt;Set&gt;</code>, <code>&lt;String&gt;</code>)<br><code>&lt;String&gt;</code>: Generate(<code>&lt;Set&gt;</code>, <code>&lt;String&gt;</code>, <code>&lt;String&gt;</code>)  <br><br>Example 1&#xFF1A;Generate([Date].[CalendarYear].[CalendarYear].Members,&quot;AND&quot;) <br>Example 2&#xFF1A;Generate( [Date].[CalendarYear].[CalendarYear].Members, [Date].[CalendarYear].CurrentMember.Name,&quot;AND&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">Head</td>
+<td style="text-align:left">Returns the first specified number of elements in a set.     <br><code>&lt;Set&gt;</code>: Head(<code>&lt;Set&gt;</code>)<br><code>&lt;Set&gt;</code>: Head(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)  <br><br>Example 1&#xFF1A;Head([Customer].[CustomerKey].[CustomerKey].Members)<br>Example 2&#xFF1A;Head([Customer].[CustomerKey].[CustomerKey].Members,3)</td>
+</tr>
+<tr>
+<td style="text-align:left">Hex</td>
+<td style="text-align:left">Returns a String representing the hexadecimal value of a number. <br><code>&lt;String&gt;</code>: Hex(<code>&lt;Value&gt;</code>) <br><br>Hex([Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Hierarchize</td>
+<td style="text-align:left">Orders the members of a set in a hierarchy.If POST is specified, the Hierarchize function sorts the members in a level using a post-natural order. In other words, child members precede their parents. <br><code>&lt;Set&gt;</code>: Hierarchize(<code>&lt;Set&gt;</code>)<br><code>&lt;Set&gt;</code>: Hierarchize(<code>&lt;Set&gt;</code>, <code>&lt;Symbol&gt;</code>)<br>Symbol Type&#xFF1A;POST  <br><br>Hierarchize({[Customer].[Education].&amp;[High School],[Customer].[Education].&amp;[Bachelors]})</td>
+</tr>
+<tr>
+<td style="text-align:left">Hierarchy</td>
+<td style="text-align:left">Returns an object&apos;s hierarchy.                               <br><code>&lt;Hiearchy&gt;</code>: <code>&lt;Level&gt;</code>.Hierarchy<br><code>&lt;Hiearchy&gt;</code>: <code>&lt;Member&gt;</code>.Hierarchy  <br><br>Example 1&#xFF1A;[Date].[Due Fiscal Date-Hierarchy].[FiscalYear].Hierarchy<br>Example 2&#xFF1A;[Date].[Due Fiscal Date-Hierarchy].[FiscalYear].&amp;[2010].Hierarchy</td>
+</tr>
+<tr>
+<td style="text-align:left">Hour</td>
+<td style="text-align:left">Returns a Variant (Integer) specifying a whole number between 0 and 23, inclusive, representing the hour of the day. <br><code>&lt;Integer&gt;</code>: Hour(<code>&lt;DateTime&gt;</code>)<br><br>Hour(Cdate(&apos;2020-08-12 09:30:45&apos;))</td>
+</tr>
+<tr>
+<td style="text-align:left">IIf</td>
+<td style="text-align:left">Returns one of two objects determined by a logical test.     <br><code>&lt;Tuple&gt;</code>: IIf(<code>&lt;Boolean&gt;</code>, <code>&lt;Tuple&gt;</code>, <code>&lt;Tuple&gt;</code>)<br><code>&lt;Dimension&gt;</code>: IIf(<code>&lt;Boolean&gt;</code>, <code>&lt;Dimension&gt;</code>, <code>&lt;Dimension&gt;</code>)<br><code>&lt;Hierarchy&gt;</code>: IIf(<code>&lt;Boolean&gt;</code>, <code>&lt;Hierarchy&gt;</code>, <code>&lt;Hierarchy&gt;</code>)<br><code>&lt;Level&gt;</code>: IIf(<code>&lt;Boolean&gt;</code>, <code>&lt;Level&gt;</code>, <code>&lt;Level&gt;</code>)<br><code>&lt;Boolean&gt;</code>: IIf(<code>&lt;Boolean&gt;</code>, <code>&lt;Boolean&gt;</code>, <boolean)<br><code>&lt;Member&gt;</code>: IIf(<code>&lt;Boolean&gt;</code>, <code>&lt;Member&gt;</code>, <code>&lt;Member&gt;</code>)<br><code>&lt;Numeric&gt;</code>: IIf(<code>&lt;Boolean&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)<br><code>&lt;Set&gt;</code>: IIf(<code>&lt;Boolean&gt;</code>, <code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>)<br><code>&lt;String&gt;</code>: IIf(<code>&lt;Boolean&gt;</code>, <code>&lt;String&gt;</code>, <code>&lt;String&gt;</code>)  <br><br>Example 1&#xFF1A;IIF([Measures].[Count]&gt;80000, ([Customer].[Education].&amp;[Bachelors].[Date].[CalendarYear].&amp;[2011]), ([Customer].[Education].&amp;[High School].[Date].[CalendarYear].&amp;[2011]))<br>Example 2&#xFF1A;IIF([Measures].[Count]&gt;80000,[Customer].[CustomerKey],[Customer].[FirstName])<br>Example 3&#xFF1A;IIF([Measures].[Count]&gt;80000,[Date].[Due Fiscal Date-Hierarchy],[Customer].[person-Hierarchy])<br>Example 4&#xFF1A;IIF([Measures].[Count]&gt;80000, [Date].[Due Fiscal Date-Hierarchy].[FISCALYEAR], [Date].[Due Fiscal Date-Hierarchy].[DateKey])<br>Example 5&#xFF1A;IIF([Measures].[Count]&gt;80000,[Measures].[SalesAmout]<10000,[measures].[salesamout]>10000)<br>Example 6&#xFF1A;IIF([Measures].[Count]&gt;80000, [Customer].[Education].[Bachelors], [Customer].[Education].&amp;[High School])<br>Example 7&#xFF1A;IIF([Measures].[Count]&gt;80000,[Measures].[Unitprice]/3,[Measures].[Unitprice]/4)<br>Example 8&#xFF1A;IIF([Measures].[Count]&gt;80000, {[Customer].[Education].&amp;[Bachelors]}, {[Customer].[Education].&amp;[Bachelors],[Customer].[Education].&amp;[High School]})<br>Example 9&#xFF1A;IIF([Measures].[SalesAmout]&gt;10000, &quot;Sales Are High&quot;, &quot;Sales Are Low&quot;)</10000,[measures].[salesamout]></boolean)<br></td>
+</tr>
+<tr>
+<td style="text-align:left">IPmt</td>
+<td style="text-align:left">Returns a Double specifying the interest payment for a given period of an annuity based on periodic, fixed payments and a fixed interest rate. <br><code>&lt;Numeric&gt;</code>: IPmt(<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Boolean&gt;</code>)<br>Parameter1:The interest rate per period.<br>Parameter2:The period for which you want to find the interest .<br>Parameter3:The total number of payment periods in an annuity.<br>Parameter4:The present value.<br>Parameter5:The future value.If fv is omitted, it is assumed to be 0 (the future value of a loan, for example, is 0).<br>Parameter6:The number 0 or 1 and indicates when payments are due. If type is omitted, it is assumed to be 0.  <br><br>Example 1&#xFF1A;IPmt(0.12,1,3,80000)<br>Example 2&#xFF1A;IPmt(0.01,1,36,80000,50000)<br>Example 3&#xFF1A;IPmt(0.01,1,36,80000,50000,1)</td>
+</tr>
+<tr>
+<td style="text-align:left">IS</td>
+<td style="text-align:left">Returns whether two objects are the same                     <br><code>&lt;Boolean&gt;</code>: <code>&lt;Member&gt;</code> IS <code>&lt;Member&gt;</code> <br><code>&lt;Boolean&gt;</code>: <code>&lt;Level&gt;</code>IS <code>&lt;Level&gt;</code> <br><code>&lt;Boolean&gt;</code>: <code>&lt;Hierarchy&gt;</code> IS <code>&lt;Hierarchy&gt;</code><br><code>&lt;Boolean&gt;</code>: <code>&lt;Dimension&gt;</code> IS <code>&lt;Dimension&gt;</code> <br><code>&lt;Boolean&gt;</code>: <code>&lt;Tuple&gt;</code> IS <code>&lt;Tuple&gt;</code>  <br><br>Example 1&#xFF1A;[Customer].[Education].&amp;[Bachelors] IS [Customer].[Education].&amp;[Bachelors]<br>Example 2&#xFF1A;[Date].[Due Fiscal Date-Hierarchy].[FiscalYear] IS [Date].[Due Fiscal Date-Hierarchy].[DateKey]<br>Example 3&#xFF1A;[Date].[Due Fiscal Date-Hierarchy] IS [Date].[Due Calendar Date-Hierarchy]<br>Example 4&#xFF1A;[Customer].[BirthDate] IS [Customer].[BirthDate]<br>Example 5&#xFF1A;([Customer].[BirthDate],[Customer].[AddressLine]) IS ([Customer].[BirthDate],[Customer].[AddressLine])</td>
+</tr>
+<tr>
+<td style="text-align:left">IS EMPTY</td>
+<td style="text-align:left">Determines if an expression evaluates to the empty cell value. <br><code>&lt;Boolean&gt;</code>:<code>&lt;Member&gt;</code>IS EMPTY <br><code>&lt;Boolean&gt;</code>: <code>&lt;Tuple&gt;</code>IS EMPTY  <br><br>Example 1&#xFF1A;[Customer].[Education].&amp;[Primary School] Is Empty<br>Example 2&#xFF1A;([Customer].[AddressLine],[Date].[CalendarQuarter]) IS EMPTY</td>
+</tr>
+<tr>
+<td style="text-align:left">IS NULL</td>
+<td style="text-align:left">Returns whether an object is null. Currently always returns FALSE, returns TRUE only if the given Member Key cannot be cast to the type of Level Key. <br><code>&lt;Boolean&gt;</code>: <code>&lt;Member&gt;</code> IS NULL <br><code>&lt;Boolean&gt;</code>: <code>&lt;Level&gt;</code> IS NULL <br><code>&lt;Boolean&gt;</code>: <code>&lt;Hierarchy&gt;</code> IS NULL <br><code>&lt;Boolean&gt;</code>: <code>&lt;Dimension&gt;</code> IS NULL  <br><br>Example 1&#xFF1A;[Customer].[Education].&amp;[Primary School] IS NULL<br>Example 2&#xFF1A;[Date].[Due Calendar Date-Hierarchy].[CalendarYear] IS NULL<br>Example 3&#xFF1A;[Customer].[person-Hierarchy] IS NULL<br>Example 4&#xFF1A;[Customer].[Education].[Education] IS NULL</td>
+</tr>
+<tr>
+<td style="text-align:left">InStr</td>
+<td style="text-align:left">Returns the position of the first occurrence of one string within another. Implements very basic form of InStr <br><code>&lt;Numeric&gt;</code>: InStr(<code>&lt;String&gt;</code>, <code>&lt;String&gt;</code>)<br><br>InStr(&quot;kylingence&quot;,&quot;e&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">InStrRev</td>
+<td style="text-align:left">Returns the position of an occurrence of one string within another, from the end of string. <br><code>&lt;Integer&gt;</code>: InStrRev(<code>&lt;String&gt;</code>, <code>&lt;String&gt;</code>, <code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>)<br>Parameter1:The string expression to be searched.<br>Parameter2:The string expression that is to be searched for.<br>Parameter3:A numeric expression that sets the starting position for each search. If this value is omitted, the search begins at the first character position. If start is null, the function return value is undefined.<br>Parameter4:An integer value. This argument is always ignored. It is defined for compatibility with other Instr functions in other languages.  <br><br>Example 1&#xFF1A;InStrRev(&quot;kylingence&quot;,&quot;e&quot;)<br>Example 2&#xFF1A;InStrRev(&quot;kylingence&quot;,&quot;e&quot;,2)<br>Example 3&#xFF1A;InStrRev(&quot;kylingence&quot;,&quot;e&quot;,2,1)</td>
+</tr>
+<tr>
+<td style="text-align:left">Int</td>
+<td style="text-align:left">Returns the integer portion of a number. If negative, returns the negative number less than or equal to the number. <br><code>&lt;Integer&gt;</code>: Int(<code>&lt;Value&gt;</code>) <br><br>Int(1.3)</td>
+</tr>
+<tr>
+<td style="text-align:left">Intersect</td>
+<td style="text-align:left">Returns the intersection of two input sets, optionally retaining duplicates.The optional ALL flag keeps duplicates. The two specified sets must have the same dimensions <br><code>&lt;Set&gt;</code>: Intersect(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>, <code>&lt;Symbol&gt;</code>)<br><code>&lt;Set&gt;</code>: Intersect(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>)<br>Symbol:ALL  <br><br>Example 1&#xFF1A;Intersect({[Customer].[Education].&amp;[Bachelors],[Customer].[Education].&amp;[High School]}, {[Customer].[Education].&amp;[Bachelors]},All)<br>Example 2&#xFF1A;Intersect({[Customer].[Education].&amp;[Bachelors],[Customer].[Education].&amp;[High School]}, {[Customer].[Education].&amp;[Bachelors]})</td>
+</tr>
+<tr>
+<td style="text-align:left">IsDate</td>
+<td style="text-align:left">Returns a Boolean value indicating whether an expression can be converted to a date. <br><code>&lt;Boolean&gt;</code>: IsDate(<code>&lt;Value&gt;</code>)  <br><br>IsDate(Date())</td>
+</tr>
+<tr>
+<td style="text-align:left">IsEmpty</td>
+<td style="text-align:left">Determines if an expression evaluates to the empty cell value. <br><code>&lt;Boolean&gt;</code>: IsEmpty(<code>&lt;String&gt;</code>)<br><code>&lt;Boolean&gt;</code>: IsEmpty(<code>&lt;Numeric&gt;</code>)  <br><br>Example 1&#xFF1A;IsEmpty(&quot;&quot;)<br>Example 2&#xFF1A;IsEmpty(2)</td>
+</tr>
+<tr>
+<td style="text-align:left">Item</td>
+<td style="text-align:left">Returns a member from the tuple specified in <code>&lt;Tuple&gt;</code>. The member to be returned is specified by the zero-based position of the member in the set in <code>&lt;Index&gt;</code>. <br><code>&lt;Member&gt;</code>: <code>&lt;Tuple&gt;</code>.Item(<code>&lt;Numeric&gt;</code>)  <br><br>([Customer].[Education].&amp;[Bachelors],[Date].[CalendarYear].&amp;[2010]).Item(0)</td>
+</tr>
+<tr>
+<td style="text-align:left">Item</td>
+<td style="text-align:left">Returns a tuple from the set specified in <code>&lt;Set&gt;</code>. The tuple to be returned is specified by the zero-based position of the tuple in the set in <code>&lt;Index&gt;</code>. <br><code>&lt;Member&gt;</code>: <code>&lt;Set&gt;</code>.Item(<code>&lt;Numeric&gt;</code>)<br><br>{[Customer].[BirthDate].[BirthDate].Members}.Item(1)</td>
+</tr>
+<tr>
+<td style="text-align:left">Item</td>
+<td style="text-align:left">Returns a tuple from the set specified in <code>&lt;Set&gt;</code>. The tuple to be returned is specified by the member name (or names) in <code>&lt;String&gt;</code>. <br><code>&lt;Set&gt;</code>.Item(<code>&lt;String&gt;</code>[, <code>&lt;String&gt;</code>...])  <br><br>{[Customer].[Education].[Education].Members}.Item(&quot;Bachelors&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">LCase</td>
+<td style="text-align:left">Returns a String that has been converted to lowercase.       <br><code>&lt;String&gt;</code>: LCase(<code>&lt;String&gt;</code>) <br><br> LCase(&quot;KYLINGENCE&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">LTrim</td>
+<td style="text-align:left">Returns a Variant (String) containing a copy of a specified string <br>without leading spaces. <br><code>&lt;String&gt;</code>: LTrim(<code>&lt;String&gt;</code>)  <br><br>LTrim(&quot; kylin gence &quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">Lag</td>
+<td style="text-align:left">Returns a member further along the specified member&apos;s dimension. <br><code>&lt;Member&gt;</code>: <code>&lt;Member&gt;</code>.Lag(<code>&lt;Numeric&gt;</code>) <br><br>[Customer].[Education].[High School].Lag(1)</td>
+</tr>
+<tr>
+<td style="text-align:left">LastChild</td>
+<td style="text-align:left">Returns the last child of a member.                          <br><code>&lt;Member&gt;</code>: <code>&lt;Member&gt;</code>.LastChild <br><br>[Date].[Due Calendar Date-Hierarchy].[CalendarYear].&amp;[2013].LastChild</td>
+</tr>
+<tr>
+<td style="text-align:left">LastSibling</td>
+<td style="text-align:left">Returns the last child of the parent of a member.            <br><code>&lt;Member&gt;</code>: <code>&lt;Member&gt;</code>.LastSibling <br><br>[Date].[CalendarYear].&amp;[2010].LastSibling</td>
+</tr>
+<tr>
+<td style="text-align:left">Lead</td>
+<td style="text-align:left">Returns a member further along the specified member&apos;s dimension. <br><code>&lt;Member&gt;</code>: <code>&lt;Member&gt;</code>.Lead(<code>&lt;Numeric Expression&gt;</code>) <br><br>[Customer].[Education].&amp;[High School].Lead(1)</td>
+</tr>
+<tr>
+<td style="text-align:left">Left</td>
+<td style="text-align:left">Returns a specified number of characters from the left side of a string. <br><code>&lt;String&gt;</code>: Left(<code>&lt;String&gt;</code>, <code>&lt;Integer&gt;</code>) <br><br>Left(&quot;kylingence&quot;,2)</td>
+</tr>
+<tr>
+<td style="text-align:left">Len</td>
+<td style="text-align:left">Returns the number of characters in a string.                <br><code>&lt;Numeric&gt;</code>: Len(<code>&lt;String&gt;</code>)<br><br>Len(&quot;kylingence&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">Level</td>
+<td style="text-align:left">Returns a member&apos;s level.                                    <br><code>&lt;Level&gt;</code>: <code>&lt;Member&gt;</code>.Level <br><br>[Date].[Due Fiscal Date-Hierarchy].[FiscalYear].&amp;[2010].Level</td>
+</tr>
+<tr>
+<td style="text-align:left">Levels</td>
+<td style="text-align:left">Returns the level whose position in a hierarchy is specified by a numeric expression. <br><code>&lt;Level&gt;</code>: <code>&lt;Hierarchy&gt;</code>.Levels(<code>&lt;Numeric Expression&gt;</code>)<br><br>[Date].[Due Fiscal Date-Hierarchy].levels(1)</td>
+</tr>
+<tr>
+<td style="text-align:left">Levels</td>
+<td style="text-align:left">Returns the level whose name is specified by a string expression. <br><code>&lt;Level&gt;</code>: <code>&lt;Hierarchy&gt;</code>.Levels(<code>&lt;String&gt;</code>)<br><code>&lt;Level&gt;</code>: Levels(<code>&lt;String&gt;</code>)  <br><br>Example 1&#xFF1A;[Date].[Due Fiscal Date-Hierarchy].Levels(&quot;DateKey&quot;)<br>Example 2&#xFF1A;Levels(&apos;[Customer].[person-Hierarchy].[Education]&apos;)</td>
+</tr>
+<tr>
+<td style="text-align:left">LinRegIntercept</td>
+<td style="text-align:left">Calculates the linear regression of a set and returns the value of b in the regression line y = ax + b. <br><code>&lt;Numeric&gt;</code>: LinRegIntercept(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)<br><code>&lt;Numeric&gt;</code>: LinRegIntercept(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)<br>Parameter1:A valid Multidimensional Expressions (MDX) expression that returns a set.<br>Parameter2:A valid numeric expression that is typically a Multidimensional Expressions (MDX) expression of cell coordinates that return a number that represents values for the y-axis.<br>Parameter3:A valid numeric expression that is typically a Multidimensional Expressions (MDX) expression of cell coordinates that return a number that represents values for the x-axis.  <br><br>LinRegIntercept(LastPeriods(3,[Date].[CalendarYear].&amp;[2014]),[Measures].[InternetSales Count],[Measures].[Reseller Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">LinRegPoint</td>
+<td style="text-align:left">Calculates the linear regression of a set and returns the value of y in the regression line y = ax + b. <br><code>&lt;Numeric&gt;</code>: LinRegPoint(<code>&lt;Numeric&gt;</code>, <code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)<br><code>&lt;Numeric&gt;</code>: LinRegPoint(<code>&lt;Numeric&gt;</code>, <code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)<br>Parameter1:A valid numeric expression that is typically a Multidimensional Expressions (MDX) expression of cell coordinates that return a number that represents values for the slicer axis.<br>Parameter2:A valid Multidimensional Expressions (MDX) expression that returns a set.<br>Parameter3:A valid numeric expression that is typically a Multidimensional Expressions (MDX) expression of cell coordinates that return a number that represents values for the y-axis.<br>Parameter4:A valid numeric expression that is typically a Multidimensional Expressions (MDX) expression of cell coordinates that return a number that represents values for the x-axis. <br><br>LinRegPoint([Measures].[Count],LastPeriods(3,[Date].[CalendarYear].&amp;[2014]),[Measures].[InternetSales Count],[Measures].[Reseller Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">LinRegR2</td>
+<td style="text-align:left">Calculates the linear regression of a set and returns R2 (the coefficient of determination). <br><code>&lt;Numeric&gt;</code>: LinRegR2(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)<br><code>&lt;Numeric&gt;</code>: LinRegR2(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)<br>Parameter1:A valid Multidimensional Expressions (MDX) expression that returns a set.<br>Parameter2:A valid numeric expression that is typically a Multidimensional Expressions (MDX) expression of cell coordinates that return a number that represents values for the y-axis.<br>Parameter3:A valid numeric expression that is typically a Multidimensional Expressions (MDX) expression of cell coordinates that return a number that represents values for the x-axis.  <br><br>LinRegR2(LastPeriods(3,[Date].[CalendarYear].&amp;[2014]),<br>[Measures].[InternetSales Count],[Measures].[Reseller Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">LinRegSlope</td>
+<td style="text-align:left">Calculates the linear regression of a set and returns the value of a in the regression line y = ax + b. <br><code>&lt;Numeric&gt;</code>: LinRegSlope(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)<br><code>&lt;Numeric Expression&gt;</code>: LinRegSlope(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)<br>Parameter1:A valid Multidimensional Expressions (MDX) expression that returns a set.<br>Parameter2:A valid numeric expression that is typically a Multidimensional Expressions (MDX) expression of cell coordinates that return a number that represents values for the y-axis.<br>Parameter3:A valid numeric expression that is typically a Multidimensional Expressions (MDX) expression of cell coordinates that return a number that represents values for the x-axis.  <br><br>LinRegSlope(LastPeriods(3,[Date].[CalendarYear].&amp;[2014]),[Measures].[InternetSales Count],[Measures].[Reseller Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">LinRegVariance</td>
+<td style="text-align:left">Calculates the linear regression of a set and returns the variance associated with the regression line y = ax + b. <br><code>&lt;Numeric&gt;</code>: LinRegVariance(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)<br><code>&lt;Numeric&gt;</code>: LinRegVariance(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)<br>Parameter1:A valid Multidimensional Expressions (MDX) expression that returns a set.<br>Parameter2:A valid numeric expression that is typically a Multidimensional Expressions (MDX) expression of cell coordinates that return a number that represents values for the y-axis.<br>Parameter3:A valid numeric expression that is typically a Multidimensional Expressions (MDX) expression of cell coordinates that return a number that represents values for the x-axis.  <br><br>LinRegVariance(LastPeriods(3,[Date].[CalendarYear].&amp;[2014]),[Measures].[InternetSales Count],[Measures].[Reseller Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Log</td>
+<td style="text-align:left">Returns a Double specifying the natural logarithm of a number. <br><code>&lt;Numeric&gt;</code>: Log(<code>&lt;Numeric&gt;</code>)  <br><br>Log(Exp(2))</td>
+</tr>
+<tr>
+<td style="text-align:left">Log10</td>
+<td style="text-align:left">Returns the base-10 logarithm of a number.                   <br><code>&lt;Numeric&gt;</code>: Log10(<code>&lt;Numeric&gt;</code>)  <br><br>Log10(100)</td>
+</tr>
+<tr>
+<td style="text-align:left">Max</td>
+<td style="text-align:left">Returns the maximum value of a numeric expression evaluated over a set. <br><code>&lt;Numeric&gt;</code>: Max(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric&gt;</code>: Max(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)  <br><br>Example 1&#xFF1A;max({[Date].[CalendarYear].[CalendarYear].Members})<br>Example 2&#xFF1A;max({[Date].[CalendarYear].[CalendarYear].Members},[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Median</td>
+<td style="text-align:left">Returns the median value of a numeric expression evaluated over a set. <br><code>&lt;Numeric&gt;</code> Median(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric&gt;</code>: Median(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>) <br><br>Example 1&#xFF1A;Median({[Date].[CalendarYear].[CalendarYear].Members})<br>Example 2&#xFF1A;Median({[Date].[CalendarYear].[CalendarYear].Members},[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Members</td>
+<td style="text-align:left">Returns the set of members in an object.                     <br><code>&lt;Set&gt;</code>: <code>&lt;Dimension&gt;</code>.Members<br><code>&lt;Set&gt;</code>: <code>&lt;Hierarchy&gt;</code>.Members<br><code>&lt;Set&gt;</code>: <code>&lt;Level&gt;</code>.Members<br>  <br><br>Example 1&#xFF1A;[Date].[CalendarYear].[CalendarYear].Members<br>Example 2&#xFF1A;[Customer].[person-Hierarchy].Members<br>Example 3&#xFF1A;[Date].[Due Fiscal Date-Hierarchy].[FiscalYear].Members<br></td>
+</tr>
+<tr>
+<td style="text-align:left">Mid</td>
+<td style="text-align:left">Returns a specified number of characters from a string.      <br><code>&lt;String&gt;</code>: Mid(<code>&lt;String&gt;</code>, <code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>)<br>Parameter1:string expression from which characters are returned.<br>Parameter2:Character position in string at which the part to be taken begins. If start is greater than the number of characters in string, Mid returns a zero-length string (&quot;&quot;).<br>Parameter3:Number of characters to return. If omitted or if there are fewer than length characters in the text (including the character at start, all characters from the start position to the end of the string are returned.  <br><br>Example 1&#xFF1A;Mid(&quot;kylingence&quot;,3)<br>Example 2&#xFF1A;Mid(&quot;kylingence&quot;,2,4)</td>
+</tr>
+<tr>
+<td style="text-align:left">Min</td>
+<td style="text-align:left">Returns the minimum value of a numeric expression evaluated over a set. <br><code>&lt;Numeric&gt;</code>: Min(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric&gt;</code>: Min(<code>&lt;Set&gt;</code>,<code>&lt;Numeric&gt;</code>)  <br><br>min([Date].[CalendarYear].[CalendarYear].Members,[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Minute</td>
+<td style="text-align:left">Returns a Variant (Integer) specifying a whole number between 0 and 59, inclusive, representing the minute of the hour. <br><code>&lt;Integer&gt;</code>: Minute(<code>&lt;DateTime&gt;</code>)  <br><br>Minute(CDate(&apos;2019-05-23 20:49:28&apos;))</td>
+</tr>
+<tr>
+<td style="text-align:left">Month</td>
+<td style="text-align:left">Returns a Variant (Integer) specifying a whole number between 1 and 12, inclusive, representing the month of the year. <br><code>&lt;Integer&gt;</code>: Month(<code>&lt;DateTime&gt;</code>)  <br><br>Month(CDate(&apos;2012-03-24 18:39:28&apos;))</td>
+</tr>
+<tr>
+<td style="text-align:left">Mtd</td>
+<td style="text-align:left">A shortcut function for the PeriodsToDate function that specifies the level to be Month.<br><code>&lt;Set&gt;</code>: Mtd() <code>&lt;Set&gt;</code>: Mtd(<code>&lt;Member&gt;</code>) <br><br>MTD([Date].[Calendar-Hierarchy].currentmember)</td>
+</tr>
+<tr>
+<td style="text-align:left">NOT</td>
+<td style="text-align:left">Returns the negation of a condition.                         <br><code>&lt;Boolean&gt;</code>: NOT <code>&lt;Boolean&gt;</code>  <br><br>NOT [Measures].[Count]&gt;80000</td>
+</tr>
+<tr>
+<td style="text-align:left">Name</td>
+<td style="text-align:left">Returns the name of an object.                               <br><code>&lt;String&gt;</code>: <code>&lt;Dimension&gt;</code>.Name<br><code>&lt;String&gt;</code>: <code>&lt;Hierarchy&gt;</code>.Name<br><code>&lt;String&gt;</code>: <code>&lt;Level&gt;</code>.Name<br><code>&lt;String&gt;</code>: <code>&lt;Member&gt;</code>.Name  <br><br>Example 1&#xFF1A;[Customer].[Education].[Education].Name<br>Example 2&#xFF1A;[Customer].[person-Hierarchy].name<br>Example 3&#xFF1A;[Date].[Due Fiscal Date-Hierarchy].[FiscalYear].name<br>Example 4&#xFF1A;[Date].[Due Fiscal Date-Hierarchy].[FiscalYear].[2010].name</td>
+</tr>
+<tr>
+<td style="text-align:left">NextMember</td>
+<td style="text-align:left">Returns the next member in the level that contains a specified member. <br><code>&lt;Member&gt;</code>: <code>&lt;Member&gt;</code>.NextMember <br><br>[Customer].[Education].[High School].NextMember</td>
+</tr>
+<tr>
+<td style="text-align:left">NonEmptyCrossJoin</td>
+<td style="text-align:left">Returns the cross product of two sets, excluding empty tuples and tuples without associated fact table data. <br><code>&lt;Set&gt;</code>: NonEmptyCrossJoin(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>) <br><br>NonEmptyCrossJoin([Customer].[LastName].[LastName].Members, [Customer].[GENDER].[GENDER].Members)</td>
+</tr>
+<tr>
+<td style="text-align:left">Now</td>
+<td style="text-align:left">Returns a Variant (Date) specifying the current date and time according your computer&apos;s system date and time. <br><code>&lt;DateTime&gt;</code>: Now() <br><br>Now()</td>
+</tr>
+<tr>
+<td style="text-align:left">OR</td>
+<td style="text-align:left">Returns the disjunction of two conditions.                   <br><code>&lt;Boolean&gt;</code>: <code>&lt;Boolean&gt;</code> OR <code>&lt;Boolean&gt;</code>  <br><br>[Measures].[Count]&gt;80000 OR [Measures].[SalesAmout]&gt;30000000</td>
+</tr>
+<tr>
+<td style="text-align:left">Oct</td>
+<td style="text-align:left">Returns a Variant (String) representing the octal value of a number. <br><code>&lt;String&gt;</code>: Oct(<code>&lt;Value&gt;</code>) <br><br>Oct([Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">OpeningPeriod</td>
+<td style="text-align:left">Returns the first descendant of a member at a level.         <br><code>&lt;Member&gt;</code>: OpeningPeriod()<br><code>&lt;Member&gt;</code> OpeningPeriod(<code>&lt;Level&gt;</code>)<br><code>&lt;Member&gt;</code>: OpeningPeriod(<code>&lt;Level&gt;</code>,<code>&lt;Member&gt;</code>)  <br><br>Example 1&#xFF1A;OpeningPeriod([Date].[Due Fiscal Date-Hierarchy].[FiscalYear])<br>Example 2&#xFF1A;OpeningPeriod([Date].[Due Fiscal Date-Hierarchy].[FiscalYear],[Date].[Due Fiscal Date-Hierarchy].[FiscalYear].&amp;[2010])<br>Example 3&#xFF1A;[Date].[Due Fiscal Date-Hierarchy].[FiscalYear].openingperiod</td>
+</tr>
+<tr>
+<td style="text-align:left">Order</td>
+<td style="text-align:left">Arranges members of a set, optionally preserving or breaking the hierarchy.If ASC or DESC is specified, the Order function first arranges the members according to their position in the hierarchy, and then orders each level. If BASC or BDESC is specified, the Order function arranges members in the set without regard to the hierarchy. In no flag is specified, ASC is the default. <br><code>&lt;Set&gt;</code>: Order(<code>&lt;Set&gt;</code>, <code>&lt;Value&gt;</code>, <code>&lt;Symbol&gt;</code>)<br><code>&lt;Set&gt;</code>: Order(<code>&lt;Set&gt;</code>, <code>&lt;Value&gt;</code>)<br>  <br><br>Example 1&#xFF1A;Order([Date].[CalendarYear].[CalendarYear].members, [Measures].[Count], DESC) <br>Example 2&#xFF1A;Order([Date].[Due Calendar Date-Hierarchy].[CalendarYear].members, [Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Ordinal</td>
+<td style="text-align:left">Returns the zero-based ordinal value associated with a level. <br><code>&lt;Integer&gt;</code>: <code>&lt;Level&gt;</code>.Ordinal <br><br>[Date].[CalendarYear].[CalendarYear].Ordinal</td>
+</tr>
+<tr>
+<td style="text-align:left">PPmt</td>
+<td style="text-align:left">Returns a Double specifying the principal payment for a given period of an annuity based on periodic, fixed payments and a fixed interest rate. <br><code>&lt;Numeric&gt;</code>: PPmt(<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>,<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <br><code>&lt;Numeric&gt;</code>,<code>&lt;Boolean&gt;</code>)<br>Parameter1:The interest rate per period.<br>Parameter2:Specifies the period and must be in the range 1 to nper.<br>Parameter3:The total number of payment periods in an annuity.<br>Parameter4:The present value &#x2014; the total amount that a series of future payments is worth now.<br><br>Parameter6:The number 0 or 1 and indicates when payments are due. If type is omitted, it is assumed to be 0.  <br><br>Example 1&#xFF1A;PPmt(0.1, 1, 30, 100000)<br>Example 2&#xFF1A;PPmt(0.1, 15, 30, 100000, 0)<br>Example 3&#xFF1A;PPmt(0.1, 1, 30, 100000, 0, CBool(0))</td>
+</tr>
+<tr>
+<td style="text-align:left">PV</td>
+<td style="text-align:left">Returns a Double specifying the present value of an annuity based on periodic, fixed payments to be paid in the future and a fixed interest rate. <br><code>&lt;Numeric&gt;</code>: PV(<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <br><code>&lt;Boolean&gt;</code>)  <br><br>PV(0,3,2,7,CBool(1))</td>
+</tr>
+<tr>
+<td style="text-align:left">ParallelPeriod</td>
+<td style="text-align:left">Returns a member from a prior period in the same relative position as a specified member. <br><code>&lt;Member&gt;</code>: ParallelPeriod()<br><code>&lt;Member&gt;</code>: ParallelPeriod(<code>&lt;Level&gt;</code>)<br><code>&lt;Member&gt;</code>: ParallelPeriod(<code>&lt;Level&gt;</code>, <code>&lt;Numeric&gt;</code>)<br><code>&lt;Member&gt;</code>: ParallelPeriod(<code>&lt;Level&gt;</code>, <code>&lt;Numeric&gt;</code>,<code>&lt;Member&gt;</code>)  <br><br>Example 1&#xFF1A;ParallelPeriod([Date].[Calendar-Hierarchy].[CalendarYear])<br>Example 2&#xFF1A;ParallelPeriod([Date].[Calendar-Hierarchy].[CalendarQuarter], 1)<br>Example 3&#xFF1A;ParallelPeriod([Date].[Calendar-Hierarchy].[CalendarYear],1,[Date].[Calendar-Hierarchy].currentMember</td>
+</tr>
+<tr>
+<td style="text-align:left">Parameter</td>
+<td style="text-align:left">Returns default value of parameter.                          <br><code>&lt;String&gt;</code>: Parameter(<code>&lt;String&gt;</code>, <code>&lt;Symbol&gt;</code>, <code>&lt;String&gt;</code>, <code>&lt;String&gt;</code>)<br> <code>&lt;String&gt;</code>: Parameter(<code>&lt;String&gt;</code>, <code>&lt;Symbol&gt;</code>, <code>&lt;String&gt;</code>) <br><code>&lt;Numeric&gt;</code>: Parameter(<code>&lt;String&gt;</code>, <code>&lt;Symbol&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;String&gt;</code>)<br> <code>&lt;Numeric&gt;</code>: Parameter(<code>&lt;String&gt;</code>, <code>&lt;Symbol&gt;</code>, <code>&lt;Numeric&gt;</code>) <br><code>&lt;Member&gt;</code>: Parameter(<code>&lt;String&gt;</code>, <code>&lt;Hierarchy&gt;</code>, <code>&lt;Member&gt;</code>, <code>&lt;String&gt;</code>) <br><code>&lt;Member&gt;</code>: Parameter(<code>&lt;String&gt;</code>, <code>&lt;Hierarchy&gt;</code>,<code>&lt;Member&gt;</code>)</td>
+</tr>
+<tr>
+<td style="text-align:left">Parent</td>
+<td style="text-align:left">Returns the parent of a member.                              <br><code>&lt;Member&gt;</code>: <code>&lt;Member&gt;</code>.Parent <br><br>[Date].[Due Fiscal Date-Hierarchy].[FiscalYear].&amp;[2013].&amp;[1].&amp;[1].Parent</td>
+</tr>
+<tr>
+<td style="text-align:left">Percentile</td>
+<td style="text-align:left">Returns the value of the tuple that is at a given percentile of a set. <br><code>&lt;Numeric&gt;</code>: Percentile(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)<br>Parameter1:The array or range of data that defines relative standing.<br>Parameter2:The Value of the query.<br>Parameter3:The percentile value in the range 0..1, inclusive.  <br><br>Percentile([Date].[CalendarQuarter].[CalendarQuarter].members, [Measures].[Count], 1)</td>
+</tr>
+<tr>
+<td style="text-align:left">PeriodsToDate</td>
+<td style="text-align:left">Returns a set of periods (members) from a specified level starting with the first period and ending with a specified member. <br><code>&lt;Set&gt;</code>: PeriodsToDate()<br><code>&lt;Set&gt;</code>: PeriodsToDate(<code>&lt;Level&gt;</code>)<br><code>&lt;Set&gt;</code>: PeriodsToDate(<code>&lt;Level&gt;</code>, <code>&lt;Member&gt;</code>)  <br><br>Example 1&#xFF1A;PeriodsToDate([Date].[Calendar-Hierarchy].[CalendarQuarter])<br>Example 2&#xFF1A;PeriodsToDate([Date].[Calendar-Hierarchy].[CalendarYear],[Date].[Calendar-Hierarchy].[MONTHNUMBEROFYEAR].&amp;[34])</td>
+</tr>
+<tr>
+<td style="text-align:left">Pi</td>
+<td style="text-align:left">Returns the number 3.14159265358979, the mathematical constant pi, accurate to 15 digits. <br><code>&lt;Numeric&gt;</code>: Pi() <br><br>Pi()</td>
+</tr>
+<tr>
+<td style="text-align:left">Pmt</td>
+<td style="text-align:left">Returns a Double specifying the payment for an annuity based on periodic, fixed payments and a fixed interest rate. <br><code>&lt;Numeric&gt;</code>: Pmt(<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>,<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Boolean&gt;</code>)<br><code>&lt;Numeric&gt;</code>: Pmt(<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>,<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Boolean&gt;</code>)<br>Parameter1:The interest rate for the loan.<br>Parameter2:The total number of payments for the loan.<br>Parameter3:The present value, or the total amount that a series of future payments is worth now; also known as the principal.<br>Parameter4:The future value, or a cash balance you want to attain after the last payment is made. If fv is omitted, it is assumed to be 0 (zero), that is, the future value of a loan is 0.<br>Parameter5:The number 0 (zero) or 1 and indicates when payments are due.  <br><br>Pmt(0, 3, 2, 7, CBool(1))</td>
+</tr>
+<tr>
+<td style="text-align:left">Power</td>
+<td style="text-align:left">Returns the result of a number raised to a power. <br><code>&lt;Numeric&gt;</code>: Power(<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>) <br><br>Power(4, 0.5)</td>
+</tr>
+<tr>
+<td style="text-align:left">PrevMember</td>
+<td style="text-align:left">Returns the previous member in the level that contains a specified member. <br><code>&lt;Member&gt;</code>: <code>&lt;Member&gt;</code>.PrevMember <br><br>[Date].[CalendarYear].&amp;[2012].PrevMember</td>
+</tr>
+<tr>
+<td style="text-align:left">Properties</td>
+<td style="text-align:left">Returns the value of a member property. <br><code>&lt;Member&gt;</code>.Properties(<code>&lt;String Expression&gt;</code>)  <br><br>[Date].[CalendarYear].[CalendarYear].&amp;[2007].Properties(&apos;Caption&apos;)</td>
+</tr>
+<tr>
+<td style="text-align:left">Qtd</td>
+<td style="text-align:left">A shortcut function for the PeriodsToDate function that specifies the level to be Quarter.<br><code>&lt;Set&gt;</code>: Qtd() <code>&lt;Set&gt;</code>: Qtd(<code>&lt;Member&gt;</code>)  <br><br>QTD([Date].[Calendar-Hierarchy].currentmember)</td>
+</tr>
+<tr>
+<td style="text-align:left">RTrim</td>
+<td style="text-align:left">Returns a Variant (String) containing a copy of a specified string without trailing spaces. <br><code>&lt;String&gt;</code>: RTrim(<code>&lt;String&gt;</code>)   <br><br>RTrim(&apos;abc &apos;)</td>
+</tr>
+<tr>
+<td style="text-align:left">Radians</td>
+<td style="text-align:left">Converts degrees to radians. <br><code>&lt;Numeric&gt;</code>: Radians(<code>&lt;Numeric&gt;</code>)  <br><br>Radians(180)</td>
+</tr>
+<tr>
+<td style="text-align:left">Rank</td>
+<td style="text-align:left">Returns the one-based rank of a tuple in a set. <br><code>&lt;Integer&gt;</code>: Rank(<code>&lt;Tuple&gt;</code>, <code>&lt;Set&gt;</code>)<br><code>&lt;Integer&gt;</code>: Rank(<code>&lt;Tuple&gt;</code>, <code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)<br><code>&lt;Integer&gt;</code>: Rank(<code>&lt;Member&gt;</code>, <code>&lt;Set&gt;</code>)<br><code>&lt;Integer&gt;</code> Rank(<code>&lt;Member&gt;</code>, <code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)  <br><br>Example 1&#xFF1A;Rank(([Date].[CalendarYear].&amp;[2007],[Customer].[LastName].&amp;[Adams]), [Date].[CalendarYear].[CalendarYear].members<code>*</code> [Customer].[LastName].[LastName].members)<br>Example 2&#xFF1A;Rank(([Date].[CalendarYear].&amp;[2007],[Customer].[LastName].&amp;[Adams]), [Date].[CalendarYear].[CalendarYear].members<code>*</code> [Customer].[LastName].[LastName].members, [Measures].[Count])<br>Example 3&#xFF1A;Rank([Date].[CalendarYear].&amp;[2007], [Date].[CalendarYear].[CalendarYear].members)<br>Example 4&#xFF1A;Rank([Date].[CalendarYear].&amp;[2007], [Date].[CalendarYear].[CalendarYear].members, [Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Rate</td>
+<td style="text-align:left">Returns a Double specifying the interest rate per period for an annuity. <br><code>&lt;Numeric&gt;</code>: Rate(<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>,<br> <code>&lt;Boolean&gt;</code>, <code>&lt;Numeric&gt;</code>)<br>Parameter1:The total number of payment periods in an annuity.<br>Parameter2:The payment made each period and cannot change over the life of the annuity. <br>Parameter3:The present value &#x2014; the total amount that a series of future payments is worth now.<br>Parameter4:The future value, or a cash balance you want to attain after the last payment is made.<br>Parameter5:The number 0 or 1 and indicates when payments are due.<br>Parameter6:Your guess for what the rate will be.  <br><br>Example 1&#xFF1A;Rate(12, 500, 3000)<br>Example 2&#xFF1A;Rate(12, 500, 3000, 300000)<br>Example 3&#xFF1A;Rate(12, 500, 3000, 300000, CBool(0))<br>Example 4&#xFF1A;Rate(12, 500, 3000, 300000, CBool(0), 1)</td>
+</tr>
+<tr>
+<td style="text-align:left">Replace</td>
+<td style="text-align:left">Returns a string in which a specified substring has been replaced with another substring a specified number of times. <br><code>&lt;String&gt;</code>: Replace(<code>&lt;String&gt;</code>, <code>&lt;String&gt;</code>, <code>&lt;String&gt;</code>, <code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>)<br>Parameter1:Meta String.<br>Parameter2:Searched substring.<br>Parameter3:Replaced substring.<br>Parameter4:The search start position, if omitted, it is assumed to be 1.<br>Parameter5:The number of substring replacements to be performed. If omitted, it is assumed to be -1, which means that all replacements are performed.<br>Parameter6:The comparison type when calculating substrings.  <br><br>Replace(&apos;kylingence&apos;, gence&apos;, &apos;mdx&apos;, 1, 1, 1)</td>
+</tr>
+<tr>
+<td style="text-align:left">Right</td>
+<td style="text-align:left">Returns a Variant (String) containing a specified number of characters from the right side of a string. <br><code>&lt;String&gt;</code>: Right(<code>&lt;String&gt;</code>, <code>&lt;Integer&gt;</code>)  <br><br>Right(&apos;kylingence&apos;, 2)</td>
+</tr>
+<tr>
+<td style="text-align:left">Round</td>
+<td style="text-align:left">Returns a number rounded to a specified number of decimal places. <br><code>&lt;Numeric&gt;</code>: Round(<code>&lt;Numeric&gt;</code>, <code>&lt;Integer&gt;</code>)<br><code>&lt;Numeric&gt;</code>: Round(<code>&lt;Numeric&gt;</code>)  <br><br>Example 1&#xFF1A;Round(1.123)<br>Example 2&#xFF1A;Round(1.123, 2)</td>
+</tr>
+<tr>
+<td style="text-align:left">SLN</td>
+<td style="text-align:left">Returns a Double specifying the straight-line depreciation of an asset for a single period. <br><code>&lt;Numeric&gt;</code>: SLN(<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>,<code>&lt;Numeric&gt;</code>)<br>Parameter1:The initial cost of the asset.<br>Parameter2:The value at the end of the depreciation (sometimes called the salvage value of the asset).<br>Parameter3:The number of periods over which the asset is depreciated (sometimes called the useful life of the asset).  <br><br>SLN(100, 10, 5)</td>
+</tr>
+<tr>
+<td style="text-align:left">SYD</td>
+<td style="text-align:left">Returns a Double specifying the sum-of-years&apos; digits depreciation of an asset for a specified period. <br><code>&lt;Numeric&gt;</code>: SYD(<code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>, <code>&lt;Numeric&gt;</code>)<br>Parameter1:The initial cost of the asset.<br>Parameter2:The value at the end of the depreciation (sometimes called the salvage value of the asset).<br>Parameter3:The number of periods over which the asset is depreciated (sometimes called the useful life of the asset).<br>Parameter4:The period and must use the same units as life.  <br><br>SYD(1000, 100, 5, 5)</td>
+</tr>
+<tr>
+<td style="text-align:left">Second</td>
+<td style="text-align:left">Returns a Variant (Integer) specifying a whole number between 0 and 59, inclusive, representing the second of the minute. <br><code>&lt;Integer&gt;</code>: Second(<code>&lt;DateTime&gt;</code>)<br><br>Second(CDate(&apos;2013-02-23 16:39:28&apos;))</td>
+</tr>
+<tr>
+<td style="text-align:left">SetToStr</td>
+<td style="text-align:left">Constructs a string from a set.  <br><code>&lt;String&gt;</code>: SetToStr(<code>&lt;Set&gt;</code>)  <br><br>SetToStr([Date].[CalendarYear].Children)</td>
+</tr>
+<tr>
+<td style="text-align:left">Sgn</td>
+<td style="text-align:left">Returns a Variant (Integer) indicating the sign of a number. <br><code>&lt;Integer&gt;</code>: Sgn(<code>&lt;Numeric&gt;</code>) <br><br>Sgn(3.11111)</td>
+</tr>
+<tr>
+<td style="text-align:left">Siblings</td>
+<td style="text-align:left">Returns the siblings of a specified member, including the member itself. <br><code>&lt;Member&gt;</code>.Siblings  <br><br>[Date].[CalendarYear].[CalendarYear].&amp;[2007].Siblings</td>
+</tr>
+<tr>
+<td style="text-align:left">Sin</td>
+<td style="text-align:left">Returns a Double specifying the sine of an angle. <br><code>&lt;Numeric&gt;</code>: Sin(<code>&lt;Numeric Expression&gt;</code>)  <br><br>Sin(60*Pi()/180)</td>
+</tr>
+<tr>
+<td style="text-align:left">Sinh</td>
+<td style="text-align:left">Returns the hyperbolic sine of a number. <br><code>&lt;Numeric&gt;</code>: Sinh(<code>&lt;Numeric Expression&gt;</code>)<br><br>Sinh(-2)</td>
+</tr>
+<tr>
+<td style="text-align:left">Space</td>
+<td style="text-align:left">Returns a Variant (String) consisting of the specified number of spaces. <br><code>&lt;String&gt;</code>: Space(<code>&lt;Integer&gt;</code>)  <br><br>&quot;kylingence&quot;||Space(3)||&quot;MDX&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">Sqr</td>
+<td style="text-align:left">Returns a Double specifying the square root of a number. <br><code>&lt;Numeric&gt;</code>: Sqr(<code>&lt;Numeric Expression&gt;</code>) <br><br>Sqr(4)</td>
+</tr>
+<tr>
+<td style="text-align:left">SqrtPi</td>
+<td style="text-align:left">Returns the square root of (number * pi).  <br><code>&lt;Numeric&gt;</code>: SqrtPi(<code>&lt;Numeric Expression&gt;</code>)<br><br>SqrtPi(4)</td>
+</tr>
+<tr>
+<td style="text-align:left">Stddev</td>
+<td style="text-align:left">Alias for Stdev.   <br><code>&lt;Numeric&gt;</code>: Stddev(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric Expression&gt;</code> Stddev(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)  <br><br>Example 1&#xFF1A;StdDev({[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2011],[Date].[CalendarYear].&amp;[2012]})<br>Example 2&#xFF1A;StdDev({[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2011],[Date].[CalendarYear].&amp;[2012]},[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">StddevP</td>
+<td style="text-align:left">Alias for StdevP.   <br><code>&lt;Numeric&gt;</code>: StddevP(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric Expression&gt;</code>StddevP(<code>&lt;Set&gt;</code>,<code>&lt;Numeric Expression&gt;</code>)  <br><br>Example 1&#xFF1A;StddevP({[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2011],[Date].[CalendarYear].&amp;[2012]})<br>Example 2&#xFF1A;StddevP({[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2011],[Date].[CalendarYear].&amp;[2012]}<br>,[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Stdev</td>
+<td style="text-align:left">Returns the standard deviation of a numeric expression evaluated over a set (unbiased). <br><code>&lt;Numeric&gt;</code>: Stdev(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric Expression&gt;</code> Stdev(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)  <br><br>Example 1&#xFF1A;Stdev({[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2011],[Date].[CalendarYear].&amp;[2012]})<br>Example 2&#xFF1A;Stdev({[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2011],[Date].[CalendarYear].&amp;[2012]},[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">StdevP</td>
+<td style="text-align:left">Returns the standard deviation of a numeric expression evaluated over a set (biased). <br><code>&lt;Numeric&gt;</code>: StdevP(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric Expression&gt;</code>StdevP(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)  <br><br>Example 1&#xFF1A;StdevP({[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2011],[Date].[CalendarYear].&amp;[2012]})<br>Example 2&#xFF1A;StdevP({[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2011],[Date].[CalendarYear].&amp;[2012]},[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Str</td>
+<td style="text-align:left">Returns a Variant (String) representation of a number.       <br><code>&lt;String&gt;</code>: Str(<code>&lt;Value&gt;</code>)  <br><br>Str(34)</td>
+</tr>
+<tr>
+<td style="text-align:left">StrComp</td>
+<td style="text-align:left">Returns a Variant (Integer) indicating the result of a string comparison. <br><code>&lt;Integer&gt;</code>: StrComp(<code>&lt;String&gt;</code>, <code>&lt;String&gt;</code>, <code>&lt;Integer&gt;</code>)<br>Parameter3:Specifies the type of string comparison. If the compare argument is Null, an error occurs. If compare is omitted, the Option Compare setting determines the type of comparison.  <br><br>Example 1&#xFF1A;StrComp(&quot;abcd&quot;,&quot;ABCD&quot;)<br>Example 2&#xFF1A;StrComp(&quot;abcd&quot;,&quot;ABCD&quot;,0)StrComp(&quot;abcde&quot;,&quot;ABCD&quot;,1)</td>
+</tr>
+<tr>
+<td style="text-align:left">StrReverse</td>
+<td style="text-align:left">Returns a string in which the character order of a specified string<br> is reversed. <br><code>&lt;String&gt;</code>: StrReverse(<code>&lt;String&gt;</code>) <br><br>StrReverse(&quot;abcde&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">StrToMember</td>
+<td style="text-align:left">Returns a member from a unique name String in MDX format.    <br><code>&lt;Member&gt;</code>: StrToMember(<code>&lt;String&gt;</code>)  <br><br>StrToMember(&apos;[Customer].[Education].&amp;[Bachelors]&apos;)</td>
+</tr>
+<tr>
+<td style="text-align:left">StrToSet</td>
+<td style="text-align:left">Constructs a set from a string expression. <br><code>&lt;Set&gt;</code>: StrToSet(<code>&lt;String&gt;</code>[, <code>&lt;Dimension&gt;</code>...])<br><br>StrToSet(&quot;[Product].[Color].&amp;[Red],[Product].[Color].&amp;[Silver]&quot;<br>,[Product].[Color])</td>
+</tr>
+<tr>
+<td style="text-align:left">StrToTuple</td>
+<td style="text-align:left">Constructs a tuple from a string. <br><code>&lt;Tuple&gt;</code>: StrToTuple(<code>&lt;String&gt;</code>)   <br><br>StrToTuple(&quot;([Product].[Color].&amp;[Red],[Product].[Class].&amp;[H ])&quot;,[Product].[Color],[Product].[Class])</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:left"><br><code>&lt;String&gt;</code>: String(<code>&lt;Integer&gt;</code>, <code>&lt;String&gt;</code>) <br><br>String(3,&quot;h&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">Subset</td>
+<td style="text-align:left">Returns a subset of elements from a set.                     <br><code>&lt;Set&gt;</code>: Subset(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)<br><code>&lt;Set&gt;</code> Subset(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>, <br><code>&lt;Numeric Expression&gt;</code>)<br>Parameter1:A valid numeric expression that specifies the position of the first tuple to be returned.<br>Parameter2:A valid numeric expression that specifies the number of tuples to be returned.  <br><br>Example 1&#xFF1A;SubSet({[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2011],[Date].[CalendarYear].&amp;[2012]},2)<br>Example 2&#xFF1A;SubSet({[Date].[CalendarYear].&amp;[2010], [Date].[CalendarYear].&amp;[2011], [Date].[CalendarYear].&amp;[2012]},1,3)</td>
+</tr>
+<tr>
+<td style="text-align:left">Sum</td>
+<td style="text-align:left">Returns the sum of a numeric expression evaluated over a set. <br><code>&lt;Numeric&gt;</code>: Sum(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric Expression&gt;</code> Sum(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)  <br><br>Sum([Date].[DateKey].CurrentMember,[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Tail</td>
+<td style="text-align:left">Returns a subset from the end of a set.                      <br><code>&lt;Set&gt;</code>: Tail(<code>&lt;Set&gt;</code>)<br><code>&lt;Set&gt;</code>: Tail(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)  <br><br>Example 1&#xFF1A;Tail({[Date].[CalendarYear].&amp;[2010], [Date].[CalendarYear].&amp;[2011], [Date].[CalendarYear].&amp;[2012], [Date].[CalendarYear].&amp;[2013]})<br>Example 2&#xFF1A;Tail({[Date].[CalendarYear].&amp;[2010], [Date].[CalendarYear].&amp;[2011], [Date].[CalendarYear].&amp;[2012], [Date].[CalendarYear].&amp;[2013]},2)</td>
+</tr>
+<tr>
+<td style="text-align:left">Tan</td>
+<td style="text-align:left">Returns a Double specifying the tangent of an angle.  <br><code>&lt;Numeric&gt;</code>: Tan(<code>&lt;Numeric Expression&gt;</code>) <br><br>Tan(45*Pi()/180)</td>
+</tr>
+<tr>
+<td style="text-align:left">Tanh</td>
+<td style="text-align:left">Returns the hyperbolic tangent of a number.   <br><code>&lt;Numeric&gt;</code>: Tanh(<code>&lt;Numeric Expression&gt;</code>) <br><br>Tanh(-2)</td>
+</tr>
+<tr>
+<td style="text-align:left">ThirdQ</td>
+<td style="text-align:left">Returns the 3rd quartile value of a numeric expression evaluated over a set. <br><code>&lt;Numeric&gt;</code>: ThirdQ(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric Expression&gt;</code> ThirdQ(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)  <br><br>Example 1&#xFF1A;ThirdQ({[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2011],[Date].[CalendarYear].&amp;[2012]})<br>Example 2&#xFF1A;ThirdQ({[Date].[CalendarYear].&amp;[2010], [Date].[CalendarYear].&amp;[2011], [Date].[CalendarYear].&amp;[2012], [Date].[CalendarYear].&amp;[2013] },[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Time</td>
+<td style="text-align:left">Returns a Variant (Date) indicating the current system time. <br><code>&lt;DateTime&gt;</code>: Time()  <br><br>Time()</td>
+</tr>
+<tr>
+<td style="text-align:left">TimeSerial</td>
+<td style="text-align:left">Returns a Variant (Date) containing the time for a specific hour,minute, and second. <br><code>&lt;DateTime&gt;</code>: TimeSerial(<code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>, <code>&lt;Integer&gt;</code>)<br>Parameter1:Hour.<br>Parameter2:Minute<br>Parameter3:Second <br><br>TimeSerial(16,34,17)</td>
+</tr>
+<tr>
+<td style="text-align:left">TimeValue</td>
+<td style="text-align:left">Returns a Variant (Date) containing the time.  <br><code>&lt;DateTime&gt;</code>: TimeValue(<code>&lt;DateTime&gt;</code>)<br><br>TimeValue(CDate(&apos;2020-09-02 18:20&apos;))</td>
+</tr>
+<tr>
+<td style="text-align:left">Timer</td>
+<td style="text-align:left">Returns a Single representing the number of seconds elapsed since midnight. <br><code>&lt;Numeric&gt;</code>: Timer() <br><br>Timer()</td>
+</tr>
+<tr>
+<td style="text-align:left">ToggleDrillState</td>
+<td style="text-align:left">The ToggleDrillState function toggles the drill state of each member of the second set that is present in the first set. The first set can contain tuples with any dimensionality, but the second set must contain members of a single dimension. The ToggleDrillState function is a combination of the DrillupMember and DrilldownMember functions. If the member, m, of the second set is present in the first set, and that member is drilled down (that is, has a descendant immediately following it), then <code>DrillupMember(Set_Expression1</code>, <code>{m}</code>) is applied to the member or tuple in the first set. <br><code>&lt;Set&gt;</code>: ToggleDrillState(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>)<br><code>&lt;Set&gt;</code> ToggleDrillState(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>, <code>&lt;Symbol&gt;</code>)  <br><br>Example 1&#xFF1A;ToggleDrillState({[Customer].[Education].[Education].Members},{[Customer].[Education].&amp;[Bachelors],[Customer].[Education].&amp;[High School]})</td>
+</tr>
+<tr>
+<td style="text-align:left">TopCount</td>
+<td style="text-align:left">Returns a specified number of items from the top of a set, optionally ordering the set first. <br><code>&lt;Set&gt;</code>: TopCount(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)<br><code>&lt;Set&gt;</code>: TopCount(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)  <br><br>Example 1&#xFF1A;TopCount({[Customer].[Education].[Education].Members},3,[Measures].[Count])<br>Example 2&#xFF1A;TopCount({[Customer].[Education].[Education].Members},3)</td>
+</tr>
+<tr>
+<td style="text-align:left">TopPercent</td>
+<td style="text-align:left">Sorts a set and returns the top N elements whose cumulative total is at least a specified percentage. <br><code>&lt;Set&gt;</code>: TopPercent(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)  <br><br>TopPercent({[Product].[Color].[Color].Members},60,[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">TopSum</td>
+<td style="text-align:left">Sorts a set and returns the top N elements whose cumulative total is at least a specified value. <br><code>&lt;Set&gt;</code>: TopSum(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)  <br><br>TopSum({[Customer].[Education].[Education].Members},30000,[Measures].[Count])</td>
+</tr>
+<tr>
+<td style="text-align:left">Trim</td>
+<td style="text-align:left">Returns a Variant (String) containing a copy of a specified string without leading and trailing spaces. <br><code>&lt;String&gt;</code>: Trim(<code>&lt;String&gt;</code>) <br><br>Trim(&quot; delete space &quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">TupleToStr</td>
+<td style="text-align:left">Constructs a string from a tuple. <br><code>&lt;String&gt;</code>: TupleToStr(<code>&lt;Tuple&gt;</code>)  <br><br>TupleToStr(([Customer].[Education].&amp;[Bachelors],[Date].[CalendarYear].&amp;[2011]))</td>
+</tr>
+<tr>
+<td style="text-align:left">TypeName</td>
+<td style="text-align:left">Returns a String that provides information about a variable. <br><code>&lt;String&gt;</code>: TypeName(<code>&lt;Value&gt;</code>)   <br><br>TypeName(2)</td>
+</tr>
+<tr>
+<td style="text-align:left">UCase</td>
+<td style="text-align:left">Returns a string that has been converted to uppercase.  <br><code>&lt;String&gt;</code>: UCase(<code>&lt;String&gt;</code>)  <br><br>ucase(&quot;Kylingence&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">Union</td>
+<td style="text-align:left">Returns the union of two sets, optionally retaining duplicates,using the ALL flag keeps duplicates in the joined set. <br><code>&lt;Set&gt;</code>: Union(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>)<br><code>&lt;Set&gt;</code>: Union(<code>&lt;Set&gt;</code>, <code>&lt;Set&gt;</code>, <code>&lt;Symbol&gt;</code>)<br>Symbol:All <br><br>Example 1&#xFF1A;Union({[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2013]},{[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2012]})<br>Example 2&#xFF1A;Union({[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2013]},{[Date].[CalendarYear].&amp;[2010],[Date].[CalendarYear].&amp;[2012]},All)</td>
+</tr>
+<tr>
+<td style="text-align:left">UniqueName</td>
+<td style="text-align:left">Returns the unique name. <br><code>&lt;String&gt;</code>: <code>&lt;Dimension&gt;</code>.UniqueName<br><code>&lt;String&gt;</code>: <code>&lt;Hierarchy&gt;</code>.UniqueName<br><code>&lt;String&gt;</code>: <code>&lt;Level&gt;</code>.UniqueName<br><code>&lt;String&gt;</code>: <code>&lt;Member&gt;</code>.UniqueName  <br><br>Example 1&#xFF1A;[Customer].[Education].[Education].UniqueName<br>Example 2&#xFF1A;[Customer].[person-Hierarchy].UniqueName<br>Example 3&#xFF1A;[Customer].[person-Hierarchy].[Education].uniquename<br>Example 4&#xFF1A;[Customer].[Education].&amp;[Bachelors].UniqueName</td>
+</tr>
+<tr>
+<td style="text-align:left">Unorder</td>
+<td style="text-align:left">Removes any enforced ordering from a specified set.  <br><code>&lt;Set&gt;</code>: Unorder(<code>&lt;Set&gt;</code>)  <br><br>Unorder(order([Customer].[Education].[Education].Members,[Measures].[Count]))</td>
+</tr>
+<tr>
+<td style="text-align:left">Val</td>
+<td style="text-align:left">Returns the numbers contained in a string as a numeric value of appropriate type. <br><code>&lt;Numeric&gt;</code>: Val(<code>&lt;String&gt;</code>)   <br><br>Val(&quot;34&quot;)</td>
+</tr>
+<tr>
+<td style="text-align:left">ValidMeasure</td>
+<td style="text-align:left">Returns a valid measure in a virtual cube by forcing inapplicable dimensions to their top level. <br><code>&lt;Numeric&gt;</code>: ValidMeasure(<code>&lt;Tuple&gt;</code>)<br><br>ValidMeasure(([Customer].[Education].&amp;[Bachelors],[Date].[CalendarYear].&amp;[2012]))</td>
+</tr>
+<tr>
+<td style="text-align:left">Value</td>
+<td style="text-align:left">Returns the value of a measure.   <br><code>&lt;Member&gt;</code>.Value   <br><br>[Date].[CalendarYear].&amp;[2010].Value</td>
+</tr>
+<tr>
+<td style="text-align:left">Var</td>
+<td style="text-align:left">Returns the variance of a numeric expression evaluated over a set (unbiased). <br><code>&lt;Numeric&gt;</code>: Var(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric&gt;</code>: Var(<code>&lt;Set&gt;</code>, <code>&lt;Numeric&gt;</code>)  <br><br>Example 1&#xFF1A;Var({[Date].[CalendarYear].&amp;[2010], [Date].[CalendarYear].&amp;[2011], [Date].[CalendarYear].&amp;[2012] })<br>Example 2&#xFF1A;Var({[Date].[CalendarYear].&amp;[2010], [Date].[CalendarYear].&amp;[2011], [Date].[CalendarYear].&amp;[2012] },2)</td>
+</tr>
+<tr>
+<td style="text-align:left">VarP</td>
+<td style="text-align:left">Returns the variance of a numeric expression evaluated over a set (biased). <br><code>&lt;Numeric&gt;</code>: VarP(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric&gt;</code>: VarP(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)  <br><br>Example 1&#xFF1A;VarP({[Date].[CalendarYear].&amp;[2010], [Date].[CalendarYear].&amp;[2011], [Date].[CalendarYear].&amp;[2012] })<br>Example 2&#xFF1A;VarP({[Date].[CalendarYear].&amp;[2010], [Date].[CalendarYear].&amp;[2011], [Date].[CalendarYear].&amp;[2012] },2)</td>
+</tr>
+<tr>
+<td style="text-align:left">Variance</td>
+<td style="text-align:left">Alias for Var.  <br><code>&lt;Numeric&gt;</code>: Variance(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric&gt;</code>: Variance(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)  <br><br>Example 1&#xFF1A;Variance({[Date].[CalendarYear].&amp;[2010], [Date].[CalendarYear].&amp;[2011], [Date].[CalendarYear].&amp;[2012] })<br>Example 2&#xFF1A;Variance({[Date].[CalendarYear].&amp;[2010], [Date].[CalendarYear].&amp;[2011], [Date].[CalendarYear].&amp;[2012] },3)</td>
+</tr>
+<tr>
+<td style="text-align:left">VarianceP</td>
+<td style="text-align:left">Alias for VarP.    <br><code>&lt;Numeric&gt;</code>: VarianceP(<code>&lt;Set&gt;</code>)<br><code>&lt;Numeric&gt;</code>: VarianceP(<code>&lt;Set&gt;</code>, <code>&lt;Numeric Expression&gt;</code>)  <br><br>Example 1&#xFF1A;VarianceP({[Date].[CalendarYear].&amp;[2010], [Date].[CalendarYear].&amp;[2011], [Date].[CalendarYear].&amp;[2012] })<br>Example 2&#xFF1A;VarianceP({[Date].[CalendarYear].&amp;[2010], [Date].[CalendarYear].&amp;[2011], [Date].[CalendarYear].&amp;[2012] },3)</td>
+</tr>
+<tr>
+<td style="text-align:left">VisualTotals</td>
+<td style="text-align:left">Dynamically totals child members specified in a set using a pattern for the total label in the result set. <br><code>&lt;Set&gt;</code>: VisualTotals(<code>&lt;Set&gt;</code>)<br><code>&lt;Set&gt;</code>: VisualTotals(<code>&lt;Set&gt;</code>, <code>&lt;String&gt;</code>)  <br><br>Example 1&#xFF1A;VisualTotals({[Customer].[Education].&amp;[Bachelors],[Customer].[Education].&amp;[High School], [Customer].[Education].&amp;[Partial High School]})<br>Example 2&#xFF1A;VisualTotals({[Customer].[Education].&amp;[Bachelors],[Customer].[Education].&amp;[High School], [Customer].[Education].&amp;[Partial High School]},&apos;* -Visualtotals&apos;)</td>
+</tr>
+<tr>
+<td style="text-align:left">Weekday</td>
+<td style="text-align:left">Returns a Variant (Integer) containing a whole number representing the day of the week. <br><code>&lt;Integer&gt;</code>: Weekday(<code>&lt;DateTime&gt;</code>, <code>&lt;Integer&gt;</code>)   <br><br>Example 1&#xFF1A;Weekday(Date())<br>Example 2&#xFF1A;Weekday(Date(),3)</td>
+</tr>
+<tr>
+<td style="text-align:left">WeekdayName</td>
+<td style="text-align:left">Returns a string indicating the specified day of the week.   <br><code>&lt;String&gt;</code>: WeekdayName(<code>&lt;Integer&gt;</code>, <code>&lt;Logical Expression&gt;</code>,<br> <code>&lt;Integer&gt;</code>)  <br><br>WeekdayName(3,[Measures].[Count]&lt;80000,2)</td>
+</tr>
+<tr>
+<td style="text-align:left">Wtd</td>
+<td style="text-align:left">A shortcut function for the PeriodsToDate function that specifies the level to be Week.<br><code>&lt;Set&gt;</code>: Wtd()<br><code>&lt;Set&gt;</code>: Wtd(<code>&lt;Member&gt;</code>)  <br><br>WTD([Date].[Calendar-Hierarchy].currentmember)</td>
+</tr>
+<tr>
+<td style="text-align:left">XOR</td>
+<td style="text-align:left">Returns whether two conditions are mutually exclusive.       <br><code>&lt;Boolean&gt;</code>: <code>&lt;Boolean&gt;</code> XOR <code>&lt;Boolean&gt;</code>  <br><br>[Measures].[Count]&gt;80000 Xor [Measures].[SalesAmout]&lt;1000</td>
+</tr>
+<tr>
+<td style="text-align:left">Year</td>
+<td style="text-align:left">Returns a Variant (Integer) containing a whole number representing the year. <br><code>&lt;Integer&gt;</code>: Year(<code>&lt;DateTime&gt;</code>) <br><br>Year(CDate(&quot;2020-09-03&quot;))</td>
+</tr>
+<tr>
+<td style="text-align:left">Ytd</td>
+<td style="text-align:left">A shortcut function for the PeriodsToDate function that specifies the level to be Year.<br><code>&lt;Set&gt;</code>: Ytd()<br><code>&lt;Set&gt;</code>: Ytd(<code>&lt;Member&gt;</code>) <br><br>YTD([Date].[Calendar-Hierarchy].currentmember)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>_CaseMatch</code></td>
+<td style="text-align:left">Evaluates various expressions, and returns the corresponding expression for the first which matches a particular value.&#x3002;<br>Case <code>&lt;Expression&gt;</code> When <code>&lt;Boolean&gt;</code> Then <code>&lt;Expression&gt;</code> [...] [Else <code>&lt;Expression&gt;</code>] End<br><br>CASE sum([Date].[DateKey].CurrentMember,[Measures].[Count]) <br>WHEN 0 THEN &apos;NONE&apos;<br>WHEN 1 THEN &apos;SMALL&apos;<br>ELSE &apos;LARGE&apos;<br>END</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>_CaseTest</code></td>
+<td style="text-align:left">Evaluates various conditions, and returns the corresponding expression for the first which evaluates to true.<br>Case When <code>&lt;Boolean&gt;</code> Then <code>&lt;Expression&gt;</code> [...] [Else <code>&lt;Expression&gt;</code>] End<br><br>CASE WHEN [Measures].[Count]<80000 <br>THEN &apos;TRUE&apos;<br>ELSE &apos;VERY LARGE&apos;<br>END</80000></td>
+</tr>
+<tr>
+<td style="text-align:left">||</td>
+<td style="text-align:left">Concatenates two strings.       <br><code>&lt;String&gt;</code>: <code>&lt;String&gt;</code>||<code>&lt;String&gt;</code><br><br> &apos;kylin&apos;||&apos;gence&apos;</td>
+</tr>
+</tbody>
+</table>
+<footer class="page-footer-ex"> <span class="page-footer-ex-copyright"> Powered by Gitbook. </span> &#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0; <span class="page-footer-ex-footer-update"> Last Modified&#xFF1A; 2022-03-20 16:37:32 </span> </footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching &quot;<span class="search-query"></span>&quot;</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching &quot;<span class="search-query"></span>&quot;</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="rename_dataset.en.html" class="navigation navigation-prev " aria-label="Previous page: Rename Dataset">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="metadata_synchronization.en.html" class="navigation navigation-next " aria-label="Next page: Metadata Synchronization">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"MDX Function List","level":"1.4.5","depth":2,"next":{"title":"Metadata Synchronization","level":"1.4.6","depth":2,"path":"dataset/metadata_synchronization.en.md","ref":"dataset/metadata_synchronization.en.md","articles":[]},"previous":{"title":"Rename Dataset","level":"1.4.4","depth":2,"path":"dataset/rename_dataset.en.md","ref":"dataset/rename_dataset.en.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-disqus","-lunr","-search","search-pro-kui","github","ace","emphasize","anchors","page-footer-ex","sectionx","expandable-chapters","codeblock-filename","edit-link","header","image-captions"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"disqus":{"shortName":"manual-of-mdx-for-kylin"},"validate-links":{"local":"error"},"emphasize":{},"ace":{},"github":{"url":"https://github.com/Kyligence/mdx-kylin/tree/manual"},"page-footer-ex":{"copyright":"Powered by Gitbook.","markdown":false,"update_format":"YYYY-MM-DD HH:mm:ss","update_label":"Last Modified："},"layout":{"headerPath":"layouts/header.html"},"header":{},"fontsettings":{"theme":"white","family":"sans","size":2},"sectionx":{},"highlight":{},"codeblock-filename":{},"search-pro-kui":{},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/Kyligence/mdx-kylin/edit/manual"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{},"expandable-chapters":{},"image-captions":{"caption":"_CAPTION_","variable_name":"_pictures"}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"_pictures":[{"backlink":"installation/install_linux.en.html#fig1.2.2.1","level":"1.2.2","list_caption":"Figure: Startup with synchronization failure","alt":"Startup with synchronization failure","nro":1,"url":"images/start.en.png","index":1,"caption_template":"_CAPTION_","label":"Startup with synchronization failure","attributes":{},"skip":false,"key":"1.2.2.1"},{"backlink":"installation/install_linux.en.html#fig1.2.2.2","level":"1.2.2","list_caption":"Figure: Fill in connection user information","alt":"Fill in connection user information","nro":2,"url":"images/configure_connection_info.en.png","index":2,"caption_template":"_CAPTION_","label":"Fill in connection user information","attributes":{},"skip":false,"key":"1.2.2.2"},{"backlink":"overview/index.html#fig1.3.1","level":"1.3","list_caption":"Figure: Overview","alt":"Overview","nro":3,"url":"images/overview.en.png","index":1,"caption_template":"_CAPTION_","label":"Overview","attributes":{},"skip":false,"key":"1.3.1"},{"backlink":"overview/index.html#fig1.3.2","level":"1.3","list_caption":"Figure: Query Statistics","alt":"Query Statistics","nro":4,"url":"images/query_statistics.en.png","index":2,"caption_template":"_CAPTION_","label":"Query Statistics","attributes":{},"skip":false,"key":"1.3.2"},{"backlink":"overview/index.html#fig1.3.3","level":"1.3","list_caption":"Figure: Query Trend","alt":"Query Trend","nro":5,"url":"images/query_trend.en.png","index":3,"caption_template":"_CAPTION_","label":"Query Trend","attributes":{},"skip":false,"key":"1.3.3"},{"backlink":"overview/index.html#fig1.3.4","level":"1.3","list_caption":"Figure: Query Time","alt":"Query Time","nro":6,"url":"images/query_time.en.png","index":4,"caption_template":"_CAPTION_","label":"Query Time","attributes":{},"skip":false,"key":"1.3.4"},{"backlink":"overview/index.html#fig1.3.5","level":"1.3","list_caption":"Figure: Dataset Ranking","alt":"Dataset Ranking","nro":7,"url":"images/ranking.en.png","index":5,"caption_template":"_CAPTION_","label":"Dataset Ranking","attributes":{},"skip":false,"key":"1.3.5"},{"backlink":"dataset/design_dataset/s1_basic_info.en.html#fig1.4.1.1.1","level":"1.4.1.1","list_caption":"Figure: Open Dataset List","alt":"Open Dataset List","nro":8,"url":"images/basic_info/dataset_list.en.png","index":1,"caption_template":"_CAPTION_","label":"Open Dataset List","attributes":{},"skip":false,"key":"1.4.1.1.1"},{"backlink":"dataset/design_dataset/s1_basic_info.en.html#fig1.4.1.1.2","level":"1.4.1.1","list_caption":"Figure: create dataset","alt":"create dataset","nro":9,"url":"images/basic_info/create_dataset.en.png","index":2,"caption_template":"_CAPTION_","label":"create dataset","attributes":{},"skip":false,"key":"1.4.1.1.2"},{"backlink":"dataset/design_dataset/s1_basic_info.en.html#fig1.4.1.1.3","level":"1.4.1.1","list_caption":"Figure: fill basic information","alt":"fill basic information","nro":10,"url":"images/basic_info/basic_information.en.png","index":3,"caption_template":"_CAPTION_","label":"fill basic information","attributes":{},"skip":false,"key":"1.4.1.1.3"},{"backlink":"dataset/design_dataset/s2_relationship.en.html#fig1.4.1.2.1","level":"1.4.1.2","list_caption":"Figure: Add the basic model","alt":"Add the basic model","nro":11,"url":"images/relationship/add_first_model.en.gif","index":1,"caption_template":"_CAPTION_","label":"Add the basic model","attributes":{},"skip":false,"key":"1.4.1.2.1"},{"backlink":"dataset/design_dataset/s2_relationship.en.html#fig1.4.1.2.2","level":"1.4.1.2","list_caption":"Figure: Add an associated cube","alt":"Add an associated cube","nro":12,"url":"images/relationship/add_second_model.en.gif","index":2,"caption_template":"_CAPTION_","label":"Add an associated cube","attributes":{},"skip":false,"key":"1.4.1.2.2"},{"backlink":"dataset/design_dataset/s3_semantic.en.html#fig1.4.1.3.1","level":"1.4.1.3","list_caption":"Figure: define semantics","alt":"define semantics","nro":13,"url":"images/semantic/define_semantics.en.png","index":1,"caption_template":"_CAPTION_","label":"define semantics","attributes":{},"skip":false,"key":"1.4.1.3.1"},{"backlink":"dataset/design_dataset/s3_1_dimension_table.en.html#fig1.4.1.3.1.1","level":"1.4.1.3.1","list_caption":"Figure: view dimension tables","alt":"view dimension tables","nro":14,"url":"images/dimension_table/show_dimension_table.en.png","index":1,"caption_template":"_CAPTION_","label":"view dimension tables","attributes":{},"skip":false,"key":"1.4.1.3.1.1"},{"backlink":"dataset/design_dataset/s3_1_dimension_table.en.html#fig1.4.1.3.1.2","level":"1.4.1.3.1","list_caption":"Figure: edit dimension table","alt":"edit dimension table","nro":15,"url":"images/dimension_table/edit_dimension_table.en.png","index":2,"caption_template":"_CAPTION_","label":"edit dimension table","attributes":{},"skip":false,"key":"1.4.1.3.1.2"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.1","level":"1.4.1.3.2","list_caption":"Figure: show dimension","alt":"show dimension","nro":16,"url":"images/dimension/show_dimension.en.png","index":1,"caption_template":"_CAPTION_","label":"show dimension","attributes":{},"skip":false,"key":"1.4.1.3.2.1"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.2","level":"1.4.1.3.2","list_caption":"Figure: edit dimension","alt":"edit dimension","nro":17,"url":"images/dimension/edit_dimensions.en.png","index":2,"caption_template":"_CAPTION_","label":"edit dimension","attributes":{},"skip":false,"key":"1.4.1.3.2.2"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.3","level":"1.4.1.3.2","list_caption":"Figure: Edit Attribute","alt":"Edit Attribute","nro":18,"url":"images/dimension/type.en.png","index":3,"caption_template":"_CAPTION_","label":"Edit Attribute","attributes":{},"skip":false,"key":"1.4.1.3.2.3"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.4","level":"1.4.1.3.2","list_caption":"Figure: Edit Name Column","alt":"Edit Name Column","nro":19,"url":"images/dimension/namecolumn.en.png","index":4,"caption_template":"_CAPTION_","label":"Edit Name Column","attributes":{},"skip":false,"key":"1.4.1.3.2.4"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.5","level":"1.4.1.3.2","list_caption":"Figure: Edit Value Column","alt":"Edit Value Column","nro":20,"url":"images/dimension/valuecolumn.en.png","index":5,"caption_template":"_CAPTION_","label":"Edit Value Column","attributes":{},"skip":false,"key":"1.4.1.3.2.5"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.6","level":"1.4.1.3.2","list_caption":"Figure: Edit Properties","alt":"Edit Properties","nro":21,"url":"images/dimension/properties.en.png","index":6,"caption_template":"_CAPTION_","label":"Edit Properties","attributes":{},"skip":false,"key":"1.4.1.3.2.6"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.7","level":"1.4.1.3.2","list_caption":"Figure: Edit Folder","alt":"Edit Folder","nro":22,"url":"images/dimension/folder.en.png","index":7,"caption_template":"_CAPTION_","label":"Edit Folder","attributes":{},"skip":false,"key":"1.4.1.3.2.7"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.8","level":"1.4.1.3.2","list_caption":"Figure: Set Default Member","alt":"Set Default Member","nro":23,"url":"images/dimension/default_member.en.png","index":8,"caption_template":"_CAPTION_","label":"Set Default Member","attributes":{},"skip":false,"key":"1.4.1.3.2.8"},{"backlink":"dataset/design_dataset/s3_2_dimension.en.html#fig1.4.1.3.2.9","level":"1.4.1.3.2","list_caption":"Figure: Edit Visibility","alt":"Edit Visibility","nro":24,"url":"images/dimension/visible.en.png","index":9,"caption_template":"_CAPTION_","label":"Edit Visibility","attributes":{},"skip":false,"key":"1.4.1.3.2.9"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.1","level":"1.4.1.3.3","list_caption":"Figure: show measures","alt":"show measures","nro":25,"url":"images/measures/show_measures.en.png","index":1,"caption_template":"_CAPTION_","label":"show measures","attributes":{},"skip":false,"key":"1.4.1.3.3.1"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.2","level":"1.4.1.3.3","list_caption":"Figure: edit measures","alt":"edit measures","nro":26,"url":"images/measures/edit_measures.en.png","index":2,"caption_template":"_CAPTION_","label":"edit measures","attributes":{},"skip":false,"key":"1.4.1.3.3.2"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.3","level":"1.4.1.3.3","list_caption":"Figure: Edit measure format","alt":"Edit measure format","nro":27,"url":"images/measures/format.en.png","index":3,"caption_template":"_CAPTION_","label":"Edit measure format","attributes":{},"skip":false,"key":"1.4.1.3.3.3"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.4","level":"1.4.1.3.3","list_caption":"Figure: Edit measure format","alt":"Edit measure format","nro":28,"url":"images/measures/format_numeric_en.png","index":4,"caption_template":"_CAPTION_","label":"Edit measure format","attributes":{},"skip":false,"key":"1.4.1.3.3.4"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.5","level":"1.4.1.3.3","list_caption":"Figure: Edit measure format","alt":"Edit measure format","nro":29,"url":"images/measures/format_user_define_en.png","index":5,"caption_template":"_CAPTION_","label":"Edit measure format","attributes":{},"skip":false,"key":"1.4.1.3.3.5"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.6","level":"1.4.1.3.3","list_caption":"Figure: Edit Folder","alt":"Edit Folder","nro":30,"url":"images/measures/folder.en.png","index":6,"caption_template":"_CAPTION_","label":"Edit Folder","attributes":{},"skip":false,"key":"1.4.1.3.3.6"},{"backlink":"dataset/design_dataset/s3_3_measure.en.html#fig1.4.1.3.3.7","level":"1.4.1.3.3","list_caption":"Figure: Edit Visibility","alt":"Edit Visibility","nro":31,"url":"images/measures/visible.en.png","index":7,"caption_template":"_CAPTION_","label":"Edit Visibility","attributes":{},"skip":false,"key":"1.4.1.3.3.7"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.1","level":"1.4.1.3.4","list_caption":"Figure: hierarchy in excel","alt":"hierarchy in excel","nro":32,"url":"images/hierarchy/excel_hierarchy.en.png","index":1,"caption_template":"_CAPTION_","label":"hierarchy in excel","attributes":{},"skip":false,"key":"1.4.1.3.4.1"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.2","level":"1.4.1.3.4","list_caption":"Figure: add hierarchy","alt":"add hierarchy","nro":33,"url":"images/hierarchy/add_hierarchy.en.png","index":2,"caption_template":"_CAPTION_","label":"add hierarchy","attributes":{},"skip":false,"key":"1.4.1.3.4.2"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.3","level":"1.4.1.3.4","list_caption":"Figure: show hierarchy","alt":"show hierarchy","nro":34,"url":"images/hierarchy/show_hierarchy.en.png","index":3,"caption_template":"_CAPTION_","label":"show hierarchy","attributes":{},"skip":false,"key":"1.4.1.3.4.3"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.4","level":"1.4.1.3.4","list_caption":"Figure: edit hierarchy","alt":"edit hierarchy","nro":35,"url":"images/hierarchy/edit_hierarchy.en.png","index":4,"caption_template":"_CAPTION_","label":"edit hierarchy","attributes":{},"skip":false,"key":"1.4.1.3.4.4"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.5","level":"1.4.1.3.4","list_caption":"Figure: Table D_MEDICINE","alt":"Table D_MEDICINE","nro":36,"url":"images/hierarchy/customrollup/dimension_table.en.png","index":5,"caption_template":"_CAPTION_","label":"Table D_MEDICINE","attributes":{},"skip":false,"key":"1.4.1.3.4.5"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.6","level":"1.4.1.3.4","list_caption":"Figure: Create Hierarchy","alt":"Create Hierarchy","nro":37,"url":"images/hierarchy/customrollup/hierarchy.en.png","index":6,"caption_template":"_CAPTION_","label":"Create Hierarchy","attributes":{},"skip":false,"key":"1.4.1.3.4.6"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.7","level":"1.4.1.3.4","list_caption":"Figure: Create a hierarchy","alt":"Create a hierarchy","nro":38,"url":"images/hierarchy/customrollup/set_weight.en.png","index":7,"caption_template":"_CAPTION_","label":"Create a hierarchy","attributes":{},"skip":false,"key":"1.4.1.3.4.7"},{"backlink":"dataset/design_dataset/s3_4_hierarchy.en.html#fig1.4.1.3.4.8","level":"1.4.1.3.4","list_caption":"Figure: Set Weight","alt":"Set Weight","nro":39,"url":"images/hierarchy/customrollup/set_weight_prompt.en.png","index":8,"caption_template":"_CAPTION_","label":"Set Weight","attributes":{},"skip":false,"key":"1.4.1.3.4.8"},{"backlink":"dataset/design_dataset/s3_5_namedset.en.html#fig1.4.1.3.5.1","level":"1.4.1.3.5","list_caption":"Figure: add named set","alt":"add named set","nro":40,"url":"images/named_set/add_named_set.en.png","index":1,"caption_template":"_CAPTION_","label":"add named set","attributes":{},"skip":false,"key":"1.4.1.3.5.1"},{"backlink":"dataset/design_dataset/s3_5_namedset.en.html#fig1.4.1.3.5.2","level":"1.4.1.3.5","list_caption":"Figure: show named set","alt":"show named set","nro":41,"url":"images/named_set/show_named_set.en.png","index":2,"caption_template":"_CAPTION_","label":"show named set","attributes":{},"skip":false,"key":"1.4.1.3.5.2"},{"backlink":"dataset/design_dataset/s3_5_namedset.en.html#fig1.4.1.3.5.3","level":"1.4.1.3.5","list_caption":"Figure: change location","alt":"change location","nro":42,"url":"images/named_set/edit_folder_named_set.en.png","index":3,"caption_template":"_CAPTION_","label":"change location","attributes":{},"skip":false,"key":"1.4.1.3.5.3"},{"backlink":"dataset/design_dataset/s3_5_namedset.en.html#fig1.4.1.3.5.4","level":"1.4.1.3.5","list_caption":"Figure: Example Named Set","alt":"Example Named Set","nro":43,"url":"images/named_set/example_namedset_en.png","index":4,"caption_template":"_CAPTION_","label":"Example Named Set","attributes":{},"skip":false,"key":"1.4.1.3.5.4"},{"backlink":"dataset/design_dataset/s3_5_namedset.en.html#fig1.4.1.3.5.5","level":"1.4.1.3.5","list_caption":"Figure: Example Named Set in Excel","alt":"Example Named Set in Excel","nro":44,"url":"images/named_set/example_namedset_excel_en.png","index":5,"caption_template":"_CAPTION_","label":"Example Named Set in Excel","attributes":{},"skip":false,"key":"1.4.1.3.5.5"},{"backlink":"dataset/design_dataset/s3_5_namedset.en.html#fig1.4.1.3.5.6","level":"1.4.1.3.5","list_caption":"Figure: Example Named Set in Tableau","alt":"Example Named Set in Tableau","nro":45,"url":"images/named_set/example_namedset_tableau_en.png","index":6,"caption_template":"_CAPTION_","label":"Example Named Set in Tableau","attributes":{},"skip":false,"key":"1.4.1.3.5.6"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.en.html#fig1.4.1.3.6.1","level":"1.4.1.3.6","list_caption":"Figure: add calculated mesasures","alt":"add calculated mesasures","nro":46,"url":"images/calculated_measure/add_calculated_measures.en.png","index":1,"caption_template":"_CAPTION_","label":"add calculated mesasures","attributes":{},"skip":false,"key":"1.4.1.3.6.1"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.en.html#fig1.4.1.3.6.2","level":"1.4.1.3.6","list_caption":"Figure: show calculated measures","alt":"show calculated measures","nro":47,"url":"images/calculated_measure/show_calculated_measures.en.png","index":2,"caption_template":"_CAPTION_","label":"show calculated measures","attributes":{},"skip":false,"key":"1.4.1.3.6.2"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.en.html#fig1.4.1.3.6.3","level":"1.4.1.3.6","list_caption":"Figure: edit calculated measures","alt":"edit calculated measures","nro":48,"url":"images/calculated_measure/edit_calculated_measures.en.png","index":3,"caption_template":"_CAPTION_","label":"edit calculated measures","attributes":{},"skip":false,"key":"1.4.1.3.6.3"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.en.html#fig1.4.1.3.6.4","level":"1.4.1.3.6","list_caption":"Figure: Edit Folder","alt":"Edit Folder","nro":49,"url":"images/calculated_measure/folder.en.png","index":4,"caption_template":"_CAPTION_","label":"Edit Folder","attributes":{},"skip":false,"key":"1.4.1.3.6.4"},{"backlink":"dataset/design_dataset/s3_6_calculated_measure.en.html#fig1.4.1.3.6.5","level":"1.4.1.3.6","list_caption":"Figure: Edit Visibility","alt":"Edit Visibility","nro":50,"url":"images/calculated_measure/visible.en.png","index":5,"caption_template":"_CAPTION_","label":"Edit Visibility","attributes":{},"skip":false,"key":"1.4.1.3.6.5"},{"backlink":"dataset/design_dataset/s3_6_s3_semi_additive_measure.en.html#fig1.4.1.3.6.3.1","level":"1.4.1.3.6.3","list_caption":"Figure: Add semi-additive measure","alt":"Add semi-additive measure","nro":51,"url":"images/calculated_measure/add_semi_additive_measure.en.png","index":1,"caption_template":"_CAPTION_","label":"Add semi-additive measure","attributes":{},"skip":false,"key":"1.4.1.3.6.3.1"},{"backlink":"dataset/design_dataset/s3_7_measure_group.en.html#fig1.4.1.3.7.1","level":"1.4.1.3.7","list_caption":"Figure: edit measure group name","alt":"edit measure group name","nro":52,"url":"images/measures/measure_group_en.png","index":1,"caption_template":"_CAPTION_","label":"edit measure group name","attributes":{},"skip":false,"key":"1.4.1.3.7.1"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.1","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":53,"url":"images/measures/dataset_info_en.png","index":1,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.1"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.2","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":54,"url":"images/measures/dataset_info_cm_en.png","index":2,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.2"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.3","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":55,"url":"images/measures/dataset_info_ns_en.png","index":3,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.3"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.4","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":56,"url":"images/measures/dataset_replace_model_en.png","index":4,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.4"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.5","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":57,"url":"images/measures/dataset_invalid_object_en.png","index":5,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.5"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.6","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":58,"url":"images/measures/dataset_del_invalid_object_en.png","index":6,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.6"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.7","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":59,"url":"images/measures/dataset_del_invalid_object_dc_en.png","index":7,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.7"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.8","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":60,"url":"images/measures/dataset_del_success_en.png","index":8,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.8"},{"backlink":"dataset/design_dataset/s3_8_batch_deletion.en.html#fig1.4.1.3.8.9","level":"1.4.1.3.8","list_caption":"Figure: Models and Datasets","alt":"Models and Datasets","nro":61,"url":"images/measures/dataset_del_save_en.png","index":9,"caption_template":"_CAPTION_","label":"Models and Datasets","attributes":{},"skip":false,"key":"1.4.1.3.8.9"},{"backlink":"dataset/design_dataset/s4_translate.en.html#fig1.4.1.4.1","level":"1.4.1.4","list_caption":"Figure: Add language","alt":"Add language","nro":62,"url":"images/translate/add_translation_btn.en.png","index":1,"caption_template":"_CAPTION_","label":"Add language","attributes":{},"skip":false,"key":"1.4.1.4.1"},{"backlink":"dataset/design_dataset/s4_translate.en.html#fig1.4.1.4.2","level":"1.4.1.4","list_caption":"Figure: Choose language","alt":"Choose language","nro":63,"url":"images/translate/choose_language.en.png","index":2,"caption_template":"_CAPTION_","label":"Choose language","attributes":{},"skip":false,"key":"1.4.1.4.2"},{"backlink":"dataset/design_dataset/s4_translate.en.html#fig1.4.1.4.3","level":"1.4.1.4","list_caption":"Figure: Define translation","alt":"Define translation","nro":64,"url":"images/translate/add_translation_content.en.png","index":3,"caption_template":"_CAPTION_","label":"Define translation","attributes":{},"skip":false,"key":"1.4.1.4.3"},{"backlink":"dataset/design_dataset/s4_translate.en.html#fig1.4.1.4.4","level":"1.4.1.4","list_caption":"Figure: example_translation","alt":"example_translation","nro":65,"url":"images/translate/example_translation.png","index":4,"caption_template":"_CAPTION_","label":"example_translation","attributes":{},"skip":false,"key":"1.4.1.4.4"},{"backlink":"dataset/design_dataset/s4_translate.en.html#fig1.4.1.4.5","level":"1.4.1.4","list_caption":"Figure: translation_cn","alt":"translation_cn","nro":66,"url":"images/translate/example_translation_excel_cn.png","index":5,"caption_template":"_CAPTION_","label":"translation_cn","attributes":{},"skip":false,"key":"1.4.1.4.5"},{"backlink":"dataset/design_dataset/s4_translate.en.html#fig1.4.1.4.6","level":"1.4.1.4","list_caption":"Figure: translation_en","alt":"translation_en","nro":67,"url":"images/translate/example_translation_excel_en.png","index":6,"caption_template":"_CAPTION_","label":"translation_en","attributes":{},"skip":false,"key":"1.4.1.4.6"},{"backlink":"dataset/design_dataset/s5_dimension_usage.en.html#fig1.4.1.5.1","level":"1.4.1.5","list_caption":"Figure: show dimension usage","alt":"show dimension usage","nro":68,"url":"images/dimension_usage/show_dimension_usage.en.png","index":1,"caption_template":"_CAPTION_","label":"show dimension usage","attributes":{},"skip":false,"key":"1.4.1.5.1"},{"backlink":"dataset/design_dataset/s5_dimension_usage.en.html#fig1.4.1.5.2","level":"1.4.1.5","list_caption":"Figure: edit_dimension_usage","alt":"edit_dimension_usage","nro":69,"url":"images/dimension_usage/edit_dimension_usage.en.png","index":2,"caption_template":"_CAPTION_","label":"edit_dimension_usage","attributes":{},"skip":false,"key":"1.4.1.5.2"},{"backlink":"dataset/design_dataset/s5_dimension_usage.en.html#fig1.4.1.5.3","level":"1.4.1.5","list_caption":"Figure: regular link","alt":"regular link","nro":70,"url":"images/dimension_usage/regular_relationship.en.png","index":3,"caption_template":"_CAPTION_","label":"regular link","attributes":{},"skip":false,"key":"1.4.1.5.3"},{"backlink":"dataset/design_dataset/save.en.html#fig1.4.1.6.1","level":"1.4.1.6","list_caption":"Figure: create dataset successfully","alt":"create dataset successfully","nro":71,"url":"images/finish/finish.en.png","index":1,"caption_template":"_CAPTION_","label":"create dataset successfully","attributes":{},"skip":false,"key":"1.4.1.6.1"},{"backlink":"dataset/design_dataset/s8_xtd.en.html#fig1.4.1.7.1","level":"1.4.1.7","list_caption":"Figure: define dimension table","alt":"define dimension table","nro":72,"url":"images/YTD/set_table_attribute.en.png","index":1,"caption_template":"_CAPTION_","label":"define dimension table","attributes":{},"skip":false,"key":"1.4.1.7.1"},{"backlink":"dataset/design_dataset/s8_xtd.en.html#fig1.4.1.7.2","level":"1.4.1.7","list_caption":"Figure: define dimension attribute","alt":"define dimension attribute","nro":73,"url":"images/YTD/set_attribute.en.png","index":2,"caption_template":"_CAPTION_","label":"define dimension attribute","attributes":{},"skip":false,"key":"1.4.1.7.2"},{"backlink":"dataset/access_list.en.html#fig1.4.2.1","level":"1.4.2","list_caption":"Figure: Access List","alt":"Access List","nro":74,"url":"images/access_list/access_list.en.png","index":1,"caption_template":"_CAPTION_","label":"Access List","attributes":{},"skip":false,"key":"1.4.2.1"},{"backlink":"dataset/access_list.en.html#fig1.4.2.2","level":"1.4.2","list_caption":"Figure: Select User or Role","alt":"Select User or Role","nro":75,"url":"images/access_list/access_list_detail.en.png","index":2,"caption_template":"_CAPTION_","label":"Select User or Role","attributes":{},"skip":false,"key":"1.4.2.2"},{"backlink":"dataset/import_export.en.html#fig1.4.3.1","level":"1.4.3","list_caption":"Figure: Export Dataset","alt":"Export Dataset","nro":76,"url":"images/export_single_en.png","index":1,"caption_template":"_CAPTION_","label":"Export Dataset","attributes":{},"skip":false,"key":"1.4.3.1"},{"backlink":"dataset/import_export.en.html#fig1.4.3.2","level":"1.4.3","list_caption":"Figure: Export Dataset","alt":"Export Dataset","nro":77,"url":"images/export_multi_en.png","index":2,"caption_template":"_CAPTION_","label":"Export Dataset","attributes":{},"skip":false,"key":"1.4.3.2"},{"backlink":"dataset/import_export.en.html#fig1.4.3.3","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":78,"url":"images/import_sel_en.png","index":3,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.3"},{"backlink":"dataset/import_export.en.html#fig1.4.3.4","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":79,"url":"images/import_config_en.png","index":4,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.4"},{"backlink":"dataset/import_export.en.html#fig1.4.3.5","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":80,"url":"images/import_addnew_en.png","index":5,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.5"},{"backlink":"dataset/import_export.en.html#fig1.4.3.6","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":81,"url":"images/import_all_same_en.png","index":6,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.6"},{"backlink":"dataset/import_export.en.html#fig1.4.3.7","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":82,"url":"images/import_part_same_new_en.png","index":7,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.7"},{"backlink":"dataset/import_export.en.html#fig1.4.3.8","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":83,"url":"images/import_part_same_del_en.png","index":8,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.8"},{"backlink":"dataset/import_export.en.html#fig1.4.3.9","level":"1.4.3","list_caption":"Figure: Import Dataset","alt":"Import Dataset","nro":84,"url":"images/import_quit_en.png","index":9,"caption_template":"_CAPTION_","label":"Import Dataset","attributes":{},"skip":false,"key":"1.4.3.9"},{"backlink":"dataset/rename_dataset.en.html#fig1.4.4.1","level":"1.4.4","list_caption":"Figure: Export Dataset","alt":"Export Dataset","nro":85,"url":"images/rename_dataset_en.png","index":1,"caption_template":"_CAPTION_","label":"Export Dataset","attributes":{},"skip":false,"key":"1.4.4.1"},{"backlink":"dataset/rename_dataset.en.html#fig1.4.4.2","level":"1.4.4","list_caption":"Figure: Export Dataset","alt":"Export Dataset","nro":86,"url":"images/rename_enter_en.png","index":2,"caption_template":"_CAPTION_","label":"Export Dataset","attributes":{},"skip":false,"key":"1.4.4.2"},{"backlink":"dataset/rename_dataset.en.html#fig1.4.4.3","level":"1.4.4","list_caption":"Figure: Export Dataset","alt":"Export Dataset","nro":87,"url":"images/rename_done_en.png","index":3,"caption_template":"_CAPTION_","label":"Export Dataset","attributes":{},"skip":false,"key":"1.4.4.3"},{"backlink":"mdx_query/query_history.en.html#fig1.5.2.1","level":"1.5.2","list_caption":"Figure: View Query History","alt":"View Query History","nro":88,"url":"./images/query_history_1.en.png","index":1,"caption_template":"_CAPTION_","label":"View Query History","attributes":{},"skip":false,"key":"1.5.2.1"},{"backlink":"mdx_query/query_history.en.html#fig1.5.2.2","level":"1.5.2","list_caption":"Figure: View History Details","alt":"View History Details","nro":89,"url":"./images/query_history_2.en.png","index":2,"caption_template":"_CAPTION_","label":"View History Details","attributes":{},"skip":false,"key":"1.5.2.2"},{"backlink":"mdx_query/query_history.en.html#fig1.5.2.3","level":"1.5.2","list_caption":"Figure: MDX Query Details","alt":"MDX Query Details","nro":90,"url":"./images/query_history_3.en.png","index":3,"caption_template":"_CAPTION_","label":"MDX Query Details","attributes":{},"skip":false,"key":"1.5.2.3"},{"backlink":"mdx_query/query_history.en.html#fig1.5.2.4","level":"1.5.2","list_caption":"Figure: SQL Query Details","alt":"SQL Query Details","nro":91,"url":"./images/query_history_4.en.png","index":4,"caption_template":"_CAPTION_","label":"SQL Query Details","attributes":{},"skip":false,"key":"1.5.2.4"},{"backlink":"integration/excel_integration.en.html#fig1.6.1.1","level":"1.6.1","list_caption":"Figure: connect to Excel","alt":"connect to Excel","nro":92,"url":"images/excel/make_connection.png","index":1,"caption_template":"_CAPTION_","label":"connect to Excel","attributes":{},"skip":false,"key":"1.6.1.1"},{"backlink":"integration/excel_integration.en.html#fig1.6.1.2","level":"1.6.1","list_caption":"Figure: Connect Successfully","alt":"Connect Successfully","nro":93,"url":"images/excel/mdx_step_3.png","index":2,"caption_template":"_CAPTION_","label":"Connect Successfully","attributes":{},"skip":false,"key":"1.6.1.2"},{"backlink":"integration/excel_integration.en.html#fig1.6.1.3","level":"1.6.1","list_caption":"Figure: Analysis Dataset","alt":"Analysis Dataset","nro":94,"url":"images/excel/sample_data.png","index":3,"caption_template":"_CAPTION_","label":"Analysis Dataset","attributes":{},"skip":false,"key":"1.6.1.3"},{"backlink":"integration/tableau_integration.en.html#fig1.6.2.1","level":"1.6.2","list_caption":"Figure: Recommended driver","alt":"Recommended driver","nro":95,"url":"images/tableau/drivers_ssas.en.png","index":1,"caption_template":"_CAPTION_","label":"Recommended driver","attributes":{},"skip":false,"key":"1.6.2.1"},{"backlink":"integration/tableau_integration.en.html#fig1.6.2.2","level":"1.6.2","list_caption":"Figure: connect to tableau","alt":"connect to tableau","nro":96,"url":"images/tableau/connect_to_tableau.en.png","index":2,"caption_template":"_CAPTION_","label":"connect to tableau","attributes":{},"skip":false,"key":"1.6.2.2"},{"backlink":"integration/tableau_integration.en.html#fig1.6.2.3","level":"1.6.2","list_caption":"Figure: connect successfully","alt":"connect successfully","nro":97,"url":"images/tableau/select_dataset.en.png","index":3,"caption_template":"_CAPTION_","label":"connect successfully","attributes":{},"skip":false,"key":"1.6.2.3"},{"backlink":"integration/tableau_integration.en.html#fig1.6.2.4","level":"1.6.2","list_caption":"Figure: analysis dataset","alt":"analysis dataset","nro":98,"url":"images/tableau/tableau_analysis.en.png","index":4,"caption_template":"_CAPTION_","label":"analysis dataset","attributes":{},"skip":false,"key":"1.6.2.4"},{"backlink":"security/role.en.html#fig1.7.1.1","level":"1.7.1","list_caption":"Figure: role","alt":"role","nro":99,"url":"images/role/default_role.en.png","index":1,"caption_template":"_CAPTION_","label":"role","attributes":{},"skip":false,"key":"1.7.1.1"},{"backlink":"security/role.en.html#fig1.7.1.2","level":"1.7.1","list_caption":"Figure: role","alt":"role","nro":100,"url":"images/role/edit_role.en.png","index":2,"caption_template":"_CAPTION_","label":"role","attributes":{},"skip":false,"key":"1.7.1.2"},{"backlink":"security/role.en.html#fig1.7.1.3","level":"1.7.1","list_caption":"Figure: role","alt":"role","nro":101,"url":"images/role/add_user.en.png","index":3,"caption_template":"_CAPTION_","label":"role","attributes":{},"skip":false,"key":"1.7.1.3"},{"backlink":"security/role.en.html#fig1.7.1.4","level":"1.7.1","list_caption":"Figure: role","alt":"role","nro":102,"url":"images/role/manage_role.en.png","index":4,"caption_template":"_CAPTION_","label":"role","attributes":{},"skip":false,"key":"1.7.1.4"},{"backlink":"security/object_level_security.en.html#fig1.7.2.1","level":"1.7.2","list_caption":"Figure: Edit Visibility","alt":"Edit Visibility","nro":103,"url":"../dataset/design_dataset/images/dimension/visible.en.png","index":1,"caption_template":"_CAPTION_","label":"Edit Visibility","attributes":{},"skip":false,"key":"1.7.2.1"},{"backlink":"operations/logging.en.html#fig1.8.1.1","level":"1.8.1","list_caption":"Figure: Query ID","alt":"Query ID","nro":104,"url":"images/username.en.png","index":1,"caption_template":"_CAPTION_","label":"Query ID","attributes":{},"skip":false,"key":"1.8.1.1"},{"backlink":"operations/logging.en.html#fig1.8.1.2","level":"1.8.1","list_caption":"Figure: API Caller","alt":"API Caller","nro":105,"url":"images/query_id.en.png","index":2,"caption_template":"_CAPTION_","label":"API Caller","attributes":{},"skip":false,"key":"1.8.1.2"},{"backlink":"operations/diagnosis.en.html#fig1.8.2.1","level":"1.8.2","list_caption":"Figure: Enter the administrator page","alt":"Enter the administrator page","nro":106,"url":"images/login_admin.en.png","index":1,"caption_template":"_CAPTION_","label":"Enter the administrator page","attributes":{},"skip":false,"key":"1.8.2.1"},{"backlink":"operations/configuration.en.html#fig1.8.4.1","level":"1.8.4","list_caption":"Figure: Login Administrator Page","alt":"Login Administrator Page","nro":107,"url":"images/login_admin.en.png","index":1,"caption_template":"_CAPTION_","label":"Login Administrator Page","attributes":{},"skip":false,"key":"1.8.4.1"},{"backlink":"operations/configuration.en.html#fig1.8.4.2","level":"1.8.4","list_caption":"Figure: Parameter Configuration","alt":"Parameter Configuration","nro":108,"url":"images/conf.en.png","index":2,"caption_template":"_CAPTION_","label":"Parameter Configuration","attributes":{},"skip":false,"key":"1.8.4.2"},{"backlink":"operations/configuration.en.html#fig1.8.4.3","level":"1.8.4","list_caption":"Figure: Restart Task","alt":"Restart Task","nro":109,"url":"images/restart_task.en.png","index":3,"caption_template":"_CAPTION_","label":"Restart Task","attributes":{},"skip":false,"key":"1.8.4.3"},{"backlink":"operations/configuration.en.html#fig1.8.4.4","level":"1.8.4","list_caption":"Figure: Edit User Information","alt":"Edit User Information","nro":110,"url":"images/edit_user_info.en.png","index":4,"caption_template":"_CAPTION_","label":"Edit User Information","attributes":{},"skip":false,"key":"1.8.4.4"},{"backlink":"appendix/knownlimitation.en.html#fig1.11.2.1","level":"1.11.2","list_caption":"Figure: Limitation 1","alt":"Limitation 1","nro":111,"url":"images/limitation1.en.png","index":1,"caption_template":"_CAPTION_","label":"Limitation 1","attributes":{},"skip":false,"key":"1.11.2.1"},{"backlink":"appendix/knownlimitation.en.html#fig1.11.2.2","level":"1.11.2","list_caption":"Figure: Limitation 3","alt":"Limitation 3","nro":112,"url":"images/limitation3.en.png","index":2,"caption_template":"_CAPTION_","label":"Limitation 3","attributes":{},"skip":false,"key":"1.11.2.2"}]},"title":"Manual of MDX for Kylin","language":"en","links":{"sidebar":{"Home":""}},"gitbook":"*","description":"MDX for Kylin 手册"},"file":{"path":"dataset/mdx_list.en.md","mtime":"2022-03-20T08:37:32.944Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-28T10:49:07.240Z"},"basePath":"..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro-kui/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro-kui/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace/ace.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ace/ace.js"></script>
+        
+    
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sectionx/sectionx.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
