@@ -14,9 +14,7 @@ Please **make sure** that your server meets the [Installation Prerequisites](pre
 
 ### Download Package
 
-- Download MDX for Kylin software package from webpage [MDX for Kylin Download](https://s3.cn-north-1.amazonaws.com.cn/public.kyligence.io/kylin/tar/mdx-for-kylin-1.0.0-beta.tar.gz).
-
-- Upload the installation package to the server and **copy it to the /opt or /usr/local directory**.
+Download MDX for Kylin package from Github [Package Download](https://github.com/Kyligence/mdx-kylin/issues/1#issue-1174836123).
 
 ### Create Metastore Database
 
