@@ -3,7 +3,7 @@
 Welcome to contact us by following means:
 👏👏👏
 
-### Github Issue(Fisrt choice)
+### Github Issue(First choice)
 Use issue to ask question or report bugs [Please choose the right Issue Template](https://github.com/Kyligence/mdx-kylin/issues/new/choose)
 
 ### Mailling List
