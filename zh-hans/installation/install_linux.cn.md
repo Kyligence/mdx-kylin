@@ -14,7 +14,7 @@
 
 ### 下载安装包
 
-- 首先在 [Kyligence 提供的下载地址](https://s3.cn-north-1.amazonaws.com.cn/public.kyligence.io/kylin/tar/mdx-for-kylin-1.0.0-beta.tar.gz) 下载 MDX for Kylin 安装包
+- 首先访问 [Github 地址](https://github.com/Kyligence/mdx-kylin/issues/1#issue-1174836123) 下载 MDX for Kylin 安装包
 
 ### 创建数据库
 
