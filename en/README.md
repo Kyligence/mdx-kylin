@@ -1,6 +1,13 @@
 ## MDX for Kylin Overview
 
-MDX for Kylin is an analytical data engine. MDX for Kylin offers data governance capabilities, including efficient dataset development, security management.
+**MDX for Kylin** is an MDX query engine developed based on **Mondrian**, contributed by **Kyligence**, and with Apache Kylin as data source. Like Microsoft SSAS, **MDX for Kylin** can also integrate many data analysis tools, including Microsoft Excel and Tableau, to provide a better user experience for big data analysis.
+
+If compared with other open-source MDX query engines, MDX for Kylin has the following advantages:
+
+- Better support to BIs (Excel/Tableau/Power BI, etc.)and compliance with XMLA protocol
+- Optimize the MDX Query for BIs
+- Accelerate MDX queries with Kylin's pre-computing capability
+- Easy-to-use interface for metrics definition and management
 
 MDX for Kylin has the following key strengths:
 
