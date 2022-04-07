@@ -1,0 +1,70 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.statistics-basic-block.block {
+  margin-bottom: 20px;
+  .block-body {
+    background-color: white;
+    padding: 20px 20px 10px 20px;
+  }
+  .basic-info-item {
+    padding-top: 10px;
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .basic-info-icon-wrapper {
+    margin-right: 10px;
+  }
+  .basic-info-icon {
+    line-height: 40px;
+    width: 40px;
+    text-align: center;
+    font-size: 24px;
+    color: @color-primary;
+    background-color: @color-primary-light-9;
+  }
+  .basic-info-content {
+    flex: 1;
+  }
+  .basic-info-label {
+    line-height: 20px;
+    color: @color-text-regular;
+  }
+  .basic-info-value {
+    line-height: 40px;
+    font-size: 24px;
+  }
+  .link-query-history {
+    text-decoration: none;
+    margin-left: 5px;
+    color: @color-text-regular;
+  }
+}
+
+@media (min-width: 992px) {
+  .statistics-basic-block .el-col-md-4 {
+    width: 20%;
+  }
+}

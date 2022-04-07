@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Schema name="star_left_hierarchy_cube" metamodelVersion="4.0">
+  <PhysicalSchema>
+    <Table name="KYLIN_SALES" schema="DEFAULT" alias="KYLIN_SALES" keyColumn=""/>
+    <Table name="KYLIN_CAL_DT" schema="DEFAULT" alias="KYLIN_CAL_DT" keyColumn="CAL_DT"/>
+    <Table name="KYLIN_CATEGORY_GROUPINGS" schema="DEFAULT" alias="KYLIN_CATEGORY_GROUPINGS">
+      <key>
+        <Column name="LEAF_CATEG_ID"/>
+        <Column name="SITE_ID"/>
+      </key>
+    </Table>
+    <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="BUYER_ACCOUNT" keyColumn="ACCOUNT_ID"/>
+    <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="SELLER_ACCOUNT" keyColumn="ACCOUNT_ID"/>
+    <Link target="KYLIN_SALES" source="KYLIN_CAL_DT" foreignKeyColumn="PART_DT" type="left"/>
+    <Link target="KYLIN_SALES" source="KYLIN_CATEGORY_GROUPINGS" type="left">
+      <ForeignKey>
+        <Column name="LEAF_CATEG_ID"/>
+        <Column name="LSTG_SITE_ID"/>
+      </ForeignKey>
+    </Link>
+    <Link target="KYLIN_SALES" source="SELLER_ACCOUNT" foreignKeyColumn="SELLER_ID" type="left"/>
+    <Link target="KYLIN_SALES" source="BUYER_ACCOUNT" foreignKeyColumn="BUYER_ID" type="left"/>
+  </PhysicalSchema>
+  <Cube name="star_left_hierarchy_cube" defaultMeasure="_COUNT_">
+    <Dimensions>
+      <Dimension name="KYLIN_SALES" table="KYLIN_SALES" key="PART_DT">
+        <Attributes>
+          <Attribute name="PART_DT" keyColumn="PART_DT"/>
+        </Attributes>
+      </Dimension>
+      <Dimension name="BUYER_ACCOUNT" table="BUYER_ACCOUNT" key="ACCOUNT_BUYER_LEVEL">
+        <Attributes>
+          <Attribute name="ACCOUNT_BUYER_LEVEL" keyColumn="ACCOUNT_BUYER_LEVEL"/>
+          <Attribute name="ACCOUNT_COUNTRY" keyColumn="ACCOUNT_COUNTRY"/>
+        </Attributes>
+      </Dimension>
+      <Dimension name="KYLIN_CATEGORY_GROUPINGS" table="KYLIN_CATEGORY_GROUPINGS" key="CATEG_LVL2_NAME">
+        <Attributes>
+          <Attribute name="CATEG_LVL2_NAME" keyColumn="CATEG_LVL2_NAME"/>
+          <Attribute name="CATEG_LVL3_NAME" keyColumn="CATEG_LVL3_NAME"/>
+          <Attribute name="LEAF_CATEG_NAME" keyColumn="LEAF_CATEG_NAME"/>
+          <Attribute name="META_CATEG_NAME" keyColumn="META_CATEG_NAME"/>
+          <Attribute name="SITE_ID" keyColumn="SITE_ID"/>
+        </Attributes>
+        <Hierarchies>
+          <Hierarchy name="META_CATEG_NAME-Hierarchy" hasAll="true">
+            <Level attribute="META_CATEG_NAME"/>
+            <Level attribute="CATEG_LVL2_NAME"/>
+            <Level attribute="CATEG_LVL3_NAME"/>
+            <Level attribute="SITE_ID"/>
+          </Hierarchy>
+          <Hierarchy name="META_CATEG_NAME-Hierarchy" hasAll="true">
+            <Level attribute="META_CATEG_NAME"/>
+            <Level attribute="CATEG_LVL2_NAME"/>
+            <Level attribute="CATEG_LVL3_NAME"/>
+            <Level attribute="LEAF_CATEG_NAME"/>
+          </Hierarchy>
+        </Hierarchies>
+      </Dimension>
+      <Dimension name="SELLER_ACCOUNT" table="SELLER_ACCOUNT" key="ACCOUNT_COUNTRY">
+        <Attributes>
+          <Attribute name="ACCOUNT_COUNTRY" keyColumn="ACCOUNT_COUNTRY"/>
+          <Attribute name="ACCOUNT_SELLER_LEVEL" keyColumn="ACCOUNT_SELLER_LEVEL"/>
+        </Attributes>
+      </Dimension>
+    </Dimensions>
+    <MeasureGroups>
+      <MeasureGroup name="measures" table="KYLIN_SALES">
+        <Measures>
+          <Measure name="_COUNT_" aggregator="count" formatString="#,###"/>
+          <Measure name="销售额" table="KYLIN_SALES" aggregator="sum" column="PRICE" formatString="#,###.00"/>
+          <Measure name="销售人数去重" table="KYLIN_SALES" aggregator="distinct-count" column="SELLER_ID" formatString="#,###"/>
+          <Measure name="购买人数" table="KYLIN_SALES" aggregator="count" column="BUYER_ID" formatString="#,###"/>
+          <Measure name="最低价格" table="KYLIN_SALES" aggregator="min" column="PRICE" formatString="#,###.00"/>
+          <Measure name="最高成交数量" table="KYLIN_SALES" aggregator="sum" column="ITEM_COUNT" formatString="#,###"/>
+        </Measures>
+        <DimensionLinks>
+          <FactLink dimension="KYLIN_SALES"/>
+          <FactLink dimension="BUYER_ACCOUNT"/>
+          <FactLink dimension="KYLIN_CATEGORY_GROUPINGS"/>
+          <FactLink dimension="SELLER_ACCOUNT"/>
+        </DimensionLinks>
+      </MeasureGroup>
+    </MeasureGroups>
+  </Cube>
+</Schema>

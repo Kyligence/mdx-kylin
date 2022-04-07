@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Schema name="test" metamodelVersion="4.0">
+    <PhysicalSchema>
+        <Table name="KYLIN_SALES" schema="DEFAULT" alias="KYLIN_SALES" keyColumn=""/>
+    </PhysicalSchema>
+    <Cube name="test" defaultMeasure="COUNT_ALL">
+        <Dimensions>
+            <Dimension name="KYLIN_SALES" table="KYLIN_SALES" key="BUYER_ID">
+                <Attributes>
+                    <Attribute name="BUYER_ID" keyColumn="BUYER_ID"/>
+                    <Attribute name="ITEM_COUNT" keyColumn="ITEM_COUNT"/>
+                    <Attribute name="LEAF_CATEG_ID" keyColumn="LEAF_CATEG_ID"/>
+                    <Attribute name="LSTG_FORMAT_NAME" keyColumn="LSTG_FORMAT_NAME"/>
+                    <Attribute name="LSTG_SITE_ID" keyColumn="LSTG_SITE_ID"/>
+                    <Attribute name="OPS_REGION" keyColumn="OPS_REGION"/>
+                    <Attribute name="OPS_USER_ID" keyColumn="OPS_USER_ID"/>
+                    <Attribute name="PART_DT" keyColumn="PART_DT"/>
+                    <Attribute name="PRICE" keyColumn="PRICE"/>
+                    <Attribute name="SELLER_ID" keyColumn="SELLER_ID"/>
+                    <Attribute name="SLR_SEGMENT_CD" keyColumn="SLR_SEGMENT_CD"/>
+                    <Attribute name="TRANS_ID" keyColumn="TRANS_ID"/>
+                </Attributes>
+            </Dimension>
+        </Dimensions>
+        <MeasureGroups>
+            <MeasureGroup name="measures" table="KYLIN_SALES">
+                <Measures>
+                    <Measure name="COUNT_ALL" aggregator="count" formatString="#,###"/>
+                </Measures>
+                <DimensionLinks>
+                    <FactLink dimension="KYLIN_SALES"/>
+                </DimensionLinks>
+            </MeasureGroup>
+        </MeasureGroups>
+    </Cube>
+</Schema>

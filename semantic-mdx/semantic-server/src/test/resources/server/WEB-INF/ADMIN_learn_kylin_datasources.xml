@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSources>
+	<DataSource>
+		<DataSourceName>ADMIN_learn_kylin</DataSourceName>
+		<DataSourceDescription>Kylin xmla datasource, create time is 1603777268500</DataSourceDescription>
+		<URL>http://localhost:8080/mdx/xmla</URL>
+		<DataSourceInfo>Provider=mondrian;UseContentChecksum=true;Jdbc=jdbc:kylin://sandbox:7070/learn_kylin;JdbcDrivers=org.apache.kylin.jdbc.Driver;JdbcUser=ADMIN;JdbcPassword=d4341cc91fed0bed9f6aae7c09bda0d4</DataSourceInfo>
+		<ProviderName>Mondrian</ProviderName>
+		<ProviderType>MDP</ProviderType>
+		<AuthenticationMode>Unauthenticated</AuthenticationMode>
+		<Catalogs>
+			<Catalog name="learn_kylin">
+				<Definition>/schema/ADMIN_learn_kylin_learn_kylin.xml</Definition>
+			</Catalog>
+		</Catalogs>
+	</DataSource>
+</DataSources>

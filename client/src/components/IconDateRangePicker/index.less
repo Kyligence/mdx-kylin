@@ -1,0 +1,68 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.icon-date-range-picker {
+  line-height: 14px;
+  .date-range-value {
+    vertical-align: middle;
+    font-weight: 400;
+  }
+  .start-time .el-tooltip__rel > div,
+  .end-time .el-tooltip__rel > div {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+  .separator {
+    vertical-align: middle;
+    margin: 0 5px;
+  }
+  .picker-icon {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    color: @color-primary;
+    &:hover .icon-superset-type_timestamp {
+      color: @color-primary-light-2;
+    }
+  }
+  .el-date-editor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    opacity: 0;
+    .el-kylin-type_date {
+      display: none;
+    }
+  }
+  .el-date-editor input {
+    cursor: pointer;
+  }
+}

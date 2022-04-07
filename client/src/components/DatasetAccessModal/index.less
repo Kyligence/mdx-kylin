@@ -1,0 +1,140 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.visibility-restrict-modal {
+  .el-form .el-form-item:first-child {
+    margin-bottom: 20px;
+    .el-form-item__label {
+      padding-top: 0;
+    }
+  }
+  .resize-layout {
+    margin-bottom: -20px;
+  }
+  .select-restrict {
+    display: flex;
+  }
+  .select-restrict-type {
+    width: 285px;
+    display: inline-block;
+  }
+  .select-restrict-name {
+    width: 285px;
+    margin-left: 10px;
+    display: inline-block;
+  }
+  .visibility-list {
+    width: 225px;
+    height: 325px;
+    border-right: 1px solid #CCCCCC;
+  }
+  .visibility-content {
+    width: calc(~'100% - 225px');
+    padding: 0 0 0 20px;
+  }
+  .visibility-content-header {
+    margin-bottom: 10px;
+    h1 {
+      line-height: 30px;
+    }
+    .table-filter {
+      width: 260px;
+    }
+  }
+  .not-selectable .visibility-selection {
+    cursor: not-allowed;
+  }
+  .visibility-selection {
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    i {
+      line-height: 30px;
+      color: @color-info;
+    }
+    &:hover i {
+      color: @color-primary;
+    }
+    .icon-superset-eye_close:not(.table-header-icon) {
+      color: #E73371;
+    }
+    i.icon-superset-eye_close.disabled {
+      color: @color-info;
+    }
+  }
+  .restrict-tip-icon,
+  .restrict-title {
+    vertical-align: middle;
+  }
+  .restrict-tip-icon {
+    cursor: pointer;
+    color: @color-info;
+  }
+  .restrict-title {
+    margin-right: 5px;
+  }
+  .restrict-tip {
+    max-width: 300px;
+    font-weight: 400;
+  }
+  .item-content {
+    float: left;
+    max-width: 235px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .item-label {
+    float: right;
+  }
+  .el-select-dropdown__item {
+    &.selected.hover .item-label,
+    &.hover .item-label,
+    &:hover .item-label {
+      color: @color-primary-light-2;
+    }
+    .item-label {
+      color: @color-info;
+    }
+  }
+  .empty-entity-center {
+    width: 100%;
+    padding: 10px;
+  }
+  .empty-entity-content {
+    color: @color-text-placeholder;
+  }
+  .row-tooltip {
+    text-align: center;
+  }
+  .dataset-access-tooptip {
+    max-width: 300px;
+    pointer-events: none;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-align: left;
+  }
+  
+}

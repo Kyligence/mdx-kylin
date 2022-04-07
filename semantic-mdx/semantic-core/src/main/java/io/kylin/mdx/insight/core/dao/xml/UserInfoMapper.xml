@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.kylin.mdx.insight.core.dao.UserInfoMapper">
+    <resultMap id="BaseResultMap" type="io.kylin.mdx.insight.core.entity.UserInfo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="active" property="active" jdbcType="INTEGER"/>
+        <result column="license_auth" property="licenseAuth" jdbcType="INTEGER"/>
+        <result column="login_count" property="loginCount" jdbcType="INTEGER"/>
+        <result column="last_login" property="lastLogin" jdbcType="BIGINT"/>
+        <result column="create_time" property="createTime" jdbcType="BIGINT"/>
+        <result column="conf_usr" property="confUsr" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="UserInfos" type="io.kylin.mdx.insight.core.entity.UserInfo">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      id, username, password, active, license_auth, login_count, last_login, create_time, conf_usr
+    </sql>
+
+    <select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByUserAndPwd" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        where username = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR} and license_auth=1
+    </select>
+
+    <select id="selectLicenseNumWithLock" resultType="java.lang.Integer">
+        select count(1) from (select * from user_info where license_auth=1 for update) a;
+    </select>
+
+    <select id="selectLicenseNum" resultType="java.lang.Integer">
+        select count(1) from user_info where license_auth=1
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+    </select>
+
+    <update id="updateLicenseAuthByUsername">
+        update user_info set license_auth=#{licenseAuth,jdbcType=INTEGER} where username=#{username,jdbcType=VARCHAR}
+    </update>
+
+    <insert id="insertSelective" parameterType="io.kylin.mdx.insight.core.entity.UserInfo">
+        insert into user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="active != null">
+                active,
+            </if>
+            <if test="licenseAuth != null">
+                license_auth,
+            </if>
+            <if test="loginCount != null">
+                login_count,
+            </if>
+            <if test="lastLogin != null">
+                last_login,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="confUsr != null">
+                conf_usr,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="active != null">
+                #{active,jdbcType=INTEGER},
+            </if>
+            <if test="licenseAuth != null">
+                #{licenseAuth,jdbcType=INTEGER},
+            </if>
+            <if test="loginCount != null">
+                #{loginCount,jdbcType=INTEGER},
+            </if>
+            <if test="lastLogin != null">
+                #{lastLogin,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=BIGINT},
+            </if>
+            <if test="confUsr != null">
+                #{confUsr,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="io.kylin.mdx.insight.core.entity.UserInfo">
+        update user_info
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="active != null">
+                active = #{active,jdbcType=INTEGER},
+            </if>
+            <if test="licenseAuth != null">
+                license_auth = #{licenseAuth,jdbcType=INTEGER},
+            </if>
+            <if test="loginCount != null">
+                login_count = #{loginCount,jdbcType=INTEGER},
+            </if>
+            <if test="lastLogin != null">
+                last_login = #{lastLogin,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectAllUsersByPage" resultMap="UserInfos">
+        select
+        id, username
+        from user_info
+        order by create_time desc
+    </select>
+
+    <select id="selectAllUsersName" resultType="java.lang.String">
+        select
+        username
+        from user_info
+        order by create_time desc
+    </select>
+
+    <select id="selectConfUsr"  resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        where conf_usr = 1 for update
+    </select>
+
+    <update id="updateConfUsr" parameterType="io.kylin.mdx.insight.core.entity.UserInfo">
+        update user_info
+        set username = #{username, jdbcType=VARCHAR},
+            password = #{password, jdbcType=VARCHAR},
+            conf_usr = #{confUsr, jdbcType=INTEGER}
+        where username = #{username, jdbcType=VARCHAR}
+    </update>
+
+    <insert id="insertUsers" parameterType="java.util.List">
+    insert into user_info (username,password,active,license_auth,login_count,last_login,create_time) values
+    <foreach collection="list" index="index" separator="," item="item">
+        (#{item.username},#{item.password},#{item.active},#{item.licenseAuth},#{item.loginCount},#{item.lastLogin},#{item.createTime})
+    </foreach>
+    </insert>
+
+    <delete id="deleteUsersByNames" parameterType="java.util.List">
+        delete from user_info
+        where username in
+        <foreach collection="list" item="usernameItem" open="(" separator="," close=")">
+            #{usernameItem}
+        </foreach>
+     </delete>
+
+    <delete id="deleteUsersById" parameterType="java.util.List">
+        delete from user_info
+        where id in
+        <foreach collection="list" item="idItem" open="(" separator="," close=")">
+            #{idItem}
+        </foreach>
+    </delete>
+</mapper>

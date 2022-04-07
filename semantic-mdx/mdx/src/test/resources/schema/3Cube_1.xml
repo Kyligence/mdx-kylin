@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Schema name="3Cube_1" metamodelVersion="4.0">
+    <PhysicalSchema>
+        <Table name="KYLIN_SALES" schema="DEFAULT" alias="KYLIN_SALES_0"/>
+        <Table name="KYLIN_CAL_DT" schema="DEFAULT" alias="KYLIN_CAL_DT_0" keyColumn="CAL_DT"/>
+        <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="BUYER_ACCOUNT_0" keyColumn="ACCOUNT_ID"/>
+        <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="SELLER_ACCOUNT_0" keyColumn="ACCOUNT_ID"/>
+        <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="BUYER_COUNTRY_0" keyColumn="COUNTRY"/>
+        <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="SELLER_COUNTRY_0" keyColumn="COUNTRY"/>
+        <Table name="KYLIN_SALES" schema="DEFAULT" alias="KYLIN_SALES_1"/>
+        <Table name="KYLIN_CATEGORY_GROUPINGS" schema="DEFAULT" alias="KYLIN_CATEGORY_GROUPINGS_1">
+            <key>
+                <Column name="LEAF_CATEG_ID"/>
+                <Column name="SITE_ID"/>
+            </key>
+        </Table>
+        <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="BUYER_ACCOUNT_1" keyColumn="ACCOUNT_ID"/>
+        <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="SELLER_ACCOUNT_1" keyColumn="ACCOUNT_ID"/>
+        <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="BUYER_COUNTRY_1" keyColumn="COUNTRY"/>
+        <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="SELLER_COUNTRY_1" keyColumn="COUNTRY"/>
+        <Table name="KYLIN_SALES" schema="DEFAULT" alias="KYLIN_SALES_2"/>
+        <Table name="KYLIN_CAL_DT" schema="DEFAULT" alias="KYLIN_CAL_DT_2" keyColumn="CAL_DT"/>
+        <Table name="KYLIN_CATEGORY_GROUPINGS" schema="DEFAULT" alias="KYLIN_CATEGORY_GROUPINGS_2">
+            <key>
+                <Column name="LEAF_CATEG_ID"/>
+                <Column name="SITE_ID"/>
+            </key>
+        </Table>
+        <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="BUYER_ACCOUNT_2" keyColumn="ACCOUNT_ID"/>
+        <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="SELLER_ACCOUNT_2" keyColumn="ACCOUNT_ID"/>
+        <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="BUYER_COUNTRY_2" keyColumn="COUNTRY"/>
+        <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="SELLER_COUNTRY_2" keyColumn="COUNTRY"/>
+        <Link target="KYLIN_SALES_0" source="KYLIN_CAL_DT_0" foreignKeyColumn="PART_DT" type="inner"/>
+        <Link target="KYLIN_SALES_0" source="KYLIN_CATEGORY_GROUPINGS_2" type="inner">
+            <ForeignKey>
+                <Column name="LEAF_CATEG_ID"/>
+                <Column name="LSTG_SITE_ID"/>
+            </ForeignKey>
+        </Link>
+        <Link target="KYLIN_SALES_0" source="BUYER_ACCOUNT_0" foreignKeyColumn="BUYER_ID" type="inner"/>
+        <Link target="KYLIN_SALES_0" source="SELLER_ACCOUNT_0" foreignKeyColumn="SELLER_ID" type="inner"/>
+        <Link target="BUYER_ACCOUNT_0" source="BUYER_COUNTRY_0" foreignKeyColumn="ACCOUNT_COUNTRY" type="inner"/>
+        <Link target="SELLER_ACCOUNT_0" source="SELLER_COUNTRY_0" foreignKeyColumn="ACCOUNT_COUNTRY" type="inner"/>
+        <Link target="KYLIN_SALES_1" source="KYLIN_CAL_DT_2" foreignKeyColumn="PART_DT" type="inner"/>
+        <Link target="KYLIN_SALES_1" source="KYLIN_CATEGORY_GROUPINGS_1" type="inner">
+            <ForeignKey>
+                <Column name="LEAF_CATEG_ID"/>
+                <Column name="LSTG_SITE_ID"/>
+            </ForeignKey>
+        </Link>
+        <Link target="KYLIN_SALES_1" source="BUYER_ACCOUNT_1" foreignKeyColumn="BUYER_ID" type="inner"/>
+        <Link target="KYLIN_SALES_1" source="SELLER_ACCOUNT_1" foreignKeyColumn="SELLER_ID" type="inner"/>
+        <Link target="BUYER_ACCOUNT_1" source="BUYER_COUNTRY_1" foreignKeyColumn="ACCOUNT_COUNTRY" type="inner"/>
+        <Link target="SELLER_ACCOUNT_1" source="SELLER_COUNTRY_1" foreignKeyColumn="ACCOUNT_COUNTRY" type="inner"/>
+        <Link target="KYLIN_SALES_2" source="KYLIN_CAL_DT_2" foreignKeyColumn="PART_DT" type="inner"/>
+        <Link target="KYLIN_SALES_2" source="KYLIN_CATEGORY_GROUPINGS_2" type="inner">
+            <ForeignKey>
+                <Column name="LEAF_CATEG_ID"/>
+                <Column name="LSTG_SITE_ID"/>
+            </ForeignKey>
+        </Link>
+        <Link target="KYLIN_SALES_2" source="BUYER_ACCOUNT_2" foreignKeyColumn="BUYER_ID" type="inner"/>
+        <Link target="KYLIN_SALES_2" source="SELLER_ACCOUNT_2" foreignKeyColumn="SELLER_ID" type="inner"/>
+        <Link target="BUYER_ACCOUNT_2" source="BUYER_COUNTRY_2" foreignKeyColumn="ACCOUNT_COUNTRY" type="inner"/>
+        <Link target="SELLER_ACCOUNT_2" source="SELLER_COUNTRY_2" foreignKeyColumn="ACCOUNT_COUNTRY" type="inner"/>
+    </PhysicalSchema>
+    <Cube name="3Cube_1" defaultMeasure="_COUNT_">
+        <Dimensions>
+            <Dimension name="SELLER_COUNTRY" table="SELLER_COUNTRY_0" key="NAME">
+                <Attributes>
+                    <Attribute name="NAME" keyColumn="NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="BUYER_COUNTRY" table="BUYER_COUNTRY_0" key="NAME">
+                <Attributes>
+                    <Attribute name="NAME" keyColumn="NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="BUYER_ACCOUNT" table="BUYER_ACCOUNT_0" key="ACCOUNT_COUNTRY">
+                <Attributes>
+                    <Attribute name="ACCOUNT_COUNTRY" keyColumn="ACCOUNT_COUNTRY"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KYLIN_CAL_DT" table="KYLIN_CAL_DT_0" key="CAL_DT">
+                <Attributes>
+                    <Attribute name="CAL_DT" keyColumn="CAL_DT"/>
+                    <Attribute name="MONTH_BEG_DT" keyColumn="MONTH_BEG_DT"/>
+                    <Attribute name="WEEK_BEG_DT" keyColumn="WEEK_BEG_DT"/>
+                    <Attribute name="YEAR_BEG_DT" keyColumn="YEAR_BEG_DT"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="SELLER_ACCOUNT" table="SELLER_ACCOUNT_0" key="ACCOUNT_COUNTRY">
+                <Attributes>
+                    <Attribute name="ACCOUNT_COUNTRY" keyColumn="ACCOUNT_COUNTRY"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KYLIN_SALES" table="KYLIN_SALES_1" key="BUYER_ID">
+                <Attributes>
+                    <Attribute name="BUYER_ID" keyColumn="BUYER_ID"/>
+                    <Attribute name="LSTG_FORMAT_NAME" keyColumn="LSTG_FORMAT_NAME"/>
+                    <Attribute name="OPS_REGION" keyColumn="OPS_REGION"/>
+                    <Attribute name="OPS_USER_ID" keyColumn="OPS_USER_ID"/>
+                    <Attribute name="SELLER_ID" keyColumn="SELLER_ID"/>
+                    <Attribute name="TRANS_ID" keyColumn="TRANS_ID"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="SELLER_COUNTRY" table="SELLER_COUNTRY_1" key="NAME">
+                <Attributes>
+                    <Attribute name="NAME" keyColumn="NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="BUYER_COUNTRY" table="BUYER_COUNTRY_1" key="NAME">
+                <Attributes>
+                    <Attribute name="NAME" keyColumn="NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="BUYER_ACCOUNT" table="BUYER_ACCOUNT_1" key="ACCOUNT_BUYER_LEVEL">
+                <Attributes>
+                    <Attribute name="ACCOUNT_BUYER_LEVEL" keyColumn="ACCOUNT_BUYER_LEVEL"/>
+                    <Attribute name="ACCOUNT_COUNTRY" keyColumn="ACCOUNT_COUNTRY"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KYLIN_CATEGORY_GROUPINGS" table="KYLIN_CATEGORY_GROUPINGS_1" key="CATEG_LVL2_NAME">
+                <Attributes>
+                    <Attribute name="CATEG_LVL2_NAME" keyColumn="CATEG_LVL2_NAME"/>
+                    <Attribute name="CATEG_LVL3_NAME" keyColumn="CATEG_LVL3_NAME"/>
+                    <Attribute name="META_CATEG_NAME" keyColumn="META_CATEG_NAME"/>
+                    <Attribute name="USER_DEFINED_FIELD1" keyColumn="USER_DEFINED_FIELD1"/>
+                    <Attribute name="USER_DEFINED_FIELD3" keyColumn="USER_DEFINED_FIELD3"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="SELLER_ACCOUNT" table="SELLER_ACCOUNT_1" key="ACCOUNT_COUNTRY">
+                <Attributes>
+                    <Attribute name="ACCOUNT_COUNTRY" keyColumn="ACCOUNT_COUNTRY"/>
+                    <Attribute name="ACCOUNT_SELLER_LEVEL" keyColumn="ACCOUNT_SELLER_LEVEL"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KYLIN_SALES" table="KYLIN_SALES_2" key="LSTG_FORMAT_NAME">
+                <Attributes>
+                    <Attribute name="LSTG_FORMAT_NAME" keyColumn="LSTG_FORMAT_NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="SELLER_COUNTRY" table="SELLER_COUNTRY_2" key="COUNTRY">
+                <Attributes>
+                    <Attribute name="COUNTRY" keyColumn="COUNTRY"/>
+                    <Attribute name="NAME" keyColumn="NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="BUYER_COUNTRY" table="BUYER_COUNTRY_2" key="COUNTRY">
+                <Attributes>
+                    <Attribute name="COUNTRY" keyColumn="COUNTRY"/>
+                    <Attribute name="NAME" keyColumn="NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="BUYER_ACCOUNT" table="BUYER_ACCOUNT_2" key="ACCOUNT_BUYER_LEVEL">
+                <Attributes>
+                    <Attribute name="ACCOUNT_BUYER_LEVEL" keyColumn="ACCOUNT_BUYER_LEVEL"/>
+                    <Attribute name="ACCOUNT_ID" keyColumn="ACCOUNT_ID"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KYLIN_CAL_DT" table="KYLIN_CAL_DT_2" key="CAL_DT">
+                <Attributes>
+                    <Attribute name="CAL_DT" keyColumn="CAL_DT"/>
+                    <Attribute name="MONTH_BEG_DT" keyColumn="MONTH_BEG_DT"/>
+                    <Attribute name="WEEK_BEG_DT" keyColumn="WEEK_BEG_DT"/>
+                    <Attribute name="YEAR_BEG_DT" keyColumn="YEAR_BEG_DT"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KYLIN_CATEGORY_GROUPINGS" table="KYLIN_CATEGORY_GROUPINGS_2" key="CATEG_LVL2_NAME">
+                <Attributes>
+                    <Attribute name="CATEG_LVL2_NAME" keyColumn="CATEG_LVL2_NAME"/>
+                    <Attribute name="CATEG_LVL3_NAME" keyColumn="CATEG_LVL3_NAME"/>
+                    <Attribute name="LEAF_CATEG_ID" keyColumn="LEAF_CATEG_ID"/>
+                    <Attribute name="META_CATEG_NAME" keyColumn="META_CATEG_NAME"/>
+                    <Attribute name="SITE_ID" keyColumn="SITE_ID"/>
+                    <Attribute name="USER_DEFINED_FIELD1" keyColumn="USER_DEFINED_FIELD1"/>
+                    <Attribute name="USER_DEFINED_FIELD3" keyColumn="USER_DEFINED_FIELD3"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="SELLER_ACCOUNT" table="SELLER_ACCOUNT_2" key="ACCOUNT_ID">
+                <Attributes>
+                    <Attribute name="ACCOUNT_ID" keyColumn="ACCOUNT_ID"/>
+                    <Attribute name="ACCOUNT_SELLER_LEVEL" keyColumn="ACCOUNT_SELLER_LEVEL"/>
+                </Attributes>
+            </Dimension>
+        </Dimensions>
+        <MeasureGroups>
+            <MeasureGroup name="kylin_ytd_cube" table="KYLIN_SALES_0">
+                <Measures>
+                    <Measure name="SUM_ITEM_COUNT" table="KYLIN_SALES_0" aggregator="sum" column="ITEM_COUNT" formatString="#,###"/>
+                    <Measure name="SUM_PRICE" table="KYLIN_SALES_0" aggregator="sum" column="PRICE" formatString="#,###.00"/>
+                    <Measure name="_COUNT_" aggregator="count" formatString="#,###"/>
+                </Measures>
+                <DimensionLinks>
+                    <FactLink dimension="SELLER_COUNTRY"/>
+                    <FactLink dimension="BUYER_COUNTRY"/>
+                    <FactLink dimension="BUYER_ACCOUNT"/>
+                    <FactLink dimension="KYLIN_CAL_DT"/>
+                    <FactLink dimension="SELLER_ACCOUNT"/>
+                    <FactLink dimension="KYLIN_CATEGORY_GROUPINGS"/>
+                    <NoLink dimension="KYLIN_SALES"/>
+                    <NoLink dimension="SELLER_COUNTRY"/>
+                    <NoLink dimension="BUYER_COUNTRY"/>
+                    <NoLink dimension="BUYER_ACCOUNT"/>
+                    <NoLink dimension="KYLIN_CATEGORY_GROUPINGS"/>
+                    <NoLink dimension="SELLER_ACCOUNT"/>
+                    <NoLink dimension="KYLIN_SALES"/>
+                    <NoLink dimension="SELLER_COUNTRY"/>
+                    <NoLink dimension="BUYER_COUNTRY"/>
+                    <NoLink dimension="BUYER_ACCOUNT"/>
+                    <NoLink dimension="KYLIN_CAL_DT"/>
+                    <NoLink dimension="SELLER_ACCOUNT"/>
+                </DimensionLinks>
+            </MeasureGroup>
+            <MeasureGroup name="kylin_sales_cube_clone" table="KYLIN_SALES_1">
+                <Measures>
+                    <Measure name="BUYER_LEVEL_SUM_1" table="BUYER_ACCOUNT_1" aggregator="sum" column="ACCOUNT_BUYER_LEVEL" formatString="#,###"/>
+                    <Measure name="GMV_SUM_1" table="KYLIN_SALES_1" aggregator="sum" column="PRICE" formatString="#,###.00"/>
+                    <Measure name="SELLER_CNT_HLL_1" table="KYLIN_SALES_1" aggregator="distinct-count" column="SELLER_ID" formatString="#,###"/>
+                    <Measure name="SELLER_LEVEL_SUM_1" table="SELLER_ACCOUNT_1" aggregator="sum" column="ACCOUNT_SELLER_LEVEL" formatString="#,###"/>
+                    <Measure name="TRANS_CNT_1" aggregator="count" formatString="#,###"/>
+                </Measures>
+                <DimensionLinks>
+                    <FactLink dimension="KYLIN_SALES"/>
+                    <FactLink dimension="SELLER_COUNTRY"/>
+                    <FactLink dimension="BUYER_COUNTRY"/>
+                    <FactLink dimension="BUYER_ACCOUNT"/>
+                    <FactLink dimension="KYLIN_CATEGORY_GROUPINGS"/>
+                    <FactLink dimension="SELLER_ACCOUNT"/>
+                    <FactLink dimension="KYLIN_CAL_DT"/>
+                    <NoLink dimension="SELLER_COUNTRY"/>
+                    <NoLink dimension="BUYER_COUNTRY"/>
+                    <NoLink dimension="BUYER_ACCOUNT"/>
+                    <NoLink dimension="KYLIN_CAL_DT"/>
+                    <NoLink dimension="SELLER_ACCOUNT"/>
+                    <NoLink dimension="KYLIN_SALES"/>
+                    <NoLink dimension="SELLER_COUNTRY"/>
+                    <NoLink dimension="BUYER_COUNTRY"/>
+                    <NoLink dimension="BUYER_ACCOUNT"/>
+                    <NoLink dimension="KYLIN_CATEGORY_GROUPINGS"/>
+                    <NoLink dimension="SELLER_ACCOUNT"/>
+                </DimensionLinks>
+            </MeasureGroup>
+            <MeasureGroup name="kylin_sales_cube" table="KYLIN_SALES_2">
+                <Measures>
+                    <Measure name="BUYER_LEVEL_SUM" table="BUYER_ACCOUNT_2" aggregator="sum" column="ACCOUNT_BUYER_LEVEL" formatString="#,###"/>
+                    <Measure name="GMV_SUM" table="KYLIN_SALES_2" aggregator="sum" column="PRICE" formatString="#,###.00"/>
+                    <Measure name="SELLER_CNT_HLL" table="KYLIN_SALES_2" aggregator="distinct-count" column="SELLER_ID" formatString="#,###"/>
+                    <Measure name="SELLER_LEVEL_SUM" table="SELLER_ACCOUNT_2" aggregator="sum" column="ACCOUNT_SELLER_LEVEL" formatString="#,###"/>
+                    <Measure name="TRANS_CNT" aggregator="count" formatString="#,###"/>
+                </Measures>
+                <DimensionLinks>
+                    <FactLink dimension="KYLIN_SALES"/>
+                    <FactLink dimension="SELLER_COUNTRY"/>
+                    <FactLink dimension="BUYER_COUNTRY"/>
+                    <FactLink dimension="BUYER_ACCOUNT"/>
+                    <FactLink dimension="KYLIN_CAL_DT"/>
+                    <FactLink dimension="KYLIN_CATEGORY_GROUPINGS"/>
+                    <FactLink dimension="SELLER_ACCOUNT"/>
+                    <NoLink dimension="SELLER_COUNTRY"/>
+                    <NoLink dimension="BUYER_COUNTRY"/>
+                    <NoLink dimension="BUYER_ACCOUNT"/>
+                    <NoLink dimension="KYLIN_CAL_DT"/>
+                    <NoLink dimension="SELLER_ACCOUNT"/>
+                    <NoLink dimension="KYLIN_SALES"/>
+                    <NoLink dimension="SELLER_COUNTRY"/>
+                    <NoLink dimension="BUYER_COUNTRY"/>
+                    <NoLink dimension="BUYER_ACCOUNT"/>
+                    <NoLink dimension="KYLIN_CATEGORY_GROUPINGS"/>
+                    <NoLink dimension="SELLER_ACCOUNT"/>
+                </DimensionLinks>
+            </MeasureGroup>
+        </MeasureGroups>
+        <CalculatedMembers>
+            <CalculatedMember name="XXX" dimension="Measures" formatString="#,###.00">
+                <Formula>2 * [Measures].[GMV_SUM]</Formula>
+            </CalculatedMember>
+        </CalculatedMembers>
+    </Cube>
+</Schema>

@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: mdx for kylin - semantic layer
+  profiles:
+    active:
+      - orm
+      - dev
+  jackson:
+    serialization:
+      indent_output: true
+    #    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null
+
+logging:
+  level:
+    root: warn
+    org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener: info
+
+mdx:
+  servlet:
+    path: /mdx/xmla/*
+
+server:
+  port: 7080
+
+database:
+  ip: 10.1.3.28
+  port: 3313
+  name: kylin_semantic_test_1.2.4
+  username: root
+  password: root
+
+

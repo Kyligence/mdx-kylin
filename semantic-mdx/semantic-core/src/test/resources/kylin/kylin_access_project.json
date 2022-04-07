@@ -1,0 +1,42 @@
+{
+  "code": "000",
+  "data": {
+    "sids": [
+      {
+        "permission": {
+          "mask": 16,
+          "pattern": "...........................A...."
+        },
+        "id": 0,
+        "sid": {
+          "principal": "ADMIN"
+        },
+        "granting": true
+      },
+      {
+        "permission": {
+          "mask": 1,
+          "pattern": "...............................R"
+        },
+        "id": 1,
+        "sid": {
+          "principal": "wanghui"
+        },
+        "granting": true
+      },
+      {
+        "permission": {
+          "mask": 1,
+          "pattern": "...............................R"
+        },
+        "id": 1,
+        "sid": {
+          "grantedAuthority": "w_group"
+        },
+        "granting": true
+      }
+    ],
+    "size": 2
+  },
+  "msg": ""
+}

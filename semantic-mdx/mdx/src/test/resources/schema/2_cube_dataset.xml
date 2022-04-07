@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Schema name="2_cube_dataset" metamodelVersion="4.0">
+    <PhysicalSchema>
+        <Table name="KFC_FACT_TLD" schema="DEFAULT" alias="KFC_FACT_TLD_0"/>
+        <Table name="KFC_DIM_STORE" schema="DEFAULT" alias="KFC_DIM_STORE_0" keyColumn="STORE_CODE"/>
+        <Table name="KFC_DIM_DATE" schema="DEFAULT" alias="KFC_DIM_DATE_0" keyColumn="CALENDAR_DATE"/>
+        <Table name="VW_YZD_TLD_AGG" schema="DEFAULT" alias="VW_YZD_TLD_AGG_1"/>
+        <Table name="KFC_DIM_PRODUCT" schema="DEFAULT" alias="KFC_DIM_PRODUCT_1" keyColumn="ITEM_CODE"/>
+        <Link target="KFC_FACT_TLD_0" source="KFC_DIM_STORE_0" foreignKeyColumn="STORE_CODE" type="inner"/>
+        <Link target="KFC_FACT_TLD_0" source="KFC_DIM_DATE_0" foreignKeyColumn="BIZDATE" type="inner"/>
+        <Link target="VW_YZD_TLD_AGG_1" source="KFC_DIM_STORE_0" foreignKeyColumn="STORE_CODE" type="inner"/>
+        <Link target="VW_YZD_TLD_AGG_1" source="KFC_DIM_PRODUCT_1" foreignKeyColumn="ITEMCODE" type="inner"/>
+        <Link target="VW_YZD_TLD_AGG_1" source="KFC_DIM_DATE_0" foreignKeyColumn="BIZDATE" type="inner"/>
+    </PhysicalSchema>
+    <Cube name="2_cube_dataset" defaultMeasure="_COUNT_">
+        <Dimensions>
+            <Dimension name="KFC_DIM_DATE" table="KFC_DIM_DATE_0" key="DAY_OF_MONTH">
+                <Attributes>
+                    <Attribute name="DAY_OF_MONTH" keyColumn="DAY_OF_MONTH"/>
+                    <Attribute name="MONTH" keyColumn="MONTH"/>
+                    <Attribute name="YEAR" keyColumn="YEAR"/>
+                </Attributes>
+                <Hierarchies>
+                    <Hierarchy name="时间层级-Hierarchy" hasAll="true">
+                        <Level attribute="YEAR"/>
+                        <Level attribute="MONTH"/>
+                        <Level attribute="DAY_OF_MONTH"/>
+                    </Hierarchy>
+                </Hierarchies>
+            </Dimension>
+            <Dimension name="KFC_DIM_STORE" table="KFC_DIM_STORE_0" key="MARKET_NAME">
+                <Attributes>
+                    <Attribute name="MARKET_NAME" keyColumn="MARKET_NAME"/>
+                    <Attribute name="STORE_NAME" keyColumn="STORE_NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KFC_DIM_PRODUCT" table="KFC_DIM_PRODUCT_1" key="CATEGORY_NAME">
+                <Attributes>
+                    <Attribute name="CATEGORY_NAME" keyColumn="CATEGORY_NAME"/>
+                    <Attribute name="CLASS_NAME" keyColumn="CLASS_NAME"/>
+                    <Attribute name="ITEM_NAME" keyColumn="ITEM_NAME"/>
+                    <Attribute name="SUB_CATEGORY_NAME" keyColumn="SUB_CATEGORY_NAME"/>
+                    <Attribute name="SUB_CLASS_NAME" keyColumn="SUB_CLASS_NAME"/>
+                </Attributes>
+                <Hierarchies>
+                    <Hierarchy name="产品层级-Hierarchy" hasAll="true">
+                        <Level attribute="CATEGORY_NAME"/>
+                        <Level attribute="SUB_CATEGORY_NAME"/>
+                        <Level attribute="CLASS_NAME"/>
+                        <Level attribute="SUB_CLASS_NAME"/>
+                        <Level attribute="ITEM_NAME"/>
+                    </Hierarchy>
+                </Hierarchies>
+            </Dimension>
+        </Dimensions>
+        <MeasureGroups>
+            <MeasureGroup name="kfc_order_cube" table="KFC_FACT_TLD_0">
+                <Measures>
+                    <Measure name="TC" table="KFC_FACT_TLD_0" aggregator="distinct-count" column="TRANSACTION_GUID" formatString="#,###"/>
+                    <Measure name="_COUNT_" aggregator="count" formatString="#,###"/>
+                </Measures>
+                <DimensionLinks>
+                    <FactLink dimension="KFC_DIM_DATE"/>
+                    <FactLink dimension="KFC_DIM_STORE"/>
+                    <NoLink dimension="KFC_DIM_PRODUCT"/>
+                </DimensionLinks>
+            </MeasureGroup>
+            <MeasureGroup name="kfc_product_cube" table="VW_YZD_TLD_AGG_1">
+                <Measures>
+                    <Measure name="SUM_UNIT_SOLD" table="VW_YZD_TLD_AGG_1" aggregator="sum" column="UNIT_SOLD" formatString="#,###"/>
+                    <Measure name="_COUNT__1" aggregator="count" formatString="#,###"/>
+                </Measures>
+                <DimensionLinks>
+                    <FactLink dimension="KFC_DIM_DATE"/>
+                    <FactLink dimension="KFC_DIM_STORE"/>
+                    <FactLink dimension="KFC_DIM_PRODUCT"/>
+                </DimensionLinks>
+            </MeasureGroup>
+        </MeasureGroups>
+        <CalculatedMembers>
+            <CalculatedMember name="SR" dimension="Measures" formatString="#,###.00">
+                <Formula>[Measures].[SUM_UNIT_SOLD] * 1000 / [Measures].[TC]</Formula>
+            </CalculatedMember>
+        </CalculatedMembers>
+    </Cube>
+</Schema>

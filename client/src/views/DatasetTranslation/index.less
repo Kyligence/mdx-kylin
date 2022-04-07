@@ -1,0 +1,126 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.dataset-translation {
+  height: 100%;
+  padding: 20px;
+  .el-table .el-table__header th {
+    height: 44px;
+  }
+  > .el-row {
+    height: 100%;
+    > .el-col {
+      height: 100%;
+    }
+  }
+  .header-left {
+    float: left;
+    &.el-form-item {
+      font-weight: normal;
+      width: calc(~'100% - 45px');
+      margin-bottom: 0;
+    }
+    .el-form-item__error {
+      display: none;
+    }
+  }
+  .header-right {
+    float: right;
+    position: relative;
+    .filter-name {
+      width: 100px;
+    }
+    &.zh .filter-name {
+      width: 170px;
+    }
+    i {
+      position: relative;
+      cursor: pointer;
+      top: 1px;
+    }
+    .language-ok {
+      color: @color-primary;
+      font-size: 16px;
+      top: 3px;
+    }
+    .language-cancel {
+      color: @color-text-regular;
+      margin-right: 5px;
+      font-size: 16px;
+      top: 3px;
+    }
+  }
+  .node-icon {
+    position: relative;
+    top: 1px;
+    margin-right: 5px;
+    color: @color-info;
+  }
+  .error-input {
+    display: block;
+    margin-bottom: 0;
+  }
+  .el-tooltip {
+    display: block;
+  }
+  .add-translation {
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    margin: 0 -5px;
+    &[disabled],
+    &[disabled] .icon-superset-language_add,
+    &[disabled]:hover .icon-superset-language_add {
+      color: @color-text-disabled;
+      cursor: not-allowed;
+    }
+    .icon-superset-language_add {
+      color: @color-text-regular;
+      line-height: 43px;
+      transform: translateY(2px);
+      display: inline-block;
+    }
+    &:hover .icon-superset-language_add {
+      color: @color-primary;
+    }
+  }
+}
+
+.delete-translation-confirm {
+  .delete-message-title {
+    margin-bottom: 10px;
+  }
+  .el-message-box__content {
+    padding-top: 20px;
+    padding-bottom: 0;
+  }
+  .delete-message-description {
+    margin-bottom: 10px;
+  }
+}
+
+.add-translation-tip {
+  transform: translateY(15px);
+}

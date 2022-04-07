@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: mdx for kylin - semantic layer
+  jackson:
+    serialization:
+      indent_output: true
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null
+    mapper:
+      PROPAGATE_TRANSIENT_MARKER: true
+  servlet:
+    multipart:
+      max-file-size: ${insight.mdx.upload.max-file-size:20MB}
+      max-request-size: ${insight.mdx.upload.max-file-size:20MB}
+
+server:
+  port: ${insight.semantic.port:7080}
+  address: 0.0.0.0
+  tomcat:
+    accept-count: 500
+    uri-encoding: UTF-8
+    max-connections: 10000
+    max-http-post-size: 10485760
+    max-threads: 200
+    min-spare-threads: 10
+    max-http-header-size: ${insight.semantic.max-http-header-size:8192}
+    accesslog:
+      enabled: true
+      directory: ${INSIGHT_HOME}/logs
+      pattern: '%{yyyy-MM-dd HH:mm:ss,SSS}t %h %l %u "%r" %s %b %D'
+      prefix: semantic_access
+    basedir: ${INSIGHT_HOME}
+  connection-timeout: -1
+  servlet:
+    context-path: ${insight.semantic.context-path:/}
+    session:
+      timeout: 30m
+  ssl:
+    enabled: ${insight.semantic.ssl.enabled:false}
+    enabled-protocols: ${insight.semantic.ssl.protocols:TLSv1.2}
+    key-store: ${insight.semantic.ssl.key-store-path}
+    key-store-password: ${insight.semantic.ssl.key-store-password}
+    keyStoreType: ${insight.semantic.ssl.key-store.type:PKCS12}
+    keyAlias: ${insight.semantic.ssl.key-alias:tomcat}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ${insight.management.endpoints.web.exposure.include:*}
+      base-path: ${insight.management.endpoints.web.base-path:/actuator}
+  endpoint:
+    shutdown:
+      enabled: false
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+insight:
+  database:
+    useSSL: false
+    ip: localhost
+    port: 3306
+    name: insight
+    username: root
+    password: 2303a047dba718ea3c259a59835f95c4

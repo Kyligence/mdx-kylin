@@ -1,0 +1,85 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.diagnosis {
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px 0;
+  .title {
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid @border-color-base;
+    font-size: @text-title-size;
+    line-height: 22px;
+    margin-bottom: 20px;
+    font-weight: @font-medium;
+  }
+  .date-range {
+    padding: 15px;
+    background: #FBFBFB;
+    border-radius: 2px;
+    margin-top: -5px;
+    margin-bottom: 15px;
+  }
+  .date-type-field {
+    .el-form-item__label {
+      padding-bottom: 10px;
+      line-height: 20px;
+    }
+    .el-form-item__content {
+      line-height: normal;
+    }
+  }
+  .date-range-field {
+    .el-form-item__label {
+      padding-bottom: 10px;
+      line-height: 20px;
+    }
+    .el-form-item__content {
+      line-height: 20px;
+    }
+  }
+  .el-date-editor--datetimerange.el-input {
+    width: 370px;
+    .el-input__inner {
+      padding-right: 10px;
+    }
+  }
+  .package-actions {
+    margin: 20px 0;
+    .el-button {
+      float: right;
+    }
+  }
+  .tip-icon {
+    color: @color-primary;
+    margin: 0 5px;
+  }
+  .el-alert {
+    margin-bottom: 20px;
+  }
+  .el-select-dropdown__list .resize-triggers:first-child {
+    display: none;
+  }
+}

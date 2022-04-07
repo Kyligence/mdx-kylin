@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Schema name="1_cube_dataset" metamodelVersion="4.0">
+    <PhysicalSchema>
+        <Table name="KYLIN_SALES" schema="DEFAULT" alias="KYLIN_SALES_0"/>
+        <Table name="KYLIN_CAL_DT" schema="DEFAULT" alias="KYLIN_CAL_DT_0" keyColumn="CAL_DT"/>
+        <Table name="KYLIN_CATEGORY_GROUPINGS" schema="DEFAULT" alias="KYLIN_CATEGORY_GROUPINGS_0">
+            <key>
+                <Column name="LEAF_CATEG_ID"/>
+                <Column name="SITE_ID"/>
+            </key>
+        </Table>
+        <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="BUYER_ACCOUNT_0" keyColumn="ACCOUNT_ID"/>
+        <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="SELLER_ACCOUNT_0" keyColumn="ACCOUNT_ID"/>
+        <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="BUYER_COUNTRY_0" keyColumn="COUNTRY"/>
+        <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="SELLER_COUNTRY_0" keyColumn="COUNTRY"/>
+        <Link target="KYLIN_SALES_0" source="KYLIN_CAL_DT_0" foreignKeyColumn="PART_DT" type="inner"/>
+        <Link target="KYLIN_SALES_0" source="KYLIN_CATEGORY_GROUPINGS_0" type="inner">
+            <ForeignKey>
+                <Column name="LEAF_CATEG_ID"/>
+                <Column name="LSTG_SITE_ID"/>
+            </ForeignKey>
+        </Link>
+        <Link target="KYLIN_SALES_0" source="BUYER_ACCOUNT_0" foreignKeyColumn="BUYER_ID" type="inner"/>
+        <Link target="KYLIN_SALES_0" source="SELLER_ACCOUNT_0" foreignKeyColumn="SELLER_ID" type="inner"/>
+        <Link target="BUYER_ACCOUNT_0" source="BUYER_COUNTRY_0" foreignKeyColumn="ACCOUNT_COUNTRY" type="inner"/>
+        <Link target="SELLER_ACCOUNT_0" source="SELLER_COUNTRY_0" foreignKeyColumn="ACCOUNT_COUNTRY" type="inner"/>
+    </PhysicalSchema>
+    <Cube name="1_cube_dataset" defaultMeasure="交易量">
+        <Dimensions>
+            <Dimension name="KYLIN_SALES" table="KYLIN_SALES_0" key="LSTG_FORMAT_NAME">
+                <Attributes>
+                    <Attribute name="LSTG_FORMAT_NAME" keyColumn="LSTG_FORMAT_NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="SELLER_COUNTRY" table="SELLER_COUNTRY_0" key="国家">
+                <Attributes>
+                    <Attribute name="国家" keyColumn="COUNTRY"/>
+                    <Attribute name="名称" keyColumn="NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="BUYER_COUNTRY" table="BUYER_COUNTRY_0" key="国家1">
+                <Attributes>
+                    <Attribute name="国家1" keyColumn="COUNTRY"/>
+                    <Attribute name="名称2" keyColumn="NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="BUYER_ACCOUNT" table="BUYER_ACCOUNT_0" key="账户级别">
+                <Attributes>
+                    <Attribute name="账户级别" keyColumn="ACCOUNT_BUYER_LEVEL"/>
+                    <Attribute name="账户ID" keyColumn="ACCOUNT_ID"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KYLIN_CAL_DT" table="KYLIN_CAL_DT_0" key="日期" type="TIME">
+                <Attributes>
+                    <Attribute name="日期" keyColumn="CAL_DT"/>
+                    <Attribute name="月初" keyColumn="MONTH_BEG_DT" levelType="TimeMonths">
+                        <Property name="BYD" attribute="BYD"/>
+                        <Property name="BYD2" attribute="BYD2"/>
+                    </Attribute>
+                    <Attribute name="周初" keyColumn="WEEK_BEG_DT" levelType="TimeWeeks"/>
+                    <Attribute name="年初" keyColumn="YEAR_BEG_DT" levelType="TimeYears"/>
+                </Attributes>
+                <Hierarchies>
+                    <Hierarchy name="时间层级-Hierarchy" hasAll="true">
+                        <Level attribute="年初"/>
+                        <Level attribute="月初"/>
+                        <Level attribute="周初"/>
+                    </Hierarchy>
+                </Hierarchies>
+            </Dimension>
+            <Dimension name="KYLIN_CATEGORY_GROUPINGS" table="KYLIN_CATEGORY_GROUPINGS_0" key="分类二级">
+                <Attributes>
+                    <Attribute name="分类二级" keyColumn="CATEG_LVL2_NAME"/>
+                    <Attribute name="分类三级" keyColumn="CATEG_LVL3_NAME"/>
+                    <Attribute name="LEAF_CATEG_ID" keyColumn="LEAF_CATEG_ID"/>
+                    <Attribute name="分类一级" keyColumn="META_CATEG_NAME"/>
+                    <Attribute name="SITE_ID" keyColumn="SITE_ID"/>
+                    <Attribute name="USER_DEFINED_FIELD1" keyColumn="USER_DEFINED_FIELD1"/>
+                    <Attribute name="USER_DEFINED_FIELD3" keyColumn="USER_DEFINED_FIELD3"/>
+                </Attributes>
+                <Hierarchies>
+                    <Hierarchy name="分类层级-Hierarchy" hasAll="true">
+                        <Level attribute="分类一级"/>
+                        <Level attribute="分类二级"/>
+                        <Level attribute="分类三级"/>
+                    </Hierarchy>
+                </Hierarchies>
+            </Dimension>
+            <Dimension name="SELLER_ACCOUNT" table="SELLER_ACCOUNT_0" key="账号_ID">
+                <Attributes>
+                    <Attribute name="账号_ID" keyColumn="ACCOUNT_ID"/>
+                    <Attribute name="账号级别" keyColumn="ACCOUNT_SELLER_LEVEL"/>
+                </Attributes>
+            </Dimension>
+        </Dimensions>
+        <MeasureGroups>
+            <MeasureGroup name="kylin_sales_cube" table="KYLIN_SALES_0" PK="LSTG_FORMAT_NAME" isM2M="true" bridgeTable="SELLER_ACCOUNT">
+                <Measures>
+                    <Measure name="买家账户级别汇总" table="BUYER_ACCOUNT_0" aggregator="sum" column="ACCOUNT_BUYER_LEVEL" formatString="#,###"/>
+                    <Measure name="销售额" table="KYLIN_SALES_0" aggregator="sum" column="PRICE" formatString="#,###.00"/>
+                    <Measure name="卖家去重统计" table="KYLIN_SALES_0" aggregator="distinct-count" column="SELLER_ID" formatString="#,###"/>
+                    <Measure name="卖家账户级别汇总" table="SELLER_ACCOUNT_0" aggregator="sum" column="ACCOUNT_SELLER_LEVEL" formatString="#,###"/>
+                    <Measure name="交易量" aggregator="count" formatString="#,###"/>
+                </Measures>
+                <DimensionLinks>
+                    <FactLink dimension="KYLIN_SALES"/>
+                    <FactLink dimension="SELLER_COUNTRY"/>
+                    <FactLink dimension="BUYER_COUNTRY"/>
+                    <FactLink dimension="BUYER_ACCOUNT"/>
+                    <FactLink dimension="KYLIN_CAL_DT"/>
+                    <FactLink dimension="KYLIN_CATEGORY_GROUPINGS"/>
+                    <FactLink dimension="SELLER_ACCOUNT"/>
+                </DimensionLinks>
+            </MeasureGroup>
+        </MeasureGroups>
+        <CalculatedMembers>
+            <CalculatedMember name="二倍销售额" dimension="Measures" formatString="#,###.00">
+                <Formula>[Measures].[销售额]</Formula>
+            </CalculatedMember>
+            <CalculatedMember name="二倍销售额_non_empty_behavior" dimension="Measures" formatString="#,###.00">
+                <Formula>[Measures].[销售额]</Formula>
+                <NonEmptyBehaviorMeasures>
+                    <NonEmptyBehaviorMeasure name="交易量"/>
+                </NonEmptyBehaviorMeasures>
+            </CalculatedMember>
+        </CalculatedMembers>
+    </Cube>
+</Schema>

@@ -1,0 +1,253 @@
+{
+  "name": "kylin_sales_cube",
+  "modelName": "kylin_sales_model",
+  "dimensions": [
+    {
+      "name": "YEAR_BEG_DT",
+      "table": "KYLIN_CAL_DT",
+      "derived": [
+        "YEAR_BEG_DT"
+      ]
+    },
+    {
+      "name": "MONTH_BEG_DT",
+      "table": "KYLIN_CAL_DT",
+      "derived": [
+        "MONTH_BEG_DT"
+      ]
+    },
+    {
+      "name": "WEEK_BEG_DT",
+      "table": "KYLIN_CAL_DT",
+      "derived": [
+        "WEEK_BEG_DT"
+      ]
+    },
+    {
+      "name": "USER_DEFINED_FIELD1",
+      "table": "KYLIN_CATEGORY_GROUPINGS",
+      "derived": [
+        "USER_DEFINED_FIELD1"
+      ]
+    },
+    {
+      "name": "USER_DEFINED_FIELD3",
+      "table": "KYLIN_CATEGORY_GROUPINGS",
+      "derived": [
+        "USER_DEFINED_FIELD3"
+      ]
+    },
+    {
+      "name": "META_CATEG_NAME",
+      "table": "KYLIN_CATEGORY_GROUPINGS",
+      "column": "META_CATEG_NAME"
+    },
+    {
+      "name": "CATEG_LVL2_NAME",
+      "table": "KYLIN_CATEGORY_GROUPINGS",
+      "column": "CATEG_LVL2_NAME"
+    },
+    {
+      "name": "CATEG_LVL3_NAME",
+      "table": "KYLIN_CATEGORY_GROUPINGS",
+      "column": "CATEG_LVL3_NAME"
+    },
+    {
+      "name": "ACCOUNT_BUYER_LEVEL",
+      "table": "BUYER_ACCOUNT",
+      "column": "ACCOUNT_BUYER_LEVEL"
+    },
+    {
+      "name": "BUYER_COUNTRY",
+      "table": "BUYER_ACCOUNT",
+      "column": "ACCOUNT_COUNTRY"
+    },
+    {
+      "name": "ACCOUNT_SELLER_LEVEL",
+      "table": "SELLER_ACCOUNT",
+      "column": "ACCOUNT_SELLER_LEVEL"
+    },
+    {
+      "name": "SELLER_COUNTRY",
+      "table": "SELLER_ACCOUNT",
+      "column": "ACCOUNT_COUNTRY"
+    },
+    {
+      "name": "BUYER_COUNTRY_NAME",
+      "table": "BUYER_COUNTRY",
+      "column": "NAME"
+    },
+    {
+      "name": "SELLER_COUNTRY_NAME",
+      "table": "SELLER_COUNTRY",
+      "column": "NAME"
+    },
+    {
+      "name": "订单号",
+      "table": "KYLIN_SALES",
+      "column": "TRANS_ID"
+    },
+    {
+      "name": "LSTG_FORMAT_NAME",
+      "table": "KYLIN_SALES",
+      "column": "LSTG_FORMAT_NAME"
+    },
+    {
+      "name": "SELLER_ID",
+      "table": "KYLIN_SALES",
+      "column": "SELLER_ID"
+    },
+    {
+      "name": "BUYER_ID",
+      "table": "KYLIN_SALES",
+      "column": "BUYER_ID"
+    },
+    {
+      "name": "OPS_USER_ID",
+      "table": "KYLIN_SALES",
+      "column": "OPS_USER_ID"
+    },
+    {
+      "name": "OPS_REGION",
+      "table": "KYLIN_SALES",
+      "column": "OPS_REGION"
+    }
+  ],
+  "measures": [
+    {
+      "name": "GMV_SUM",
+      "function": {
+        "expression": "SUM",
+        "parameter": {
+          "type": "column",
+          "value": "KYLIN_SALES.PRICE"
+        },
+        "returnType": "decimal(19,4)",
+        "configuration": {}
+      }
+    },
+    {
+      "name": "BUYER_LEVEL_SUM",
+      "function": {
+        "expression": "SUM",
+        "parameter": {
+          "type": "column",
+          "value": "BUYER_ACCOUNT.ACCOUNT_BUYER_LEVEL"
+        },
+        "returnType": "bigint",
+        "configuration": {}
+      }
+    },
+    {
+      "name": "SELLER_LEVEL_SUM",
+      "function": {
+        "expression": "SUM",
+        "parameter": {
+          "type": "column",
+          "value": "SELLER_ACCOUNT.ACCOUNT_SELLER_LEVEL"
+        },
+        "returnType": "bigint",
+        "configuration": {}
+      }
+    },
+    {
+      "name": "TRANS_CNT",
+      "function": {
+        "expression": "COUNT",
+        "parameter": {
+          "type": "constant",
+          "value": "1"
+        },
+        "returnType": "bigint",
+        "configuration": {}
+      }
+    },
+    {
+      "name": "SELLER_CNT_HLL",
+      "function": {
+        "expression": "COUNT_DISTINCT",
+        "parameter": {
+          "type": "column",
+          "value": "KYLIN_SALES.SELLER_ID"
+        },
+        "returnType": "hllc(10)",
+        "configuration": {}
+      }
+    },
+    {
+      "name": "TOP_SELLER",
+      "function": {
+        "expression": "TOP_N",
+        "parameter": {
+          "type": "column",
+          "value": "KYLIN_SALES.PRICE",
+          "nextParameter": {
+            "type": "column",
+            "value": "KYLIN_SALES.SELLER_ID"
+          }
+        },
+        "returnType": "topn(100,4)",
+        "configuration": {
+          "topn.encoding_version.KYLIN_SALES.SELLER_ID": "1",
+          "topn.encoding.KYLIN_SALES.SELLER_ID": "dict"
+        }
+      }
+    }
+  ],
+  "aggregationGroups": [
+    {
+      "includes": [
+        "KYLIN_SALES.PART_DT",
+        "KYLIN_CATEGORY_GROUPINGS.META_CATEG_NAME",
+        "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL2_NAME",
+        "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL3_NAME",
+        "KYLIN_SALES.LEAF_CATEG_ID",
+        "KYLIN_SALES.LSTG_FORMAT_NAME",
+        "KYLIN_SALES.LSTG_SITE_ID",
+        "KYLIN_SALES.OPS_USER_ID",
+        "KYLIN_SALES.OPS_REGION",
+        "BUYER_ACCOUNT.ACCOUNT_BUYER_LEVEL",
+        "SELLER_ACCOUNT.ACCOUNT_SELLER_LEVEL",
+        "BUYER_ACCOUNT.ACCOUNT_COUNTRY",
+        "SELLER_ACCOUNT.ACCOUNT_COUNTRY",
+        "BUYER_COUNTRY.NAME",
+        "SELLER_COUNTRY.NAME"
+      ],
+      "selectRule": {
+        "hierarchy_dims": [
+          [
+            "KYLIN_CATEGORY_GROUPINGS.META_CATEG_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL2_NAME",
+            "KYLIN_CATEGORY_GROUPINGS.CATEG_LVL3_NAME",
+            "KYLIN_SALES.LEAF_CATEG_ID"
+          ]
+        ],
+        "mandatory_dims": [
+          "KYLIN_SALES.PART_DT"
+        ],
+        "joint_dims": [
+          [
+            "BUYER_ACCOUNT.ACCOUNT_COUNTRY",
+            "BUYER_COUNTRY.NAME"
+          ],
+          [
+            "SELLER_ACCOUNT.ACCOUNT_COUNTRY",
+            "SELLER_COUNTRY.NAME"
+          ],
+          [
+            "BUYER_ACCOUNT.ACCOUNT_BUYER_LEVEL",
+            "SELLER_ACCOUNT.ACCOUNT_SELLER_LEVEL"
+          ],
+          [
+            "KYLIN_SALES.LSTG_FORMAT_NAME",
+            "KYLIN_SALES.LSTG_SITE_ID"
+          ],
+          [
+            "KYLIN_SALES.OPS_USER_ID",
+            "KYLIN_SALES.OPS_REGION"
+          ]
+        ]
+      }
+    }
+  ]
+}

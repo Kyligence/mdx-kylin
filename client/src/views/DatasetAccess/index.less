@@ -1,0 +1,139 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.dataset-access {
+  padding: 20px;
+  height: 100%;
+  .access-header {
+    line-height: 30px;
+    font-size: 16px;
+    margin-left: -5px;
+  }
+  .access-desc {
+    line-height: 18px;
+    font-size: 12px;
+    color: @color-text-regular;
+    > * {
+      vertical-align: middle;
+    }
+  }
+  .access-body {
+    height: calc(~'100% - 48px');
+    padding-top: 15px;
+  }
+  .access-header .icon-superset-return {
+    cursor: pointer;
+    &:before {
+      transform: scale(.65);
+      display: inline-block;
+    }
+    &:hover {
+      color: @color-primary;
+    }
+  }
+  .access-desc .icon-superset-alert {
+    font-size: 14px;
+    margin-right: 6px;
+  }
+  .header-actions {
+    padding: 15px 0 10px 0;
+  }
+  .filter-input {
+    width: 100%;
+  }
+  .wrap-cell-tags {
+    padding-top: 5px;
+  }
+  .wrap-cell-tags .cell {
+    white-space: normal;
+  }
+  .wrap-cell-tags .cell .el-tag {
+    margin-bottom: 5px;
+  }
+  .header-text {
+    font-size: 14px;
+    color: #323232;
+    font-weight: @font-medium;
+    line-height: 30px;
+  }
+  .el-tabs__content {
+    height: calc(~'100% - 30px');
+  }
+  .el-tab-pane,
+  .el-tab-pane > .el-row,
+  .el-tab-pane > .el-row > .el-col {
+    height: 100%;
+  }
+  .el-table__empty-block {
+    height: 100%;
+  }
+  .el-tabs__header {
+    margin: 0;
+  }
+  .icon-superset-eye {
+    color: @color-info;
+  }
+  .icon-superset-eye_close {
+    color: @color-danger;
+  }
+  .footer-actions {
+    height: calc(~'28px + 20px');
+    position: relative;
+  }
+  .default-access-tip {
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+  }
+  .default-access-tip .icon-superset-infor {
+    color: @color-info;
+    margin-right: 5px;
+  }
+  .el-tag.user-group {
+    background-color: rgba(239, 219, 255, 0.64);
+    color: rgba(83, 29, 171, 0.68);
+    border-radius: 2px;
+    padding: 0 5px;
+    border: 1px solid rgba(83, 29, 171, 0.68);
+  }
+  .el-table .el-table__header .cell {
+    min-height: 30px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .visibility-restrict {
+    .add-button {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.dataset-access-return-tooltip {
+  position: relative;
+  transform: translateY(10px);
+  padding: 8px 7px;
+}

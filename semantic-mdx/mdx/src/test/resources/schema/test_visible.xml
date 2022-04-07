@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Schema name="test2" metamodelVersion="4.0">
+    <PhysicalSchema>
+        <Table name="KYLIN_SALES" schema="DEFAULT" alias="KYLIN_SALES_0"/>
+        <Table name="KYLIN_CAL_DT" schema="DEFAULT" alias="KYLIN_CAL_DT_0" keyColumn="CAL_DT"/>
+        <Table name="KYLIN_CATEGORY_GROUPINGS" schema="DEFAULT" alias="KYLIN_CATEGORY_GROUPINGS_0">
+            <key>
+                <Column name="LEAF_CATEG_ID"/>
+                <Column name="SITE_ID"/>
+            </key>
+        </Table>
+        <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="BUYER_ACCOUNT_0" keyColumn="ACCOUNT_ID"/>
+        <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="SELLER_ACCOUNT_0" keyColumn="ACCOUNT_ID"/>
+        <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="BUYER_COUNTRY_0" keyColumn="COUNTRY"/>
+        <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="SELLER_COUNTRY_0" keyColumn="COUNTRY"/>
+        <Link target="KYLIN_SALES_0" source="KYLIN_CAL_DT_0" foreignKeyColumn="PART_DT" type="inner"/>
+        <Link target="KYLIN_SALES_0" source="KYLIN_CATEGORY_GROUPINGS_0" type="inner">
+            <ForeignKey>
+                <Column name="LEAF_CATEG_ID"/>
+                <Column name="LSTG_SITE_ID"/>
+            </ForeignKey>
+        </Link>
+        <Link target="KYLIN_SALES_0" source="BUYER_ACCOUNT_0" foreignKeyColumn="BUYER_ID" type="inner"/>
+        <Link target="KYLIN_SALES_0" source="SELLER_ACCOUNT_0" foreignKeyColumn="SELLER_ID" type="inner"/>
+        <Link target="BUYER_ACCOUNT_0" source="BUYER_COUNTRY_0" foreignKeyColumn="ACCOUNT_COUNTRY" type="inner"/>
+        <Link target="SELLER_ACCOUNT_0" source="SELLER_COUNTRY_0" foreignKeyColumn="ACCOUNT_COUNTRY" type="inner"/>
+    </PhysicalSchema>
+    <Cube name="test2" defaultMeasure="TRANS_CNT">
+        <Dimensions>
+            <Dimension name="KYLIN_SALES" table="KYLIN_SALES_0" key="BUYER_ID">
+                <Attributes>
+                    <Attribute name="BUYER_ID" keyColumn="BUYER_ID"/>
+                    <Attribute name="LSTG_FORMAT_NAME" keyColumn="LSTG_FORMAT_NAME"/>
+                    <Attribute name="OPS_REGION" keyColumn="OPS_REGION"/>
+                    <Attribute name="OPS_USER_ID" keyColumn="OPS_USER_ID" visible="false"/>
+                    <Attribute name="SELLER_ID" keyColumn="SELLER_ID"/>
+                    <Attribute name="TRANS_ID" keyColumn="TRANS_ID"/>
+                </Attributes>
+                <Hierarchies>
+                    <Hierarchy name="层级2-Hierarchy" hasAll="true">
+                        <Level attribute="TRANS_ID"/>
+                        <Level attribute="SELLER_ID"/>
+                        <Level attribute="OPS_USER_ID" visible="false"/>
+                        <Level attribute="OPS_REGION" visible="false"/>
+                        <Level attribute="LSTG_FORMAT_NAME" visible="false"/>
+                        <Level attribute="BUYER_ID" visible="false"/>
+                    </Hierarchy>
+                </Hierarchies>
+            </Dimension>
+            <Dimension name="SELLER_COUNTRY" table="SELLER_COUNTRY_0" key="SELLER_COUNTRY_NAME">
+                <Attributes>
+                    <Attribute name="SELLER_COUNTRY_NAME" keyColumn="NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="BUYER_COUNTRY" table="BUYER_COUNTRY_0" key="BUYER_COUNTRY_NAME">
+                <Attributes>
+                    <Attribute name="BUYER_COUNTRY_NAME" keyColumn="NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="BUYER_ACCOUNT" table="BUYER_ACCOUNT_0" key="ACCOUNT_BUYER_LEVEL" visible="false">
+                <Attributes>
+                    <Attribute name="ACCOUNT_BUYER_LEVEL" keyColumn="ACCOUNT_BUYER_LEVEL"/>
+                    <Attribute name="ACCOUNT_COUNTRY" keyColumn="ACCOUNT_COUNTRY"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KYLIN_CAL_DT" table="KYLIN_CAL_DT_0" key="MONTH_BEG_DT">
+                <Attributes>
+                    <Attribute name="MONTH_BEG_DT" keyColumn="MONTH_BEG_DT"/>
+                    <Attribute name="WEEK_BEG_DT" keyColumn="WEEK_BEG_DT"/>
+                    <Attribute name="YEAR_BEG_DT" keyColumn="YEAR_BEG_DT"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KYLIN_CATEGORY_GROUPINGS" table="KYLIN_CATEGORY_GROUPINGS_0" key="CATEG_LVL2_NAME">
+                <Attributes>
+                    <Attribute name="CATEG_LVL2_NAME" keyColumn="CATEG_LVL2_NAME" visible="false"/>
+                    <Attribute name="CATEG_LVL3_NAME" keyColumn="CATEG_LVL3_NAME"/>
+                    <Attribute name="META_CATEG_NAME" keyColumn="META_CATEG_NAME"/>
+                    <Attribute name="USER_DEFINED_FIELD1" keyColumn="USER_DEFINED_FIELD1"/>
+                    <Attribute name="USER_DEFINED_FIELD3" keyColumn="USER_DEFINED_FIELD3"/>
+                </Attributes>
+                <Hierarchies>
+                    <Hierarchy name="层级-Hierarchy" hasAll="true" visible="false">
+                        <Level attribute="META_CATEG_NAME"/>
+                        <Level attribute="CATEG_LVL2_NAME"/>
+                        <Level attribute="CATEG_LVL3_NAME"/>
+                    </Hierarchy>
+                </Hierarchies>
+            </Dimension>
+            <Dimension name="SELLER_ACCOUNT" table="SELLER_ACCOUNT_0" key="ACCOUNT_COUNTRY">
+                <Attributes>
+                    <Attribute name="ACCOUNT_COUNTRY" keyColumn="ACCOUNT_COUNTRY"/>
+                    <Attribute name="ACCOUNT_SELLER_LEVEL" keyColumn="ACCOUNT_SELLER_LEVEL"/>
+                </Attributes>
+            </Dimension>
+        </Dimensions>
+        <MeasureGroups>
+            <MeasureGroup name="kylin_sales_cube" table="KYLIN_SALES_0">
+                <Measures>
+                    <Measure name="BUYER_LEVEL_SUM" table="BUYER_ACCOUNT_0" aggregator="sum" column="ACCOUNT_BUYER_LEVEL" formatString="#,###"/>
+                    <Measure name="GMV_SUM" table="KYLIN_SALES_0" aggregator="sum" column="PRICE" formatString="#,###.00" visible="false"/>
+                    <Measure name="SELLER_CNT_HLL" table="KYLIN_SALES_0" aggregator="distinct-count" column="SELLER_ID" formatString="#,###"/>
+                    <Measure name="SELLER_LEVEL_SUM" table="SELLER_ACCOUNT_0" aggregator="sum" column="ACCOUNT_SELLER_LEVEL" formatString="#,###"/>
+                    <Measure name="TRANS_CNT" aggregator="count" formatString="#,###"/>
+                </Measures>
+                <DimensionLinks>
+                    <FactLink dimension="KYLIN_SALES"/>
+                    <FactLink dimension="SELLER_COUNTRY"/>
+                    <FactLink dimension="BUYER_COUNTRY"/>
+                    <FactLink dimension="BUYER_ACCOUNT"/>
+                    <FactLink dimension="KYLIN_CAL_DT"/>
+                    <FactLink dimension="KYLIN_CATEGORY_GROUPINGS"/>
+                    <FactLink dimension="SELLER_ACCOUNT"/>
+                </DimensionLinks>
+            </MeasureGroup>
+        </MeasureGroups>
+        <CalculatedMembers>
+            <CalculatedMember name="CM1" dimension="Measures" formatString="regular" folder="Calculated Measure" visible="false">
+                <Formula>[Measures].[GMV_SUM] * 2</Formula>
+            </CalculatedMember>
+            <CalculatedMember name="CM2" dimension="Measures" formatString="regular" folder="kylin_sales_cube" visible="false">
+                <Formula>[Measures].[GMV_SUM] * 3</Formula>
+            </CalculatedMember>
+            <CalculatedMember name="CM3" dimension="Measures" formatString="#,###.00" folder="Calculated Measure">
+                <Formula>SUM(head([BUYER_COUNTRY].[BUYER_COUNTRY_NAME].[BUYER_COUNTRY_NAME].members), [Measures].[TRANS_CNT])</Formula>
+            </CalculatedMember>
+            <CalculatedMember name="CM4" dimension="Measures" formatString="regular" folder="Calculated Measure">
+                <Formula>case when [Measures].[GMV_SUM] &lt;&gt; 100 then [Measures].[GMV_SUM] else [Measures].[TRANS_CNT] end</Formula>
+            </CalculatedMember>
+        </CalculatedMembers>
+    </Cube>
+</Schema>

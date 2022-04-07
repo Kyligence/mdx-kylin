@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.kylin.mdx.insight.core.dao.DatasetMapper">
+    <resultMap id="BaseResultMap" type="io.kylin.mdx.insight.core.entity.DatasetEntity">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="project" property="project" jdbcType="VARCHAR"/>
+        <result column="dataset" property="dataset" jdbcType="VARCHAR"/>
+        <result column="create_user" property="createUser" jdbcType="VARCHAR"/>
+        <result column="canvas" property="canvas" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="broken_msg" property="brokenMsg" jdbcType="VARCHAR"/>
+        <result column="front_v" property="frontVersion" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="BIGINT"/>
+        <result column="modify_time" property="modifyTime" jdbcType="BIGINT"/>
+        <result column="extend" property="extend" jdbcType="VARCHAR"/>
+        <result column="access" property="access" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      id, project, dataset, create_user, status, create_time, modify_time, front_v, extend, access
+    </sql>
+
+    <select id="selectDatasetByTime" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from dataset
+        <where>
+            1=1
+            <if test="begin != null">
+                and create_time &gt;= #{begin}
+            </if>
+            <if test="end != null">
+                and create_time &lt;= #{end}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectAllByPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from dataset
+        <where>
+            <if test="project != null and project != ''">
+                project = #{project}
+            </if>
+            <if test="dataset != null and dataset != ''">
+                and dataset like CONCAT(CONCAT('%',#{dataset}),'%')
+            </if>
+        </where>
+        <if test="orderByClause != null and orderByClause != ''">
+            order by ${orderByClause}
+        </if>
+    </select>
+
+    <select id="selectAllProjectNames" resultType="java.lang.String">
+        select
+          distinct(project)
+        from dataset
+    </select>
+
+    <insert id="insertOneReturnId" parameterType="io.kylin.mdx.insight.core.entity.DatasetEntity"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into dataset
+          (project, dataset, create_user, canvas,
+           create_time, modify_time, front_v, extend, translation_types, access)
+        values
+          (#{project},#{dataset},#{createUser},#{canvas}
+          ,#{createTime},#{modifyTime},#{frontVersion},#{extend},#{translationTypes},#{access})
+    </insert>
+
+    <select id="selectDatasetByProjectName" resultMap="BaseResultMap">
+        select
+          id, dataset
+        from dataset
+        where project = #{project}
+    </select>
+
+</mapper>

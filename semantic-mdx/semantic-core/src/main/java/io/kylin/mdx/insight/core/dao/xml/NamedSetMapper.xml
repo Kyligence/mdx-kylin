@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.kylin.mdx.insight.core.dao.NamedSetMapper">
+    <resultMap id="BaseResultMap" type="io.kylin.mdx.insight.core.entity.NamedSet">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="dataset_id" property="datasetId" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="expression" property="expression" jdbcType="VARCHAR"/>
+        <result column="folder" property="folder" jdbcType="VARCHAR"/>
+        <result column="extend" property="extend" jdbcType="VARCHAR"/>
+        <result column="location" property="location" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, dataset_id, name, expression, folder, extend, location
+    </sql>
+    <!--
+
+        <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+            select
+            <include refid="Base_Column_List"/>
+            from named_set
+            where id = #{id,jdbcType=INTEGER}
+        </select>
+
+        <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+            delete from named_set
+            where id = #{id,jdbcType=INTEGER}
+        </delete>
+
+        <insert id="insert" parameterType="io.kylin.mdx.insight.core.entity.NamedSet">
+            insert into named_set (id, dataset_id, name,
+              expression, folder, extend
+              )
+            values (#{id,jdbcType=INTEGER}, #{datasetId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+              #{expression,jdbcType=VARCHAR}, #{folder,jdbcType=VARCHAR}, #{extend,jdbcType=VARCHAR}
+              )
+        </insert>
+
+        <insert id="insertSelective" parameterType="io.kylin.mdx.insight.core.entity.NamedSet">
+            insert into named_set
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">
+                    id,
+                </if>
+                <if test="datasetId != null">
+                    dataset_id,
+                </if>
+                <if test="name != null">
+                    name,
+                </if>
+                <if test="expression != null">
+                    expression,
+                </if>
+                <if test="folder != null">
+                    folder,
+                </if>
+                <if test="extend != null">
+                    extend,
+                </if>
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">
+                    #{id,jdbcType=INTEGER},
+                </if>
+                <if test="datasetId != null">
+                    #{datasetId,jdbcType=INTEGER},
+                </if>
+                <if test="name != null">
+                    #{name,jdbcType=VARCHAR},
+                </if>
+                <if test="expression != null">
+                    #{expression,jdbcType=VARCHAR},
+                </if>
+                <if test="folder != null">
+                    #{folder,jdbcType=VARCHAR},
+                </if>
+                <if test="extend != null">
+                    #{extend,jdbcType=VARCHAR},
+                </if>
+            </trim>
+        </insert>
+
+        <update id="updateByPrimaryKeySelective" parameterType="io.kylin.mdx.insight.core.entity.NamedSet">
+            update named_set
+            <set>
+                <if test="datasetId != null">
+                    dataset_id = #{datasetId,jdbcType=INTEGER},
+                </if>
+                <if test="name != null">
+                    name = #{name,jdbcType=VARCHAR},
+                </if>
+                <if test="expression != null">
+                    expression = #{expression,jdbcType=VARCHAR},
+                </if>
+                <if test="folder != null">
+                    folder = #{folder,jdbcType=VARCHAR},
+                </if>
+                <if test="extend != null">
+                    extend = #{extend,jdbcType=VARCHAR},
+                </if>
+            </set>
+            where id = #{id,jdbcType=INTEGER}
+        </update>
+
+        <update id="updateByPrimaryKey" parameterType="io.kylin.mdx.insight.core.entity.NamedSet">
+            update named_set
+            set dataset_id = #{datasetId,jdbcType=INTEGER},
+              name = #{name,jdbcType=VARCHAR},
+              expression = #{expression,jdbcType=VARCHAR},
+              folder = #{folder,jdbcType=VARCHAR},
+              extend = #{extend,jdbcType=VARCHAR}
+            where id = #{id,jdbcType=INTEGER}
+        </update>
+    -->
+
+</mapper>

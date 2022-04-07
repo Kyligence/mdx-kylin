@@ -1,0 +1,176 @@
+/*
+  Copyright (C) 2021 Kyligence Inc. All rights reserved.
+
+  http://kyligence.io
+
+  This software is the confidential and proprietary information of
+  Kyligence Inc. ("Confidential Information"). You shall not disclose
+  such Confidential Information and shall use it only in accordance
+  with the terms of the license agreement you entered into with
+  Kyligence Inc.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+@import '../../assets/stylesheets/variables.less';
+
+.semantic-maker {
+  height: 100%;
+  min-height: 200px;
+  .el-row,
+  .el-col {
+    height: 100%;
+  }
+  .block .block-header {
+    line-height: 24px;
+    background-color: white;
+    border: 0;
+    padding: 12px 32px;
+    .el-button--text {
+      color: #546174;
+    }
+  }
+  .block .block-body {
+    padding: 12px 32px;
+  }
+  .semantic-welcome {
+    height: 100%;
+  }
+  .semantic-welcome .block-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .create-button {
+    font-size: 17px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+  .description {
+    padding: 10px;
+    background-color: #F4F4F4;
+    border-radius: 2px;
+    .description-icon {
+      color: #7f7f7f;
+      line-height: 14px;
+      vertical-align: middle;
+      margin-right: 5px;
+      position: relative;
+      top: -1px;
+    }
+    .description-text {
+      vertical-align: middle;
+      line-height: 14px;
+    }
+  }
+  .steps-desc {
+    padding: 10px 10px 10px 30px;
+  }
+  .step-desc {
+    line-height: 24px;
+    margin-bottom: 5px;
+  }
+  .el-form-item.form-switch {
+    margin-bottom: 0px;
+    .el-form-item__label {
+      padding: 0;
+    }
+    .el-form-item__content {
+      display: inline-block;
+      margin-left: 5px;
+      .el-switch {
+        margin-bottom: 0px;
+      }
+    }
+  }
+  .mdx-tip {
+    position: relative;
+    color: #323232;
+    margin: -10px 0 15px 0;
+    line-height: initial;
+    .icon-superset-alert {
+      color: #7f7f7f;
+      line-height: 20px;
+      float: left;
+    }
+    .mdx-tip-content {
+      margin-left: 19px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .form-switch + .mdx-tip {
+    margin-top: 5px;
+  }
+  .is-error + .mdx-tip {
+    margin-top: -5px;
+  }
+  .invalid-message {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 375px;
+  }
+  .el-card, .block {
+    border: 0;
+  }
+  .el-card {
+    border-right: 1px solid #DDD;
+    border-radius: 0;
+  }
+  .resizable-wrapper.light-bar.horizontal>.resizable-item>.resizable-handler:before {
+    width: 1px;
+  }
+  .el-card__header {
+    background-color: white;
+    border: 0;
+    padding: 12px 18px;
+  }
+  .dimension-bar, .measure-bar {
+    height: 100%;
+    .actions {
+      padding: 0 18px 10px 18px;
+    }
+    .el-card__body {
+      height: calc(~'100% - 48px');
+      .dimension-tree, .measure-tree {
+        padding: 0 10px;
+        height: calc(~'100% - 40px');
+      }
+    }
+  }
+  .item-detail-block, .semantic-welcome {
+    height: 100%;
+    .block-body {
+      height: calc(~'100% - 48px');
+    }
+  }
+  .semantic-welcome .block-body {
+    padding-top: 0;
+  }
+  .resizable-item:last-child .resizable-handler {
+    display: none;
+  }
+  .resizable-wrapper {
+    min-width: 660px;
+  }
+}
+
+.fix-dataset-button {
+  color: @color-primary;
+  cursor: pointer;
+  &:hover {
+    color: @color-primary-light-2;
+  }
+}

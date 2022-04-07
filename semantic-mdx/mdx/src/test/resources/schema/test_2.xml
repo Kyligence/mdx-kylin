@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Schema name="test_2" metamodelVersion="4.0">
+    <PhysicalSchema>
+        <Table name="KYLIN_SALES" schema="DEFAULT" alias="KYLIN_SALES" keyColumn=""/>
+        <Table name="KYLIN_CATEGORY_GROUPINGS" schema="DEFAULT" alias="KYLIN_CATEGORY_GROUPINGS">
+            <key>
+                <Column name="LEAF_CATEG_ID"/>
+                <Column name="SITE_ID"/>
+            </key>
+        </Table>
+        <Table name="KYLIN_CAL_DT" schema="DEFAULT" alias="KYLIN_CAL_DT" keyColumn="CAL_DT"/>
+        <Table name="KYLIN_ACCOUNT" schema="DEFAULT" alias="KYLIN_ACCOUNT" keyColumn="ACCOUNT_ID"/>
+        <Table name="KYLIN_COUNTRY" schema="DEFAULT" alias="KYLIN_COUNTRY" keyColumn="COUNTRY"/>
+        <Link target="KYLIN_SALES" source="KYLIN_CAL_DT" foreignKeyColumn="PART_DT" type="INNER"/>
+        <Link target="KYLIN_ACCOUNT" source="KYLIN_COUNTRY" foreignKeyColumn="ACCOUNT_COUNTRY" type="INNER"/>
+        <Link target="KYLIN_SALES" source="KYLIN_CATEGORY_GROUPINGS" type="INNER">
+            <ForeignKey>
+                <Column name="LEAF_CATEG_ID"/>
+                <Column name="LSTG_SITE_ID"/>
+            </ForeignKey>
+        </Link>
+        <Link target="KYLIN_SALES" source="KYLIN_ACCOUNT" foreignKeyColumn="SELLER_ID" type="INNER"/>
+    </PhysicalSchema>
+    <Cube name="test_2" defaultMeasure="SUM_PRICE">
+        <Dimensions>
+            <Dimension name="KYLIN_COUNTRY" table="KYLIN_COUNTRY" key="CATEG_LVL2_NAME">
+                <Attributes>
+                    <Attribute name="CATEG_LVL2_NAME" keyColumn="CATEG_LVL2_NAME"/>
+                    <Attribute name="NAME" keyColumn="NAME"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KYLIN_SALES" table="KYLIN_SALES" key="PRICE_PLUS">
+                <Attributes>
+                    <Attribute name="PRICE_PLUS" keyColumn="PRICE_PLUS"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KYLIN_CAL_DT" table="KYLIN_CAL_DT" key="CAL_DT">
+                <Attributes>
+                    <Attribute name="CAL_DT" keyColumn="CAL_DT"/>
+                </Attributes>
+            </Dimension>
+            <Dimension name="KYLIN_CATEGORY_GROUPINGS" table="KYLIN_CATEGORY_GROUPINGS" key="CATEG_LVL3_NAME">
+                <Attributes>
+                    <Attribute name="CATEG_LVL3_NAME" keyColumn="CATEG_LVL3_NAME"/>
+                    <Attribute name="META_CATEG_NAME" keyColumn="META_CATEG_NAME"/>
+                </Attributes>
+                <Hierarchies>
+                    <Hierarchy name="META_CATEG_NAME-Hierarchy" hasAll="true">
+                        <Level attribute="META_CATEG_NAME"/>
+                        <Level attribute="CATEG_LVL3_NAME"/>
+                    </Hierarchy>
+                </Hierarchies>
+            </Dimension>
+        </Dimensions>
+        <MeasureGroups>
+            <MeasureGroup name="measures" table="KYLIN_SALES">
+                <Measures>
+                    <Measure name="SUM_PRICE" table="KYLIN_SALES" aggregator="sum" column="PRICE" formatString="#,###.00"/>
+                    <Measure name="ITEM_COUNT" table="KYLIN_SALES" aggregator="sum" column="ITEM_COUNT" formatString="#,###"/>
+                    <Measure name="COUNT_ALL" aggregator="count" formatString="#,###"/>
+                </Measures>
+                <DimensionLinks>
+                    <FactLink dimension="KYLIN_COUNTRY"/>
+                    <FactLink dimension="KYLIN_SALES"/>
+                    <FactLink dimension="KYLIN_CAL_DT"/>
+                    <FactLink dimension="KYLIN_CATEGORY_GROUPINGS"/>
+                </DimensionLinks>
+            </MeasureGroup>
+        </MeasureGroups>
+    </Cube>
+</Schema>

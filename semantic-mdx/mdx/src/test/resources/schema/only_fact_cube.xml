@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Schema name="only_fact_cube" metamodelVersion="4.0">
+    <PhysicalSchema>
+        <Table name="KYLIN_SALES" schema="DEFAULT" alias="KYLIN_SALES" keyColumn=""/>
+    </PhysicalSchema>
+    <Cube name="only_fact_cube" defaultMeasure="_COUNT_">
+        <Dimensions>
+            <Dimension name="KYLIN_SALES" table="KYLIN_SALES" key="PART_DT">
+                <Attributes>
+                    <Attribute name="PART_DT" keyColumn="PART_DT"/>
+                    <Attribute name="TRANS_ID" keyColumn="TRANS_ID"/>
+                </Attributes>
+            </Dimension>
+        </Dimensions>
+        <MeasureGroups>
+            <MeasureGroup name="measures" table="KYLIN_SALES">
+                <Measures>
+                    <Measure name="_COUNT_" aggregator="count" formatString="#,###"/>
+                </Measures>
+                <DimensionLinks>
+                    <FactLink dimension="KYLIN_SALES"/>
+                </DimensionLinks>
+            </MeasureGroup>
+        </MeasureGroups>
+    </Cube>
+</Schema>
+
