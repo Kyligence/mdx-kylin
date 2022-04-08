@@ -28,6 +28,7 @@ import ProjectSelector from '../ProjectSelector/ProjectSelector';
 import {
   LoginLogo,
   CollapseMenuButton,
+  HelpButton,
   LanguageSwitcher,
   ProfileButton,
 } from './partition';
@@ -87,9 +88,9 @@ class PageHeader extends PureComponent {
   get docsUrl() {
     const { locale } = this.props;
     switch (locale) {
-      case 'en': return 'https://docs.kyligence.io/books/mdx/v1.3/en/index.html';
-      case 'zh': return 'https://docs.kyligence.io/books/mdx/v1.3/zh-cn/index.html';
-      default: return 'https://docs.kyligence.io/books/mdx/v1.3/en/index.html';
+      case 'zh': return 'https://kyligence.github.io/mdx-kylin/zh-hans/';
+      case 'en':
+      default: return 'https://kyligence.github.io/mdx-kylin/en/';
     }
   }
 
@@ -235,6 +236,11 @@ class PageHeader extends PureComponent {
               </Tooltip>
             </div>
           )}
+          <HelpButton
+            intl={intl}
+            docsUrl={this.docsUrl}
+            onClickAbout={this.handleClickAbout}
+          />
           <LanguageSwitcher onClick={this.handleChangeLanguage} language={locale} />
           {!isLoginMode
             ? <ProfileButton currentUser={currentUser} onLogout={this.handleLogout} intl={intl} />
