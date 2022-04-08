@@ -235,7 +235,7 @@
   "FOLDER_NAME_TOO_LONG": "文件夹不能超过{maxLength}个字符。",
   "FOLDER_PREVIEW": "文件夹预览",
   "FORGET_PASSWORD": "忘记密码",
-  "FORGET_PASSWORD_TIP": "Kylin MDX与Kylin使用统一的用户账户，在Kylin安装路径\"$KYLIN_HOME/bin文件夹\"使用重置密码命令\"kylin.sh admin-password-reset\",将ADMIN账户密码恢复为初始密码。其他用户请联系系统管理员修改密码。",
+  "FORGET_PASSWORD_TIP": "Kylin MDX与Kylin使用统一的用户账户，请联系系统管理员修改密码。",
   "FORMAT": "格式",
   "FORMAT_DESC": "客户端中展示的默认格式。",
   "FORMAT_DESCRIPTION": "格式说明",

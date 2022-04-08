@@ -235,7 +235,7 @@
   "FOLDER_NAME_TOO_LONG": "Display folder cannot exceed {maxLength} characters.",
   "FOLDER_PREVIEW": "Folder Preview",
   "FORGET_PASSWORD": "Forget Password",
-  "FORGET_PASSWORD_TIP": "Kylin MDX use the same user credential as Kylin, for ADMIN user account, you will need to reset Kylin password to initial password using command \"kylin.sh admin-password-reset\" in the \"$KYLIN_HOME/bin\" folder. For other users please contact your system administrator for password rest.",
+  "FORGET_PASSWORD_TIP": "Kylin MDX use the same user credential as Kylin, please contact your system administrator for password rest.",
   "FORMAT": "Format",
   "FORMAT_DESC": "The default format shown in the client application.",
   "FORMAT_DESCRIPTION": "Format Description",
