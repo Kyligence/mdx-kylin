@@ -98,7 +98,7 @@ export function HelpButton(props) {
               {intl.formatMessage(strings.KYLIN_INSIGHT_MANUAL)}
             </a>
           </Dropdown.Item>
-          <Dropdown.Item className="mdx-it-dropdown-about" onClick={onClickAbout}>
+          <Dropdown.Item className="mdx-it-dropdown-about" style={{ display: 'none' }} onClick={onClickAbout}>
             {intl.formatMessage(strings.ABOUT_KYLIN_INSIGHT)}
           </Dropdown.Item>
         </Dropdown.Menu>
