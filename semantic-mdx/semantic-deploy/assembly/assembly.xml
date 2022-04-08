@@ -13,7 +13,6 @@
                 <exclude>service.sh</exclude>
                 <exclude>diagnose_package.sh</exclude>
                 <exclude>parent-child_reform.py</exclude>
-                <exclude>upgrade_mdx.sh</exclude>
                 <exclude>diagnose_package_offline.sh</exclude>
             </excludes>
             <fileMode>0755</fileMode>

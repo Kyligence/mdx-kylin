@@ -1,5 +1,5 @@
-# Kyligence MDX Web Client
-Kyligence MDX web client source code
+# MDX for Kylin Web Client
+MDX for Kylin web client source code
 
 ![Statements](./public/badge-statements.svg)
 ![Lines](./public/badge-lines.svg)
