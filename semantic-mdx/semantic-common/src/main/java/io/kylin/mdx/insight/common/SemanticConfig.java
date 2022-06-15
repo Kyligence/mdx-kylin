@@ -37,7 +37,6 @@ public class SemanticConfig extends SemanticConfigBase {
         private static final SemanticConfig INSTANCE = new SemanticConfig();
     }
 
-
     private static final String HTTP_LITERAL = "http";
 
     private static final String HTTPS_LITERAL = "https";
