@@ -306,7 +306,7 @@ public class MetaSyncServiceImpl implements MetaSyncService {
     public void syncGroup() {
         Execution syncGroupExecution = new Execution("[Meta-sync] sync group job");
         log.info("sync group has started");
-        List<String> groups = groupManager.getGroupByKe();
+        List<String> groups = groupManager.getGroupByKylin();
         groupManager.saveGroups(groups);
         syncGroupExecution.logTimeConsumed(1000, 3000);
     }

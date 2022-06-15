@@ -33,7 +33,7 @@ public interface GroupManager {
      * @return  List<String>
      * @throws SemanticException
      */
-    List<String> getGroupByKe() throws SemanticException;
+    List<String> getGroupByKylin() throws SemanticException;
 
     /**
      * store groups to cache

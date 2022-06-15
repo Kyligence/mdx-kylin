@@ -37,7 +37,7 @@ public class GroupManagerImpl implements GroupManager {
     private MetaStore metaStore = MetaStore.getInstance();
 
     @Override
-    public List<String> getGroupByKe() {
+    public List<String> getGroupByKylin() {
         return semanticAdapter.getNoCacheGroups();
     }
 
