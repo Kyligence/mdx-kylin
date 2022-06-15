@@ -122,7 +122,7 @@ public class KylinAclConvertor implements AclConvertor {
         if (result == null || !result.containsKey("data")) {
             return false;
         }
-        JSONArray groupList = result.getJSONObject("data").getJSONArray("group");
+        JSONArray groupList = result.getJSONArray("data");
         return groupList.contains(group);
     }
 
