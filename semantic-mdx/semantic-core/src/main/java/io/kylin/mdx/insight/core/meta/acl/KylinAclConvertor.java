@@ -111,6 +111,19 @@ public class KylinAclConvertor implements AclConvertor {
             }
             return true;
         }
+        // Group matching without ignore lower or upper
+        String tableUriForGroup = HttpUri.getKylinAclTableUri(project, TYPE_GROUP, tableName);
+        String contentForGroup = httpCall.doHttpCall(tableUriForGroup, auth);
+        JSONObject resultForGroup = JSON.parseObject(contentForGroup);
+        JSONArray groupList = resultForGroup.getJSONArray("data");
+        if (groupList != null) {
+            for (String authority: authorities) {
+                if (groupList.contains(authority)) {
+                    return true;
+                }
+            }
+        }
+
         return false;
     }
 
