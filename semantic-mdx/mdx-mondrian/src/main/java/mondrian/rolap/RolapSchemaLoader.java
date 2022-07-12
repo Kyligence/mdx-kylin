@@ -11,16 +11,56 @@ package mondrian.rolap;
 
 import io.kylin.mdx.rolap.cache.CacheManager;
 import io.kylin.mdx.rolap.cache.HierarchyCache;
-import mondrian.calc.*;
+import mondrian.calc.Calc;
+import mondrian.calc.DummyExp;
+import mondrian.calc.ExpCompiler;
+import mondrian.calc.ListCalc;
+import mondrian.calc.ResultStyle;
+import mondrian.calc.TupleList;
 import mondrian.calc.impl.AbstractListCalc;
 import mondrian.calc.impl.ConstantCalc;
 import mondrian.calc.impl.UnaryTupleList;
 import mondrian.mdx.ResolvedFunCall;
-import mondrian.olap.*;
+import mondrian.olap.Access;
+import mondrian.olap.Category;
+import mondrian.olap.CalculatedMember;
+import mondrian.olap.Cube;
+import mondrian.olap.Dimension;
+import mondrian.olap.Evaluator;
+import mondrian.olap.Exp;
+import mondrian.olap.Formula;
+import mondrian.olap.Hierarchy;
+import mondrian.olap.Id;
+import mondrian.olap.Larder;
+import mondrian.olap.Larders;
+import mondrian.olap.Level;
+import mondrian.olap.Literal;
+import mondrian.olap.LocalizedProperty;
+import mondrian.olap.MatchType;
+import mondrian.olap.Member;
+import mondrian.olap.Mondrian3Def;
+import mondrian.olap.MondrianDef;
 import mondrian.olap.MondrianDef.RealOrCalcColumnDef;
+import mondrian.olap.MondrianException;
+import mondrian.olap.MondrianProperties;
+import mondrian.olap.MondrianServer;
+import mondrian.olap.NameResolver;
+import mondrian.olap.NamedSet;
+import mondrian.olap.OlapElement;
+import mondrian.olap.Property;
+import mondrian.olap.Query;
+import mondrian.olap.Role;
+import mondrian.olap.RoleImpl;
+import mondrian.olap.SchemaReader;
+import mondrian.olap.SetBase;
+import mondrian.olap.Util;
 import mondrian.olap.fun.FunDefBase;
 import mondrian.olap.fun.UdfResolver;
-import mondrian.olap.type.*;
+import mondrian.olap.type.MemberType;
+import mondrian.olap.type.NumericType;
+import mondrian.olap.type.SetType;
+import mondrian.olap.type.StringType;
+import mondrian.olap.type.Type;
 import mondrian.resource.MondrianResource;
 import mondrian.rolap.RolapLevel.HideMemberCondition;
 import mondrian.rolap.RolapSchema.UnresolvedColumn;
@@ -35,6 +75,7 @@ import mondrian.spi.*;
 import mondrian.spi.impl.Scripts;
 import mondrian.util.*;
 import mondrian.xmla.XmlaRequestContext;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.map.MultiValueMap;
 import org.apache.log4j.Logger;
 import org.eigenbase.xom.*;
@@ -130,6 +171,7 @@ public class RolapSchemaLoader {
 
     private final Handler handler =
         new RolapSchemaLoaderHandlerImpl() {
+            @Override
             protected List<RolapSchema.MondrianSchemaException> getWarningList()
             {
                 return schema == null ? null : schema.warningList;
@@ -1293,11 +1335,13 @@ public class RolapSchemaLoader {
             keyName = "primary";
         } else {
             columns = new AbstractList<Tcl>() {
+                @Override
                 public Tcl get(int index) {
                     MondrianDef.Column column = xmlKey.array[index];
                     return new Tcl(column.table, column.name, column);
                 }
 
+                @Override
                 public int size() {
                     return xmlKey.array.length;
                 }
@@ -1620,6 +1664,7 @@ public class RolapSchemaLoader {
             xmlCubeDimensionsPlus = xmlCubeDimensions;
         }
 
+        Map<String, RolapCubeDimension> dimensionMapper = new HashMap<>(xmlCubeDimensionsPlus.size());
         int ordinal = cube.getDimensionList().size();
         for (MondrianDef.Dimension xmlCubeDimension : xmlCubeDimensionsPlus) {
             // Look up usages of shared dimensions in the schema before
@@ -1638,6 +1683,7 @@ public class RolapSchemaLoader {
             }
 
             cube.addDimension(dimension);
+            dimensionMapper.put(xmlCubeDimension.table, dimension);
         }
 
         final NamedList<MondrianDef.MeasureGroup> xmlMeasureGroups =
@@ -1688,6 +1734,10 @@ public class RolapSchemaLoader {
 
             validator.putXml(measureGroup, xmlMeasureGroup);
             cube.addMeasureGroup(measureGroup);
+            RolapCubeDimension factTableDimension = dimensionMapper.get(xmlMeasureGroup.table);
+            if (factTableDimension != null) {
+                measureGroup.setFactTableDimension(factTableDimension);
+            }
 
             for (MondrianDef.MeasureOrRef xmlMeasureOrRef
                 : xmlMeasureGroup.getMeasures())
@@ -2658,47 +2708,48 @@ public class RolapSchemaLoader {
 
         // Make sure that every attribute is registered as an expression in
         // the star.
-        if (Util.deprecated(false, false))
-        for (RolapAttribute attribute : dimension.attributeMap.values()) {
-            RolapSchema.PhysSchemaGraph graph =
-                measureGroup.getFactRelation().getSchema().getGraph();
-            final RolapSchema.PhysRelation relation =
-                uniqueTable(attribute.getKeyList());
-            if (relation == null && Util.deprecated(false, false)) {
-                if (attribute.getKeyList().isEmpty()) {
-                    throw Util.newInternal(
-                        "attribute " + attribute + " has empty key");
-                } else {
-                    throw Util.newInternal(
-                        "attribute " + attribute + " has key whose columns "
-                        + "belong to inconsistent relations "
-                        + attribute.getKeyList());
+        if (Util.deprecated(false, false)) {
+            for (RolapAttribute attribute : dimension.attributeMap.values()) {
+                RolapSchema.PhysSchemaGraph graph =
+                    measureGroup.getFactRelation().getSchema().getGraph();
+                final RolapSchema.PhysRelation relation =
+                    uniqueTable(attribute.getKeyList());
+                if (relation == null && Util.deprecated(false, false)) {
+                    if (attribute.getKeyList().isEmpty()) {
+                        throw Util.newInternal(
+                            "attribute " + attribute + " has empty key");
+                    } else {
+                        throw Util.newInternal(
+                            "attribute " + attribute + " has key whose columns "
+                            + "belong to inconsistent relations "
+                            + attribute.getKeyList());
+                    }
                 }
-            }
-            for (RolapSchema.PhysColumn column : attribute.getKeyList()) {
-                final Pair<RolapCubeDimension, RolapSchema.PhysColumn> key =
-                    Pair.of(dimension, column);
-                if (measureGroup.starColumnMap.containsKey(key)) {
-                    continue;
+                for (RolapSchema.PhysColumn column : attribute.getKeyList()) {
+                    final Pair<RolapCubeDimension, RolapSchema.PhysColumn> key =
+                        Pair.of(dimension, column);
+                    if (measureGroup.starColumnMap.containsKey(key)) {
+                        continue;
+                    }
+                    RolapSchema.PhysPathBuilder pathBuilder =
+                        pathBuilderOrig.clone();
+                    try {
+                        graph.findPath(pathBuilder, column.relation);
+                    } catch (RolapSchema.PhysSchemaException e) {
+                        // TODO: user error
+                        throw Util.newInternal(
+                            "Could not find path to " + column.relation);
+                    }
+                    final RolapStar star = measureGroup.getStar();
+                    RolapStar.Table starTable = star.getTable(pathBuilder.done());
+                    final RolapStar.Column starColumn =
+                        starTable.lookupColumnByExpression(
+                            column, true, null, null);
+                    assert starColumn != null;
+                    measureGroup.starColumnMap.put(
+                        key,
+                        starColumn);
                 }
-                RolapSchema.PhysPathBuilder pathBuilder =
-                    pathBuilderOrig.clone();
-                try {
-                    graph.findPath(pathBuilder, column.relation);
-                } catch (RolapSchema.PhysSchemaException e) {
-                    // TODO: user error
-                    throw Util.newInternal(
-                        "Could not find path to " + column.relation);
-                }
-                final RolapStar star = measureGroup.getStar();
-                RolapStar.Table starTable = star.getTable(pathBuilder.done());
-                final RolapStar.Column starColumn =
-                    starTable.lookupColumnByExpression(
-                        column, true, null, null);
-                assert starColumn != null;
-                measureGroup.starColumnMap.put(
-                    key,
-                    starColumn);
             }
         }
     }
@@ -4911,6 +4962,7 @@ public class RolapSchemaLoader {
                 conn,
                 "Validate calculated members in cube",
                 new Locus.Action<Query>() {
+                    @Override
                     public Query execute() {
                         final Query queryExp = conn.parseQuery(queryString);
                         queryExp.resolve();
@@ -5614,6 +5666,7 @@ public class RolapSchemaLoader {
                     new AbstractListCalc(
                         new DummyExp(setType), new Calc[0])
                     {
+                        @Override
                         public TupleList evaluateList(
                             Evaluator evaluator)
                         {
@@ -5623,6 +5676,7 @@ public class RolapSchemaLoader {
                                         evaluator, hierarchyAccess, null));
                         }
 
+                        @Override
                         public boolean dependsOn(Hierarchy hierarchy) {
                             return true;
                         }
@@ -5634,6 +5688,7 @@ public class RolapSchemaLoader {
                 final Exp partialExp =
                     new ResolvedFunCall(
                         new FunDefBase("$x", "x", "In") {
+                            @Override
                             public Calc compileCall(
                                 ResolvedFunCall call,
                                 ExpCompiler compiler)
@@ -5641,6 +5696,7 @@ public class RolapSchemaLoader {
                                 return partialCalc;
                             }
 
+                            @Override
                             public void unparse(Exp[] args, PrintWriter pw) {
                                 pw.print("$RollupAccessibleChildren()");
                             }
@@ -5657,12 +5713,14 @@ public class RolapSchemaLoader {
                 Exp hiddenExp =
                     new ResolvedFunCall(
                         new FunDefBase("$x", "x", "In") {
+                            @Override
                             public Calc compileCall(
                                 ResolvedFunCall call, ExpCompiler compiler)
                             {
                                 return new ConstantCalc(returnType, null);
                             }
 
+                            @Override
                             public void unparse(Exp[] args, PrintWriter pw) {
                                 pw.print("$RollupAccessibleChildren()");
                             }
@@ -5739,6 +5797,7 @@ public class RolapSchemaLoader {
          * @param node XML element that is the location of caused this exception
          * @param attributeName Name of XML attribute, or null for whole node
          */
+        @Override
         void error(
             String message,
             NodeDef node,
@@ -6136,10 +6195,12 @@ public class RolapSchemaLoader {
         private final Map<Object, NodeDef> map =
             new IdentityHashMap<Object, NodeDef>();
 
+        @Override
         public <T extends NodeDef> T getXml(Object o) {
             return this.<T>getXml(o, true);
         }
 
+        @Override
         public <T extends NodeDef> T getXml(Object o, boolean fail) {
             final NodeDef xml = map.get(o);
             assert !(xml == null && fail) : "no xml element fouund for " + o;
@@ -6164,6 +6225,7 @@ public class RolapSchemaLoader {
 
     enum MissingLinkAction {
         IGNORE {
+            @Override
             public void handle(
                 Handler handler, String message, NodeDef xml, String attr)
             {
@@ -6171,6 +6233,7 @@ public class RolapSchemaLoader {
             }
         },
         WARNING {
+            @Override
             public void handle(
                 Handler handler, String message, NodeDef xml, String attr)
             {
@@ -6178,6 +6241,7 @@ public class RolapSchemaLoader {
             }
         },
         ERROR {
+            @Override
             public void handle(
                 Handler handler, String message, NodeDef xml, String attr)
             {
@@ -6323,6 +6387,7 @@ public class RolapSchemaLoader {
 
         /** Resolve default member based on real members. Calculated members are
          * not available yet. */
+        @Override
         public AssignDefaultMember apply() {
             // Safe starting point.
             for (RolapCubeHierarchy cubeHierarchy : cubeHierarchies()) {
@@ -6377,6 +6442,7 @@ public class RolapSchemaLoader {
             return null;
         }
 
+        @Override
         void apply2() {
             // Usually when default name is not specified, we take the 'all'.
             // We are here because the hierarchy has no 'all' and no real
@@ -6443,6 +6509,7 @@ public class RolapSchemaLoader {
 
         /** Resolve default member based on real members. Calculated members are
          * not available yet. */
+        @Override
         public AssignDefaultMember apply() {
             // Safe starting point.
             for (RolapCubeHierarchy cubeHierarchy : cubeHierarchies()) {
@@ -6465,6 +6532,7 @@ public class RolapSchemaLoader {
             return failureCount > 0 ? this : null;
         }
 
+        @Override
         public void apply2() {
             int failureCount = 0;
             for (RolapCubeHierarchy cubeHierarchy : cubeHierarchies()) {

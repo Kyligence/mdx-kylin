@@ -10,15 +10,20 @@
 */
 package mondrian.rolap;
 
-import mondrian.olap.*;
+import java.util.HashMap;
+import java.util.Map;
+
+import mondrian.olap.Cube;
 import mondrian.olap.Dimension;
+import mondrian.olap.DimensionBase;
+import mondrian.olap.Larder;
+import mondrian.olap.Schema;
+import mondrian.olap.Util;
 import mondrian.util.Lazy;
 
 import org.apache.log4j.Logger;
 
 import org.olap4j.metadata.NamedList;
-
-import java.util.*;
 
 /**
  * <code>RolapDimension</code> implements {@link Dimension}for a ROLAP
@@ -89,24 +94,29 @@ public class RolapDimension extends DimensionBase {
         this.larder = larder;
     }
 
+    @Override
     protected Logger getLogger() {
         return LOGGER;
     }
 
+    @Override
     public RolapHierarchy[] getHierarchies() {
         //noinspection SuspiciousToArrayCall
         return hierarchyList.toArray(new RolapHierarchy[hierarchyList.size()]);
     }
 
+    @Override
     public NamedList<? extends RolapHierarchy> getHierarchyList() {
         //noinspection unchecked
         return (NamedList) hierarchyList;
     }
 
+    @Override
     public RolapSchema getSchema() {
         return schema;
     }
 
+    @Override
     public Larder getLarder() {
         return larder;
     }

@@ -10,12 +10,24 @@
 */
 package mondrian.rolap.agg;
 
+import mondrian.olap.MondrianProperties;
 import mondrian.olap.Util;
-import mondrian.rolap.*;
-import mondrian.rolap.sql.*;
+import mondrian.rolap.RolapAggregator;
 import mondrian.util.Pair;
+import mondrian.rolap.RolapSchema;
+import mondrian.rolap.RolapStar;
+import mondrian.rolap.SqlStatement;
+import mondrian.rolap.StarColumnPredicate;
+import mondrian.rolap.StarPredicate;
+import mondrian.rolap.sql.Clause;
+import mondrian.rolap.sql.SqlQueryBuilder;
 
-import java.util.*;
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Provides the information necessary to generate SQL for a drill-through
@@ -29,6 +41,8 @@ class DrillThroughQuerySpec extends AbstractQuerySpec {
     private final int maxRowCount;
     private final List<StarPredicate> listOfStarPredicates;
     private final List<String> columnNames;
+
+    private final boolean doAggregation;
 
     public DrillThroughQuerySpec(
         DrillThroughCellRequest request,
@@ -54,6 +68,7 @@ class DrillThroughQuerySpec extends AbstractQuerySpec {
         }
         this.columnNames =
             computeDistinctColumnNames(request, maxColumnNameLength);
+        this.doAggregation = MondrianProperties.instance().SqlWithAggregate.get();
     }
 
     private static List<String> computeDistinctColumnNames(
@@ -136,15 +151,18 @@ class DrillThroughQuerySpec extends AbstractQuerySpec {
         return request.includeInSelect(measure);
     }
 
+    @Override
     public List<Pair<RolapStar.Measure, String>> getMeasures() {
         final List<RolapStar.Measure> drillThroughMeasures =
             request.getDrillThroughMeasures();
         if (drillThroughMeasures.size() > 0) {
             return new AbstractList<Pair<RolapStar.Measure, String>>() {
+                @Override
                 public int size() {
                     return drillThroughMeasures.size();
                 }
 
+                @Override
                 public Pair<RolapStar.Measure, String> get(int index) {
                     final RolapStar.Measure measure =
                         drillThroughMeasures.get(index);
@@ -159,14 +177,17 @@ class DrillThroughQuerySpec extends AbstractQuerySpec {
         }
     }
 
+    @Override
     public List<Pair<RolapStar.Column, String>> getColumns() {
         final RolapStar.Column[] constrainedColumns =
             request.getConstrainedColumns();
         return new AbstractList<Pair<RolapStar.Column, String>>() {
+            @Override
             public int size() {
                 return constrainedColumns.length;
             }
 
+            @Override
             public Pair<RolapStar.Column, String> get(int index) {
                 return Pair.of(
                     constrainedColumns[index],
@@ -175,6 +196,7 @@ class DrillThroughQuerySpec extends AbstractQuerySpec {
         };
     }
 
+    @Override
     public StarColumnPredicate getColumnPredicate(final int i) {
         final StarColumnPredicate constraint = request.getValueAt(i);
         return (constraint == null)
@@ -186,6 +208,7 @@ class DrillThroughQuerySpec extends AbstractQuerySpec {
             : constraint;
     }
 
+    @Override
     public Pair<String, List<SqlStatement.Type>> generateSqlQuery(String desc) {
         SqlQueryBuilder queryBuilder = createQueryBuilder(desc);
         nonDistinctGenerateSql(queryBuilder);
@@ -194,6 +217,7 @@ class DrillThroughQuerySpec extends AbstractQuerySpec {
         return queryBuilder.toSqlAndTypes(getStar().getFactAndPath(), null, null);
     }
 
+    @Override
     protected void addMeasure(
         RolapStar.Measure measure,
         String alias,
@@ -205,10 +229,11 @@ class DrillThroughQuerySpec extends AbstractQuerySpec {
 
         assert measure.getTable() == getStar().getFactTable();
         String exprInner;
+        boolean isCountDistinct = measure.getAggregator() == RolapAggregator.DistinctCount;
         if (measure.getExpression() == null) {
-            exprInner = "*";
+            exprInner = doAggregation ? "*" : "1";
         } else {
-            exprInner = measure.getExpression().toSql();
+            exprInner = isCountDistinct && !doAggregation? "1" : measure.getExpression().toSql();
             queryBuilder.addColumn(
                 queryBuilder.column(
                     measure.getExpression(), measure.getTable()),
@@ -216,26 +241,29 @@ class DrillThroughQuerySpec extends AbstractQuerySpec {
         }
 
         if (!countOnly) {
-            String exprOuter = measure.getAggregator().getExpression(exprInner);
+            String exprOuter = doAggregation ? measure.getAggregator().getExpression(exprInner) : exprInner;
             queryBuilder.sqlQuery.addSelect(
                 exprOuter,
-                measure.getInternalType(),
+                isCountDistinct && !doAggregation? SqlStatement.Type.INT : measure.getInternalType(),
                 alias);
         }
     }
 
+    @Override
     protected boolean isAggregate() {
         // As per SSAS 2005, the query must include a Group By clause
         // so that each row returned contains the aggregated value
         // of the measures for all rows with similar key values.
-        return true;
+        return doAggregation;
     }
 
+    @Override
     protected boolean isOrdered() {
         // We don't order drillthrough queries.
         return false;
     }
 
+    @Override
     protected List<StarPredicate> getPredicateList() {
         return listOfStarPredicates;
     }

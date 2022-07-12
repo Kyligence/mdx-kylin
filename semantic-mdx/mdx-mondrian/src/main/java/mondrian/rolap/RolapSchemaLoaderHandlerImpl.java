@@ -43,6 +43,7 @@ abstract class RolapSchemaLoaderHandlerImpl
     public RolapSchemaLoaderHandlerImpl() {
     }
 
+    @Override
     public RolapSchema.XmlLocation locate(NodeDef node, String attributeName) {
         if (node == null) {
             return null;
@@ -54,6 +55,7 @@ abstract class RolapSchemaLoaderHandlerImpl
         return new RolapSchema.XmlLocationImpl(node, location, attributeName);
     }
 
+    @Override
     public void warning(
         String message,
         NodeDef node,
@@ -62,6 +64,7 @@ abstract class RolapSchemaLoaderHandlerImpl
         warning(message, node, attributeName, null);
     }
 
+    @Override
     public void warning(
         String message,
         NodeDef node,
@@ -107,6 +110,7 @@ abstract class RolapSchemaLoaderHandlerImpl
         }
     }
 
+    @Override
     public void error(
         String message,
         NodeDef node,
@@ -128,12 +132,14 @@ abstract class RolapSchemaLoaderHandlerImpl
         }
     }
 
+    @Override
     public void error(
         MondrianException message, NodeDef node, String attributeName)
     {
         error(message.toString(), node, attributeName);
     }
 
+    @Override
     public RuntimeException fatal(
         String message,
         NodeDef node,
@@ -146,6 +152,7 @@ abstract class RolapSchemaLoaderHandlerImpl
             RolapSchema.Severity.FATAL, cause);
     }
 
+    @Override
     public void check() {
         if (errorCount > 0) {
             throw new RolapSchemaLoader.MondrianMultipleSchemaException(

@@ -305,19 +305,17 @@ public abstract class RolapAggregationManager {
                     addDrillthroughColumn(member, measureGroup, request);
                 }
             } else {
-                for (RolapCubeDimension dimension : measureGroup.getSortedDimensions()) {
-                    String keyAttributeName = dimension.getKeyAttribute().getName();
-
+                for (RolapCubeDimension dimension : measureGroup.dimensionMap3.keySet()) {
                     for (RolapCubeHierarchy hierarchy : dimension.getHierarchyList()) {
-                        if (keyAttributeName.equals(hierarchy.getName())) {
+                        if (hierarchy.getLevelList().size() == 2) {
                             addDrillthroughColumn(
                                     hierarchy,
                                     measureGroup,
                                     request);
-                            break;
                         }
                     }
                 }
+
                 for (RolapStoredMeasure baseMeasure : measureGroup.measureList) {
                     if (!starMeasure.getTable().equals(baseMeasure.getStarMeasure().getTable())) {
                         continue;

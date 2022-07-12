@@ -16,8 +16,20 @@ class DrillThroughMetaData implements ResultSetMetaData {
                 measureGroup.dimensionMap3.size() + measureGroup.measureList.size() + 1);
         drillThroughTitles.add(null);
 
-        for (RolapCubeDimension dimension : measureGroup.getSortedDimensions()) {
-            drillThroughTitles.add(dimension.getKeyAttribute().getUniqueName());
+//        RolapCubeDimension dimension = measureGroup.getFactTableDimension();
+//        if (dimension != null) {
+//            for (RolapCubeHierarchy hierarchy : dimension.getHierarchyList()) {
+//                if (hierarchy.getLevelList().size() == 2) {
+//                    drillThroughTitles.add(hierarchy.getLevelList().get(1).getAttribute().getUniqueName());
+//                }
+//            }
+//        }
+        for (RolapCubeDimension dimension : measureGroup.dimensionMap3.keySet()) {
+            for (RolapCubeHierarchy hierarchy : dimension.getHierarchyList()) {
+                if (hierarchy.getLevelList().size() == 2) {
+                    drillThroughTitles.add(hierarchy.getLevelList().get(1).getAttribute().getUniqueName());
+                }
+            }
         }
         for (RolapStoredMeasure baseMeasure : measureGroup.measureList) {
             if (!measure.getStarMeasure().getTable().equals(baseMeasure.getStarMeasure().getTable())) {

@@ -13,7 +13,8 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import lombok.extern.slf4j.Slf4j;
-import mondrian.olap.*;
+import mondrian.olap.Member;
+import mondrian.olap.Util;
 import mondrian.rolap.agg.AndPredicate;
 import mondrian.rolap.agg.ListPredicate;
 import mondrian.rolap.agg.PredicateColumn;
@@ -27,7 +28,15 @@ import org.apache.commons.collections.iterators.FilterIterator;
 import org.olap4j.impl.NamedListImpl;
 import org.olap4j.metadata.NamedList;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
@@ -68,6 +77,8 @@ public class RolapMeasureGroup {
     private final LoadingCache<Map<?, List<List<RolapMember>>>, StarPredicate> cachedCompoundPredicates;
 
     private int hash;
+
+    private RolapCubeDimension factTableDimension;
 
     /**
      * As dimensionMap, but keys are dimensions, not cube-dimensions.
@@ -188,11 +199,13 @@ public class RolapMeasureGroup {
         final Iterable<? extends RolapCubeDimension> otherDims)
     {
         return new Iterable<RolapCubeDimension>() {
+            @Override
             public Iterator<RolapCubeDimension> iterator() {
                 //noinspection unchecked
                 return (Iterator<RolapCubeDimension>) new FilterIterator(
                     otherDims.iterator(),
                     new Util.Predicate1<RolapCubeDimension>() {
+                        @Override
                         public boolean test(RolapCubeDimension dimension) {
                             return !dimensionMap3.containsKey(dimension)
                                 && !dimension.isMeasures();
@@ -200,6 +213,14 @@ public class RolapMeasureGroup {
                     });
             }
         };
+    }
+
+    public void setFactTableDimension(RolapCubeDimension factTableDimension) {
+        this.factTableDimension = factTableDimension;
+    }
+
+    public RolapCubeDimension getFactTableDimension() {
+        return factTableDimension;
     }
 
     public List<RolapCubeDimension> getSortedDimensions() {
