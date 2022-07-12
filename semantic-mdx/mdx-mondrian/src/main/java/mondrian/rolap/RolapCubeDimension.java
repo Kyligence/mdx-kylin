@@ -10,10 +10,10 @@
 */
 package mondrian.rolap;
 
-import mondrian.olap.*;
-
-import org.olap4j.metadata.*;
 import org.olap4j.metadata.Dimension;
+import org.olap4j.metadata.NamedList;
+
+import mondrian.olap.Larder;
 
 /**
  * RolapCubeDimension wraps a RolapDimension for a specific Cube.
@@ -60,6 +60,7 @@ public class RolapCubeDimension extends RolapDimension {
         return cube;
     }
 
+    @Override
     public RolapSchema getSchema() {
         return rolapDimension.getSchema();
     }
@@ -82,6 +83,7 @@ public class RolapCubeDimension extends RolapDimension {
         return cubeOrdinal;
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -97,6 +99,7 @@ public class RolapCubeDimension extends RolapDimension {
         return getUniqueName().equals(that.getUniqueName());
     }
 
+    @Override
     public Dimension.Type getDimensionType() {
         return rolapDimension.getDimensionType();
     }
@@ -111,6 +114,7 @@ public class RolapCubeDimension extends RolapDimension {
         return rolapDimension.getKeyTable();
     }
 
+    @Override
     public RolapAttribute getKeyAttribute() {
         return keyAttribute;
     }

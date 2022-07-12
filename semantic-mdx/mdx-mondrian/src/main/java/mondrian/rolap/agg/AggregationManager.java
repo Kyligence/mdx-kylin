@@ -219,6 +219,7 @@ public class AggregationManager extends RolapAggregationManager {
         return measure.getStar().getCellFromAllCaches(request);
     }
 
+    @Override
     public String getDrillThroughSql(
         final DrillThroughCellRequest request,
         final int maxRowCount,

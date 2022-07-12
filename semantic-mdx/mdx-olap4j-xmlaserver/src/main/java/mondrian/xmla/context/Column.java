@@ -39,11 +39,13 @@ public class Column {
             case Types.DECIMAL:
                 // Oracle reports all numbers as NUMERIC. We check
                 // the scale of the column and pick the right XSD type.
-                if (scale == 0) {
-                    return XSD_INT;
-                } else {
-                    return XSD_DECIMAL;
-                }
+//                if (scale == 0) {
+//                    return XSD_INT;
+//                } else {
+//                    return XSD_DECIMAL;
+//                }
+                // TODO: fix jdbc set correct scale
+                return XSD_DECIMAL;
             case Types.BIGINT:
                 return XSD_INTEGER;
             // Real

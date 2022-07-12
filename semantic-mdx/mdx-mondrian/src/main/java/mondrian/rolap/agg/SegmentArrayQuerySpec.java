@@ -140,6 +140,7 @@ public class SegmentArrayQuerySpec extends AbstractQuerySpec {
         return innerExpression;
     }
 
+    @Override
     protected void addGroupingFunction(SqlQueryBuilder queryBuilder) {
         List<RolapStar.Column> list = groupingSetsList.getRollupColumns();
         for (RolapStar.Column column : list) {
@@ -148,6 +149,7 @@ public class SegmentArrayQuerySpec extends AbstractQuerySpec {
         }
     }
 
+    @Override
     protected void addGroupingSets(
         SqlQueryBuilder queryBuilder,
         Map<String, String> groupingSetsAliases)

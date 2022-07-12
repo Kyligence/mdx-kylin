@@ -1922,4 +1922,12 @@ log4j.configuration=file:log4j.properties</code></blockquote>
         <Default>true</Default>
         <Description>Whether the property "MEMBER_KEY" of a user-defined hierarchy member returns a list. If false, the property will return the last element of the list.</Description>
     </PropertyDefinition>
+
+    <PropertyDefinition>
+        <Name>SqlWithAggregate</Name>
+        <Path>insight.mdx.mondrian.rolap.do-aggregate</Path>
+        <Type>boolean</Type>
+        <Default>false</Default>
+        <Description>Whether the property "DO AGGREGATE" for generating an aggregate sql. If false, the property will return the sql without aggregate.</Description>
+    </PropertyDefinition>
 </PropertyDefinitions>
